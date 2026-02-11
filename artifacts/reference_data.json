@@ -1,0 +1,58 @@
+{
+  "PFOS": {
+    "delta_e_exchange": -5.62,
+    "delta_g_exchange": null,
+    "e_electrostatic": -67.2,
+    "e_pauli": 7.9,
+    "e_orbital": -6.2,
+    "e_dispersion": -2.7,
+    "e_solvation": -45.8,
+    "e_preparation": 15.5,
+    "e_binding_total": -101.2,
+    "nocv_pairs": [-0.76, -0.69, -0.48, -0.28, -0.23],
+    "nbo_donor_acceptor": "O lone pair → σ* C-H",
+    "nbo_stabilization_energy": null
+  },
+  "PFOA": {
+    "delta_e_exchange": -5.65,
+    "delta_g_exchange": null,
+    "e_electrostatic": -68.0,
+    "e_pauli": 9.1,
+    "e_orbital": -7.0,
+    "e_dispersion": -3.0,
+    "e_solvation": -50.4,
+    "e_preparation": 16.0,
+    "e_binding_total": -106.2,
+    "nocv_pairs": [-0.78, -0.74, -0.48, -0.46, -0.38],
+    "nbo_donor_acceptor": "O lone pair → σ* C-H",
+    "nbo_stabilization_energy": null
+  },
+  "PFHXA": {
+    "delta_e_exchange": -4.13,
+    "delta_g_exchange": null,
+    "e_electrostatic": -72.0,
+    "e_pauli": 12.2,
+    "e_orbital": -7.0,
+    "e_dispersion": -3.5,
+    "e_solvation": -48.8,
+    "e_preparation": 13.7,
+    "e_binding_total": -109.2,
+    "nocv_pairs": [-0.78, -0.82, -0.48, -0.46, -0.37],
+    "nbo_donor_acceptor": "O lone pair → σ* C-H",
+    "nbo_stabilization_energy": null
+  },
+  "FHEA": {
+    "delta_e_exchange": -6.99,
+    "delta_g_exchange": null,
+    "e_electrostatic": -75.5,
+    "e_pauli": 9.8,
+    "e_orbital": -9.1,
+    "e_dispersion": -1.8,
+    "e_solvation": -50.1,
+    "e_preparation": 16.2,
+    "e_binding_total": -113.7,
+    "nocv_pairs": [-1.79, -1.14, -0.78, -0.67, -0.59],
+    "nbo_donor_acceptor": "O lone pair → σ* C-H",
+    "nbo_stabilization_energy": null
+  }
+}

@@ -1,0 +1,5 @@
+smiles,pfas_name
+C(=O)([O-])C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F),PFOA
+C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)S(=O)(=O)[O-],PFOS
+C(=O)([O-])C(F)(F)C(F)(F)C(F)(F)C(F)(F),PFHxA
+C(=O)([O-])CC(F)(F)C(F)(F)C(F)(F)C(F)(F),FHEA
