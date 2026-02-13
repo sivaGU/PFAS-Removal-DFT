@@ -21,8 +21,15 @@ import urllib.request
 import urllib.parse
 import streamlit as st
 import pandas as pd
-from rdkit import Chem
-from rdkit.Chem import AllChem
+
+# Safe imports with error handling
+try:
+    from rdkit import Chem
+    from rdkit.Chem import AllChem
+    RDKIT_AVAILABLE = True
+except ImportError:
+    RDKIT_AVAILABLE = False
+    st.warning("RDKit not available. Some features may be limited.")
 
 from src.pfasdft.predict import predict_single, predict_batch, load_predictor
 from src.pfasdft.orca_input import generate_workflow_inputs, generate_exchange_calculation_inputs, ORCAConfig
@@ -541,6 +548,10 @@ def render_prediction_page():
             "- reference_data.json (with DFT calculation results)\n"
             "- model_config.json (optional, for configuration)"
         )
+        predictor = None
+    
+    if predictor is None:
+        st.warning("Predictor not loaded. Some features may be unavailable.")
         return
 
     st.sidebar.markdown("### Settings")
@@ -783,6 +794,10 @@ def render_comparison_page():
         predictor = get_predictor()
     except Exception as e:
         st.error(f"Could not load predictor: {e}")
+        predictor = None
+    
+    if predictor is None:
+        st.warning("Predictor not loaded. Please check artifacts folder.")
         return
     
     # Get reference data for known PFAS
@@ -881,41 +896,60 @@ def render_dft_calculations_page():
         complex_xyz = None
         
         if structure_mode == "Generate from SMILES":
-            if pfas_smiles and pfas_name != "Custom":
-                if st.button("Generate Structures", type="primary"):
+            if pfas_smiles:
+                if pfas_name == "Custom" and not pfas_smiles.strip():
+                    st.warning("Please enter a SMILES string for custom PFAS")
+                elif st.button("Generate Structures", type="primary"):
                     with st.spinner("Generating structures..."):
-                        import tempfile
-                        temp_dir = Path(tempfile.mkdtemp())
-                        
-                        pfas_xyz = prepare_pfas_structure(pfas_smiles, pfas_name, temp_dir)
-                        chol_xyz = prepare_cholestyramine_structure(model_type, temp_dir)
-                        
-                        if pfas_xyz and chol_xyz:
-                            complex_xyz = temp_dir / f"{pfas_name}_complex.xyz"
-                            if prepare_complex_structure(pfas_xyz, chol_xyz, complex_xyz):
-                                st.success("Structures generated successfully!")
-                                st.session_state.pfas_xyz = pfas_xyz
-                                st.session_state.chol_xyz = chol_xyz
-                                st.session_state.complex_xyz = complex_xyz
+                        try:
+                            import tempfile
+                            import os
+                            temp_dir = Path(tempfile.mkdtemp())
+                            
+                            pfas_xyz = prepare_pfas_structure(pfas_smiles, pfas_name if pfas_name != "Custom" else "PFAS", temp_dir)
+                            chol_xyz = prepare_cholestyramine_structure(model_type, temp_dir)
+                            
+                            if pfas_xyz and chol_xyz:
+                                complex_xyz = temp_dir / f"{pfas_name if pfas_name != 'Custom' else 'PFAS'}_complex.xyz"
+                                if prepare_complex_structure(pfas_xyz, chol_xyz, complex_xyz):
+                                    st.success("Structures generated successfully!")
+                                    # Store file contents in session state for download
+                                    st.session_state.pfas_xyz_content = pfas_xyz.read_text()
+                                    st.session_state.chol_xyz_content = chol_xyz.read_text()
+                                    st.session_state.complex_xyz_content = complex_xyz.read_text()
+                                    st.session_state.pfas_xyz_name = pfas_xyz.name
+                                    st.session_state.chol_xyz_name = chol_xyz.name
+                                    st.session_state.complex_xyz_name = complex_xyz.name
+                                else:
+                                    st.error("Failed to generate complex structure")
                             else:
-                                st.error("Failed to generate complex structure")
-                        else:
-                            st.error("Failed to generate structures")
+                                st.error("Failed to generate structures. Make sure RDKit is installed.")
+                        except Exception as e:
+                            st.error(f"Error generating structures: {str(e)}")
         else:
             pfas_xyz_file = st.file_uploader("PFAS XYZ file", type=["xyz"])
             chol_xyz_file = st.file_uploader("Cholestyramine XYZ file", type=["xyz"])
             complex_xyz_file = st.file_uploader("Complex XYZ file (optional)", type=["xyz"])
             
             if pfas_xyz_file and chol_xyz_file:
-                import tempfile
-                temp_dir = Path(tempfile.mkdtemp())
-                pfas_xyz = temp_dir / pfas_xyz_file.name
-                pfas_xyz.write_bytes(pfas_xyz_file.read())
-                chol_xyz = temp_dir / chol_xyz_file.name
-                chol_xyz.write_bytes(chol_xyz_file.read())
-                if complex_xyz_file:
-                    complex_xyz = temp_dir / complex_xyz_file.name
-                    complex_xyz.write_bytes(complex_xyz_file.read())
+                try:
+                    import tempfile
+                    import os
+                    temp_dir = Path(tempfile.mkdtemp())
+                    pfas_xyz = temp_dir / pfas_xyz_file.name
+                    pfas_xyz.write_bytes(pfas_xyz_file.read())
+                    chol_xyz = temp_dir / chol_xyz_file.name
+                    chol_xyz.write_bytes(chol_xyz_file.read())
+                    if complex_xyz_file:
+                        complex_xyz = temp_dir / complex_xyz_file.name
+                        complex_xyz.write_bytes(complex_xyz_file.read())
+                    else:
+                        complex_xyz = None
+                except Exception as e:
+                    st.error(f"Error reading uploaded files: {str(e)}")
+                    pfas_xyz = None
+                    chol_xyz = None
+                    complex_xyz = None
         
         # Configuration
         st.subheader("Calculation Configuration")
@@ -931,6 +965,29 @@ def render_dft_calculations_page():
         
         # Generate inputs
         if st.button("Generate ORCA Input Files", type="primary"):
+            # Check if we have structures from session state or uploaded files
+            if structure_mode == "Generate from SMILES" and "pfas_xyz_content" in st.session_state:
+                # Use session state structures
+                import tempfile
+                import os
+                temp_dir = Path(tempfile.mkdtemp())
+                pfas_xyz = temp_dir / st.session_state.pfas_xyz_name
+                pfas_xyz.write_text(st.session_state.pfas_xyz_content)
+                chol_xyz = temp_dir / st.session_state.chol_xyz_name
+                chol_xyz.write_text(st.session_state.chol_xyz_content)
+                if "complex_xyz_content" in st.session_state:
+                    complex_xyz = temp_dir / st.session_state.complex_xyz_name
+                    complex_xyz.write_text(st.session_state.complex_xyz_content)
+                else:
+                    complex_xyz = None
+            elif structure_mode == "Upload XYZ files" and pfas_xyz and chol_xyz:
+                # Use uploaded files (already set above)
+                pass
+            else:
+                st.warning("Please generate or upload structure files first")
+                pfas_xyz = None
+                chol_xyz = None
+            
             if pfas_xyz and chol_xyz:
                 try:
                     config = ORCAConfig(
@@ -942,32 +999,37 @@ def render_dft_calculations_page():
                         mem=memory,
                     )
                     
-                    output_path = Path(output_dir)
+                    # Create output directory in temp or current directory
+                    import tempfile
+                    output_path = Path(tempfile.mkdtemp()) if output_dir == "orca_calculations" else Path(output_dir)
+                    output_path.mkdir(parents=True, exist_ok=True)
+                    
                     inputs = generate_workflow_inputs(
-                        pfas_name,
+                        pfas_name if pfas_name != "Custom" else "PFAS",
                         pfas_xyz,
                         chol_xyz,
-                        complex_xyz,
+                        complex_xyz if 'complex_xyz' in locals() else None,
                         output_path,
                         config,
                     )
                     
-                    st.success(f"Generated {len(inputs)} input files in {output_dir}")
+                    st.success(f"Generated {len(inputs)} input files")
                     st.subheader("Generated Input Files")
                     for calc_type_name, inp_path in inputs.items():
-                        st.text(f"{calc_type_name}: {inp_path}")
-                        with open(inp_path, 'r') as f:
+                        if inp_path.exists():
+                            st.text(f"{calc_type_name}: {inp_path.name}")
+                            inp_content = inp_path.read_text()
                             st.download_button(
                                 f"Download {calc_type_name}",
-                                f.read(),
+                                inp_content,
                                 inp_path.name,
                                 "text/plain",
-                                key=f"download_{calc_type_name}",
+                                key=f"download_{calc_type_name}_{hash(calc_type_name)}",
                             )
                 except Exception as e:
-                    st.error(f"Error generating input files: {e}")
-            else:
-                st.warning("Please generate or upload structure files first")
+                    st.error(f"Error generating input files: {str(e)}")
+                    import traceback
+                    st.code(traceback.format_exc())
     
     elif calc_type == "Anion Exchange Energy":
         st.subheader("Anion Exchange Energy Calculation")
@@ -990,35 +1052,42 @@ def render_dft_calculations_page():
         
         xyz_file = st.file_uploader("Upload XYZ file", type=["xyz"])
         if xyz_file:
-            import tempfile
-            temp_dir = Path(tempfile.mkdtemp())
-            temp_xyz = temp_dir / xyz_file.name
-            temp_xyz.write_bytes(xyz_file.read())
-            
-            calc_type_map = {
-                "Geometry Optimization": "opt",
-                "Frequency": "freq",
-                "Single Point": "sp",
-                "EDA-NOCV": "eda",
-                "NBO": "nbo",
-                "GOAT": "goat",
-            }
-            
-            config = ORCAConfig()
-            if st.button("Generate Input File"):
-                from src.pfasdft.orca_input import generate_orca_input
-                inp_content = generate_orca_input(
-                    temp_xyz,
-                    Path("output.inp"),
-                    config,
-                    calculation_type=calc_type_map[single_calc_type],
-                )
-                st.download_button(
-                    "Download ORCA Input",
-                    inp_content,
-                    "orca_input.inp",
-                    "text/plain",
-                )
+            try:
+                import tempfile
+                import os
+                temp_dir = Path(tempfile.mkdtemp())
+                temp_xyz = temp_dir / xyz_file.name
+                temp_xyz.write_bytes(xyz_file.read())
+                
+                calc_type_map = {
+                    "Geometry Optimization": "opt",
+                    "Frequency": "freq",
+                    "Single Point": "sp",
+                    "EDA-NOCV": "eda",
+                    "NBO": "nbo",
+                    "GOAT": "goat",
+                }
+                
+                config = ORCAConfig()
+                if st.button("Generate Input File"):
+                    try:
+                        from src.pfasdft.orca_input import generate_orca_input
+                        inp_content = generate_orca_input(
+                            temp_xyz,
+                            Path("output.inp"),
+                            config,
+                            calculation_type=calc_type_map[single_calc_type],
+                        )
+                        st.download_button(
+                            "Download ORCA Input",
+                            inp_content,
+                            "orca_input.inp",
+                            "text/plain",
+                        )
+                    except Exception as e:
+                        st.error(f"Error generating input file: {str(e)}")
+            except Exception as e:
+                st.error(f"Error reading uploaded file: {str(e)}")
     
     st.divider()
     
@@ -1028,30 +1097,53 @@ def render_dft_calculations_page():
     
     output_files = st.file_uploader(
         "Upload ORCA Output Files (.out)",
-        type=["out"],
+        type=None,  # Accept all files, filter by name
         accept_multiple=True,
+        help="Upload ORCA output files (.out extension)"
     )
     
     if output_files:
         results_data = []
         for out_file in output_files:
-            import tempfile
-            temp_dir = Path(tempfile.mkdtemp())
-            temp_out = temp_dir / out_file.name
-            temp_out.write_bytes(out_file.read())
-            
-            results = parse_orca_output(temp_out)
-            results_data.append({
-                "File": out_file.name,
-                "SCF Energy (Ha)": results.scf_energy,
-                "Gibbs Free Energy (Ha)": results.gibbs_free_energy,
-                "Optimization Converged": results.optimization_converged,
-                "Imaginary Frequencies": results.n_imaginary_frequencies,
-                "Total Binding (kcal/mol)": results.e_binding_total,
-            })
+            # Filter for .out files
+            if not out_file.name.endswith('.out'):
+                continue
+                
+            try:
+                # Use BytesIO for Streamlit Cloud compatibility
+                from io import BytesIO
+                import tempfile
+                import os
+                
+                # Create temporary file
+                with tempfile.NamedTemporaryFile(mode='w+b', suffix='.out', delete=False) as tmp_file:
+                    tmp_file.write(out_file.read())
+                    tmp_path = tmp_file.name
+                
+                try:
+                    results = parse_orca_output(Path(tmp_path))
+                    results_data.append({
+                        "File": out_file.name,
+                        "SCF Energy (Ha)": f"{results.scf_energy:.6f}" if results.scf_energy else "N/A",
+                        "Gibbs Free Energy (Ha)": f"{results.gibbs_free_energy:.6f}" if results.gibbs_free_energy else "N/A",
+                        "Optimization Converged": "Yes" if results.optimization_converged else "No",
+                        "Imaginary Frequencies": results.n_imaginary_frequencies,
+                        "Total Binding (kcal/mol)": f"{results.e_binding_total:.4f}" if results.e_binding_total else "N/A",
+                    })
+                finally:
+                    # Clean up temp file
+                    try:
+                        os.unlink(tmp_path)
+                    except:
+                        pass
+            except Exception as e:
+                st.warning(f"Error parsing {out_file.name}: {str(e)}")
+                continue
         
         if results_data:
             st.dataframe(pd.DataFrame(results_data), use_container_width=True)
+        elif output_files:
+            st.info("No valid ORCA output files found. Please upload files with .out extension.")
 
 
 

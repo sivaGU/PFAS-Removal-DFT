@@ -1,0 +1,7 @@
+# This file tells Streamlit Cloud which Python packages to install
+# It's an alternative to requirements.txt for Streamlit Cloud
+
+rdkit
+pandas
+numpy
+streamlit
