@@ -25,6 +25,9 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 
 from src.pfasdft.predict import predict_single, predict_batch, load_predictor
+from src.pfasdft.orca_input import generate_workflow_inputs, generate_exchange_calculation_inputs, ORCAConfig
+from src.pfasdft.orca_parser import parse_orca_output, calculate_exchange_energy, ORCAResults
+from src.pfasdft.structure_utils import prepare_pfas_structure, prepare_cholestyramine_structure, prepare_complex_structure
 
 
 def extract_smiles_from_file(file_content: bytes, file_extension: str) -> Optional[str]:
@@ -429,6 +432,7 @@ def render_home_page():
         - **Documentation:** Setup, model details, and usage
         - **PFAS Binding Prediction:** Analyze binding affinities and energy decomposition
         - **Comparison View:** Compare multiple PFAS molecules side-by-side
+        - **DFT Calculations:** Generate ORCA input files and parse output files
         """
     )
 
@@ -809,6 +813,248 @@ def render_comparison_page():
         st.info("No reference data available. Upload calculation results to artifacts/reference_data.json.")
 
 
+def render_dft_calculations_page():
+    """Render the DFT calculations page."""
+    st.title("DFT Calculation Setup")
+    st.markdown(
+        """
+        Generate ORCA input files for PFAS-cholestyramine DFT calculations following the methodology 
+        from the PFAS Removal DFT paper. This tool helps prepare calculation workflows for:
+        - Geometry optimization (r2SCAN-3c and ωB97X-D3)
+        - Frequency calculations
+        - Energy Decomposition Analysis (EDA-NOCV)
+        - Natural Bond Orbital (NBO) analysis
+        - Global optimization (GOAT)
+        - Anion exchange energy calculations
+        """
+    )
+    
+    st.divider()
+    
+    # Calculation type selection
+    calc_type = st.radio(
+        "Calculation Type",
+        ["Complete Workflow", "Anion Exchange Energy", "Single Calculation"],
+        horizontal=True,
+    )
+    
+    if calc_type == "Complete Workflow":
+        st.subheader("Complete Calculation Workflow")
+        st.info(
+            "This generates input files for the complete workflow:\n"
+            "1. GOAT global optimization (GFN2-xTB)\n"
+            "2. r2SCAN-3c optimization\n"
+            "3. ωB97X-D3 optimization\n"
+            "4. Frequency calculation\n"
+            "5. EDA-NOCV analysis\n"
+            "6. NBO analysis"
+        )
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            pfas_name = st.selectbox("PFAS Molecule", ["PFOS", "PFOA", "PFHxA", "FHEA", "Custom"])
+            if pfas_name == "Custom":
+                pfas_smiles = st.text_input("PFAS SMILES", placeholder="C(=O)([O-])C(F)(F)...")
+            else:
+                pfas_smiles_map = {
+                    "PFOS": "C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)S(=O)(=O)[O-]",
+                    "PFOA": "C(=O)([O-])C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)",
+                    "PFHxA": "C(=O)([O-])C(F)(F)C(F)(F)C(F)(F)C(F)(F)",
+                    "FHEA": "C(=O)([O-])CC(F)(F)C(F)(F)C(F)(F)C(F)(F)",
+                }
+                pfas_smiles = pfas_smiles_map.get(pfas_name, "")
+        
+        with col2:
+            model_type = st.selectbox("Cholestyramine Model", ["BTMA", "Extended"])
+            output_dir = st.text_input("Output Directory", value="orca_calculations")
+        
+        # Structure upload options
+        st.subheader("Structure Files")
+        structure_mode = st.radio(
+            "Structure Input",
+            ["Generate from SMILES", "Upload XYZ files"],
+            horizontal=True,
+        )
+        
+        pfas_xyz = None
+        chol_xyz = None
+        complex_xyz = None
+        
+        if structure_mode == "Generate from SMILES":
+            if pfas_smiles and pfas_name != "Custom":
+                if st.button("Generate Structures", type="primary"):
+                    with st.spinner("Generating structures..."):
+                        import tempfile
+                        temp_dir = Path(tempfile.mkdtemp())
+                        
+                        pfas_xyz = prepare_pfas_structure(pfas_smiles, pfas_name, temp_dir)
+                        chol_xyz = prepare_cholestyramine_structure(model_type, temp_dir)
+                        
+                        if pfas_xyz and chol_xyz:
+                            complex_xyz = temp_dir / f"{pfas_name}_complex.xyz"
+                            if prepare_complex_structure(pfas_xyz, chol_xyz, complex_xyz):
+                                st.success("Structures generated successfully!")
+                                st.session_state.pfas_xyz = pfas_xyz
+                                st.session_state.chol_xyz = chol_xyz
+                                st.session_state.complex_xyz = complex_xyz
+                            else:
+                                st.error("Failed to generate complex structure")
+                        else:
+                            st.error("Failed to generate structures")
+        else:
+            pfas_xyz_file = st.file_uploader("PFAS XYZ file", type=["xyz"])
+            chol_xyz_file = st.file_uploader("Cholestyramine XYZ file", type=["xyz"])
+            complex_xyz_file = st.file_uploader("Complex XYZ file (optional)", type=["xyz"])
+            
+            if pfas_xyz_file and chol_xyz_file:
+                import tempfile
+                temp_dir = Path(tempfile.mkdtemp())
+                pfas_xyz = temp_dir / pfas_xyz_file.name
+                pfas_xyz.write_bytes(pfas_xyz_file.read())
+                chol_xyz = temp_dir / chol_xyz_file.name
+                chol_xyz.write_bytes(chol_xyz_file.read())
+                if complex_xyz_file:
+                    complex_xyz = temp_dir / complex_xyz_file.name
+                    complex_xyz.write_bytes(complex_xyz_file.read())
+        
+        # Configuration
+        st.subheader("Calculation Configuration")
+        col1, col2 = st.columns(2)
+        with col1:
+            functional = st.selectbox("Functional", ["r2SCAN-3c", "wB97X-D3"], index=1)
+            basis_set = st.selectbox("Basis Set", ["def2-TZVPD", "def2-TZVP", "def2-SVP"])
+            dielectric = st.number_input("Dielectric Constant", value=72.5, min_value=1.0)
+        with col2:
+            temperature = st.number_input("Temperature (K)", value=310.15)
+            nprocs = st.number_input("Number of Processors", value=4, min_value=1)
+            memory = st.number_input("Memory (MB)", value=4000)
+        
+        # Generate inputs
+        if st.button("Generate ORCA Input Files", type="primary"):
+            if pfas_xyz and chol_xyz:
+                try:
+                    config = ORCAConfig(
+                        functional=functional,
+                        basis_set=basis_set,
+                        dielectric=dielectric,
+                        temperature=temperature,
+                        nprocs=nprocs,
+                        mem=memory,
+                    )
+                    
+                    output_path = Path(output_dir)
+                    inputs = generate_workflow_inputs(
+                        pfas_name,
+                        pfas_xyz,
+                        chol_xyz,
+                        complex_xyz,
+                        output_path,
+                        config,
+                    )
+                    
+                    st.success(f"Generated {len(inputs)} input files in {output_dir}")
+                    st.subheader("Generated Input Files")
+                    for calc_type_name, inp_path in inputs.items():
+                        st.text(f"{calc_type_name}: {inp_path}")
+                        with open(inp_path, 'r') as f:
+                            st.download_button(
+                                f"Download {calc_type_name}",
+                                f.read(),
+                                inp_path.name,
+                                "text/plain",
+                                key=f"download_{calc_type_name}",
+                            )
+                except Exception as e:
+                    st.error(f"Error generating input files: {e}")
+            else:
+                st.warning("Please generate or upload structure files first")
+    
+    elif calc_type == "Anion Exchange Energy":
+        st.subheader("Anion Exchange Energy Calculation")
+        st.info(
+            "Calculate ΔGexchange = G(R4N+X-) - G(R4N+Cl-) - G(X-) + G(Cl-)\n"
+            "Requires frequency calculations for all four components."
+        )
+        
+        st.warning("This feature requires uploading XYZ files for all components.")
+        st.info("Upload structure files and configure calculation settings.")
+    
+    else:  # Single Calculation
+        st.subheader("Single Calculation")
+        st.info("Generate input file for a single calculation type.")
+        
+        single_calc_type = st.selectbox(
+            "Calculation Type",
+            ["Geometry Optimization", "Frequency", "Single Point", "EDA-NOCV", "NBO", "GOAT"],
+        )
+        
+        xyz_file = st.file_uploader("Upload XYZ file", type=["xyz"])
+        if xyz_file:
+            import tempfile
+            temp_dir = Path(tempfile.mkdtemp())
+            temp_xyz = temp_dir / xyz_file.name
+            temp_xyz.write_bytes(xyz_file.read())
+            
+            calc_type_map = {
+                "Geometry Optimization": "opt",
+                "Frequency": "freq",
+                "Single Point": "sp",
+                "EDA-NOCV": "eda",
+                "NBO": "nbo",
+                "GOAT": "goat",
+            }
+            
+            config = ORCAConfig()
+            if st.button("Generate Input File"):
+                from src.pfasdft.orca_input import generate_orca_input
+                inp_content = generate_orca_input(
+                    temp_xyz,
+                    Path("output.inp"),
+                    config,
+                    calculation_type=calc_type_map[single_calc_type],
+                )
+                st.download_button(
+                    "Download ORCA Input",
+                    inp_content,
+                    "orca_input.inp",
+                    "text/plain",
+                )
+    
+    st.divider()
+    
+    # ORCA Output Parser Section
+    st.subheader("Parse ORCA Output Files")
+    st.markdown("Upload ORCA output files to extract calculation results.")
+    
+    output_files = st.file_uploader(
+        "Upload ORCA Output Files (.out)",
+        type=["out"],
+        accept_multiple=True,
+    )
+    
+    if output_files:
+        results_data = []
+        for out_file in output_files:
+            import tempfile
+            temp_dir = Path(tempfile.mkdtemp())
+            temp_out = temp_dir / out_file.name
+            temp_out.write_bytes(out_file.read())
+            
+            results = parse_orca_output(temp_out)
+            results_data.append({
+                "File": out_file.name,
+                "SCF Energy (Ha)": results.scf_energy,
+                "Gibbs Free Energy (Ha)": results.gibbs_free_energy,
+                "Optimization Converged": results.optimization_converged,
+                "Imaginary Frequencies": results.n_imaginary_frequencies,
+                "Total Binding (kcal/mol)": results.e_binding_total,
+            })
+        
+        if results_data:
+            st.dataframe(pd.DataFrame(results_data), use_container_width=True)
+
+
+
 # ============================================================================
 # MAIN - NAVIGATION
 # ============================================================================
@@ -833,6 +1079,9 @@ def main():
     if st.sidebar.button("Comparison View", use_container_width=True, key="nav_comparison"):
         st.session_state.current_page = "Comparison View"
 
+    if st.sidebar.button("DFT Calculations", use_container_width=True, key="nav_dft"):
+        st.session_state.current_page = "DFT Calculations"
+
     st.sidebar.markdown("---")
 
     if st.session_state.current_page == "Home":
@@ -843,6 +1092,8 @@ def main():
         render_prediction_page()
     elif st.session_state.current_page == "Comparison View":
         render_comparison_page()
+    elif st.session_state.current_page == "DFT Calculations":
+        render_dft_calculations_page()
 
 
 if __name__ == "__main__":

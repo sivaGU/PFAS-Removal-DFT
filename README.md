@@ -14,6 +14,9 @@ This application provides a platform to analyze and visualize Density Functional
 - **NOCV Pairs** — Display charge transfer channels and orbital contributions
 - **NBO Analysis** — Show donor-acceptor interactions and stabilization energies
 - **Comparison View** — Compare binding affinities across multiple PFAS molecules
+- **DFT Calculation Setup** — Generate ORCA input files for complete calculation workflows
+- **ORCA Output Parser** — Parse ORCA output files to extract calculation results
+- **Structure Preparation** — Convert SMILES to XYZ and prepare complex structures
 
 ## Quick Start
 
@@ -125,12 +128,35 @@ The application expects DFT calculation results in JSON format. Upload your resu
 - Python 3.9 or 3.10 (3.11/3.12 usually work)
 - Dependencies in `requirements.txt`
 
+## DFT Calculation Workflow
+
+The GUI includes tools to generate ORCA input files following the methodology from the PFAS Removal DFT paper:
+
+1. **Complete Workflow Generator**: Creates input files for:
+   - GOAT global optimization (GFN2-xTB)
+   - r2SCAN-3c geometry optimization
+   - ωB97X-D3 geometry optimization
+   - Frequency calculations
+   - EDA-NOCV analysis
+   - NBO analysis
+
+2. **Structure Preparation**: 
+   - Convert SMILES to XYZ format
+   - Prepare PFAS-cholestyramine complexes
+   - Generate initial geometries
+
+3. **Output Parsing**:
+   - Extract energies, EDA components, NOCV pairs
+   - Calculate exchange energies
+   - Parse NBO results
+
 ## Notes
 
 - This GUI is designed to work with DFT calculation results from ORCA or similar quantum chemistry software
 - Default reference data includes values from the PFAS Removal DFT paper (see manuscript)
 - Upload your own calculation results to `artifacts/reference_data.json` for custom analysis
-- The application currently uses reference data from the paper; integrate your own calculation pipeline as needed
+- The application can generate ORCA input files ready for submission to compute clusters
+- Structure generation uses RDKit for initial geometry; final structures should be optimized with ORCA
 
 ## Contact
 
