@@ -197,29 +197,39 @@ def prepare_complex_structure(
     n_pos = chol_coords[n_idx][1:4]
     head_pos = pfas_coords[head_idx][1:4]
     
-    # Vector from head to N
-    try:
-        import numpy as np
-    except ImportError:
-        # Fallback if numpy not available
+    # Vector from head to N (using basic math, no numpy dependency)
+    # Calculate vector components
+    dx = n_pos[0] - head_pos[0]
+    dy = n_pos[1] - head_pos[1]
+    dz = n_pos[2] - head_pos[2]
+    
+    # Calculate vector norm
+    vec_norm = (dx*dx + dy*dy + dz*dz) ** 0.5
+    if vec_norm == 0:
         return False
     
-    vec = np.array(n_pos) - np.array(head_pos)
-    vec_norm = np.linalg.norm(vec)
-    if vec_norm > 0:
-        vec = vec / vec_norm
+    # Normalize vector
+    dx_norm = dx / vec_norm
+    dy_norm = dy / vec_norm
+    dz_norm = dz / vec_norm
     
-    # New head position
-    new_head_pos = np.array(n_pos) - vec * distance
+    # New head position (at distance from N)
+    new_head_x = n_pos[0] - dx_norm * distance
+    new_head_y = n_pos[1] - dy_norm * distance
+    new_head_z = n_pos[2] - dz_norm * distance
     
     # Translation vector
-    trans = new_head_pos - np.array(head_pos)
+    trans_x = new_head_x - head_pos[0]
+    trans_y = new_head_y - head_pos[1]
+    trans_z = new_head_z - head_pos[2]
     
     # Translate all PFAS atoms
     translated_pfas = []
     for symbol, x, y, z in pfas_coords:
-        new_pos = np.array([x, y, z]) + trans
-        translated_pfas.append((symbol, new_pos[0], new_pos[1], new_pos[2]))
+        new_x = x + trans_x
+        new_y = y + trans_y
+        new_z = z + trans_z
+        translated_pfas.append((symbol, new_x, new_y, new_z))
     
     # Write complex XYZ
     total_atoms = pfas_natoms + chol_natoms

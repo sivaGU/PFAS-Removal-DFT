@@ -53,11 +53,15 @@ def parse_orca_output(output_file: Path) -> ORCAResults:
     """
     results = ORCAResults()
     
-    if not output_file.exists():
-        results.error = f"Output file not found: {output_file}"
+    try:
+        if not output_file.exists():
+            results.error = f"Output file not found: {output_file}"
+            return results
+        
+        content = output_file.read_text(encoding='utf-8', errors='ignore')
+    except Exception as e:
+        results.error = f"Error reading file: {str(e)}"
         return results
-    
-    content = output_file.read_text(encoding='utf-8', errors='ignore')
     
     # Parse final SCF energy
     scf_pattern = r'FINAL SINGLE POINT ENERGY\s+(-?\d+\.\d+)'

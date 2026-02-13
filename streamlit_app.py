@@ -1098,7 +1098,7 @@ def render_dft_calculations_page():
     output_files = st.file_uploader(
         "Upload ORCA Output Files (.out)",
         type=None,  # Accept all files, filter by name
-        accept_multiple=True,
+        accept_multiple_files=True,
         help="Upload ORCA output files (.out extension)"
     )
     

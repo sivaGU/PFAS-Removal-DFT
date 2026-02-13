@@ -8,7 +8,6 @@ from typing import List, Optional, Union, Dict
 import json
 
 import pandas as pd
-import numpy as np
 from rdkit import Chem
 
 

@@ -2,8 +2,6 @@
 
 A production-ready Streamlit GUI for analyzing DFT calculation results for PFAS-cholestyramine binding affinities and energy decomposition.
 
-Link: https://pfas-removal-dft-lxc596cbhwbbufbmwnwbmr.streamlit.app/
-
 ## Overview
 
 This application provides a platform to analyze and visualize Density Functional Theory (DFT) calculation results for the binding of per- and polyfluoroalkyl substances (PFAS) with cholestyramine. The tool supports binding energy analysis, energy decomposition analysis (EDA), Natural Bond Orbital (NBO) analysis, and comparison of multiple PFAS molecules.
@@ -163,4 +161,3 @@ The GUI includes tools to generate ORCA input files following the methodology fr
 ## Contact
 
 [Your Contact Information]
-
