@@ -638,7 +638,7 @@ def render_prediction_page():
                     if mol:
                         img_bytes = render_ligand_structure(mol)
                         if img_bytes:
-                            st.image(io.BytesIO(img_bytes), use_container_width=False, width=400)
+                            st.image(io.BytesIO(img_bytes), width=400)
                             st.caption(f"2D structure · {result.pfas_name}")
                     
                     # Binding energies
@@ -766,7 +766,7 @@ def render_prediction_page():
                     df_out["error"] = [r.error for r in results]
 
                     st.subheader("Results")
-                    st.dataframe(df_out, use_container_width=True)
+                    st.dataframe(df_out, width='stretch')
 
                     st.subheader("Download results")
                     st.download_button(
@@ -817,7 +817,7 @@ def render_comparison_page():
         
         comp_df = pd.DataFrame(comparison_data)
         comp_df = comp_df.sort_values("ΔEexchange (kcal/mol)", na_position='last')
-        st.dataframe(comp_df, use_container_width=True)
+        st.dataframe(comp_df, width='stretch')
         
         # Visualization
         if len(comp_df) > 0:
@@ -1141,7 +1141,7 @@ def render_dft_calculations_page():
                 continue
         
         if results_data:
-            st.dataframe(pd.DataFrame(results_data), use_container_width=True)
+            st.dataframe(pd.DataFrame(results_data), width='stretch')
         elif output_files:
             st.info("No valid ORCA output files found. Please upload files with .out extension.")
 
@@ -1159,19 +1159,19 @@ def main():
     st.sidebar.markdown("### Navigation")
     st.sidebar.markdown("")
 
-    if st.sidebar.button("Home", use_container_width=True, key="nav_home"):
+    if st.sidebar.button("Home", width='stretch', key="nav_home"):
         st.session_state.current_page = "Home"
 
-    if st.sidebar.button("Documentation", use_container_width=True, key="nav_docs"):
+    if st.sidebar.button("Documentation", width='stretch', key="nav_docs"):
         st.session_state.current_page = "Documentation"
 
-    if st.sidebar.button("PFAS Binding Prediction", use_container_width=True, key="nav_prediction"):
+    if st.sidebar.button("PFAS Binding Prediction", width='stretch', key="nav_prediction"):
         st.session_state.current_page = "PFAS Binding Prediction"
 
-    if st.sidebar.button("Comparison View", use_container_width=True, key="nav_comparison"):
+    if st.sidebar.button("Comparison View", width='stretch', key="nav_comparison"):
         st.session_state.current_page = "Comparison View"
 
-    if st.sidebar.button("DFT Calculations", use_container_width=True, key="nav_dft"):
+    if st.sidebar.button("DFT Calculations", width='stretch', key="nav_dft"):
         st.session_state.current_page = "DFT Calculations"
 
     st.sidebar.markdown("---")
