@@ -2,6 +2,10 @@
 
 This Streamlit app focuses on manuscript-aligned PFAS interaction visualization for cholestyramine complexes.
 
+Hosted app: https://pfas-removal-dft.streamlit.app/ 
+
+Repository: https://github.com/sivaGU/PFAS-Removal-DFT/
+
 ## What it does
 
 - Loads bundled PFAS structures from `PFAS Files/` (included inside this folder)
