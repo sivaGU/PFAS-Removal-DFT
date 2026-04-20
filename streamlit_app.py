@@ -132,6 +132,11 @@ def apply_oak_theme() -> None:
             }}
             .stApp {{
                 background-color: #ffffff;
+                color: #1f1f1f;
+            }}
+            /* Default readable text on white/light backgrounds */
+            .stApp, .stApp p, .stApp span, .stApp label, .stApp li, .stApp div {{
+                color: #1f1f1f;
             }}
             [data-testid="stSidebar"] {{
                 background: var(--oak-dark);
@@ -139,6 +144,10 @@ def apply_oak_theme() -> None:
             }}
             [data-testid="stSidebar"] * {{
                 color: white !important;
+            }}
+            /* Keep main-area text dark; sidebar stays white via rules above */
+            [data-testid="stAppViewContainer"] section.main * {{
+                color: #1f1f1f;
             }}
             [data-testid="stSidebar"] [data-baseweb="select"] > div {{
                 background: #f5f7f2 !important;
@@ -165,6 +174,29 @@ def apply_oak_theme() -> None:
             }}
             [data-testid="stSidebar"] [role="listbox"] * {{
                 color: #1f1f1f !important;
+            }}
+            /* White/light widgets in main content should always use dark text */
+            [data-baseweb="select"] > div,
+            [data-baseweb="input"] > div,
+            [data-baseweb="textarea"] > div,
+            [data-testid="stTextInput"] input,
+            [data-testid="stTextArea"] textarea,
+            [data-testid="stNumberInput"] input,
+            [data-testid="stDateInput"] input,
+            [data-testid="stFileUploader"] * {{
+                color: #1f1f1f !important;
+                -webkit-text-fill-color: #1f1f1f !important;
+                opacity: 1 !important;
+            }}
+            [data-testid="stDataFrame"] * {{
+                color: #1f1f1f !important;
+            }}
+            .stTabs [data-baseweb="tab"] {{
+                color: #1f1f1f !important;
+            }}
+            .stTabs [aria-selected="true"] {{
+                color: #1f1f1f !important;
+                font-weight: 700;
             }}
             h1, h2, h3, h4 {{
                 color: var(--oak-dark);
