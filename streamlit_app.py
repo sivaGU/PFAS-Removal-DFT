@@ -426,29 +426,91 @@ def ligand_atoms_to_xyz_block(atoms: List[Atom], ligand_indices: Set[int]) -> st
     return "\n".join(lines)
 
 
-def render_ligand_3d_view(atoms: List[Atom], ligand_indices: Set[int]) -> None:
-    if not ligand_indices:
-        st.warning("Could not isolate ligand fragment from this structure.")
-        return
+def atoms_to_xyz_block(atoms: List[Atom]) -> str:
+    lines = [str(len(atoms)), "PFAS-cholestyramine complex"]
+    for a in atoms:
+        lines.append(f"{a.symbol:2s} {a.x: .8f} {a.y: .8f} {a.z: .8f}")
+    return "\n".join(lines)
 
+
+def render_interaction_3d_view(atoms: List[Atom], interactions: pd.DataFrame) -> None:
     if not PY3DMOL_AVAILABLE:
-        st.info("Install `py3Dmol` for stick/bond molecule rendering. Showing Plotly fallback.")
-        st.plotly_chart(build_ligand_figure(atoms, ligand_indices), use_container_width=True)
+        st.info("Install `py3Dmol` for bond-level molecular interaction rendering. Showing Plotly fallback.")
+        st.plotly_chart(build_3d_figure(atoms, interactions), use_container_width=True)
         return
 
-    xyz_block = ligand_atoms_to_xyz_block(atoms, ligand_indices)
-    viewer = py3Dmol.view(width=980, height=620)
+    xyz_block = atoms_to_xyz_block(atoms)
+    viewer = py3Dmol.view(width=980, height=640)
     viewer.addModel(xyz_block, "xyz")
-    viewer.setStyle(
-        {},
-        {
-            "stick": {"radius": 0.18, "colorscheme": "default"},
-            "sphere": {"scale": 0.30, "colorscheme": "default"},
-        },
-    )
+
+    # Base molecular rendering for full complex (shows actual bonds/sticks).
+    viewer.setStyle({}, {"stick": {"radius": 0.14, "colorscheme": "default"}})
+    viewer.addStyle({"elem": "H"}, {"stick": {"radius": 0.08, "colorscheme": "default"}})
+    viewer.addStyle({"elem": "N"}, {"sphere": {"radius": 0.55, "color": "#2C7FB8"}})
+    viewer.addStyle({"elem": "O"}, {"sphere": {"radius": 0.48, "color": "#E34A33"}})
+    viewer.addStyle({"elem": "S"}, {"sphere": {"radius": 0.58, "color": "#756BB1"}})
+
+    # Highlight interaction lines on top of bonded molecular structure.
+    qn = infer_quaternary_n(atoms)
+    if qn is not None and not interactions.empty:
+        index = {a.idx: a for a in atoms}
+        for _, row in interactions.iterrows():
+            target = index.get(int(row["atom_idx"]))
+            if target is None:
+                continue
+            color = "#D95F02" if row["type"] == "headgroup-ion_pair" else "#1B9E77"
+            viewer.addCylinder(
+                {
+                    "start": {"x": qn.x, "y": qn.y, "z": qn.z},
+                    "end": {"x": target.x, "y": target.y, "z": target.z},
+                    "radius": 0.08 if row["type"] == "headgroup-ion_pair" else 0.06,
+                    "color": color,
+                    "fromCap": 1,
+                    "toCap": 1,
+                }
+            )
+            viewer.addLabel(
+                f"{row['distance_A']} A",
+                {
+                    "position": {
+                        "x": (qn.x + target.x) / 2.0,
+                        "y": (qn.y + target.y) / 2.0,
+                        "z": (qn.z + target.z) / 2.0,
+                    },
+                    "fontColor": "#1f1f1f",
+                    "backgroundColor": "#f3f7f1",
+                    "fontSize": 10,
+                    "showBackground": True,
+                    "backgroundOpacity": 0.8,
+                },
+            )
+
     viewer.setBackgroundColor("0xf7fbf7")
     viewer.zoomTo()
-    viewer.rotate(20, "y")
+    viewer.rotate(18, "y")
+    components.html(viewer._make_html(), height=660, scrolling=False)
+
+
+def render_ligand_3d_view(atoms: List[Atom], ligand_indices: Set[int]) -> None:
+    if not PY3DMOL_AVAILABLE:
+        st.info("Install `py3Dmol` for stick/bond molecule rendering. Showing Plotly fallback.")
+        # Fallback: display full complex points if molecular renderer unavailable.
+        st.plotly_chart(build_3d_figure(atoms, pd.DataFrame()), use_container_width=True)
+        return
+
+    xyz_block = atoms_to_xyz_block(atoms)
+    viewer = py3Dmol.view(width=980, height=620)
+    viewer.addModel(xyz_block, "xyz")
+    # Full molecular view: PFAS + cholestyramine.
+    viewer.setStyle({}, {"stick": {"radius": 0.16, "colorscheme": "default"}})
+    viewer.addStyle({"elem": "H"}, {"stick": {"radius": 0.09, "colorscheme": "default"}})
+    viewer.addStyle({"elem": "F"}, {"sphere": {"radius": 0.36, "color": "#31A354"}})
+    viewer.addStyle({"elem": "N"}, {"sphere": {"radius": 0.55, "color": "#2C7FB8"}})
+    viewer.addStyle({"elem": "O"}, {"sphere": {"radius": 0.48, "color": "#E34A33"}})
+    viewer.addStyle({"elem": "S"}, {"sphere": {"radius": 0.58, "color": "#756BB1"}})
+    viewer.setBackgroundColor("0xf7fbf7")
+    viewer.zoomTo()
+    viewer.rotate(22, "y")
     components.html(viewer._make_html(), height=640, scrolling=False)
 
 
@@ -571,9 +633,9 @@ def main() -> None:
 
     with interaction_tab:
         st.subheader("3D Interaction Map")
-        st.plotly_chart(build_3d_figure(atoms, interactions), use_container_width=True)
+        render_interaction_3d_view(atoms, interactions)
         st.caption(
-            "Orange lines = likely headgroup ion-pair contacts (N+ with O/S). Green lines = nearby fluorinated-tail contacts."
+            "Full bonded structure is shown. Orange lines = likely headgroup ion-pair contacts (N+ with O/S). Green lines = nearby fluorinated-tail contacts."
         )
 
         st.divider()
@@ -589,9 +651,12 @@ def main() -> None:
         render_metrics_panel(pfas_key)
 
     with ligand_tab:
-        st.subheader("PFAS Ligand-Focused Visualization")
+        st.subheader("Molecular View (Full Complex)")
         render_ligand_3d_view(atoms, ligand_indices)
-        st.success(f"Ligand component detected: {len(ligand_indices)} atoms in fluorinated PFAS fragment.")
+        if ligand_indices:
+            st.success(
+                f"Full complex shown (PFAS + cholestyramine). PFAS fragment detected with {len(ligand_indices)} fluorinated-ligand atoms."
+            )
 
     st.divider()
     st.subheader("Cube Grid / Orbital Context")
