@@ -1,4 +1,4 @@
-# Final Ronan GUI
+# PFAS Removal DFT GUI
 
 This Streamlit app focuses on manuscript-aligned PFAS interaction visualization for cholestyramine complexes.
 
