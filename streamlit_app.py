@@ -285,10 +285,10 @@ def parse_cube_header(content: bytes) -> Dict[str, float]:
     return header
 
 
-def build_cube_orbital_figure(cube_content: bytes) -> Optional[go.Figure]:
+def build_cube_orbital_figure(cube_content: bytes, atoms: List[Atom]) -> Optional[go.Figure]:
     """
-    Build a lightweight 3D orbital-density view from a .cube file.
-    Uses sampled high-magnitude positive/negative voxels for responsiveness.
+    Build a molecule + semi-transparent orbital density view from a .cube file.
+    Renders atoms as spheres and positive/negative phases as translucent isosurfaces.
     """
     lines = cube_content.decode("utf-8", errors="ignore").splitlines()
     if len(lines) < 10:
@@ -329,74 +329,106 @@ def build_cube_orbital_figure(cube_content: bytes) -> Optional[go.Figure]:
         return None
 
     sorted_abs = sorted(abs_vals)
-    # Keep top ~1% by magnitude for a readable point cloud.
-    threshold_idx = max(0, int(0.99 * len(sorted_abs)) - 1)
+    # Use top ~3% of magnitudes as iso threshold for visible clouds.
+    threshold_idx = max(0, int(0.97 * len(sorted_abs)) - 1)
     threshold = sorted_abs[threshold_idx]
-    if threshold <= 0:
+    max_abs = sorted_abs[-1]
+    if threshold <= 0 or max_abs <= 0:
         return None
 
-    # Cap point count for performance.
-    max_points_per_sign = 2500
-    pos_pts: List[tuple[float, float, float]] = []
-    neg_pts: List[tuple[float, float, float]] = []
+    # Subsample the grid to keep rendering responsive.
+    stride = 1
+    while (nx // stride) * (ny // stride) * (nz // stride) > 18000:
+        stride += 1
 
-    def voxel_to_xyz(i: int, j: int, k: int) -> tuple[float, float, float]:
-        x = origin[0] + i * ax[0] + j * ay[0] + k * az[0]
-        y = origin[1] + i * ax[1] + j * ay[1] + k * az[1]
-        z = origin[2] + i * ax[2] + j * ay[2] + k * az[2]
-        return x, y, z
+    x_s: List[float] = []
+    y_s: List[float] = []
+    z_s: List[float] = []
+    v_s: List[float] = []
 
-    for idx, v in enumerate(values):
-        av = abs(v)
-        if av < threshold:
-            continue
-        i = idx // (ny * nz)
-        rem = idx % (ny * nz)
-        j = rem // nz
-        k = rem % nz
-        xyz = voxel_to_xyz(i, j, k)
-        if v >= 0:
-            if len(pos_pts) < max_points_per_sign:
-                pos_pts.append(xyz)
-        else:
-            if len(neg_pts) < max_points_per_sign:
-                neg_pts.append(xyz)
-        if len(pos_pts) >= max_points_per_sign and len(neg_pts) >= max_points_per_sign:
-            break
+    for i in range(0, nx, stride):
+        for j in range(0, ny, stride):
+            for k in range(0, nz, stride):
+                idx = i * ny * nz + j * nz + k
+                v = values[idx]
+                # Keep values around iso regions (positive or negative).
+                if abs(v) < 0.45 * threshold:
+                    continue
+                x = origin[0] + i * ax[0] + j * ay[0] + k * az[0]
+                y = origin[1] + i * ax[1] + j * ay[1] + k * az[1]
+                z = origin[2] + i * ax[2] + j * ay[2] + k * az[2]
+                x_s.append(x)
+                y_s.append(y)
+                z_s.append(z)
+                v_s.append(v)
 
-    if not pos_pts and not neg_pts:
+    if not v_s:
         return None
 
     fig = go.Figure()
-    if pos_pts:
+    # Atoms: visible molecular context underneath cloud.
+    by_element: Dict[str, List[Atom]] = {}
+    for a in atoms:
+        by_element.setdefault(a.symbol, []).append(a)
+    for element, group in sorted(by_element.items()):
         fig.add_trace(
             go.Scatter3d(
-                x=[p[0] for p in pos_pts],
-                y=[p[1] for p in pos_pts],
-                z=[p[2] for p in pos_pts],
+                x=[a.x for a in group],
+                y=[a.y for a in group],
+                z=[a.z for a in group],
                 mode="markers",
-                name="Positive phase",
-                marker={"size": 2.5, "color": "#2C7FB8", "opacity": 0.65},
+                name=f"{element} atoms",
+                marker={
+                    "size": 4.0 if element != "H" else 2.5,
+                    "color": ELEMENT_COLORS.get(element, "#777777"),
+                    "opacity": 0.95,
+                },
+                hovertext=[f"{a.symbol}{a.idx}" for a in group],
+                hoverinfo="text",
             )
         )
-    if neg_pts:
-        fig.add_trace(
-            go.Scatter3d(
-                x=[p[0] for p in neg_pts],
-                y=[p[1] for p in neg_pts],
-                z=[p[2] for p in neg_pts],
-                mode="markers",
-                name="Negative phase",
-                marker={"size": 2.5, "color": "#D95F02", "opacity": 0.65},
-            )
+
+    # Positive isosurface cloud (semi-transparent).
+    fig.add_trace(
+        go.Isosurface(
+            x=x_s,
+            y=y_s,
+            z=z_s,
+            value=v_s,
+            isomin=threshold,
+            isomax=max_abs,
+            surface_count=2,
+            opacity=0.28,
+            caps={"x_show": False, "y_show": False, "z_show": False},
+            colorscale=[[0.0, "#6BAED6"], [1.0, "#08519C"]],
+            showscale=False,
+            name="Positive density",
         )
+    )
+    # Negative isosurface cloud (semi-transparent).
+    fig.add_trace(
+        go.Isosurface(
+            x=x_s,
+            y=y_s,
+            z=z_s,
+            value=v_s,
+            isomin=-max_abs,
+            isomax=-threshold,
+            surface_count=2,
+            opacity=0.28,
+            caps={"x_show": False, "y_show": False, "z_show": False},
+            colorscale=[[0.0, "#FDAE6B"], [1.0, "#A63603"]],
+            showscale=False,
+            name="Negative density",
+        )
+    )
 
     fig.update_layout(
         height=560,
         paper_bgcolor="white",
         plot_bgcolor="white",
         margin={"l": 0, "r": 0, "b": 0, "t": 35},
-        title="Cube Orbital Density (sampled high-magnitude voxels)",
+        title="Cube Orbital Density (atoms + semi-transparent isosurfaces)",
         scene={
             "bgcolor": "white",
             "xaxis_title": "X",
@@ -853,7 +885,7 @@ def main() -> None:
     st.divider()
     st.subheader(".cube 3D Visualizer")
     if cube_content:
-        cube_fig = build_cube_orbital_figure(cube_content)
+        cube_fig = build_cube_orbital_figure(cube_content, atoms)
         if cube_fig is not None:
             st.plotly_chart(cube_fig, use_container_width=True)
             st.caption(
