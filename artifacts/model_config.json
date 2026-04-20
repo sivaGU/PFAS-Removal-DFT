@@ -1,8 +1,0 @@
-{
-  "functional": "ωB97X-D3",
-  "basis_set": "def2-TZVPD",
-  "solvent": "Water (SMD/C-PCM)",
-  "dielectric": 72.5,
-  "temperature": 310.15,
-  "description": "Default configuration for PFAS-cholestyramine binding calculations"
-}
