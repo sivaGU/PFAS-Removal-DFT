@@ -14,6 +14,13 @@ from typing import Dict, List, Optional, Set
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
+import streamlit.components.v1 as components
+
+try:
+    import py3Dmol
+    PY3DMOL_AVAILABLE = True
+except ImportError:
+    PY3DMOL_AVAILABLE = False
 
 
 # ---------------------------------------------------------------------------
@@ -411,6 +418,40 @@ def build_ligand_figure(atoms: List[Atom], ligand_indices: Set[int]) -> go.Figur
     return fig
 
 
+def ligand_atoms_to_xyz_block(atoms: List[Atom], ligand_indices: Set[int]) -> str:
+    ligand_atoms = [a for a in atoms if a.idx in ligand_indices]
+    lines = [str(len(ligand_atoms)), "PFAS ligand fragment"]
+    for a in ligand_atoms:
+        lines.append(f"{a.symbol:2s} {a.x: .8f} {a.y: .8f} {a.z: .8f}")
+    return "\n".join(lines)
+
+
+def render_ligand_3d_view(atoms: List[Atom], ligand_indices: Set[int]) -> None:
+    if not ligand_indices:
+        st.warning("Could not isolate ligand fragment from this structure.")
+        return
+
+    if not PY3DMOL_AVAILABLE:
+        st.info("Install `py3Dmol` for stick/bond molecule rendering. Showing Plotly fallback.")
+        st.plotly_chart(build_ligand_figure(atoms, ligand_indices), use_container_width=True)
+        return
+
+    xyz_block = ligand_atoms_to_xyz_block(atoms, ligand_indices)
+    viewer = py3Dmol.view(width=980, height=620)
+    viewer.addModel(xyz_block, "xyz")
+    viewer.setStyle(
+        {},
+        {
+            "stick": {"radius": 0.18, "colorscheme": "default"},
+            "sphere": {"scale": 0.30, "colorscheme": "default"},
+        },
+    )
+    viewer.setBackgroundColor("0xf7fbf7")
+    viewer.zoomTo()
+    viewer.rotate(20, "y")
+    components.html(viewer._make_html(), height=640, scrolling=False)
+
+
 def detect_pfas_name(path_name: str) -> str:
     upper = path_name.upper()
     for key in ["PFOS", "PFOA", "PFHXA", "FHEA"]:
@@ -529,30 +570,28 @@ def main() -> None:
     interaction_tab, ligand_tab = st.tabs(["Interaction View", "Ligand View"])
 
     with interaction_tab:
-        left, right = st.columns([2, 1])
-        with left:
-            st.subheader("3D Interaction Map")
-            st.plotly_chart(build_3d_figure(atoms, interactions), use_container_width=True)
-            st.caption(
-                "Orange lines = likely headgroup ion-pair contacts (N+ with O/S). Green lines = nearby fluorinated-tail contacts."
-            )
-        with right:
-            st.subheader("Detected Interactions")
-            if interactions.empty:
-                st.info("No interactions detected with current geometric heuristics.")
-            else:
-                table_df = interactions[["type", "atom", "distance_A"]].copy()
-                table_df.columns = ["Interaction type", "Atom", "Distance (A)"]
-                st.dataframe(table_df, use_container_width=True, hide_index=True)
-            render_metrics_panel(pfas_key)
+        st.subheader("3D Interaction Map")
+        st.plotly_chart(build_3d_figure(atoms, interactions), use_container_width=True)
+        st.caption(
+            "Orange lines = likely headgroup ion-pair contacts (N+ with O/S). Green lines = nearby fluorinated-tail contacts."
+        )
+
+        st.divider()
+        st.subheader("Detected Interactions")
+        if interactions.empty:
+            st.info("No interactions detected with current geometric heuristics.")
+        else:
+            table_df = interactions[["type", "atom", "distance_A"]].copy()
+            table_df.columns = ["Interaction type", "Atom", "Distance (A)"]
+            st.dataframe(table_df, use_container_width=True, hide_index=True)
+
+        st.divider()
+        render_metrics_panel(pfas_key)
 
     with ligand_tab:
         st.subheader("PFAS Ligand-Focused Visualization")
-        st.plotly_chart(build_ligand_figure(atoms, ligand_indices), use_container_width=True)
-        if ligand_indices:
-            st.success(f"Ligand component detected: {len(ligand_indices)} atoms in fluorinated PFAS fragment.")
-        else:
-            st.warning("Could not isolate ligand fragment from this structure.")
+        render_ligand_3d_view(atoms, ligand_indices)
+        st.success(f"Ligand component detected: {len(ligand_indices)} atoms in fluorinated PFAS fragment.")
 
     st.divider()
     st.subheader("Cube Grid / Orbital Context")
