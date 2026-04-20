@@ -285,6 +285,129 @@ def parse_cube_header(content: bytes) -> Dict[str, float]:
     return header
 
 
+def build_cube_orbital_figure(cube_content: bytes) -> Optional[go.Figure]:
+    """
+    Build a lightweight 3D orbital-density view from a .cube file.
+    Uses sampled high-magnitude positive/negative voxels for responsiveness.
+    """
+    lines = cube_content.decode("utf-8", errors="ignore").splitlines()
+    if len(lines) < 10:
+        return None
+
+    try:
+        atom_line = lines[2].split()
+        natoms = abs(int(atom_line[0]))
+        origin = [float(atom_line[1]), float(atom_line[2]), float(atom_line[3])]
+
+        nx_line = lines[3].split()
+        ny_line = lines[4].split()
+        nz_line = lines[5].split()
+
+        nx = int(nx_line[0])
+        ny = int(ny_line[0])
+        nz = int(nz_line[0])
+
+        ax = [float(nx_line[1]), float(nx_line[2]), float(nx_line[3])]
+        ay = [float(ny_line[1]), float(ny_line[2]), float(ny_line[3])]
+        az = [float(nz_line[1]), float(nz_line[2]), float(nz_line[3])]
+
+        data_start = 6 + natoms
+        raw_values: List[float] = []
+        for line in lines[data_start:]:
+            if not line.strip():
+                continue
+            raw_values.extend(float(v) for v in line.split())
+    except Exception:
+        return None
+
+    n_expected = nx * ny * nz
+    if len(raw_values) < n_expected:
+        return None
+    values = raw_values[:n_expected]
+    abs_vals = [abs(v) for v in values]
+    if not abs_vals:
+        return None
+
+    sorted_abs = sorted(abs_vals)
+    # Keep top ~1% by magnitude for a readable point cloud.
+    threshold_idx = max(0, int(0.99 * len(sorted_abs)) - 1)
+    threshold = sorted_abs[threshold_idx]
+    if threshold <= 0:
+        return None
+
+    # Cap point count for performance.
+    max_points_per_sign = 2500
+    pos_pts: List[tuple[float, float, float]] = []
+    neg_pts: List[tuple[float, float, float]] = []
+
+    def voxel_to_xyz(i: int, j: int, k: int) -> tuple[float, float, float]:
+        x = origin[0] + i * ax[0] + j * ay[0] + k * az[0]
+        y = origin[1] + i * ax[1] + j * ay[1] + k * az[1]
+        z = origin[2] + i * ax[2] + j * ay[2] + k * az[2]
+        return x, y, z
+
+    for idx, v in enumerate(values):
+        av = abs(v)
+        if av < threshold:
+            continue
+        i = idx // (ny * nz)
+        rem = idx % (ny * nz)
+        j = rem // nz
+        k = rem % nz
+        xyz = voxel_to_xyz(i, j, k)
+        if v >= 0:
+            if len(pos_pts) < max_points_per_sign:
+                pos_pts.append(xyz)
+        else:
+            if len(neg_pts) < max_points_per_sign:
+                neg_pts.append(xyz)
+        if len(pos_pts) >= max_points_per_sign and len(neg_pts) >= max_points_per_sign:
+            break
+
+    if not pos_pts and not neg_pts:
+        return None
+
+    fig = go.Figure()
+    if pos_pts:
+        fig.add_trace(
+            go.Scatter3d(
+                x=[p[0] for p in pos_pts],
+                y=[p[1] for p in pos_pts],
+                z=[p[2] for p in pos_pts],
+                mode="markers",
+                name="Positive phase",
+                marker={"size": 2.5, "color": "#2C7FB8", "opacity": 0.65},
+            )
+        )
+    if neg_pts:
+        fig.add_trace(
+            go.Scatter3d(
+                x=[p[0] for p in neg_pts],
+                y=[p[1] for p in neg_pts],
+                z=[p[2] for p in neg_pts],
+                mode="markers",
+                name="Negative phase",
+                marker={"size": 2.5, "color": "#D95F02", "opacity": 0.65},
+            )
+        )
+
+    fig.update_layout(
+        height=560,
+        paper_bgcolor="white",
+        plot_bgcolor="white",
+        margin={"l": 0, "r": 0, "b": 0, "t": 35},
+        title="Cube Orbital Density (sampled high-magnitude voxels)",
+        scene={
+            "bgcolor": "white",
+            "xaxis_title": "X",
+            "yaxis_title": "Y",
+            "zaxis_title": "Z",
+        },
+        legend={"orientation": "h"},
+    )
+    return fig
+
+
 def infer_quaternary_n(atoms: List[Atom]) -> Optional[Atom]:
     nitrogens = [a for a in atoms if a.symbol == "N"]
     if not nitrogens:
@@ -726,6 +849,20 @@ def main() -> None:
             st.success(
                 f"Full complex shown (PFAS + cholestyramine). PFAS fragment detected with {len(ligand_indices)} fluorinated-ligand atoms."
             )
+
+    st.divider()
+    st.subheader(".cube 3D Visualizer")
+    if cube_content:
+        cube_fig = build_cube_orbital_figure(cube_content)
+        if cube_fig is not None:
+            st.plotly_chart(cube_fig, use_container_width=True)
+            st.caption(
+                "Blue and orange clouds represent sampled positive and negative orbital phases from the .cube volumetric grid."
+            )
+        else:
+            st.warning("Could not build a 3D orbital view from this cube file.")
+    else:
+        st.info("Upload/select a `.cube` file to enable 3D orbital visualization.")
 
     st.divider()
     st.subheader("Cube Grid / Orbital Context")
