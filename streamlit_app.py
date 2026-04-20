@@ -9,7 +9,7 @@ import io
 import math
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Set
 
 import pandas as pd
 import plotly.graph_objects as go
@@ -87,6 +87,21 @@ ELEMENT_COLORS = {
     "S": "#756BB1",
 }
 
+OAK_DARK = "#2F4F2F"
+OAK_MEDIUM_DARK = "#556B2F"
+OAK_MEDIUM = "#6B8E23"
+OAK_LIGHT = "#8FBC8F"
+OAK_PALE = "#D4E4D4"
+
+COVALENT_RADII = {
+    "H": 0.31,
+    "C": 0.76,
+    "N": 0.71,
+    "O": 0.66,
+    "F": 0.57,
+    "S": 1.05,
+}
+
 
 @dataclass
 class Atom:
@@ -95,6 +110,59 @@ class Atom:
     x: float
     y: float
     z: float
+
+
+def apply_oak_theme() -> None:
+    st.markdown(
+        f"""
+        <style>
+            :root {{
+                --oak-dark: {OAK_DARK};
+                --oak-medium-dark: {OAK_MEDIUM_DARK};
+                --oak-medium: {OAK_MEDIUM};
+                --oak-light: {OAK_LIGHT};
+                --oak-pale: {OAK_PALE};
+            }}
+            .stApp {{
+                background-color: #ffffff;
+            }}
+            [data-testid="stSidebar"] {{
+                background: var(--oak-dark);
+                color: white;
+            }}
+            [data-testid="stSidebar"] * {{
+                color: white !important;
+            }}
+            h1, h2, h3, h4 {{
+                color: var(--oak-dark);
+            }}
+            .stButton > button, .stDownloadButton > button {{
+                background: var(--oak-medium) !important;
+                color: white !important;
+                border: none;
+                border-radius: 8px;
+                font-weight: 600;
+            }}
+            .stButton > button:hover, .stDownloadButton > button:hover {{
+                background: var(--oak-medium-dark) !important;
+                color: white !important;
+            }}
+            [data-testid="stMetricValue"] {{
+                color: var(--oak-dark);
+                font-weight: 700;
+            }}
+            .stAlert {{
+                border-left: 4px solid var(--oak-medium);
+                border-radius: 6px;
+            }}
+            .block-container {{
+                padding-top: 1.2rem;
+                padding-bottom: 2rem;
+            }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 def _distance(a: Atom, b: Atom) -> float:
@@ -246,8 +314,94 @@ def build_3d_figure(atoms: List[Atom], interactions: pd.DataFrame) -> go.Figure:
 
     fig.update_layout(
         margin={"l": 0, "r": 0, "b": 0, "t": 30},
-        height=650,
+        height=600,
+        paper_bgcolor="white",
+        plot_bgcolor="white",
         scene={
+            "bgcolor": "white",
+            "xaxis_title": "X (A)",
+            "yaxis_title": "Y (A)",
+            "zaxis_title": "Z (A)",
+        },
+        legend={"orientation": "h"},
+    )
+    return fig
+
+
+def _bond_cutoff(a: Atom, b: Atom) -> float:
+    ra = COVALENT_RADII.get(a.symbol, 0.77)
+    rb = COVALENT_RADII.get(b.symbol, 0.77)
+    return 1.25 * (ra + rb)
+
+
+def infer_ligand_indices(atoms: List[Atom]) -> Set[int]:
+    # PFAS is the fluorinated component in these complexes.
+    fluorine_indices = [a.idx for a in atoms if a.symbol == "F"]
+    if not fluorine_indices:
+        return set()
+    idx_map = {a.idx: a for a in atoms}
+    adj: Dict[int, Set[int]] = {a.idx: set() for a in atoms}
+    n = len(atoms)
+    for i in range(n):
+        for j in range(i + 1, n):
+            ai = atoms[i]
+            aj = atoms[j]
+            if _distance(ai, aj) <= _bond_cutoff(ai, aj):
+                adj[ai.idx].add(aj.idx)
+                adj[aj.idx].add(ai.idx)
+
+    seen: Set[int] = set()
+    stack: List[int] = [fluorine_indices[0]]
+    while stack:
+        cur = stack.pop()
+        if cur in seen:
+            continue
+        seen.add(cur)
+        stack.extend(adj[cur] - seen)
+    return seen
+
+
+def build_ligand_figure(atoms: List[Atom], ligand_indices: Set[int]) -> go.Figure:
+    ligand_atoms = [a for a in atoms if a.idx in ligand_indices]
+    fig = go.Figure()
+    if not ligand_atoms:
+        fig.update_layout(
+            height=520,
+            paper_bgcolor="white",
+            plot_bgcolor="white",
+            margin={"l": 0, "r": 0, "b": 0, "t": 10},
+        )
+        return fig
+
+    by_element: Dict[str, List[Atom]] = {}
+    for a in ligand_atoms:
+        by_element.setdefault(a.symbol, []).append(a)
+
+    for element, group in sorted(by_element.items()):
+        fig.add_trace(
+            go.Scatter3d(
+                x=[a.x for a in group],
+                y=[a.y for a in group],
+                z=[a.z for a in group],
+                mode="markers+text" if element in {"O", "S"} else "markers",
+                text=[f"{a.symbol}{a.idx}" for a in group] if element in {"O", "S"} else None,
+                textposition="top center",
+                name=element,
+                marker={
+                    "size": 7 if element != "H" else 4,
+                    "color": ELEMENT_COLORS.get(element, "#444444"),
+                    "opacity": 0.95,
+                },
+            )
+        )
+    fig.update_layout(
+        height=520,
+        margin={"l": 0, "r": 0, "b": 0, "t": 25},
+        paper_bgcolor="white",
+        plot_bgcolor="white",
+        title="Ligand-Only 3D View (PFAS Component)",
+        scene={
+            "bgcolor": "white",
             "xaxis_title": "X (A)",
             "yaxis_title": "Y (A)",
             "zaxis_title": "Z (A)",
@@ -324,6 +478,7 @@ def render_metrics_panel(pfas_key: str) -> None:
 
 def main() -> None:
     st.set_page_config(page_title="PFAS Interaction Visualizer", layout="wide")
+    apply_oak_theme()
     st.title("PFAS Interaction Visualizer (Manuscript-Aligned)")
     st.caption(
         "Visualize PFAS-cholestyramine complexes with interaction overlays, EDA/NOCV/NBO summaries, and support for user-uploaded ORCA outputs."
@@ -369,22 +524,35 @@ def main() -> None:
 
     st.markdown(f"### Active Complex: `{active_label}`")
     interactions = infer_interactions(atoms)
+    ligand_indices = infer_ligand_indices(atoms)
 
-    left, right = st.columns([2, 1])
-    with left:
-        st.subheader("3D Interaction Map")
-        st.plotly_chart(build_3d_figure(atoms, interactions), use_container_width=True)
-        st.caption(
-            "Orange lines = likely headgroup ion-pair contacts (N+ with O/S). Green lines = nearby fluorinated-tail contacts."
-        )
+    interaction_tab, ligand_tab = st.tabs(["Interaction View", "Ligand View"])
 
-    with right:
-        st.subheader("Detected Interactions")
-        if interactions.empty:
-            st.info("No interactions detected with default heuristics.")
+    with interaction_tab:
+        left, right = st.columns([2, 1])
+        with left:
+            st.subheader("3D Interaction Map")
+            st.plotly_chart(build_3d_figure(atoms, interactions), use_container_width=True)
+            st.caption(
+                "Orange lines = likely headgroup ion-pair contacts (N+ with O/S). Green lines = nearby fluorinated-tail contacts."
+            )
+        with right:
+            st.subheader("Detected Interactions")
+            if interactions.empty:
+                st.info("No interactions detected with current geometric heuristics.")
+            else:
+                table_df = interactions[["type", "atom", "distance_A"]].copy()
+                table_df.columns = ["Interaction type", "Atom", "Distance (A)"]
+                st.dataframe(table_df, use_container_width=True, hide_index=True)
+            render_metrics_panel(pfas_key)
+
+    with ligand_tab:
+        st.subheader("PFAS Ligand-Focused Visualization")
+        st.plotly_chart(build_ligand_figure(atoms, ligand_indices), use_container_width=True)
+        if ligand_indices:
+            st.success(f"Ligand component detected: {len(ligand_indices)} atoms in fluorinated PFAS fragment.")
         else:
-            st.dataframe(interactions[["type", "atom", "distance_A"]], use_container_width=True)
-        render_metrics_panel(pfas_key)
+            st.warning("Could not isolate ligand fragment from this structure.")
 
     st.divider()
     st.subheader("Cube Grid / Orbital Context")
