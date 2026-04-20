@@ -148,6 +148,20 @@ def apply_oak_theme() -> None:
             }}
             [data-testid="stSidebar"] [data-baseweb="select"] span {{
                 color: #1f1f1f !important;
+                opacity: 1 !important;
+            }}
+            [data-testid="stSidebar"] [data-baseweb="select"] div {{
+                color: #1f1f1f !important;
+                opacity: 1 !important;
+            }}
+            [data-testid="stSidebar"] [data-baseweb="select"] input {{
+                color: #1f1f1f !important;
+                -webkit-text-fill-color: #1f1f1f !important;
+                opacity: 1 !important;
+            }}
+            [data-testid="stSidebar"] [data-baseweb="select"] svg {{
+                fill: #1f1f1f !important;
+                color: #1f1f1f !important;
             }}
             [data-testid="stSidebar"] [role="listbox"] * {{
                 color: #1f1f1f !important;
