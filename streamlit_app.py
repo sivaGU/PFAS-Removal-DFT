@@ -140,6 +140,18 @@ def apply_oak_theme() -> None:
             [data-testid="stSidebar"] * {{
                 color: white !important;
             }}
+            [data-testid="stSidebar"] [data-baseweb="select"] > div {{
+                background: #f5f7f2 !important;
+                color: #1f1f1f !important;
+                border-radius: 8px !important;
+                border: 1px solid #d7e3d1 !important;
+            }}
+            [data-testid="stSidebar"] [data-baseweb="select"] span {{
+                color: #1f1f1f !important;
+            }}
+            [data-testid="stSidebar"] [role="listbox"] * {{
+                color: #1f1f1f !important;
+            }}
             h1, h2, h3, h4 {{
                 color: var(--oak-dark);
             }}
@@ -540,6 +552,13 @@ def get_default_complexes(pfas_root: Path) -> Dict[str, Dict[str, Path]]:
     return complexes
 
 
+def format_complex_label(key: str, data: Dict[str, Path]) -> str:
+    label = str(data.get("label", key))
+    if label:
+        return f"{key} - {label}"
+    return key
+
+
 def render_metrics_panel(pfas_key: str) -> None:
     m = REFERENCE_METRICS.get(pfas_key)
     st.subheader("Manuscript-Aligned Energetics")
@@ -603,7 +622,11 @@ def main() -> None:
             st.error("No default complexes found in PFAS Files.")
             return
         keys = sorted(defaults.keys())
-        selected_key = st.sidebar.selectbox("Select bundled complex", keys)
+        selected_key = st.sidebar.selectbox(
+            "Select bundled complex",
+            keys,
+            format_func=lambda k: format_complex_label(k, defaults[k]),
+        )
         selected = defaults[selected_key]
         active_label = selected["label"]  # type: ignore[index]
         pfas_key = selected_key
