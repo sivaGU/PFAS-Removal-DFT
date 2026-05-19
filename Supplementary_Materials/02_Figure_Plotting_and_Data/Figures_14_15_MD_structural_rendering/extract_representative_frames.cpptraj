@@ -1,0 +1,38 @@
+parm ../../05_pfas_exchange/solvated_resin_pfoa_exchange.prmtop
+trajin ../../09_namd_pfoa_exchange/resin_pfoa_exchange_npt_1ns.dcd 1 1 1
+autoimage anchor :1 origin
+strip :WAT
+trajout pfoa_assoc_frame_001_resin_pfo_cl.pdb pdb
+run
+clear trajin
+clear trajout
+
+trajin ../../09_namd_pfoa_exchange/resin_pfoa_exchange_npt_1ns.dcd 25 25 1
+autoimage anchor :1 origin
+strip :WAT
+trajout pfoa_assoc_frame_025_resin_pfo_cl.pdb pdb
+run
+clear trajin
+clear trajout
+
+trajin ../../09_namd_pfoa_exchange/resin_pfoa_exchange_npt_1ns.dcd 50 50 1
+autoimage anchor :1 origin
+strip :WAT
+trajout pfoa_assoc_frame_050_resin_pfo_cl.pdb pdb
+run
+clear trajin
+clear trajout
+
+trajin ../../09_namd_pfoa_exchange/resin_pfoa_exchange_npt_1ns.dcd 75 75 1
+autoimage anchor :1 origin
+strip :WAT
+trajout pfoa_assoc_frame_075_resin_pfo_cl.pdb pdb
+run
+clear trajin
+clear trajout
+
+trajin ../../09_namd_pfoa_exchange/resin_pfoa_exchange_npt_1ns.dcd 100 100 1
+autoimage anchor :1 origin
+strip :WAT
+trajout pfoa_assoc_frame_100_resin_pfo_cl.pdb pdb
+run

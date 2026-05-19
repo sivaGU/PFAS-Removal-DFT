@@ -1,0 +1,17 @@
+parm ../04_leap/solvated_resin_cl.prmtop
+
+trajin resin_only_min.restart.coor
+trajout resin_only_min_restart.pdb pdb
+run
+clear trajin
+clear trajout
+
+trajin resin_only_nvt_heat.restart.coor
+trajout resin_only_nvt_heat_restart.pdb pdb
+run
+clear trajin
+clear trajout
+
+trajin resin_only_npt_short.restart.coor
+trajout resin_only_npt_short_restart.pdb pdb
+run

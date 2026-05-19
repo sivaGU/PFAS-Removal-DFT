@@ -1,0 +1,228 @@
+FILE: D:\Work\RZ_ORCA_PFASRemoval\02-EDA\BTMA\r2\R4N+FHEA-_r2\R4N+FHEA-_r2.out
+Energy Decomposition Analysis
+--------------------------------------------------------------------------------
+     Energy Term                      Hartree         Kcal/mol
+--------------------------------------------------------------------------------
+     Bond Energy                    0.0091058972         5.71
+     Orbital Energy                -0.0014301572        -0.90
+     Electrostatic Energy          -0.1553955319       -97.51
+     Pauli Energy                   0.0250682636        15.73
+     Delta E^0(XC)                 -0.0080641342        -5.06
+     Delta Dispersion              -0.0015404803        -0.97
+     Delta CPCM Dielectric          0.1245346182        78.15
+     Delta gCP correction           0.0001762507         0.11
+     Delta CPCM Dielectric          0.1245346182        78.15
+
+--------------------------------------------------------------------------------
+
+FILE: D:\Work\RZ_ORCA_PFASRemoval\02-EDA\BTMA\r2\R4N+PFHxA-_r2\R4N+PFHxA-_r2.out
+Energy Decomposition Analysis
+--------------------------------------------------------------------------------
+     Energy Term                      Hartree         Kcal/mol
+--------------------------------------------------------------------------------
+     Bond Energy                   -0.0079818514        -5.01
+     Orbital Energy                -0.0015865062        -1.00
+     Electrostatic Energy          -0.1412367799       -88.63
+     Pauli Energy                   0.0135201775         8.48
+     Delta E^0(XC)                 -0.0105772408        -6.64
+     Delta Dispersion              -0.0027117246        -1.70
+     Delta CPCM Dielectric          0.1124123932        70.54
+     Delta gCP correction           0.0004510554         0.28
+     Delta CPCM Dielectric          0.1124123932        70.54
+
+--------------------------------------------------------------------------------
+
+FILE: D:\Work\RZ_ORCA_PFASRemoval\02-EDA\BTMA\r2\R4N+PFOA-_r2\R4N+PFOA-_r2.out
+Energy Decomposition Analysis
+--------------------------------------------------------------------------------
+     Energy Term                      Hartree         Kcal/mol
+--------------------------------------------------------------------------------
+     Bond Energy                   -0.0065572461        -4.11
+     Orbital Energy                -0.0009302292        -0.58
+     Electrostatic Energy          -0.1404807089       -88.15
+     Pauli Energy                   0.0100434756         6.30
+     Delta E^0(XC)                 -0.0081993746        -5.15
+     Delta Dispersion              -0.0023421726        -1.47
+     Delta CPCM Dielectric          0.1095695905        68.76
+     Delta gCP correction           0.0003039144         0.19
+     Delta CPCM Dielectric          0.1095695905        68.76
+
+--------------------------------------------------------------------------------
+
+FILE: D:\Work\RZ_ORCA_PFASRemoval\02-EDA\BTMA\r2\R4N+PFOS-_r2\R4N+PFOS-_r2.out
+Energy Decomposition Analysis
+--------------------------------------------------------------------------------
+     Energy Term                      Hartree         Kcal/mol
+--------------------------------------------------------------------------------
+     Bond Energy                   -0.0052961011        -3.32
+     Orbital Energy                -0.0009097498        -0.57
+     Electrostatic Energy          -0.1377940243       -86.47
+     Pauli Energy                   0.0087511796         5.49
+     Delta E^0(XC)                 -0.0070725719        -4.44
+     Delta Dispersion              -0.0022405978        -1.41
+     Delta CPCM Dielectric          0.1091360579        68.48
+     Delta gCP correction           0.0001885775         0.12
+     Delta CPCM Dielectric          0.1091360579        68.48
+
+--------------------------------------------------------------------------------
+
+FILE: D:\Work\RZ_ORCA_PFASRemoval\02-EDA\BTMA\wb\R4N+FHEA-_wb\R4N+FHEA-_wb.out
+Energy Decomposition Analysis
+--------------------------------------------------------------------------------
+     Energy Term                      Hartree         Kcal/mol
+--------------------------------------------------------------------------------
+     Bond Energy                   -0.0046553527        -2.92
+     Orbital Energy                -0.0011128981        -0.70
+     Electrostatic Energy          -0.1635653224      -102.64
+     Pauli Energy                   0.0164719179        10.34
+     Delta E^0(XC)                 -0.0056752428        -3.56
+     Delta Dispersion              -0.0029382952        -1.84
+     Delta CPCM Dielectric          0.1265318304        79.40
+     Delta CPCM Dielectric          0.1265318304        79.40
+
+--------------------------------------------------------------------------------
+
+FILE: D:\Work\RZ_ORCA_PFASRemoval\02-EDA\BTMA\wb\R4N+PFHxA-_wb\R4N+PFHxA-_wb.out
+Energy Decomposition Analysis
+--------------------------------------------------------------------------------
+     Energy Term                      Hartree         Kcal/mol
+--------------------------------------------------------------------------------
+     Bond Energy                   -0.0084135046        -5.28
+     Orbital Energy                -0.0013937249        -0.87
+     Electrostatic Energy          -0.1503778491       -94.36
+     Pauli Energy                   0.0205996444        12.93
+     Delta E^0(XC)                 -0.0066226647        -4.16
+     Delta Dispersion              -0.0056701677        -3.56
+     Delta CPCM Dielectric          0.1134057044        71.16
+     Delta CPCM Dielectric          0.1134057044        71.16
+
+--------------------------------------------------------------------------------
+
+FILE: D:\Work\RZ_ORCA_PFASRemoval\02-EDA\BTMA\wb\R4N+PFOA-_wb\R4N+PFOA-_wb.out
+Energy Decomposition Analysis
+--------------------------------------------------------------------------------
+     Energy Term                      Hartree         Kcal/mol
+--------------------------------------------------------------------------------
+     Bond Energy                   -0.0069977453        -4.39
+     Orbital Energy                -0.0008034462        -0.50
+     Electrostatic Energy          -0.1469976465       -92.24
+     Pauli Energy                   0.0147545387         9.26
+     Delta E^0(XC)                 -0.0049365286        -3.10
+     Delta Dispersion              -0.0047616860        -2.99
+     Delta CPCM Dielectric          0.1103823773        69.27
+     Delta CPCM Dielectric          0.1103823773        69.27
+
+--------------------------------------------------------------------------------
+
+FILE: D:\Work\RZ_ORCA_PFASRemoval\02-EDA\BTMA\wb\R4N+PFOS-_wb\R4N+PFOS-_wb.out
+Energy Decomposition Analysis
+--------------------------------------------------------------------------------
+     Energy Term                      Hartree         Kcal/mol
+--------------------------------------------------------------------------------
+     Bond Energy                   -0.0058397265        -3.66
+     Orbital Energy                -0.0007082962        -0.44
+     Electrostatic Energy          -0.1422308320       -89.25
+     Pauli Energy                   0.0124611379         7.82
+     Delta E^0(XC)                 -0.0043335351        -2.72
+     Delta Dispersion              -0.0043576440        -2.73
+     Delta CPCM Dielectric          0.1089017300        68.34
+     Delta CPCM Dielectric          0.1089017300        68.34
+
+--------------------------------------------------------------------------------
+
+FILE: D:\Work\RZ_ORCA_PFASRemoval\02-EDA\ExtendedMonomer\Octanol_72.5\R4N+PFOA-\R4N+PFOA-.out
+Energy Decomposition Analysis
+--------------------------------------------------------------------------------
+     Energy Term                      Hartree         Kcal/mol
+--------------------------------------------------------------------------------
+     Bond Energy                   -0.0131266871        -8.24
+     Orbital Energy                -0.0020080525        -1.26
+     Electrostatic Energy          -0.1230864664       -77.24
+     Pauli Energy                   0.0385890042        24.21
+     Delta E^0(XC)                 -0.0123255828        -7.73
+     Delta Dispersion              -0.0152110244        -9.55
+     Delta CPCM Dielectric          0.0965974001        60.62
+     Delta CPCM Dielectric          0.0965974001        60.62
+
+--------------------------------------------------------------------------------
+
+FILE: D:\Work\RZ_ORCA_PFASRemoval\02-EDA\ExtendedMonomer\Octanol_72.5\R4N+PFOS-\R4N+PFOS-.out
+Energy Decomposition Analysis
+--------------------------------------------------------------------------------
+     Energy Term                      Hartree         Kcal/mol
+--------------------------------------------------------------------------------
+     Bond Energy                   -0.0126372630        -7.93
+     Orbital Energy                -0.0016980145        -1.07
+     Electrostatic Energy          -0.0751578003       -47.16
+     Pauli Energy                   0.0304959385        19.14
+     Delta E^0(XC)                 -0.0104497271        -6.56
+     Delta Dispersion              -0.0144472425        -9.07
+     Delta CPCM Dielectric          0.0540776878        33.93
+     Delta CPCM Dielectric          0.0540776878        33.93
+
+--------------------------------------------------------------------------------
+
+FILE: D:\Work\RZ_ORCA_PFASRemoval\02-EDA\ExtendedMonomer\Water\R4N+FHEA-_EDA\R4N+FHEA-_EDA.out
+Energy Decomposition Analysis
+--------------------------------------------------------------------------------
+     Energy Term                      Hartree         Kcal/mol
+--------------------------------------------------------------------------------
+     Bond Energy                   -0.0160992658       -10.10
+     Orbital Energy                -0.0025394715        -1.59
+     Electrostatic Energy          -0.1830094107      -114.84
+     Pauli Energy                   0.0410686141        25.77
+     Delta E^0(XC)                 -0.0133555266        -8.38
+     Delta Dispersion              -0.0137152981        -8.61
+     Delta CPCM Dielectric          0.1278495914        80.23
+     Delta CPCM Dielectric          0.1278495914        80.23
+
+--------------------------------------------------------------------------------
+
+FILE: D:\Work\RZ_ORCA_PFASRemoval\02-EDA\ExtendedMonomer\Water\R4N+PFHxA-_EDA\R4N+PFHxA-_EDA.out
+Energy Decomposition Analysis
+--------------------------------------------------------------------------------
+     Energy Term                      Hartree         Kcal/mol
+--------------------------------------------------------------------------------
+     Bond Energy                   -0.0138777495        -8.71
+     Orbital Energy                -0.0019000827        -1.19
+     Electrostatic Energy          -0.1480576142       -92.91
+     Pauli Energy                   0.0337473051        21.18
+     Delta E^0(XC)                 -0.0106774418        -6.70
+     Delta Dispersion              -0.0120534642        -7.56
+     Delta CPCM Dielectric          0.0986791559        61.92
+     Delta CPCM Dielectric          0.0986791559        61.92
+
+--------------------------------------------------------------------------------
+
+FILE: D:\Work\RZ_ORCA_PFASRemoval\02-EDA\ExtendedMonomer\Water\R4N+PFOA-_EDA\R4N+PFOA-_EDA.out
+Energy Decomposition Analysis
+--------------------------------------------------------------------------------
+     Energy Term                      Hartree         Kcal/mol
+--------------------------------------------------------------------------------
+     Bond Energy                   -0.0173311254       -10.88
+     Orbital Energy                -0.0019954293        -1.25
+     Electrostatic Energy          -0.1522432878       -95.53
+     Pauli Energy                   0.0385019022        24.16
+     Delta E^0(XC)                 -0.0122850415        -7.71
+     Delta Dispersion              -0.0152110244        -9.55
+     Delta CPCM Dielectric          0.0968933587        60.80
+     Delta CPCM Dielectric          0.0968933587        60.80
+
+--------------------------------------------------------------------------------
+
+FILE: D:\Work\RZ_ORCA_PFASRemoval\02-EDA\ExtendedMonomer\Water\R4N+PFOS-_EDA\R4N+PFOS-_EDA.out
+Energy Decomposition Analysis
+--------------------------------------------------------------------------------
+     Energy Term                      Hartree         Kcal/mol
+--------------------------------------------------------------------------------
+     Bond Energy                   -0.0172209633       -10.81
+     Orbital Energy                -0.0021501668        -1.35
+     Electrostatic Energy          -0.1093175209       -68.60
+     Pauli Energy                   0.0438894114        27.54
+     Delta E^0(XC)                 -0.0145445091        -9.13
+     Delta Dispersion              -0.0171969867       -10.79
+     Delta CPCM Dielectric          0.0546301646        34.28
+     Delta CPCM Dielectric          0.0546301646        34.28
+
+--------------------------------------------------------------------------------
+

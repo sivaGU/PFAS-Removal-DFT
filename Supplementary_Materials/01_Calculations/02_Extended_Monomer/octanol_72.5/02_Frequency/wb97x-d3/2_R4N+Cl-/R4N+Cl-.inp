@@ -1,0 +1,30 @@
+# C30H32NO2F15 | Geometry Optimization + Freq | wb97x-d3 def2-tzvpd/CPCM(SMD:Water)
+# C8O2F15 | Frequencies | wB97X-D3/ma-def2-TZVP
+# 
+! wb97x-d3 def2-tzvpd DefGrid3 Freq CPCM
+
+%freq
+   TEMP 310.15
+end
+
+%cpcm
+   smd true
+   SMDSolvent "octanol"
+   epsilon 72.5
+end
+
+%maxcore 8500
+
+%pal
+  nprocs 64
+end
+
+* xyzfile 0 1 R4N+Cl-_freqinit.xyz
+
+
+
+
+
+
+
+

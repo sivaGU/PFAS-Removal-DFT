@@ -1,0 +1,100 @@
+Selectivity Energy Summary
+
+Columns:
+- `E_r2scan3c` = `FINAL SINGLE POINT ENERGY` from `1_Opt_0.15M`
+- `E_wb97xd3` = `FINAL SINGLE POINT ENERGY` from `2-1_Freq_wb`
+- `G_r2scan3c` = `Final Gibbs free energy` from `1_Opt_0.15M`
+- `G_wb97xd3` = `Final Gibbs free energy` from `2-1_Freq_wb`
+
+| Species     | E_r2scan3c         | E_wb97xd3         | G_r2scan3c      | G_wb97xd3      |
+|-------------|--------------------|-------------------|-----------------|----------------|
+| R4N+FHEA-   | -2199.764389580309 | -2200.289787524607| -2199.47078192  | -2199.99167612 |
+| R4N+PFHxA-  | -1922.676121647777 | -1923.137309076471| -1922.41786628  | -1922.87422607 |
+| R4N+PFOA-   | -2398.242098977966 | -2398.793370784731| -2397.96515453  | -2398.51089463 |
+| R4N+PFOS-   | -3071.263984705567 | -3071.948356352467| -3070.97953381  | -3071.65679623 |
+| R4N+Cl-     | -905.517886846123  | -905.731151435150 | -905.31500817   | -905.52436385  |
+| FHEA        | -1754.590197254154 | -1754.944149647387| -1754.52647219  | -1754.87717914 |
+| PFHxA       | -1477.499356306281 | -1477.788586171688| -1477.47120355  | -1477.75807611 |
+| PFOA        | -1953.066502525915 | -1953.445777855603| -1953.02071754  | -1953.39663489 |
+| PFOS        | -2626.089844333014 | -2626.602333802936| -2626.03564535  | -2626.54301344 |
+| Cl-         | -460.345405067028  | -460.385228974217 | -460.36114952   | -460.40097343  |
+
+Source files:
+
+| Species    | r2scan3c source                                                                                                    | wb97xd3 source                                                                                                   |
+|------------|---------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| R4N+FHEA-  | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/1_Opt_0.15M/1_R4N+X-_0.15M/R4N+FHEA-_0.15M/R4N+FHEA-_0.15M.out   | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/2-1_Freq_wb/1_R4N+X-_wb/R4N+FHEA-_wb/R4N+FHEA-_wb.out         |
+| R4N+PFHxA- | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/1_Opt_0.15M/1_R4N+X-_0.15M/R4N+PFHxA-_0.15M/R4N+PFHxA-_0.15M.out | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/2-1_Freq_wb/1_R4N+X-_wb/R4N+PFHxA-_wb/R4N+PFHxA-_wb.out       |
+| R4N+PFOA-  | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/1_Opt_0.15M/1_R4N+X-_0.15M/R4N+PFOA-_0.15M/R4N+PFOA-_0.15M.out   | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/2-1_Freq_wb/1_R4N+X-_wb/R4N+PFOA-_wb/R4N+PFOA-_wb.out         |
+| R4N+PFOS-  | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/1_Opt_0.15M/1_R4N+X-_0.15M/R4N+PFOS-_0.15M/R4N+PFOS-_0.15M.out   | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/2-1_Freq_wb/1_R4N+X-_wb/R4N+PFOS-_wb/R4N+PFOS-_wb.out         |
+| R4N+Cl-    | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/1_Opt_0.15M/2_R4N+Cl-_0.15M/R4N+Cl-_0.15M.out                    | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/2-1_Freq_wb/2_R4N+Cl-_wb/R4N+Cl-_wb.out                        |
+| FHEA       | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/1_Opt_0.15M/3_X-_0.15M/FHEA_0.15M/FHEA_0.15M.out                 | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/2-1_Freq_wb/3_X-_wb/FHEA_wb/FHEA_wb.out                        |
+| PFHxA      | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/1_Opt_0.15M/3_X-_0.15M/PFHxA_0.15M/PFHxA_0.15M.out               | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/2-1_Freq_wb/3_X-_wb/PFHxA_wb/PFHxA_wb.out                      |
+| PFOA       | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/1_Opt_0.15M/3_X-_0.15M/PFOA_0.15M/PFOA_0.15M.out                 | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/2-1_Freq_wb/3_X-_wb/PFOA_wb/PFOA_wb.out                        |
+| PFOS       | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/1_Opt_0.15M/3_X-_0.15M/PFOS_0.15M/PFOS_0.15M.out                 | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/2-1_Freq_wb/3_X-_wb/PFOS_wb/PFOS_wb.out                        |
+| Cl-        | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/1_Opt_0.15M/4_Cl-_0.15M/Cl-_0.15M.out                             | /mnt/d/Work/RZ_ORCA_PFASRemoval/01-0-Selectivity/2-1_Freq_wb/4_Cl-_wb/Cl-_wb.out                                 |
+
+Exchange Energies
+
+Reaction used:
+`R4N+Cl- + X- -> R4N+X- + Cl-`
+
+Equations:
+- `ΔE_exchange = E(R4N+X-) + E(Cl-) - E(R4N+Cl-) - E(X-)`
+- `ΔG_exchange = G(R4N+X-) + G(Cl-) - G(R4N+Cl-) - G(X-)`
+
+Checked `ΔE_exchange` values:
+
+| Species | r2SCAN-3c (Eh)      | r2SCAN-3c (kcal/mol) | wB97X-D3 (Eh)      | wB97X-D3 (kcal/mol) |
+|---------|---------------------|----------------------|--------------------|---------------------|
+| FHEA    | -0.001710547060     | -1.07                | 0.000284583713     | 0.18                |
+| PFHxA   | -0.004283562401     | -2.69                | -0.002800443850    | -1.76               |
+| PFOA    | -0.003114672956     | -1.95                | -0.001670468195    | -1.05               |
+| PFOS    | -0.001658593458     | -1.04                | -0.000100088598    | -0.06               |
+
+Checked `ΔG_exchange` values:
+
+| Species | r2SCAN-3c (Eh)      | r2SCAN-3c (kcal/mol) | wB97X-D3 (Eh)      | wB97X-D3 (kcal/mol) |
+|---------|---------------------|----------------------|--------------------|---------------------|
+| FHEA    | 0.009548920000      | 5.99                 | 0.008893440000     | 5.58                |
+| PFHxA   | 0.007195920000      | 4.52                 | 0.007240460000     | 4.54                |
+| PFOA    | 0.009421660000      | 5.91                 | 0.009130680000     | 5.73                |
+| PFOS    | 0.009970190000      | 6.26                 | 0.009607630000     | 6.03                |
+
+Full math:
+
+`ΔE_exchange = E(R4N+X-) + E(Cl-) - E(R4N+Cl-) - E(X-)`
+
+FHEA:
+- r2SCAN-3c: `(-2199.764389580309 + -460.345405067028) - (-905.517886846123 + -1754.590197254154) = -0.001710547060 Eh = -1.07 kcal/mol`
+- wB97X-D3: `(-2200.289787524607 + -460.385228974217) - (-905.731151435150 + -1754.944149647387) = 0.000284583713 Eh = 0.18 kcal/mol`
+
+PFHxA:
+- r2SCAN-3c: `(-1922.676121647777 + -460.345405067028) - (-905.517886846123 + -1477.499356306281) = -0.004283562401 Eh = -2.69 kcal/mol`
+- wB97X-D3: `(-1923.137309076471 + -460.385228974217) - (-905.731151435150 + -1477.788586171688) = -0.002800443850 Eh = -1.76 kcal/mol`
+
+PFOA:
+- r2SCAN-3c: `(-2398.242098977966 + -460.345405067028) - (-905.517886846123 + -1953.066502525915) = -0.003114672956 Eh = -1.95 kcal/mol`
+- wB97X-D3: `(-2398.793370784731 + -460.385228974217) - (-905.731151435150 + -1953.445777855603) = -0.001670468195 Eh = -1.05 kcal/mol`
+
+PFOS:
+- r2SCAN-3c: `(-3071.263984705567 + -460.345405067028) - (-905.517886846123 + -2626.089844333014) = -0.001658593458 Eh = -1.04 kcal/mol`
+- wB97X-D3: `(-3071.948356352467 + -460.385228974217) - (-905.731151435150 + -2626.602333802936) = -0.000100088598 Eh = -0.06 kcal/mol`
+
+`ΔG_exchange = G(R4N+X-) + G(Cl-) - G(R4N+Cl-) - G(X-)`
+
+FHEA:
+- r2SCAN-3c: `(-2199.47078192 + -460.36114952) - (-905.31500817 + -1754.52647219) = 0.009548920000 Eh = 5.99 kcal/mol`
+- wB97X-D3: `(-2199.99167612 + -460.40097343) - (-905.52436385 + -1754.87717914) = 0.008893440000 Eh = 5.58 kcal/mol`
+
+PFHxA:
+- r2SCAN-3c: `(-1922.41786628 + -460.36114952) - (-905.31500817 + -1477.47120355) = 0.007195920000 Eh = 4.52 kcal/mol`
+- wB97X-D3: `(-1922.87422607 + -460.40097343) - (-905.52436385 + -1477.75807611) = 0.007240460000 Eh = 4.54 kcal/mol`
+
+PFOA:
+- r2SCAN-3c: `(-2397.96515453 + -460.36114952) - (-905.31500817 + -1953.02071754) = 0.009421660000 Eh = 5.91 kcal/mol`
+- wB97X-D3: `(-2398.51089463 + -460.40097343) - (-905.52436385 + -1953.39663489) = 0.009130680000 Eh = 5.73 kcal/mol`
+
+PFOS:
+- r2SCAN-3c: `(-3070.97953381 + -460.36114952) - (-905.31500817 + -2626.03564535) = 0.009970190000 Eh = 6.26 kcal/mol`
+- wB97X-D3: `(-3071.65679623 + -460.40097343) - (-905.52436385 + -2626.54301344) = 0.009607630000 Eh = 6.03 kcal/mol`

@@ -1,0 +1,49 @@
+| Run on Thu Apr 30 06:33:26 2026
+|
+|Input file:
+|--------------------------------------------------------------
+|Qualitative single-endpoint GBSA energy proxy
+|&general
+|  verbose=1,
+|  keep_files=0,
+|/
+|&gb
+|  igb=5,
+|  saltcon=0.150,
+|/
+|--------------------------------------------------------------
+|MMPBSA.py Version=14.0
+|Complex topology file:           pfoa_aq.prmtop
+|Initial mdcrd(s):                pfoa_aq_50.nc
+|
+|Calculations performed using 50.0 complex frames.
+|
+|Generalized Born ESURF calculated using 'LCPO' surface areas
+|
+|All units are reported in kcal/mole.
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+GENERALIZED BORN:
+
+Complex:
+Energy Component            Average              Std. Dev.   Std. Err. of Mean
+-------------------------------------------------------------------------------
+BOND                        11.1199                3.4063              0.4817
+ANGLE                       19.9411                3.2790              0.4637
+DIHED                       50.1302                1.8134              0.2564
+VDWAALS                      1.9634                1.9946              0.2821
+EEL                         46.4460                6.5087              0.9205
+1-4 VDW                      7.4013                1.1082              0.1567
+1-4 EEL                     33.1862                7.0855              1.0020
+EGB                        -57.7611                0.7143              0.1010
+ESURF                        3.1374                0.0365              0.0052
+
+G gas                      170.1881                4.2912              0.6069
+G solv                     -54.6236                0.7158              0.1012
+
+TOTAL                      115.5645                4.2850              0.6060
+
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------

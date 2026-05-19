@@ -1,0 +1,7 @@
+r2scan-3c VeryTightSCF TRAH
+
+%cpcm
+   smd true
+   SMDSolvent "Water"
+   epsilon 72.5
+end

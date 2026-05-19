@@ -1,0 +1,5 @@
+parm ../04_leap/solvated_resin_cl.prmtop
+trajin resin_only_npt_2ns.dcd lastframe
+autoimage anchor :1 origin
+trajout resin_only_npt_2ns_final_imaged.pdb pdb
+run

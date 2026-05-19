@@ -1,0 +1,1685 @@
+Charm++: standalone mode (not using charmrun)
+Charm++> Running in Multicore mode: 4 threads (PEs)
+Charm++> Using recursive bisection (scheme 3) for topology aware partitions
+Converse/Charm++ Commit ID: 
+CharmLB> Load balancer assumes all CPUs are same.
+Charm++> cpu affinity enabled. 
+Charm++> Running on 1 hosts (1 sockets x 8 cores x 2 PUs = 16-way SMP)
+Charm++> cpu topology info is gathered in 0.000 seconds.
+Info: Built with CUDA version 11080
+Pe 0 physical rank 0 will use CUDA device of pe 2
+Pe 2 physical rank 2 binding to CUDA device 0 on tamburello: 'NVIDIA GeForce RTX 4050 Laptop GPU'  Mem: 6140MB  Rev: 8.9  PCI: 0:1:0
+Pe 3 physical rank 3 will use CUDA device of pe 2
+Pe 1 physical rank 1 will use CUDA device of pe 2
+CharmLB> Load balancing instrumentation for communication is off.
+Info: NAMD Git-2025-12-04 for Linux-x86_64-multicore-CUDA
+Info: 
+Info: Please visit http://www.ks.uiuc.edu/Research/namd/
+Info: for updates, documentation, and support information.
+Info: 
+Info: Please cite Phillips et al., J. Chem. Phys. 153:044130 (2020) doi:10.1063/5.0014475
+Info: in all publications reporting results obtained with NAMD.
+Info: 
+Info: Based on Charm++/Converse 80000 for multicore-linux-x86_64-gcc
+Info: Built Thu Dec 4 09:52:36 CST 2025 by dhardy on athine.ks.uiuc.edu
+Info: Source code at Git commit ID b856a9378ca44bcf5aa708d4b681af4ceb86d8ca
+Info: 1 NAMD  Git-2025-12-04  Linux-x86_64-multicore-CUDA  4    tamburello  zwa
+Info: Running on 4 processors, 1 nodes, 1 physical nodes.
+Info: CPU topology information available.
+Info: Charm++/Converse parallel runtime startup completed at 0.234446 s
+CkLoopLib is used in SMP with simple dynamic scheduling (converse-level notification)
+Info: 0 MB of memory in use based on /proc/self/stat
+Info: Configuration file is 02_nvt_heat.conf
+Info: Working in the current directory /mnt/d/Work/RZ_ORCA_PFASRemoval/work_amber/17_exchange_cycle_proxy/03_namd_cl_aq
+TCL: Suspending until startup complete.
+Warning: Option "1-4scaling" has been deprecated. Instead use "oneFourScaling".
+Warning: The parameter fullElectFrequency now defaults to nonbondedFreq (1) rather than stepsPerCycle.
+Warning: Always using force tables for GPU nonbonded kernel due to unsupported config parameters.
+Info: SIMULATION PARAMETERS:
+Info: TIMESTEP               2
+Info: NUMBER OF STEPS        0
+Info: STEPS PER CYCLE        20
+Info: PERIODIC CELL BASIS 1  44.1468 0 0
+Info: PERIODIC CELL BASIS 2  0 43.7718 0
+Info: PERIODIC CELL BASIS 3  0 0 44.3187
+Info: PERIODIC CELL CENTER   0 0 0
+Info: LOAD BALANCER  Centralized
+Info: LOAD BALANCING STRATEGY  New Load Balancers -- DEFAULT
+Info: LDB PERIOD             4000 steps
+Info: FIRST LDB TIMESTEP     100
+Info: LAST LDB TIMESTEP     -1
+Info: LDB BACKGROUND SCALING 1
+Info: HOM BACKGROUND SCALING 1
+Info: PME BACKGROUND SCALING 1
+Info: MIN ATOMS PER PATCH    40
+Info: EMPTY PATCH LOAD       40 ATOMS
+Info: INITIAL TEMPERATURE    310.15
+Info: CENTER OF MASS MOVING INITIALLY? NO
+Info: DIELECTRIC             1
+Info: EXCLUDE                SCALED ONE-FOUR
+Info: 1-4 ELECTROSTATICS SCALED BY 0.833333
+Info: MODIFIED 1-4 VDW PARAMETERS WILL BE USED
+Info: DCD FILENAME           cl_aq_nvt_heat.dcd
+Info: DCD FREQUENCY          2500
+Info: DCD FIRST STEP         2500
+Info: DCD FILE WILL CONTAIN UNIT CELL DATA
+Info: XST FILENAME           cl_aq_nvt_heat.xst
+Info: XST FREQUENCY          2500
+Info: NO VELOCITY DCD OUTPUT
+Info: NO FORCE DCD OUTPUT
+Info: OUTPUT FILENAME        cl_aq_nvt_heat
+Info: BINARY OUTPUT FILES WILL BE USED
+Info: RESTART FILENAME       cl_aq_nvt_heat.restart
+Info: RESTART FREQUENCY      2500
+Info: BINARY RESTART FILES WILL BE USED
+Info: NAMD will save positions and velocities to cl_aq_nvt_heat.crash.csv when  atoms are moving too fast.
+Info: CUTOFF                 9
+Info: PAIRLIST DISTANCE      11
+Info: PAIRLIST SHRINK RATE   0.01
+Info: PAIRLIST GROW RATE     0.01
+Info: PAIRLIST TRIGGER       0.3
+Info: PAIRLISTS PER CYCLE    2
+Info: PAIRLISTS ENABLED
+Info: MARGIN                 0
+Info: HYDROGEN GROUP CUTOFF  2.5
+Info: PATCH DIMENSION        13.5
+Info: ENERGY OUTPUT STEPS    500
+Info: ENERGY EVALUATION STEPS    500
+Info: OUTPUT ENERGY PRECISION 4
+Info: CROSSTERM ENERGY INCLUDED IN DIHEDRAL
+Info: TIMING OUTPUT STEPS    500
+Info: LANGEVIN DYNAMICS ACTIVE
+Info: LANGEVIN TEMPERATURE   310.15
+Info: LANGEVIN USING BBK INTEGRATOR
+Info: LANGEVIN DAMPING COEFFICIENT IS 1 INVERSE PS
+Info: LANGEVIN DYNAMICS APPLIED TO HYDROGENS
+Info: PARTICLE MESH EWALD (PME) ACTIVE
+Info: PME TOLERANCE               1e-06
+Info: PME EWALD COEFFICIENT       0.348832
+Info: PME INTERPOLATION ORDER     4
+Info: PME GRID DIMENSIONS         48 44 48
+Info: PME MAXIMUM GRID SPACING    1
+Info: PME CALCULATION WILL BE PERFORMED ON GPU
+Info: FULL ELECTROSTATIC EVALUATION FREQUENCY      1
+Info: USING VERLET I (r-RESPA) MTS SCHEME.
+Info: C1 SPLITTING OF LONG RANGE ELECTROSTATICS
+Info: PLACING ATOMS IN PATCHES BY HYDROGEN GROUPS
+Info: RIGID BONDS TO HYDROGEN : ALL
+Info:         ERROR TOLERANCE : 1e-08
+Info:          MAX ITERATIONS : 100
+Info: RIGID WATER USING SETTLE ALGORITHM
+Info: RANDOM NUMBER SEED     1777537515
+Info: USE HYDROGEN BONDS?    NO
+Info: Using AMBER format force field!
+Info: AMBER PARM FILE        ../01_build_bulk/cl_aq.prmtop
+Info: AMBER COORDINATE FILE  ../01_build_bulk/cl_aq.inpcrd
+Info: Exclusions will be read from PARM file!
+Info: SCNB (VDW SCALING)     2
+Info: USING ARITHMETIC MEAN TO COMBINE L-J SIGMA PARAMETERS
+Info: BINARY COORDINATES     cl_aq_min.restart.coor
+Info: === Start reading AMBER parm7 format file ../01_build_bulk/cl_aq.prmtop ===
+Info: Complete reading ATOM_NAME with 6289 fields.
+Info: Complete reading CHARGE with 6289 fields.
+Info: Complete reading ATOMIC_NUMBER with 6289 fields.
+Info: Complete reading MASS with 6289 fields.
+Info: Complete reading ATOM_TYPE_INDEX with 6289 fields.
+Info: Complete reading NUMBER_EXCLUDED_ATOMS with 6289 fields.
+Info: Complete reading NONBONDED_PARM_INDEX with 9 fields.
+Info: Complete reading RESIDUE_LABEL with 2097 fields.
+Info: Complete reading RESIDUE_POINTER with 2097 fields.
+Info: Complete reading BOND_FORCE_CONSTANT with 2 fields.
+Info: Complete reading BOND_EQUIL_VALUE with 2 fields.
+Info: Complete reading ANGLE_FORCE_CONSTANT with 0 fields.
+Info: Complete reading ANGLE_EQUIL_VALUE with 0 fields.
+Info: Complete reading DIHEDRAL_FORCE_CONSTANT with 0 fields.
+Info: Complete reading DIHEDRAL_PERIODICITY with 0 fields.
+Info: Complete reading DIHEDRAL_PHASE with 0 fields.
+Info: Complete reading SCEE_SCALE_FACTOR with 0 fields.
+Info: Complete reading SCNB_SCALE_FACTOR with 0 fields.
+Info: Complete reading LENNARD_JONES_ACOEF with 6 fields.
+Info: Complete reading LENNARD_JONES_BCOEF with 6 fields.
+Info: Complete reading BONDS_INC_HYDROGEN with 18864 fields.
+Info: Complete reading BONDS_WITHOUT_HYDROGEN with 0 fields.
+Info: Complete reading ANGLES_INC_HYDROGEN with 0 fields.
+Info: Complete reading ANGLES_WITHOUT_HYDROGEN with 0 fields.
+Info: Complete reading DIHEDRALS_INC_HYDROGEN with 0 fields.
+Info: Complete reading DIHEDRALS_WITHOUT_HYDROGEN with 0 fields.
+Info: Complete reading EXCLUDED_ATOMS_LIST with 8385 fields.
+Info: Complete reading HBOND_ACOEF with 0 fields.
+Info: Complete reading HBOND_BCOEF with 0 fields.
+Info: Complete reading AMBER_ATOM_TYPE with 6289 fields.
+Info: Complete reading TREE_CHAIN_CLASSIFICATION with 6289 fields.
+Info: Complete reading ATOMS_PER_MOLECULE with 2097 fields.
+Info: Complete reading BOX_DIMENSIONS with 4 fields.
+Info: Complete reading RADIUS_SET with 1 fields.
+Info: Complete reading RADII with 6289 fields.
+Info: Complete reading SCREEN with 6289 fields.
+Info: === Finish reading AMBER parm7 format file. ===
+Warning: Found 2096 H-H bonds.
+Info: SUMMARY OF PARAMETERS:
+Info: 2 BONDS
+Info: 0 ANGLES
+Info:   0 HARMONIC
+Info:   0 COSINE-BASED
+Info: 0 DIHEDRAL
+Info: 0 IMPROPER
+Info: 0 CROSSTERM
+Info: 0 VDW
+Info: 6 VDW_PAIRS
+Info: 0 NBTHOLE_PAIRS
+Info: TIME FOR READING PDB FILE: 3.217e-06
+Info: 
+Info: LONG-RANGE LJ: APPLYING ANALYTICAL CORRECTIONS TO ENERGY AND PRESSURE
+Info: LONG-RANGE LJ: AVERAGE A AND B COEFFICIENTS 584041 AND 595.122
+Info: ****************************
+Info: STRUCTURE SUMMARY:
+Info: 6289 ATOMS
+Info: 6288 BONDS
+Info: 0 ANGLES
+Info: 0 DIHEDRALS
+Info: 0 IMPROPERS
+Info: 0 CROSSTERMS
+Info: 6288 EXCLUSIONS
+Info: 6288 RIGID BONDS
+Info: 12579 DEGREES OF FREEDOM
+Info: 2097 HYDROGEN GROUPS
+Info: 3 ATOMS IN LARGEST HYDROGEN GROUP
+Info: 2097 MIGRATION GROUPS
+Info: 3 ATOMS IN LARGEST MIGRATION GROUP
+Info: TOTAL MASS = 37797 amu
+Info: TOTAL CHARGE = -1 e
+Info: MASS DENSITY = 0.732885 g/cm^3
+Info: ATOM DENSITY = 0.0734347 atoms/A^3
+Info: *****************************
+Info: Reading from binary file cl_aq_min.restart.coor
+Info: 
+Info: Entering startup at 0.44258 s, 0 MB of memory in use
+Info: Startup phase 0 took 0.00936491 s, 0 MB of memory in use
+Info: ADDED 0 IMPLICIT EXCLUSIONS
+Info: Startup phase 1 took 0.0119757 s, 0 MB of memory in use
+Info: NONBONDED TABLE R-SQUARED SPACING: 0.0625
+Info: NONBONDED TABLE SIZE: 705 POINTS
+Info: INCONSISTENCY IN FAST TABLE ENERGY VS FORCE: 0.000290481 AT 0.251946
+Info: INCONSISTENCY IN SCOR TABLE ENERGY VS FORCE: 0.000238233 AT 8.9687
+Info: ABSOLUTE IMPRECISION IN VDWA TABLE ENERGY: 1.21169e-27 AT 8.99653
+Info: ABSOLUTE IMPRECISION IN VDWA TABLE FORCE: 2.57484e-27 AT 8.99653
+Info: INCONSISTENCY IN VDWA TABLE ENERGY VS FORCE: 0.0040507 AT 0.251946
+Info: INCONSISTENCY IN VDWB TABLE ENERGY VS FORCE: 0.00150189 AT 0.251946
+Info: Startup phase 2 took 0.0159944 s, 0 MB of memory in use
+Info: Startup phase 3 took 0.0120119 s, 0 MB of memory in use
+Info: Startup phase 4 took 0.0159846 s, 0 MB of memory in use
+Info: Startup phase 5 took 0.0160149 s, 0 MB of memory in use
+Info: PATCH GRID IS 3 (PERIODIC) BY 3 (PERIODIC) BY 3 (PERIODIC)
+Info: PATCH GRID IS 1-AWAY BY 1-AWAY BY 1-AWAY
+Info: REMOVING COM VELOCITY 0.0527672 -0.148241 -0.0754931
+Info: LARGEST PATCH (26) HAS 366 ATOMS
+Info: TORUS A SIZE 1 USING 0
+Info: TORUS B SIZE 1 USING 0
+Info: TORUS C SIZE 1 USING 0
+Info: TORUS MINIMAL MESH SIZE IS 1 BY 1 BY 1
+Info: Placed 100% of base nodes on same physical node as patch
+Info: Startup phase 6 took 0.0360149 s, 0 MB of memory in use
+Info: Use 3D box decompostion in PME FFT.
+Info: PME using 1 x 1 x 1 pencil grid for FFT and reciprocal sum.
+Info: Startup phase 7 took 0.0239766 s, 0 MB of memory in use
+Info: Updated CUDA force table with 4096 elements.
+Info: Updated CUDA LJ table with 3 x 3 elements.
+Info: Startup phase 8 took 0.0247049 s, 0 MB of memory in use
+Info: Startup phase 9 took 0.0152983 s, 0 MB of memory in use
+Info: Startup phase 10 took 0.0200958 s, 0 MB of memory in use
+Info: Startup phase 11 took 0.0279306 s, 0 MB of memory in use
+LDB: Central LB being created...
+Info: Startup phase 12 took 0.0199705 s, 0 MB of memory in use
+Info: Startup phase 13 took 0.016005 s, 0 MB of memory in use
+Info: Startup phase 14 took 0.0159923 s, 0 MB of memory in use
+Info: Startup phase 15 took 0.0160179 s, 0 MB of memory in use
+Info: CREATING 599 COMPUTE OBJECTS
+Info: Found 4 unique exclusion lists needing 4 bytes
+Info: useSync: 0 useProxySync: 0
+Info: Startup phase 16 took 0.0362284 s, 0 MB of memory in use
+Info: Startup phase 17 took 0.000692221 s, 0 MB of memory in use
+Info: Startup phase 18 took 0.000311343 s, 0 MB of memory in use
+Info: Finished startup at 0.777166 s, 0 MB of memory in use
+
+REINITIALIZING VELOCITIES AT STEP 0 TO 100 KELVIN.
+TCL: Running for 25000 steps
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:       0         0.0000         0.0000         0.0000         0.0000         -29595.7306      5064.0743         0.0000         0.0000      1252.3843         -23279.2720       100.2033    -24531.6563    -23279.1955       100.2033           -333.2775      -333.2775     85640.7228      -333.2775      -333.2775
+
+OPENING EXTENDED SYSTEM TRAJECTORY FILE
+LDB: ============= START OF LOAD BALANCING ============== 1.28438
+LDB: ============== END OF LOAD BALANCING =============== 1.28792
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1.29601
+LDB: ============= START OF LOAD BALANCING ============== 2.56393
+LDB: Partitioning computes with target load 0.000000
+LDB: Increased migratable compute count from 0 to 0
+LDB: Largest unpartitionable compute is 0.000000
+LDB: ============== END OF LOAD BALANCING =============== 2.58794
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 2.70791
+Info: Initial time: 4 CPUs 0.0163771 s/step 0.094775 days/ns 0 MB memory
+LDB: ============= START OF LOAD BALANCING ============== 3.02792
+LDB: ============== END OF LOAD BALANCING =============== 3.03992
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 3.06391
+LDB: ============= START OF LOAD BALANCING ============== 4.373
+LDB: TIME 4.38794 LOAD: AVG 0.0788241 MAX 0.129611  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 4.38837 LOAD: AVG 0.0788241 MAX 0.129611  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 TorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 4.40392
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 4.50391
+Info: Initial time: 4 CPUs 0.0163596 s/step 0.0946735 days/ns 0 MB memory
+LDB: ============= START OF LOAD BALANCING ============== 6.14392
+LDB: TIME 6.15193 LOAD: AVG 0.0829494 MAX 0.151906  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 6.15992 LOAD: AVG 0.0829494 MAX 0.151906  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 6.16036 LOAD: AVG 0.0829494 MAX 0.151906  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 6.16831
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 6.27592
+Info: Initial time: 4 CPUs 0.0163523 s/step 0.0946316 days/ns 0 MB memory
+LDB: ============= START OF LOAD BALANCING ============== 7.92391
+LDB: TIME 7.93232 LOAD: AVG 0.0826325 MAX 0.139456  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 7.93279 LOAD: AVG 0.0826325 MAX 0.139456  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 7.93297 LOAD: AVG 0.0826325 MAX 0.139456  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 7.93992
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 8.04792
+Info: Benchmark time: 4 CPUs 0.0164344 s/step 0.0951062 days/ns 0 MB memory
+Info: Benchmark time: 4 CPUs 0.0168738 s/step 0.0976491 days/ns 0 MB memory
+TIMING: 500  CPU: 4.61583, 0.00901876/step  Wall: 9.01981, 0.0176448/step, 0.120083 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 500  averaging 9.79323 ns/day, 0.0176448 sec/step with standard deviation 0
+ENERGY:     500         0.0000         0.0000         0.0000         0.0000         -25410.8684      3820.5333         0.0000         0.0000      2630.2909         -18960.0442       210.4496    -21590.3351    -18957.7321       142.4725           -662.0267      -652.3311     85640.7228      -245.9963      -246.0296
+
+Info: Benchmark time: 4 CPUs 0.0168749 s/step 0.097656 days/ns 0 MB memory
+Info: Benchmark time: 4 CPUs 0.0158043 s/step 0.0914602 days/ns 0 MB memory
+Info: Benchmark time: 4 CPUs 0.0167493 s/step 0.0969289 days/ns 0 MB memory
+Info: Benchmark time: 4 CPUs 0.0162744 s/step 0.0941805 days/ns 0 MB memory
+TIMING: 1000  CPU: 8.77327, 0.00831488/step  Wall: 17.2473, 0.0164549/step, 0.109699 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 1000  averaging 10.135 ns/day, 0.0170499 sec/step with standard deviation 0.000841411
+ENERGY:    1000         0.0000         0.0000         0.0000         0.0000         -23676.9036      3346.4316         0.0000         0.0000      3215.8771         -17114.5949       257.3023    -20330.4720    -17103.7159       236.5934           -605.1278      -599.3249     85640.7228      -716.1145      -715.2559
+
+TIMING: 1500  CPU: 12.9693, 0.0083921/step  Wall: 25.5193, 0.0165442/step, 0.107997 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 1500  averaging 10.2362 ns/day, 0.0168813 sec/step with standard deviation 0.000662747
+ENERGY:    1500         0.0000         0.0000         0.0000         0.0000         -22894.2516      3109.8621         0.0000         0.0000      3527.2566         -16257.1329       282.2158    -19784.3895    -16253.1565       270.9532           -709.7661      -704.5213     85640.7228      -666.8047      -667.3960
+
+TIMING: 2000  CPU: 17.1826, 0.00842656/step  Wall: 33.7313, 0.0164239/step, 0.10493 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 2000  averaging 10.306 ns/day, 0.0167669 sec/step with standard deviation 0.000587483
+ENERGY:    2000         0.0000         0.0000         0.0000         0.0000         -22324.3105      3024.7080         0.0000         0.0000      3710.1608         -15589.4417       296.8500    -19299.6025    -15581.8549       290.2018           -429.3002      -437.0426     85640.7228      -652.6195      -651.7511
+
+OPENING COORDINATE DCD FILE
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 2500
+WRITING COORDINATES TO RESTART FILE AT STEP 2500
+FINISHED WRITING RESTART COORDINATES
+The last position output (seq=2500) takes 0.090 seconds, 0.000 MB of memory in use
+WRITING VELOCITIES TO RESTART FILE AT STEP 2500
+FINISHED WRITING RESTART VELOCITIES
+The last velocity output (seq=2500) takes 0.045 seconds, 0.000 MB of memory in use
+TIMING: 2500  CPU: 21.4723, 0.00857939/step  Wall: 42.2232, 0.0169838/step, 0.106149 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 2500  averaging 10.2794 ns/day, 0.0168103 sec/step with standard deviation 0.000517935
+ENERGY:    2500         0.0000         0.0000         0.0000         0.0000         -22029.9877      2822.1869         0.0000         0.0000      3818.2951         -15389.5058       305.5018    -19207.8009    -15383.7111       300.8092           -894.6287      -872.1703     85640.7228      -775.9373      -774.6955
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 2500
+TIMING: 3000  CPU: 25.9027, 0.00886089/step  Wall: 50.7914, 0.0171364/step, 0.104723 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 3000  averaging 10.2463 ns/day, 0.0168647 sec/step with standard deviation 0.000482007
+ENERGY:    3000         0.0000         0.0000         0.0000         0.0000         -21787.7774      2757.1694         0.0000         0.0000      3911.7087         -15118.8993       312.9758    -19030.6080    -15109.5543       307.2101           -825.1908      -806.4195     85640.7228      -687.5983      -687.5544
+
+TIMING: 3500  CPU: 30.1874, 0.00856933/step  Wall: 59.1833, 0.0167838/step, 0.100237 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 3500  averaging 10.2533 ns/day, 0.0168531 sec/step with standard deviation 0.00044107
+ENERGY:    3500         0.0000         0.0000         0.0000         0.0000         -21844.8548      2856.7158         0.0000         0.0000      3885.7582         -15102.3807       310.8995    -18988.1390    -15095.6479       312.5492           -474.8078      -481.3604     85640.7228      -582.0063      -580.8522
+
+TIMING: 4000  CPU: 34.474, 0.00857312/step  Wall: 67.5873, 0.0168081/step, 0.098047 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 4000  averaging 10.2567 ns/day, 0.0168475 sec/step with standard deviation 0.000408662
+ENERGY:    4000         0.0000         0.0000         0.0000         0.0000         -21772.0610      2756.0514         0.0000         0.0000      3939.0199         -15076.9897       315.1610    -19016.0096    -15072.4481       312.3753           -874.6533      -821.0753     85640.7228      -661.4512      -661.1024
+
+LDB: ============= START OF LOAD BALANCING ============== 73.2679
+LDB: ============== END OF LOAD BALANCING =============== 73.2759
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 73.3079
+LDB: ============= START OF LOAD BALANCING ============== 75.028
+LDB: TIME 75.0445 LOAD: AVG 0.100283 MAX 0.163973  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 75.0451 LOAD: AVG 0.100283 MAX 0.163973  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 75.0459 LOAD: AVG 0.100283 MAX 0.163973  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 75.0559
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 75.1719
+TIMING: 4500  CPU: 38.9074, 0.0088669/step  Wall: 76.2513, 0.0173279/step, 0.098673 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 4500  averaging 10.2243 ns/day, 0.0169009 sec/step with standard deviation 0.000414461
+ENERGY:    4500         0.0000         0.0000         0.0000         0.0000         -21657.0835      2739.9693         0.0000         0.0000      3926.4987         -14990.6154       314.1592    -18917.1141    -14985.4030       312.5294           -780.4640      -750.1852     85640.7228      -676.3217      -676.4401
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 5000
+WRITING COORDINATES TO RESTART FILE AT STEP 5000
+FINISHED WRITING RESTART COORDINATES
+The last position output (seq=5000) takes 0.070 seconds, 0.000 MB of memory in use
+WRITING VELOCITIES TO RESTART FILE AT STEP 5000
+FINISHED WRITING RESTART VELOCITIES
+The last velocity output (seq=5000) takes 0.038 seconds, 0.000 MB of memory in use
+TIMING: 5000  CPU: 43.0915, 0.00836827/step  Wall: 84.6483, 0.016794/step, 0.0933002 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 5000  averaging 10.2308 ns/day, 0.0168902 sec/step with standard deviation 0.000392215
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:    5000         0.0000         0.0000         0.0000         0.0000         -21856.6324      2794.6077         0.0000         0.0000      3859.2432         -15202.7816       308.7780    -19062.0247    -15197.1193       311.4246           -760.5762      -749.2081     85640.7228      -592.8306      -592.7684
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 5000
+TIMING: 5500  CPU: 47.4802, 0.00877728/step  Wall: 93.0593, 0.0168219/step, 0.0911189 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 5500  averaging 10.2346 ns/day, 0.016884 sec/step with standard deviation 0.000372656
+ENERGY:    5500         0.0000         0.0000         0.0000         0.0000         -22040.3400      2851.2678         0.0000         0.0000      3904.0683         -15285.0040       312.3645    -19189.0723    -15280.6980       310.0126           -570.7093      -600.6867     85640.7228      -604.1770      -605.4241
+
+TIMING: 6000  CPU: 51.7126, 0.00846475/step  Wall: 101.459, 0.0168002/step, 0.0886676 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 6000  averaging 10.2388 ns/day, 0.016877 sec/step with standard deviation 0.000356136
+ENERGY:    6000         0.0000         0.0000         0.0000         0.0000         -21959.2131      2799.7608         0.0000         0.0000      3878.8642         -15280.5881       310.3479    -19159.4523    -15274.7237       309.3725           -668.8285      -688.8627     85640.7228      -579.2606      -577.4153
+
+TIMING: 6500  CPU: 55.8205, 0.00821593/step  Wall: 109.531, 0.016144/step, 0.0829623 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 6500  averaging 10.2731 ns/day, 0.0168206 sec/step with standard deviation 0.000396978
+ENERGY:    6500         0.0000         0.0000         0.0000         0.0000         -21925.9908      2820.5823         0.0000         0.0000      3857.9972         -15247.4114       308.6783    -19105.4086    -15241.1726       310.2531           -645.4489      -614.4466     85640.7228      -534.6505      -532.8672
+
+TIMING: 7000  CPU: 60.0876, 0.00853412/step  Wall: 117.927, 0.016792/step, 0.0839601 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 7000  averaging 10.2744 ns/day, 0.0168186 sec/step with standard deviation 0.000381481
+ENERGY:    7000         0.0000         0.0000         0.0000         0.0000         -22046.6793      2880.0797         0.0000         0.0000      3944.8920         -15221.7076       315.6308    -19166.5996    -15214.7448       312.2286           -409.3349      -428.7240     85640.7228      -491.4818      -491.6304
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 7500
+WRITING COORDINATES TO RESTART FILE AT STEP 7500
+FINISHED WRITING RESTART COORDINATES
+The last position output (seq=7500) takes 0.073 seconds, 0.000 MB of memory in use
+WRITING VELOCITIES TO RESTART FILE AT STEP 7500
+FINISHED WRITING RESTART VELOCITIES
+The last velocity output (seq=7500) takes 0.058 seconds, 0.000 MB of memory in use
+TIMING: 7500  CPU: 64.378, 0.00858077/step  Wall: 126.407, 0.0169597/step, 0.0824429 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 7500  averaging 10.2686 ns/day, 0.016828 sec/step with standard deviation 0.000369405
+ENERGY:    7500         0.0000         0.0000         0.0000         0.0000         -22112.1167      2901.6325         0.0000         0.0000      3972.7538         -15237.7305       317.8600    -19210.4843    -15230.6849       308.8083           -380.5592      -370.8100     85640.7228      -527.4660      -526.7132
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 7500
+TIMING: 8000  CPU: 68.6839, 0.00861178/step  Wall: 134.759, 0.0167043/step, 0.0788812 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 8000  averaging 10.2733 ns/day, 0.0168202 sec/step with standard deviation 0.000358217
+ENERGY:    8000         0.0000         0.0000         0.0000         0.0000         -22057.4514      2957.8099         0.0000         0.0000      3868.5996         -15231.0418       309.5267    -19099.6415    -15227.3179       311.0365           -165.2907      -174.8847     85640.7228      -441.7451      -440.1205
+
+LDB: ============= START OF LOAD BALANCING ============== 140.488
+LDB: ============== END OF LOAD BALANCING =============== 140.496
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 140.524
+LDB: ============= START OF LOAD BALANCING ============== 142.22
+LDB: TIME 142.236 LOAD: AVG 0.114111 MAX 0.208525  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 142.236 LOAD: AVG 0.114111 MAX 0.208525  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 142.237 LOAD: AVG 0.114111 MAX 0.208525  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 142.26
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 142.28
+TIMING: 8500  CPU: 72.9805, 0.00859332/step  Wall: 143.195, 0.0168719/step, 0.0773293 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 8500  averaging 10.2715 ns/day, 0.0168233 sec/step with standard deviation 0.000347068
+ENERGY:    8500         0.0000         0.0000         0.0000         0.0000         -21964.7923      2805.8479         0.0000         0.0000      3841.5772         -15317.3672       307.3646    -19158.9444    -15311.7982       308.5497           -637.0183      -666.3095     85640.7228      -669.7975      -668.7682
+
+TIMING: 9000  CPU: 77.2255, 0.00848999/step  Wall: 151.587, 0.0167844/step, 0.0745972 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 9000  averaging 10.2728 ns/day, 0.0168211 sec/step with standard deviation 0.00033683
+ENERGY:    9000         0.0000         0.0000         0.0000         0.0000         -21907.7757      2772.1893         0.0000         0.0000      3867.7886         -15267.7978       309.4618    -19135.5864    -15261.5409       307.7169           -748.7152      -764.1841     85640.7228      -634.0537      -633.4464
+
+TIMING: 9500  CPU: 81.4981, 0.00854514/step  Wall: 159.927, 0.0166798/step, 0.071816 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 9500  averaging 10.2773 ns/day, 0.0168137 sec/step with standard deviation 0.000328941
+ENERGY:    9500         0.0000         0.0000         0.0000         0.0000         -22063.1569      2834.2293         0.0000         0.0000      3890.8848         -15338.0428       311.3097    -19228.9276    -15326.7787       309.7738           -588.6511      -607.5796     85640.7228      -468.4554      -467.4278
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 10000
+WRITING COORDINATES TO RESTART FILE AT STEP 10000
+FINISHED WRITING RESTART COORDINATES
+The last position output (seq=10000) takes 0.069 seconds, 0.000 MB of memory in use
+WRITING VELOCITIES TO RESTART FILE AT STEP 10000
+FINISHED WRITING RESTART VELOCITIES
+The last velocity output (seq=10000) takes 0.054 seconds, 0.000 MB of memory in use
+TIMING: 10000  CPU: 85.6768, 0.00835732/step  Wall: 168.247, 0.0166402/step, 0.0693341 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 10000  averaging 10.2826 ns/day, 0.016805 sec/step with standard deviation 0.000322509
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   10000         0.0000         0.0000         0.0000         0.0000         -22019.7286      2901.5882         0.0000         0.0000      3919.8489         -15198.2915       313.6271    -19118.1403    -15188.7523       309.8356           -261.5618      -263.7420     85640.7228      -573.7858      -573.1218
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 10000
+TIMING: 10500  CPU: 90.0729, 0.00879224/step  Wall: 176.787, 0.0170799/step, 0.068794 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 10500  averaging 10.2746 ns/day, 0.0168181 sec/step with standard deviation 0.000320015
+ENERGY:   10500         0.0000         0.0000         0.0000         0.0000         -21995.3183      2871.6530         0.0000         0.0000      3864.7196         -15258.9457       309.2162    -19123.6654    -15250.0088       310.4497           -344.8968      -366.4076     85640.7228      -526.7344      -526.0717
+
+TIMING: 11000  CPU: 94.3182, 0.00849058/step  Wall: 185.043, 0.0165117/step, 0.0642123 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 11000  averaging 10.2832 ns/day, 0.0168042 sec/step with standard deviation 0.00031906
+ENERGY:   11000         0.0000         0.0000         0.0000         0.0000         -22041.2813      2879.6821         0.0000         0.0000      3876.4731         -15285.1262       310.1566    -19161.5993    -15277.2475       308.3559           -407.4253      -413.2071     85640.7228      -542.5749      -541.4010
+
+TIMING: 11500  CPU: 98.6754, 0.00871451/step  Wall: 193.544, 0.017001/step, 0.0637536 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 11500  averaging 10.2779 ns/day, 0.0168127 sec/step with standard deviation 0.000314414
+ENERGY:   11500         0.0000         0.0000         0.0000         0.0000         -21898.9323      2787.3045         0.0000         0.0000      3892.1844         -15219.4434       311.4137    -19111.6278    -15214.8846       312.1156           -577.0316      -554.7027     85640.7228      -540.8705      -540.7575
+
+TIMING: 12000  CPU: 102.812, 0.00827254/step  Wall: 201.703, 0.016319/step, 0.0589299 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 12000  averaging 10.2905 ns/day, 0.0167922 sec/step with standard deviation 0.000323594
+ENERGY:   12000         0.0000         0.0000         0.0000         0.0000         -22023.2012      2831.9049         0.0000         0.0000      3932.5882         -15258.7082       314.6464    -19191.2963    -15249.4217       311.7711           -559.3970      -577.4160     85640.7228      -537.1035      -536.9008
+
+LDB: ============= START OF LOAD BALANCING ============== 207.64
+LDB: ============== END OF LOAD BALANCING =============== 207.648
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 207.676
+LDB: ============= START OF LOAD BALANCING ============== 209.404
+LDB: TIME 209.42 LOAD: AVG 0.165912 MAX 0.374223  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 209.42 LOAD: AVG 0.165912 MAX 0.374223  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 209.421 LOAD: AVG 0.165912 MAX 0.374223  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 209.432
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 209.54
+TIMING: 12500  CPU: 107.275, 0.00892642/step  Wall: 210.503, 0.0176/step, 0.0611113 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 12500  averaging 10.2708 ns/day, 0.0168245 sec/step with standard deviation 0.000355608
+ENERGY:   12500         0.0000         0.0000         0.0000         0.0000         -21999.1755      2824.6451         0.0000         0.0000      3837.1691         -15337.3614       307.0119    -19174.5305    -15331.5833       309.7081           -719.2909      -725.5494     85640.7228      -696.5076      -696.9758
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 12500
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 12500
+WRITING COORDINATES TO RESTART FILE AT STEP 12500
+FINISHED WRITING RESTART COORDINATES
+The last position output (seq=12500) takes 0.080 seconds, 0.000 MB of memory in use
+WRITING VELOCITIES TO RESTART FILE AT STEP 12500
+FINISHED WRITING RESTART VELOCITIES
+The last velocity output (seq=12500) takes 0.057 seconds, 0.000 MB of memory in use
+TIMING: 13000  CPU: 111.747, 0.00894325/step  Wall: 219.251, 0.017496/step, 0.0583199 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 13000  averaging 10.255 ns/day, 0.0168503 sec/step with standard deviation 0.00037248
+ENERGY:   13000         0.0000         0.0000         0.0000         0.0000         -22076.5762      2882.3830         0.0000         0.0000      3864.7555         -15329.4377       309.2191    -19194.1932    -15321.8356       309.0518           -561.4415      -557.2318     85640.7228      -590.8544      -592.4045
+
+TIMING: 13500  CPU: 116.15, 0.00880731/step  Wall: 228.015, 0.017528/step, 0.0559922 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 13500  averaging 10.2398 ns/day, 0.0168754 sec/step with standard deviation 0.000387834
+ENERGY:   13500         0.0000         0.0000         0.0000         0.0000         -21953.5010      2785.6772         0.0000         0.0000      3843.8037         -15324.0201       307.5427    -19167.8238    -15320.6746       307.3862           -793.4137      -801.0323     85640.7228      -765.1656      -764.8486
+
+TIMING: 14000  CPU: 120.428, 0.00855635/step  Wall: 236.351, 0.016672/step, 0.0509422 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 14000  averaging 10.2442 ns/day, 0.0168681 sec/step with standard deviation 0.00038252
+ENERGY:   14000         0.0000         0.0000         0.0000         0.0000         -21952.3813      2873.8590         0.0000         0.0000      3938.5983         -15139.9239       315.1272    -19078.5223    -15133.0784       310.3846           -403.9982      -395.9217     85640.7228      -674.1216      -674.7082
+
+TIMING: 14500  CPU: 124.751, 0.00864502/step  Wall: 244.68, 0.0166567/step, 0.048582 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 14500  averaging 10.2486 ns/day, 0.0168608 sec/step with standard deviation 0.000377674
+ENERGY:   14500         0.0000         0.0000         0.0000         0.0000         -21978.7271      2806.0564         0.0000         0.0000      3964.7206         -15207.9502       317.2173    -19172.6707    -15199.7410       313.6053           -649.5089      -678.2354     85640.7228      -445.1777      -446.0756
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 15000
+WRITING COORDINATES TO RESTART FILE AT STEP 15000
+FINISHED WRITING RESTART COORDINATES
+The last position output (seq=15000) takes 0.084 seconds, 0.000 MB of memory in use
+WRITING VELOCITIES TO RESTART FILE AT STEP 15000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 15000  CPU: 129.059, 0.00861687/step  Wall: 253.234, 0.0171092/step, 0.0475255 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 15000  averaging 10.2436 ns/day, 0.0168691 sec/step with standard deviation 0.000373864
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   15000         0.0000         0.0000         0.0000         0.0000         -21994.1920      2839.9460         0.0000         0.0000      3838.2597         -15315.9863       307.0992    -19154.2460    -15307.2066       308.9294           -510.9929      -506.6067     85640.7228      -629.2375      -629.3851
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 15000
+TIMING: 15500  CPU: 133.356, 0.00859268/step  Wall: 261.672, 0.0168746/step, 0.0445303 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 15500  averaging 10.2435 ns/day, 0.0168693 sec/step with standard deviation 0.000367582
+ENERGY:   15500         0.0000         0.0000         0.0000         0.0000         -21902.1216      2794.6668         0.0000         0.0000      3933.4665         -15173.9882       314.7167    -19107.4548    -15165.1513       312.9236           -753.2470      -717.9374     85640.7228      -563.4129      -562.4808
+
+TIMING: 16000  CPU: 137.596, 0.00848007/step  Wall: 269.951, 0.0165595/step, 0.0413988 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 16000  averaging 10.2493 ns/day, 0.0168596 sec/step with standard deviation 0.000365727
+ENERGY:   16000         0.0000         0.0000         0.0000         0.0000         -21807.6816      2652.3037         0.0000         0.0000      3880.2432         -15275.1348       310.4583    -19155.3780    -15268.0134       311.7518          -1115.6464     -1109.6784     85640.7228      -704.3388      -704.5048
+
+LDB: ============= START OF LOAD BALANCING ============== 275.676
+LDB: ============== END OF LOAD BALANCING =============== 275.68
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 275.708
+LDB: ============= START OF LOAD BALANCING ============== 277.36
+LDB: TIME 277.376 LOAD: AVG 0.0984984 MAX 0.152251  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 277.376 LOAD: AVG 0.0984984 MAX 0.152251  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 277.377 LOAD: AVG 0.0984984 MAX 0.152251  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 277.392
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 277.504
+TIMING: 16500  CPU: 141.913, 0.00863501/step  Wall: 278.447, 0.0169922/step, 0.0401206 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 16500  averaging 10.2469 ns/day, 0.0168636 sec/step with standard deviation 0.000360707
+ENERGY:   16500         0.0000         0.0000         0.0000         0.0000         -21721.8784      2639.0077         0.0000         0.0000      3883.5811         -15199.2896       310.7253    -19082.8707    -15194.2541       311.3428           -975.1325      -984.3620     85640.7228      -701.1126      -701.3102
+
+TIMING: 17000  CPU: 146.106, 0.00838472/step  Wall: 286.751, 0.0166078/step, 0.0369063 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 17000  averaging 10.2515 ns/day, 0.0168561 sec/step with standard deviation 0.000357899
+ENERGY:   17000         0.0000         0.0000         0.0000         0.0000         -21940.0466      2780.6993         0.0000         0.0000      3821.9896         -15337.3577       305.7974    -19159.3473    -15329.8132       311.2062           -777.3815      -797.0057     85640.7228      -579.9060      -579.3180
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 17500
+WRITING COORDINATES TO RESTART FILE AT STEP 17500
+FINISHED WRITING RESTART COORDINATES
+The last position output (seq=17500) takes 0.080 seconds, 0.000 MB of memory in use
+WRITING VELOCITIES TO RESTART FILE AT STEP 17500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 17500  CPU: 150.519, 0.0088261/step  Wall: 295.516, 0.0175299/step, 0.0365206 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 17500  averaging 10.2398 ns/day, 0.0168754 sec/step with standard deviation 0.000370533
+ENERGY:   17500         0.0000         0.0000         0.0000         0.0000         -22030.9307      2822.6195         0.0000         0.0000      3907.0245         -15301.2868       312.6010    -19208.3112    -15294.5506       309.5425           -597.7369      -601.5036     85640.7228      -525.9442      -525.7394
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 17500
+TIMING: 18000  CPU: 154.757, 0.00847705/step  Wall: 303.815, 0.016598/step, 0.032274 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 18000  averaging 10.2445 ns/day, 0.0168677 sec/step with standard deviation 0.000368115
+ENERGY:   18000         0.0000         0.0000         0.0000         0.0000         -22068.7457      2921.9627         0.0000         0.0000      3879.1045         -15267.6784       310.3671    -19146.7829    -15263.0400       310.5124           -315.2419      -310.4068     85640.7228      -559.6398      -561.1458
+
+TIMING: 18500  CPU: 159.023, 0.00853254/step  Wall: 312.148, 0.0166655/step, 0.0300906 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 18500  averaging 10.2478 ns/day, 0.0168622 sec/step with standard deviation 0.000364484
+ENERGY:   18500         0.0000         0.0000         0.0000         0.0000         -21869.8155      2724.4602         0.0000         0.0000      3857.6162         -15287.7390       308.6479    -19145.3552    -15279.5483       309.6875           -857.5199      -786.8821     85640.7228      -560.5582      -561.0635
+
+TIMING: 19000  CPU: 163.341, 0.00863562/step  Wall: 320.663, 0.0170304/step, 0.0283841 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 19000  averaging 10.2451 ns/day, 0.0168666 sec/step with standard deviation 0.000360559
+ENERGY:   19000         0.0000         0.0000         0.0000         0.0000         -21971.6888      2753.1667         0.0000         0.0000      3903.4335         -15315.0886       312.3137    -19218.5221    -15306.9310       309.4622           -892.9299      -884.6826     85640.7228      -658.8364      -659.2950
+
+TIMING: 19500  CPU: 167.521, 0.0083592/step  Wall: 328.891, 0.0164562/step, 0.0251414 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 19500  averaging 10.2515 ns/day, 0.0168561 sec/step with standard deviation 0.000361802
+ENERGY:   19500         0.0000         0.0000         0.0000         0.0000         -21789.4982      2721.5304         0.0000         0.0000      3836.6398         -15231.3279       306.9696    -19067.9677    -15226.2242       310.4877           -890.3051      -868.8605     85640.7228      -643.6857      -642.2709
+
+TIMING: 20000  CPU: 171.854, 0.00866672/step  Wall: 337.303, 0.0168241/step, 0.0233668 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 20000  averaging 10.252 ns/day, 0.0168553 sec/step with standard deviation 0.00035717
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   20000         0.0000         0.0000         0.0000         0.0000         -22142.3007      2891.1223         0.0000         0.0000      3878.9102         -15372.2681       310.3516    -19251.1783    -15365.3221       310.7575           -398.7072      -433.0383     85640.7228      -460.7416      -462.3602
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 20000
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 20000
+WRITING COORDINATES TO RESTART FILE AT STEP 20000
+FINISHED WRITING RESTART COORDINATES
+The last position output (seq=20000) takes 0.054 seconds, 0.000 MB of memory in use
+WRITING VELOCITIES TO RESTART FILE AT STEP 20000
+FINISHED WRITING RESTART VELOCITIES
+LDB: ============= START OF LOAD BALANCING ============== 343.513
+LDB: ============== END OF LOAD BALANCING =============== 343.516
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 343.54
+LDB: ============= START OF LOAD BALANCING ============== 345.212
+LDB: TIME 345.228 LOAD: AVG 0.17873 MAX 0.375013  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 345.228 LOAD: AVG 0.17873 MAX 0.375013  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 345.229 LOAD: AVG 0.17873 MAX 0.375013  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 345.244
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 345.356
+TIMING: 20500  CPU: 176.331, 0.00895417/step  Wall: 346.211, 0.0178159/step, 0.0222699 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 20500  averaging 10.2377 ns/day, 0.0168787 sec/step with standard deviation 0.000383259
+ENERGY:   20500         0.0000         0.0000         0.0000         0.0000         -21811.8949      2697.6958         0.0000         0.0000      3866.4703         -15247.7288       309.3563    -19114.1990    -15242.0975       310.0006           -888.6395      -885.6982     85640.7228      -576.2555      -575.3321
+
+TIMING: 21000  CPU: 180.65, 0.00863772/step  Wall: 354.779, 0.0171361/step, 0.0190401 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 21000  averaging 10.234 ns/day, 0.0168849 sec/step with standard deviation 0.000380633
+ENERGY:   21000         0.0000         0.0000         0.0000         0.0000         -21975.9536      2829.5338         0.0000         0.0000      3911.7332         -15234.6866       312.9778    -19146.4198    -15225.1908       311.7874           -609.3122      -601.1592     85640.7228      -568.6216      -569.2629
+
+TIMING: 21500  CPU: 184.902, 0.00850402/step  Wall: 363.091, 0.0166239/step, 0.0161622 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 21500  averaging 10.2377 ns/day, 0.0168788 sec/step with standard deviation 0.000378174
+ENERGY:   21500         0.0000         0.0000         0.0000         0.0000         -22008.4003      2853.9377         0.0000         0.0000      3888.0331         -15266.4296       311.0815    -19154.4626    -15258.7330       310.2329           -680.3195      -659.0493     85640.7228      -666.4662      -666.2586
+
+TIMING: 22000  CPU: 189.465, 0.00912487/step  Wall: 371.899, 0.0176161/step, 0.0146801 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 22000  averaging 10.2275 ns/day, 0.0168955 sec/step with standard deviation 0.000389929
+ENERGY:   22000         0.0000         0.0000         0.0000         0.0000         -22037.3351      2807.4008         0.0000         0.0000      3878.0525         -15351.8818       310.2830    -19229.9343    -15341.5627       307.0189           -727.0055      -797.6288     85640.7228      -845.4077      -844.5827
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 22500
+WRITING COORDINATES TO RESTART FILE AT STEP 22500
+FINISHED WRITING RESTART COORDINATES
+The last position output (seq=22500) takes 0.062 seconds, 0.000 MB of memory in use
+WRITING VELOCITIES TO RESTART FILE AT STEP 22500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 22500  CPU: 193.931, 0.00893228/step  Wall: 380.827, 0.0178556/step, 0.0123997 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 22500  averaging 10.2146 ns/day, 0.0169169 sec/step with standard deviation 0.000411182
+ENERGY:   22500         0.0000         0.0000         0.0000         0.0000         -22005.0634      2765.0993         0.0000         0.0000      3825.2716         -15414.6925       306.0600    -19239.9641    -15410.5000       309.2251           -884.5970      -896.4633     85640.7228      -700.8187      -699.9504
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 22500
+TIMING: 23000  CPU: 198.125, 0.00838957/step  Wall: 389.271, 0.0168881/step, 0.00938228 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 23000  averaging 10.215 ns/day, 0.0169163 sec/step with standard deviation 0.00040661
+ENERGY:   23000         0.0000         0.0000         0.0000         0.0000         -22118.0063      2814.7180         0.0000         0.0000      3815.3000         -15487.9884       305.2621    -19303.2883    -15478.6096       306.4575           -678.7808      -688.5647     85640.7228      -603.7731      -604.4083
+
+TIMING: 23500  CPU: 202.613, 0.00897446/step  Wall: 397.823, 0.0171043/step, 0.00712679 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 23500  averaging 10.2126 ns/day, 0.0169203 sec/step with standard deviation 0.0004031
+ENERGY:   23500         0.0000         0.0000         0.0000         0.0000         -22005.5157      2837.1018         0.0000         0.0000      3783.4525         -15384.9614       302.7140    -19168.4139    -15378.4173       308.8249           -608.2964      -633.3052     85640.7228      -579.8232      -578.5055
+
+TIMING: 24000  CPU: 207.056, 0.00888663/step  Wall: 406.347, 0.0170478/step, 0.00473551 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 24000  averaging 10.211 ns/day, 0.0169229 sec/step with standard deviation 0.000399214
+ENERGY:   24000         0.0000         0.0000         0.0000         0.0000         -22064.5762      2804.9601         0.0000         0.0000      3865.3383         -15394.2778       309.2657    -19259.6161    -15392.4812       308.7490           -722.1343      -714.1450     85640.7228      -560.0484      -558.2276
+
+LDB: ============= START OF LOAD BALANCING ============== 412.136
+LDB: ============== END OF LOAD BALANCING =============== 412.144
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 412.168
+LDB: ============= START OF LOAD BALANCING ============== 413.796
+LDB: TIME 413.816 LOAD: AVG 0.156209 MAX 0.373211  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 413.817 LOAD: AVG 0.156209 MAX 0.373211  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 413.817 LOAD: AVG 0.156209 MAX 0.373211  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 413.828
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 413.932
+TIMING: 24500  CPU: 211.402, 0.00869209/step  Wall: 414.931, 0.0171682/step, 0.00238447 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 24500  averaging 10.208 ns/day, 0.0169279 sec/step with standard deviation 0.000396584
+ENERGY:   24500         0.0000         0.0000         0.0000         0.0000         -21956.6705      2797.8807         0.0000         0.0000      3848.5075         -15310.2823       307.9191    -19158.7898    -15303.9461       307.0716           -694.8830      -694.2101     85640.7228      -785.6835      -785.5471
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 25000
+WRITING COORDINATES TO RESTART FILE AT STEP 25000
+FINISHED WRITING RESTART COORDINATES
+The last position output (seq=25000) takes 0.065 seconds, 0.000 MB of memory in use
+WRITING VELOCITIES TO RESTART FILE AT STEP 25000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 25000  CPU: 215.56, 0.00831497/step  Wall: 423.376, 0.016889/step, 0 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 25000  averaging 10.2085 ns/day, 0.0169271 sec/step with standard deviation 0.000392555
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   25000         0.0000         0.0000         0.0000         0.0000         -21960.6244      2829.7665         0.0000         0.0000      3924.0555         -15206.8024       313.9637    -19130.8580    -15199.8681       309.6770           -527.4888      -553.6600     85640.7228      -660.5439      -660.7544
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 25000
+REINITIALIZING VELOCITIES AT STEP 25000 TO 200 KELVIN.
+TCL: Running for 25000 steps
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   25000         0.0000         0.0000         0.0000         0.0000         -21960.6244      2829.7665         0.0000         0.0000      2437.7225         -16693.1355       195.0422    -19130.8580    -16686.8531       195.0422           -975.5211      -975.5211     85640.7228      -975.5211      -975.5211
+
+TIMING: 25500  CPU: 219.83, 0.00836556/step  Wall: 431.835, 0.016512/step, 0.112373 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 25500  averaging 10.2134 ns/day, 0.016919 sec/step with standard deviation 0.000392935
+ENERGY:   25500         0.0000         0.0000         0.0000         0.0000         -22602.2734      2986.1909         0.0000         0.0000      3716.0868         -15899.9957       297.3241    -19616.0826    -15896.0345       283.7319           -531.2332      -563.6861     85640.7228      -846.1346      -845.3939
+
+TIMING: 26000  CPU: 224.206, 0.00875214/step  Wall: 440.139, 0.016608/step, 0.11072 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 26000  averaging 10.217 ns/day, 0.016913 sec/step with standard deviation 0.000391446
+ENERGY:   26000         0.0000         0.0000         0.0000         0.0000         -22254.0361      2866.4020         0.0000         0.0000      3740.3224         -15647.3117       299.2632    -19387.6341    -15642.7663       300.5764           -720.4584      -708.1613     85640.7228      -647.0085      -646.8253
+
+TIMING: 26500  CPU: 228.539, 0.00866612/step  Wall: 448.595, 0.0169122/step, 0.110399 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 26500  averaging 10.217 ns/day, 0.016913 sec/step with standard deviation 0.000387664
+ENERGY:   26500         0.0000         0.0000         0.0000         0.0000         -22349.6703      2921.1513         0.0000         0.0000      3749.2224         -15679.2966       299.9753    -19428.5190    -15673.9746       305.2033           -504.7241      -529.3089     85640.7228      -493.4638      -493.4475
+
+TIMING: 27000  CPU: 232.849, 0.00861978/step  Wall: 457.071, 0.016952/step, 0.108304 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 27000  averaging 10.2166 ns/day, 0.0169137 sec/step with standard deviation 0.000384026
+ENERGY:   27000         0.0000         0.0000         0.0000         0.0000         -22117.3609      2900.1796         0.0000         0.0000      3853.2584         -15363.9229       308.2992    -19217.1813    -15356.5945       307.9086           -244.5439      -271.4972     85640.7228      -427.1771      -426.2961
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 27500
+WRITING COORDINATES TO RESTART FILE AT STEP 27500
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 27500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 27500  CPU: 237.155, 0.00861138/step  Wall: 465.576, 0.01701/step, 0.106312 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 27500  averaging 10.2155 ns/day, 0.0169155 sec/step with standard deviation 0.000380675
+ENERGY:   27500         0.0000         0.0000         0.0000         0.0000         -21924.5189      2821.1702         0.0000         0.0000      3870.6376         -15232.7111       309.6897    -19103.3487    -15225.3098       309.5984           -514.6545      -529.5248     85640.7228      -543.2265      -543.3279
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 27500
+TIMING: 28000  CPU: 241.375, 0.00844018/step  Wall: 473.951, 0.01675/step, 0.102361 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 28000  averaging 10.2173 ns/day, 0.0169125 sec/step with standard deviation 0.000377846
+ENERGY:   28000         0.0000         0.0000         0.0000         0.0000         -21886.8388      2748.0220         0.0000         0.0000      3861.3186         -15277.4982       308.9441    -19138.8168    -15268.2140       309.9188           -769.8509      -765.6313     85640.7228      -651.1339      -652.2414
+
+LDB: ============= START OF LOAD BALANCING ============== 479.856
+LDB: ============== END OF LOAD BALANCING =============== 479.868
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 479.9
+LDB: ============= START OF LOAD BALANCING ============== 481.592
+LDB: TIME 481.604 LOAD: AVG 0.172491 MAX 0.349905  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 481.605 LOAD: AVG 0.172491 MAX 0.349905  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 481.605 LOAD: AVG 0.172491 MAX 0.349905  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 481.616
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 481.74
+TIMING: 28500  CPU: 245.782, 0.00881383/step  Wall: 482.651, 0.0173998/step, 0.103915 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 28500  averaging 10.2121 ns/day, 0.0169211 sec/step with standard deviation 0.000379977
+ENERGY:   28500         0.0000         0.0000         0.0000         0.0000         -21965.0829      2833.6992         0.0000         0.0000      3798.2152         -15333.1685       303.8952    -19131.3837    -15324.9653       309.1730           -602.3433      -598.8892     85640.7228      -661.2002      -661.7680
+
+TIMING: 29000  CPU: 250.069, 0.00857405/step  Wall: 491.063, 0.0168242/step, 0.0981409 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 29000  averaging 10.2131 ns/day, 0.0169194 sec/step with standard deviation 0.000376844
+ENERGY:   29000         0.0000         0.0000         0.0000         0.0000         -22004.1544      2735.0210         0.0000         0.0000      3928.5324         -15340.6011       314.3219    -19269.1335    -15335.5366       307.4052           -956.0363      -948.9707     85640.7228      -666.1158      -666.6676
+
+TIMING: 29500  CPU: 254.498, 0.00885799/step  Wall: 499.715, 0.0173039/step, 0.0985358 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 29500  averaging 10.2092 ns/day, 0.0169259 sec/step with standard deviation 0.00037692
+ENERGY:   29500         0.0000         0.0000         0.0000         0.0000         -22135.0463      2891.3177         0.0000         0.0000      3865.0158         -15378.7129       309.2399    -19243.7287    -15372.3560       309.0355           -483.5970      -452.0923     85640.7228      -568.2641      -567.4345
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 30000
+WRITING COORDINATES TO RESTART FILE AT STEP 30000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 30000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 30000  CPU: 258.854, 0.00871282/step  Wall: 508.309, 0.0171865/step, 0.0954805 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 30000  averaging 10.2066 ns/day, 0.0169303 sec/step with standard deviation 0.000375223
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   30000         0.0000         0.0000         0.0000         0.0000         -21963.9830      2884.5165         0.0000         0.0000      3857.2879         -15222.1786       308.6216    -19079.4665    -15217.7172       308.7923           -373.9984      -334.8583     85640.7228      -484.7997      -485.5915
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 30000
+TIMING: 30500  CPU: 263.246, 0.00878296/step  Wall: 517.023, 0.0174298/step, 0.0944114 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 30500  averaging 10.2016 ns/day, 0.0169384 sec/step with standard deviation 0.00037754
+ENERGY:   30500         0.0000         0.0000         0.0000         0.0000         -22078.7155      2835.7955         0.0000         0.0000      3834.6813         -15408.2386       306.8129    -19242.9200    -15403.6855       310.2617           -637.2865      -619.2102     85640.7228      -610.3155      -609.5764
+
+TIMING: 31000  CPU: 267.741, 0.00898923/step  Wall: 525.663, 0.0172798/step, 0.0911991 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 31000  averaging 10.1983 ns/day, 0.016944 sec/step with standard deviation 0.000376934
+ENERGY:   31000         0.0000         0.0000         0.0000         0.0000         -22180.9622      2881.0158         0.0000         0.0000      3897.4194         -15402.5270       311.8325    -19299.9464    -15391.9700       306.9507           -461.4993      -470.7484     85640.7228      -573.8418      -574.8235
+
+TIMING: 31500  CPU: 272.171, 0.00886137/step  Wall: 534.351, 0.0173763/step, 0.0892949 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 31500  averaging 10.1942 ns/day, 0.0169508 sec/step with standard deviation 0.000377829
+ENERGY:   31500         0.0000         0.0000         0.0000         0.0000         -22179.8899      2860.1986         0.0000         0.0000      3839.5450         -15480.1463       307.2020    -19319.6913    -15474.4327       307.4392           -616.0444      -618.7502     85640.7228      -449.4469      -448.0734
+
+TIMING: 32000  CPU: 276.607, 0.00887079/step  Wall: 542.951, 0.0171998/step, 0.0859992 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 32000  averaging 10.1919 ns/day, 0.0169547 sec/step with standard deviation 0.000376109
+ENERGY:   32000         0.0000         0.0000         0.0000         0.0000         -22142.5404      2868.4671         0.0000         0.0000      3853.1208         -15420.9524       308.2882    -19274.0733    -15415.0789       305.8351           -597.8135      -591.6335     85640.7228      -501.2053      -499.7351
+
+LDB: ============= START OF LOAD BALANCING ============== 548.869
+LDB: ============== END OF LOAD BALANCING =============== 548.88
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 548.904
+LDB: ============= START OF LOAD BALANCING ============== 550.636
+LDB: TIME 550.652 LOAD: AVG 0.169232 MAX 0.362538  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 550.652 LOAD: AVG 0.169232 MAX 0.362538  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 550.653 LOAD: AVG 0.169232 MAX 0.362538  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 550.656
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 550.657
+TIMING: 32500  CPU: 281.005, 0.00879762/step  Wall: 551.688, 0.0174723/step, 0.0849346 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 32500  averaging 10.1871 ns/day, 0.0169627 sec/step with standard deviation 0.00037864
+ENERGY:   32500         0.0000         0.0000         0.0000         0.0000         -22032.6281      2858.7268         0.0000         0.0000      3903.1576         -15270.7437       312.2916    -19173.9013    -15262.4283       308.7618           -518.3782      -512.1104     85640.7228      -564.8206      -562.6911
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 32500
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 32500
+WRITING COORDINATES TO RESTART FILE AT STEP 32500
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 32500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 33000  CPU: 285.38, 0.00874932/step  Wall: 560.323, 0.0172718/step, 0.0815614 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 33000  averaging 10.1843 ns/day, 0.0169674 sec/step with standard deviation 0.000377638
+ENERGY:   33000         0.0000         0.0000         0.0000         0.0000         -22101.5298      2907.0637         0.0000         0.0000      3838.5758         -15355.8902       307.1245    -19194.4661    -15351.7519       311.4555           -300.0693      -261.2668     85640.7228      -491.5181      -492.9552
+
+TIMING: 33500  CPU: 289.777, 0.0087942/step  Wall: 568.847, 0.0170479/step, 0.0781361 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 33500  averaging 10.1835 ns/day, 0.0169686 sec/step with standard deviation 0.000374896
+ENERGY:   33500         0.0000         0.0000         0.0000         0.0000         -21921.1893      2803.4559         0.0000         0.0000      3893.1656         -15224.5678       311.4922    -19117.7334    -15215.5443       311.3075           -627.0798      -612.5832     85640.7228      -475.3186      -474.3948
+
+TIMING: 34000  CPU: 294.179, 0.0088031/step  Wall: 577.567, 0.0174401/step, 0.0775115 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 34000  averaging 10.1794 ns/day, 0.0169755 sec/step with standard deviation 0.000376456
+ENERGY:   34000         0.0000         0.0000         0.0000         0.0000         -22052.2865      2873.8632         0.0000         0.0000      3857.8025         -15320.6208       308.6628    -19178.4233    -15312.1995       314.1191           -367.4874      -367.6039     85640.7228      -432.6560      -432.9688
+
+TIMING: 34500  CPU: 298.488, 0.0086182/step  Wall: 586.024, 0.0169122/step, 0.0728163 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 34500  averaging 10.1799 ns/day, 0.0169746 sec/step with standard deviation 0.000373755
+ENERGY:   34500         0.0000         0.0000         0.0000         0.0000         -22018.8624      2863.5403         0.0000         0.0000      3880.5634         -15274.7588       310.4839    -19155.3222    -15267.5641       310.9242           -390.1058      -388.0117     85640.7228      -412.6207      -413.4345
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 35000
+WRITING COORDINATES TO RESTART FILE AT STEP 35000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 35000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 35000  CPU: 302.725, 0.00847399/step  Wall: 594.464, 0.016881/step, 0.0703377 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 35000  averaging 10.1807 ns/day, 0.0169732 sec/step with standard deviation 0.000371205
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   35000         0.0000         0.0000         0.0000         0.0000         -22087.2532      2831.3233         0.0000         0.0000      3856.5311         -15399.3988       308.5610    -19255.9299    -15393.2604       309.7691           -663.1202      -656.1770     85640.7228      -513.5077      -512.5468
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 35000
+TIMING: 35500  CPU: 307.025, 0.00859983/step  Wall: 602.935, 0.0169425/step, 0.0682405 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 35500  averaging 10.181 ns/day, 0.0169728 sec/step with standard deviation 0.000368562
+ENERGY:   35500         0.0000         0.0000         0.0000         0.0000         -22017.9843      2834.7766         0.0000         0.0000      3845.0606         -15338.1471       307.6433    -19183.2076    -15332.4213       309.4535           -547.2681      -558.4315     85640.7228      -649.9446      -650.6708
+
+TIMING: 36000  CPU: 311.328, 0.00860675/step  Wall: 611.343, 0.0168163/step, 0.0653966 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 36000  averaging 10.1823 ns/day, 0.0169706 sec/step with standard deviation 0.000366422
+ENERGY:   36000         0.0000         0.0000         0.0000         0.0000         -22146.7289      2862.2501         0.0000         0.0000      3858.6937         -15425.7851       308.7341    -19284.4788    -15422.5883       308.7587           -563.9411      -544.2915     85640.7228      -562.6111      -563.6239
+
+LDB: ============= START OF LOAD BALANCING ============== 616.997
+LDB: ============== END OF LOAD BALANCING =============== 617.008
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 617.032
+LDB: ============= START OF LOAD BALANCING ============== 618.7
+LDB: TIME 618.716 LOAD: AVG 0.162062 MAX 0.322899  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 618.716 LOAD: AVG 0.162062 MAX 0.322899  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 618.717 LOAD: AVG 0.162062 MAX 0.322899  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 618.724
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 618.836
+TIMING: 36500  CPU: 315.759, 0.00886271/step  Wall: 620.047, 0.0174079/step, 0.0652797 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 36500  averaging 10.1787 ns/day, 0.0169766 sec/step with standard deviation 0.000367451
+ENERGY:   36500         0.0000         0.0000         0.0000         0.0000         -21878.8636      2665.7171         0.0000         0.0000      3901.0387         -15312.1079       312.1221    -19213.1465    -15306.2351       311.7798           -956.5629      -959.4849     85640.7228      -579.9663      -578.9825
+
+TIMING: 37000  CPU: 320.045, 0.00857206/step  Wall: 628.431, 0.0167678/step, 0.0605504 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 37000  averaging 10.1804 ns/day, 0.0169738 sec/step with standard deviation 0.000365732
+ENERGY:   37000         0.0000         0.0000         0.0000         0.0000         -22114.2491      2976.4263         0.0000         0.0000      3890.9652         -15246.8576       311.3161    -19137.8228    -15240.4095       312.2166            -61.4104       -67.7760     85640.7228      -412.1782      -412.8681
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 37500
+WRITING COORDINATES TO RESTART FILE AT STEP 37500
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 37500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 37500  CPU: 324.424, 0.00875726/step  Wall: 637.128, 0.0173929/step, 0.0603921 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 37500  averaging 10.177 ns/day, 0.0169794 sec/step with standard deviation 0.000366462
+ENERGY:   37500         0.0000         0.0000         0.0000         0.0000         -21952.5230      2876.1174         0.0000         0.0000      3818.3311         -15258.0745       305.5047    -19076.4056    -15256.3123       308.2411           -402.6294      -401.4757     85640.7228      -633.4053      -632.0047
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 37500
+TIMING: 38000  CPU: 328.783, 0.00871836/step  Wall: 645.711, 0.0171672/step, 0.0572239 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 38000  averaging 10.1756 ns/day, 0.0169819 sec/step with standard deviation 0.000364647
+ENERGY:   38000         0.0000         0.0000         0.0000         0.0000         -21853.4883      2807.1053         0.0000         0.0000      3815.2256         -15231.1575       305.2562    -19046.3831    -15224.2287       310.8949           -539.3859      -524.2509     85640.7228      -517.0130      -517.9913
+
+TIMING: 38500  CPU: 333.133, 0.00869902/step  Wall: 654.231, 0.0170399/step, 0.0544331 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 38500  averaging 10.1751 ns/day, 0.0169826 sec/step with standard deviation 0.000362301
+ENERGY:   38500         0.0000         0.0000         0.0000         0.0000         -22053.2079      2860.9222         0.0000         0.0000      3855.3069         -15336.9788       308.4631    -19192.2857    -15329.7148       310.7355           -448.2624      -494.8885     85640.7228      -587.8123      -589.2174
+
+TIMING: 39000  CPU: 337.78, 0.00929391/step  Wall: 663.083, 0.0177043/step, 0.0540965 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 39000  averaging 10.1696 ns/day, 0.0169919 sec/step with standard deviation 0.0003691
+ENERGY:   39000         0.0000         0.0000         0.0000         0.0000         -22062.9149      2875.5983         0.0000         0.0000      3888.2351         -15299.0815       311.0977    -19187.3166    -15292.7361       311.8234           -361.1481      -351.1379     85640.7228      -461.6536      -461.6777
+
+TIMING: 39500  CPU: 342.186, 0.00881345/step  Wall: 671.667, 0.0171679/step, 0.0500729 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 39500  averaging 10.1682 ns/day, 0.0169941 sec/step with standard deviation 0.000367261
+ENERGY:   39500         0.0000         0.0000         0.0000         0.0000         -22043.4877      2897.0297         0.0000         0.0000      3876.2062         -15270.2517       310.1353    -19146.4580    -15262.7314       310.1379           -419.1474      -405.2599     85640.7228      -612.6838      -611.3573
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 40000
+WRITING COORDINATES TO RESTART FILE AT STEP 40000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 40000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 40000  CPU: 346.477, 0.00858188/step  Wall: 680.218, 0.0171014/step, 0.047504 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 40000  averaging 10.1674 ns/day, 0.0169954 sec/step with standard deviation 0.000365126
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   40000         0.0000         0.0000         0.0000         0.0000         -21960.1639      2797.9815         0.0000         0.0000      3953.3538         -15208.8286       316.3078    -19162.1824    -15204.1154       311.7512           -511.8078      -561.5071     85640.7228      -522.5529      -523.6778
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 40000
+LDB: ============= START OF LOAD BALANCING ============== 686.256
+LDB: ============== END OF LOAD BALANCING =============== 686.264
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 686.296
+LDB: ============= START OF LOAD BALANCING ============== 687.952
+LDB: TIME 687.968 LOAD: AVG 0.174471 MAX 0.419161  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 687.968 LOAD: AVG 0.174471 MAX 0.419161  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 687.969 LOAD: AVG 0.174471 MAX 0.419161  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 687.98
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 688.1
+TIMING: 40500  CPU: 350.986, 0.00901737/step  Wall: 689.059, 0.0176824/step, 0.0466619 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 40500  averaging 10.1624 ns/day, 0.0170039 sec/step with standard deviation 0.000370779
+ENERGY:   40500         0.0000         0.0000         0.0000         0.0000         -22235.5790      2962.7621         0.0000         0.0000      3855.9386         -15416.8784       308.5136    -19272.8169    -15412.6809       309.8608           -262.8172      -239.7612     85640.7228      -521.3158      -521.8028
+
+TIMING: 41000  CPU: 355.47, 0.00896758/step  Wall: 697.803, 0.017488/step, 0.04372 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 41000  averaging 10.1588 ns/day, 0.0170098 sec/step with standard deviation 0.00037234
+ENERGY:   41000         0.0000         0.0000         0.0000         0.0000         -22201.1664      2877.4721         0.0000         0.0000      3902.4206         -15421.2737       312.2327    -19323.6943    -15413.7628       305.5684           -504.0353      -483.7487     85640.7228      -597.6720      -596.8608
+
+TIMING: 41500  CPU: 360.006, 0.00907201/step  Wall: 706.579, 0.017552/step, 0.0414422 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 41500  averaging 10.1549 ns/day, 0.0170163 sec/step with standard deviation 0.000374818
+ENERGY:   41500         0.0000         0.0000         0.0000         0.0000         -22037.5855      2875.4723         0.0000         0.0000      3761.5159         -15400.5972       300.9589    -19162.1132    -15395.7359       306.0535           -513.2601      -486.7588     85640.7228      -711.2957      -710.6251
+
+TIMING: 42000  CPU: 364.279, 0.00854526/step  Wall: 714.855, 0.016552/step, 0.0367822 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 42000  averaging 10.1582 ns/day, 0.0170108 sec/step with standard deviation 0.000375982
+ENERGY:   42000         0.0000         0.0000         0.0000         0.0000         -22134.4307      2937.2595         0.0000         0.0000      3772.6674         -15424.5039       301.8511    -19197.1712    -15420.6982       306.3477           -190.2820      -201.9071     85640.7228      -642.8307      -642.6103
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 42500
+WRITING COORDINATES TO RESTART FILE AT STEP 42500
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 42500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 42500  CPU: 368.673, 0.00878864/step  Wall: 723.546, 0.0173809/step, 0.0362102 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 42500  averaging 10.1556 ns/day, 0.0170152 sec/step with standard deviation 0.000375886
+ENERGY:   42500         0.0000         0.0000         0.0000         0.0000         -22042.7549      2762.0092         0.0000         0.0000      3882.7837         -15397.9621       310.6615    -19280.7457    -15391.4613       305.6224           -864.3274      -875.4453     85640.7228      -605.4145      -605.4425
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 42500
+TIMING: 43000  CPU: 372.905, 0.00846367/step  Wall: 731.931, 0.0167711/step, 0.0326105 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 43000  averaging 10.1573 ns/day, 0.0170123 sec/step with standard deviation 0.000374594
+ENERGY:   43000         0.0000         0.0000         0.0000         0.0000         -21891.1155      2754.9290         0.0000         0.0000      3810.6880         -15325.4986       304.8931    -19136.1865    -15319.6080       307.8517           -787.6245      -797.9240     85640.7228      -618.2056      -619.9816
+
+TIMING: 43500  CPU: 377.11, 0.00841107/step  Wall: 740.212, 0.0165604/step, 0.0299008 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 43500  averaging 10.1604 ns/day, 0.0170071 sec/step with standard deviation 0.000375548
+ENERGY:   43500         0.0000         0.0000         0.0000         0.0000         -22151.2382      2996.0243         0.0000         0.0000      3918.0834         -15237.1304       313.4859    -19155.2138    -15229.6535       309.8120            -69.3566      -104.9939     85640.7228      -669.5669      -670.0646
+
+TIMING: 44000  CPU: 381.507, 0.00879443/step  Wall: 748.703, 0.0169836/step, 0.028306 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 44000  averaging 10.1606 ns/day, 0.0170069 sec/step with standard deviation 0.000373392
+ENERGY:   44000         0.0000         0.0000         0.0000         0.0000         -21824.2437      2758.0354         0.0000         0.0000      3837.0911         -15229.1172       307.0057    -19066.2083    -15220.9614       311.1320           -724.8742      -702.4639     85640.7228      -503.6891      -505.3037
+
+LDB: ============= START OF LOAD BALANCING ============== 754.588
+LDB: ============== END OF LOAD BALANCING =============== 754.596
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 754.62
+LDB: ============= START OF LOAD BALANCING ============== 756.296
+LDB: TIME 756.308 LOAD: AVG 0.129582 MAX 0.271089  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 756.308 LOAD: AVG 0.129582 MAX 0.271089  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 756.309 LOAD: AVG 0.129582 MAX 0.271089  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 756.316
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 756.452
+TIMING: 44500  CPU: 385.946, 0.00887796/step  Wall: 757.427, 0.0174482/step, 0.0266569 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 44500  averaging 10.1576 ns/day, 0.0170118 sec/step with standard deviation 0.0003742
+ENERGY:   44500         0.0000         0.0000         0.0000         0.0000         -22005.0993      2806.5118         0.0000         0.0000      3840.0384         -15358.5490       307.2415    -19198.5874    -15355.5124       308.6125           -581.7273      -613.1617     85640.7228      -623.3336      -622.6688
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 45000
+WRITING COORDINATES TO RESTART FILE AT STEP 45000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 45000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 45000  CPU: 390.184, 0.00847431/step  Wall: 765.881, 0.0169067/step, 0.0234816 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 45000  averaging 10.1583 ns/day, 0.0170107 sec/step with standard deviation 0.000372257
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   45000         0.0000         0.0000         0.0000         0.0000         -22019.3058      2802.1728         0.0000         0.0000      3764.2786         -15452.8545       301.1799    -19217.1330    -15445.5231       306.4788           -729.4954      -702.6089     85640.7228      -527.9985      -529.9499
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 45000
+TIMING: 45500  CPU: 394.563, 0.00875876/step  Wall: 774.407, 0.0170531/step, 0.0213164 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 45500  averaging 10.1581 ns/day, 0.0170111 sec/step with standard deviation 0.000370209
+ENERGY:   45500         0.0000         0.0000         0.0000         0.0000         -22302.2206      3073.3036         0.0000         0.0000      3949.9995         -15278.9175       316.0395    -19228.9170    -15270.0361       308.2757            113.8841       120.3464     85640.7228      -503.9457      -504.3471
+
+TIMING: 46000  CPU: 398.821, 0.00851692/step  Wall: 782.772, 0.0167286/step, 0.0185873 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 46000  averaging 10.1599 ns/day, 0.0170081 sec/step with standard deviation 0.000369346
+ENERGY:   46000         0.0000         0.0000         0.0000         0.0000         -21975.9880      2816.9062         0.0000         0.0000      3934.0717         -15225.0101       314.7651    -19159.0818    -15219.2091       311.0353           -555.9604      -540.2778     85640.7228      -529.9955      -531.8296
+
+TIMING: 46500  CPU: 402.957, 0.00827078/step  Wall: 790.747, 0.0159515/step, 0.0155084 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 46500  averaging 10.1667 ns/day, 0.0169967 sec/step with standard deviation 0.000383323
+ENERGY:   46500         0.0000         0.0000         0.0000         0.0000         -22073.6385      2945.9578         0.0000         0.0000      3844.0866         -15283.5940       307.5654    -19127.6807    -15280.4792       312.4847           -197.5756      -179.3215     85640.7228      -448.0811      -448.9275
+
+TIMING: 47000  CPU: 407.146, 0.00837808/step  Wall: 798.959, 0.0164238/step, 0.0136865 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 47000  averaging 10.1703 ns/day, 0.0169906 sec/step with standard deviation 0.000385808
+ENERGY:   47000         0.0000         0.0000         0.0000         0.0000         -21913.5827      2746.7286         0.0000         0.0000      3950.7269         -15216.1272       316.0977    -19166.8541    -15209.9076       310.9244           -926.1327      -914.7581     85640.7228      -525.1818      -526.2305
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 47500
+WRITING COORDINATES TO RESTART FILE AT STEP 47500
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 47500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 47500  CPU: 411.371, 0.00844973/step  Wall: 807.389, 0.0168591/step, 0.0117077 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 47500  averaging 10.1712 ns/day, 0.0169892 sec/step with standard deviation 0.000383988
+ENERGY:   47500         0.0000         0.0000         0.0000         0.0000         -21917.8948      2786.6050         0.0000         0.0000      3860.2289         -15271.0609       308.8569    -19131.2898    -15260.3989       311.7976           -644.0773      -688.5330     85640.7228      -651.9269      -653.1414
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 47500
+TIMING: 48000  CPU: 415.637, 0.0085319/step  Wall: 815.839, 0.0169009/step, 0.00938938 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 48000  averaging 10.1717 ns/day, 0.0169883 sec/step with standard deviation 0.000382068
+ENERGY:   48000         0.0000         0.0000         0.0000         0.0000         -21935.7476      2809.0124         0.0000         0.0000      3861.1488         -15265.5863       308.9305    -19126.7352    -15257.7187       309.5192           -678.4014      -691.3365     85640.7228      -699.3210      -698.7255
+
+LDB: ============= START OF LOAD BALANCING ============== 821.448
+LDB: ============== END OF LOAD BALANCING =============== 821.456
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 821.488
+LDB: ============= START OF LOAD BALANCING ============== 823.184
+LDB: TIME 823.192 LOAD: AVG 0.147001 MAX 0.295693  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 823.193 LOAD: AVG 0.147001 MAX 0.295693  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 823.193 LOAD: AVG 0.147001 MAX 0.295693  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 823.208
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 823.348
+TIMING: 48500  CPU: 420.02, 0.00876749/step  Wall: 824.439, 0.0172002/step, 0.00716675 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 48500  averaging 10.1704 ns/day, 0.0169905 sec/step with standard deviation 0.000380681
+ENERGY:   48500         0.0000         0.0000         0.0000         0.0000         -22064.3731      2875.3729         0.0000         0.0000      3818.9990         -15370.0012       305.5581    -19189.0002    -15361.7310       310.9636           -473.0068      -504.5357     85640.7228      -525.4475      -525.8540
+
+TIMING: 49000  CPU: 424.424, 0.00880799/step  Wall: 832.932, 0.0169843/step, 0.00471785 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 49000  averaging 10.1704 ns/day, 0.0169904 sec/step with standard deviation 0.000378714
+ENERGY:   49000         0.0000         0.0000         0.0000         0.0000         -22171.1868      2867.4355         0.0000         0.0000      3960.9754         -15342.7760       316.9176    -19303.7513    -15334.2954       309.5506           -635.9941      -667.0466     85640.7228      -568.0351      -568.1975
+
+TIMING: 49500  CPU: 428.693, 0.0085372/step  Wall: 841.339, 0.0168155/step, 0.00233549 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 49500  averaging 10.1715 ns/day, 0.0169887 sec/step with standard deviation 0.000377187
+ENERGY:   49500         0.0000         0.0000         0.0000         0.0000         -22150.6799      2891.4027         0.0000         0.0000      3856.6675         -15402.6097       308.5720    -19259.2771    -15393.6572       309.0095           -466.3714      -473.1878     85640.7228      -557.8480      -558.0720
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 50000
+WRITING COORDINATES TO RESTART FILE AT STEP 50000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 50000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 50000  CPU: 433.197, 0.00900756/step  Wall: 850.327, 0.0179757/step, 0 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 50000  averaging 10.1656 ns/day, 0.0169985 sec/step with standard deviation 0.000388042
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   50000         0.0000         0.0000         0.0000         0.0000         -22180.3914      2912.7824         0.0000         0.0000      3911.0872         -15356.5218       312.9261    -19267.6090    -15347.6983       308.5485           -388.4926      -387.3100     85640.7228      -493.3550      -493.9321
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 50000
+REINITIALIZING VELOCITIES AT STEP 50000 TO 310.15 KELVIN.
+TCL: Running for 50000 steps
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   50000         0.0000         0.0000         0.0000         0.0000         -22180.3914      2912.7824         0.0000         0.0000      3910.7615         -15356.8475       312.9000    -19267.6090    -15350.9877       312.9000           -348.7354      -348.7354     85640.7228      -348.7354      -348.7354
+
+TIMING: 50500  CPU: 437.791, 0.00902182/step  Wall: 859.335, 0.0176078/step, 0.242107 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 50500  averaging 10.162 ns/day, 0.0170046 sec/step with standard deviation 0.000390827
+ENERGY:   50500         0.0000         0.0000         0.0000         0.0000         -21983.3899      2790.7154         0.0000         0.0000      3821.0488         -15371.6258       305.7221    -19192.6745    -15367.9921       310.2356           -676.1333      -646.3612     85640.7228      -557.8531      -557.1921
+
+TIMING: 51000  CPU: 442.277, 0.00897178/step  Wall: 868.071, 0.017472/step, 0.237813 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 51000  averaging 10.1592 ns/day, 0.0170091 sec/step with standard deviation 0.000391632
+ENERGY:   51000         0.0000         0.0000         0.0000         0.0000         -22180.8802      2852.4321         0.0000         0.0000      3904.3383         -15424.1098       312.3861    -19328.4481    -15419.4208       309.4477           -508.4744      -499.2511     85640.7228      -407.5083      -407.7024
+
+TIMING: 51500  CPU: 446.759, 0.00896487/step  Wall: 876.723, 0.0173043/step, 0.233127 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 51500  averaging 10.1575 ns/day, 0.017012 sec/step with standard deviation 0.000390791
+ENERGY:   51500         0.0000         0.0000         0.0000         0.0000         -21989.0104      2761.6917         0.0000         0.0000      3828.0197         -15399.2990       306.2799    -19227.3187    -15390.4645       309.9063           -608.7723      -606.8745     85640.7228      -442.1374      -441.8075
+
+TIMING: 52000  CPU: 451.133, 0.00874846/step  Wall: 885.247, 0.0170477/step, 0.227303 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 52000  averaging 10.1573 ns/day, 0.0170124 sec/step with standard deviation 0.000388905
+ENERGY:   52000         0.0000         0.0000         0.0000         0.0000         -21960.5453      2760.9332         0.0000         0.0000      3909.7000         -15289.9121       312.8151    -19199.6122    -15282.1383       311.3997           -584.6087      -605.6706     85640.7228      -441.0479      -440.6444
+
+LDB: ============= START OF LOAD BALANCING ============== 891.144
+LDB: ============== END OF LOAD BALANCING =============== 891.152
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 891.184
+LDB: ============= START OF LOAD BALANCING ============== 892.936
+LDB: TIME 892.952 LOAD: AVG 0.18994 MAX 0.428914  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 892.952 LOAD: AVG 0.18994 MAX 0.428914  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 892.953 LOAD: AVG 0.18994 MAX 0.428914  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 892.968
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 893.088
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 52500
+WRITING COORDINATES TO RESTART FILE AT STEP 52500
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 52500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 52500  CPU: 455.674, 0.00908146/step  Wall: 894.23, 0.017965/step, 0.237038 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 52500  averaging 10.1519 ns/day, 0.0170214 sec/step with standard deviation 0.00039804
+ENERGY:   52500         0.0000         0.0000         0.0000         0.0000         -22208.3157      2827.7881         0.0000         0.0000      3991.3038         -15389.2238       319.3442    -19380.5276    -15386.5392       312.7400           -521.2437      -512.5504     85640.7228      -437.4237      -437.6519
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 52500
+TIMING: 53000  CPU: 459.977, 0.00860586/step  Wall: 902.679, 0.016899/step, 0.220626 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 53000  averaging 10.1526 ns/day, 0.0170203 sec/step with standard deviation 0.000396319
+ENERGY:   53000         0.0000         0.0000         0.0000         0.0000         -21998.2026      2864.2805         0.0000         0.0000      3915.7092         -15218.2130       313.2959    -19133.9221    -15210.8644       314.4415           -310.4292      -308.6355     85640.7228      -385.3657      -384.7836
+
+TIMING: 53500  CPU: 464.481, 0.00900883/step  Wall: 911.543, 0.0177283/step, 0.22899 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 53500  averaging 10.1487 ns/day, 0.0170269 sec/step with standard deviation 0.000400339
+ENERGY:   53500         0.0000         0.0000         0.0000         0.0000         -22251.2368      2996.7506         0.0000         0.0000      3902.0773         -15352.4088       312.2052    -19254.4862    -15344.9814       314.4811             17.0164         7.9416     85640.7228      -386.4377      -385.6465
+
+TIMING: 54000  CPU: 468.965, 0.00896751/step  Wall: 920.195, 0.0173037/step, 0.221103 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 54000  averaging 10.1471 ns/day, 0.0170295 sec/step with standard deviation 0.000399353
+ENERGY:   54000         0.0000         0.0000         0.0000         0.0000         -22115.2090      2797.0799         0.0000         0.0000      3906.9899         -15411.1392       312.5983    -19318.1291    -15403.3353       310.9018           -697.3396      -673.3449     85640.7228      -557.2018      -557.6457
+
+TIMING: 54500  CPU: 473.356, 0.00878109/step  Wall: 928.795, 0.0172/step, 0.217389 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 54500  averaging 10.1462 ns/day, 0.017031 sec/step with standard deviation 0.000397836
+ENERGY:   54500         0.0000         0.0000         0.0000         0.0000         -22103.2021      2891.9864         0.0000         0.0000      3890.3520         -15320.8637       311.2671    -19211.2157    -15313.3574       311.2741           -305.6686      -332.5968     85640.7228      -552.2257      -552.9451
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 55000
+WRITING COORDINATES TO RESTART FILE AT STEP 55000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 55000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 55000  CPU: 477.566, 0.00842061/step  Wall: 937.182, 0.016773/step, 0.209662 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 55000  averaging 10.1476 ns/day, 0.0170287 sec/step with standard deviation 0.00039677
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   55000         0.0000         0.0000         0.0000         0.0000         -22063.8145      2842.5192         0.0000         0.0000      3877.6965         -15343.5988       310.2545    -19221.2952    -15337.3209       313.7868           -566.3082      -548.5556     85640.7228      -555.2350      -555.2621
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 55000
+TIMING: 55500  CPU: 481.912, 0.00869179/step  Wall: 945.735, 0.0171072/step, 0.211464 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 55500  averaging 10.1472 ns/day, 0.0170294 sec/step with standard deviation 0.000395033
+ENERGY:   55500         0.0000         0.0000         0.0000         0.0000         -22159.2010      2917.9420         0.0000         0.0000      3855.3429         -15385.9162       308.4660    -19241.2591    -15377.0962       311.0233           -411.8666      -377.5281     85640.7228      -587.7802      -587.6414
+
+TIMING: 56000  CPU: 486.1, 0.00837571/step  Wall: 954.007, 0.0165441/step, 0.202205 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 56000  averaging 10.1498 ns/day, 0.017025 sec/step with standard deviation 0.000395914
+ENERGY:   56000         0.0000         0.0000         0.0000         0.0000         -22121.8916      2804.9742         0.0000         0.0000      3885.9136         -15431.0038       310.9119    -19316.9174    -15421.8099       308.5299           -660.8522      -638.3438     85640.7228      -505.0236      -504.1939
+
+LDB: ============= START OF LOAD BALANCING ============== 959.744
+LDB: ============== END OF LOAD BALANCING =============== 959.752
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 959.768
+LDB: ============= START OF LOAD BALANCING ============== 961.388
+LDB: TIME 961.404 LOAD: AVG 0.096145 MAX 0.161044  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 961.404 LOAD: AVG 0.096145 MAX 0.161044  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 961.405 LOAD: AVG 0.096145 MAX 0.161044  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 961.416
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 961.548
+TIMING: 56500  CPU: 490.586, 0.00897316/step  Wall: 962.575, 0.0171358/step, 0.207057 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 56500  averaging 10.1492 ns/day, 0.017026 sec/step with standard deviation 0.00039428
+ENERGY:   56500         0.0000         0.0000         0.0000         0.0000         -22087.2896      2811.5838         0.0000         0.0000      3825.6016         -15450.1042       306.0864    -19275.7058    -15444.4435       310.2415           -579.8587      -588.6476     85640.7228      -556.6253      -554.8597
+
+TIMING: 57000  CPU: 494.853, 0.00853368/step  Wall: 970.895, 0.0166402/step, 0.198758 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 57000  averaging 10.1512 ns/day, 0.0170226 sec/step with standard deviation 0.000394191
+ENERGY:   57000         0.0000         0.0000         0.0000         0.0000         -22122.3540      2866.6691         0.0000         0.0000      3813.9469         -15441.7381       305.1539    -19255.6850    -15434.8649       309.1346           -404.4152      -434.4386     85640.7228      -531.9517      -531.7034
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 57500
+WRITING COORDINATES TO RESTART FILE AT STEP 57500
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 57500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 57500  CPU: 499.086, 0.00846593/step  Wall: 979.276, 0.0167615/step, 0.197878 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 57500  averaging 10.1525 ns/day, 0.0170204 sec/step with standard deviation 0.000393214
+ENERGY:   57500         0.0000         0.0000         0.0000         0.0000         -22007.2797      2807.5090         0.0000         0.0000      3900.9662         -15298.8046       312.1163    -19199.7708    -15287.5809       311.0445           -557.5411      -571.3693     85640.7228      -534.8311      -534.3159
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 57500
+TIMING: 58000  CPU: 503.187, 0.00820131/step  Wall: 987.399, 0.0162466/step, 0.189544 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 58000  averaging 10.1565 ns/day, 0.0170137 sec/step with standard deviation 0.000398038
+ENERGY:   58000         0.0000         0.0000         0.0000         0.0000         -22129.6368      2858.7346         0.0000         0.0000      3958.1668         -15312.7354       316.6929    -19270.9022    -15301.1893       313.2997           -475.5822      -483.7878     85640.7228      -573.1404      -572.4892
+
+TIMING: 58500  CPU: 507.317, 0.00826069/step  Wall: 995.447, 0.016096/step, 0.185552 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 58500  averaging 10.1612 ns/day, 0.0170059 sec/step with standard deviation 0.000405297
+ENERGY:   58500         0.0000         0.0000         0.0000         0.0000         -22091.8407      2806.3567         0.0000         0.0000      3934.6755         -15350.8085       314.8134    -19285.4840    -15345.3308       312.4005           -587.6894      -582.6531     85640.7228      -545.4865      -545.5916
+
+TIMING: 59000  CPU: 511.577, 0.0085203/step  Wall: 1003.6, 0.0163037/step, 0.185681 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 59000  averaging 10.1648 ns/day, 0.0169999 sec/step with standard deviation 0.000408704
+ENERGY:   59000         0.0000         0.0000         0.0000         0.0000         -22005.5673      2873.6470         0.0000         0.0000      3836.0498         -15295.8705       306.9223    -19131.9203    -15288.3996       312.7202           -304.8541      -297.6857     85640.7228      -458.1231      -458.6286
+
+TIMING: 59500  CPU: 515.753, 0.00835053/step  Wall: 1011.8, 0.0163922/step, 0.184412 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 59500  averaging 10.1678 ns/day, 0.0169948 sec/step with standard deviation 0.000410765
+ENERGY:   59500         0.0000         0.0000         0.0000         0.0000         -22162.1774      2902.3831         0.0000         0.0000      3895.9094         -15363.8849       311.7117    -19259.7943    -15353.7106       312.4727           -355.8956      -346.9625     85640.7228      -475.9720      -475.7689
+
+TIMING: 60000  CPU: 519.976, 0.00844788/step  Wall: 1020.1, 0.0166079/step, 0.184532 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 60000  averaging 10.1697 ns/day, 0.0169916 sec/step with standard deviation 0.000410557
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   60000         0.0000         0.0000         0.0000         0.0000         -22168.7132      2900.6750         0.0000         0.0000      3873.5450         -15394.4932       309.9223    -19268.0381    -15382.7535       310.0033           -315.4012      -315.6971     85640.7228      -521.1020      -521.2171
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 60000
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 60000
+WRITING COORDINATES TO RESTART FILE AT STEP 60000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 60000
+FINISHED WRITING RESTART VELOCITIES
+LDB: ============= START OF LOAD BALANCING ============== 1025.94
+LDB: ============== END OF LOAD BALANCING =============== 1025.94
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1025.98
+LDB: ============= START OF LOAD BALANCING ============== 1027.66
+LDB: TIME 1027.67 LOAD: AVG 0.141681 MAX 0.26337  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 1027.67 LOAD: AVG 0.141681 MAX 0.26337  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 1027.67 LOAD: AVG 0.141681 MAX 0.26337  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 1027.68
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1027.8
+TIMING: 60500  CPU: 524.337, 0.00872112/step  Wall: 1028.87, 0.017536/step, 0.192409 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 60500  averaging 10.1671 ns/day, 0.0169961 sec/step with standard deviation 0.000411828
+ENERGY:   60500         0.0000         0.0000         0.0000         0.0000         -22089.4601      2915.2988         0.0000         0.0000      3844.8246         -15329.3366       307.6244    -19174.1612    -15326.1991       309.1336           -254.0020      -254.8658     85640.7228      -552.2582      -551.6140
+
+TIMING: 61000  CPU: 528.598, 0.00852214/step  Wall: 1037.28, 0.0168162/step, 0.182176 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 61000  averaging 10.1679 ns/day, 0.0169946 sec/step with standard deviation 0.000410446
+ENERGY:   61000         0.0000         0.0000         0.0000         0.0000         -22260.0183      2924.7193         0.0000         0.0000      3937.1177         -15398.1813       315.0088    -19335.2990    -15394.8509       311.6212           -363.1618      -361.3467     85640.7228      -512.2976      -511.3212
+
+TIMING: 61500  CPU: 532.887, 0.00857692/step  Wall: 1045.69, 0.016824/step, 0.179924 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 61500  averaging 10.1688 ns/day, 0.0169932 sec/step with standard deviation 0.000409049
+ENERGY:   61500         0.0000         0.0000         0.0000         0.0000         -21909.4238      2682.4716         0.0000         0.0000      3839.4683         -15387.4839       307.1959    -19226.9522    -15377.8233       309.5512          -1002.5430      -986.9379     85640.7228      -602.0242      -601.8021
+
+TIMING: 62000  CPU: 537.072, 0.00837116/step  Wall: 1053.76, 0.0161518/step, 0.170491 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 62000  averaging 10.1728 ns/day, 0.0169864 sec/step with standard deviation 0.000414332
+ENERGY:   62000         0.0000         0.0000         0.0000         0.0000         -22075.1192      2737.2621         0.0000         0.0000      3855.1932         -15482.6638       308.4540    -19337.8570    -15477.2671       307.6094           -826.0111      -856.3964     85640.7228      -703.6101      -702.8371
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 62500
+WRITING COORDINATES TO RESTART FILE AT STEP 62500
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 62500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 62500  CPU: 541.162, 0.00817954/step  Wall: 1061.98, 0.0164289/step, 0.171134 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 62500  averaging 10.1755 ns/day, 0.016982 sec/step with standard deviation 0.000415661
+ENERGY:   62500         0.0000         0.0000         0.0000         0.0000         -22220.6937      2892.4525         0.0000         0.0000      3906.0786         -15422.1626       312.5253    -19328.2412    -15414.9118       306.7023           -540.8072      -518.7624     85640.7228      -659.7319      -659.6471
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 62500
+TIMING: 63000  CPU: 545.145, 0.00796575/step  Wall: 1070.06, 0.0161712/step, 0.166203 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 63000  averaging 10.1794 ns/day, 0.0169755 sec/step with standard deviation 0.000420249
+ENERGY:   63000         0.0000         0.0000         0.0000         0.0000         -21905.0650      2694.2767         0.0000         0.0000      3808.8210         -15401.9673       304.7438    -19210.7882    -15392.5387       309.5508           -878.2612      -896.3066     85640.7228      -495.5130      -496.6075
+
+TIMING: 63500  CPU: 549.259, 0.00822942/step  Wall: 1078.25, 0.0163762/step, 0.166037 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 63500  averaging 10.1822 ns/day, 0.0169708 sec/step with standard deviation 0.000421943
+ENERGY:   63500         0.0000         0.0000         0.0000         0.0000         -22205.7399      2827.6416         0.0000         0.0000      3810.1239         -15567.9743       304.8480    -19378.0982    -15560.9118       307.4896           -666.0215      -644.1744     85640.7228      -605.0201      -604.9381
+
+TIMING: 64000  CPU: 553.517, 0.00851522/step  Wall: 1086.57, 0.0166402/step, 0.166402 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 64000  averaging 10.1837 ns/day, 0.0169682 sec/step with standard deviation 0.000421293
+ENERGY:   64000         0.0000         0.0000         0.0000         0.0000         -22373.8567      2994.3927         0.0000         0.0000      3876.4718         -15502.9922       310.1565    -19379.4640    -15496.5963       307.3437           -229.5396      -252.6690     85640.7228      -548.6362      -547.5805
+
+LDB: ============= START OF LOAD BALANCING ============== 1092.16
+LDB: ============== END OF LOAD BALANCING =============== 1092.17
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1092.2
+LDB: ============= START OF LOAD BALANCING ============== 1093.9
+LDB: TIME 1093.91 LOAD: AVG 0.091289 MAX 0.151967  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 1093.91 LOAD: AVG 0.091289 MAX 0.151967  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 1093.91 LOAD: AVG 0.091289 MAX 0.151967  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 1093.92
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1094.06
+TIMING: 64500  CPU: 557.961, 0.00888879/step  Wall: 1095.1, 0.0170636/step, 0.168266 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 64500  averaging 10.1833 ns/day, 0.016969 sec/step with standard deviation 0.000419728
+ENERGY:   64500         0.0000         0.0000         0.0000         0.0000         -21901.1515      2702.3604         0.0000         0.0000      3794.8664         -15403.9247       303.6273    -19198.7911    -15398.3320       308.2627           -896.0690      -886.1509     85640.7228      -634.1736      -632.6874
+
+TIMING: 65000  CPU: 562.178, 0.00843236/step  Wall: 1103.42, 0.0166321/step, 0.161701 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 65000  averaging 10.1849 ns/day, 0.0169664 sec/step with standard deviation 0.00041914
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   65000         0.0000         0.0000         0.0000         0.0000         -22341.8005      3010.7546         0.0000         0.0000      3906.0780         -15424.9680       312.5253    -19331.0459    -15421.4652       307.9767           -198.5174      -197.7459     85640.7228      -623.8498      -623.4277
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 65000
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 65000
+WRITING COORDINATES TO RESTART FILE AT STEP 65000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 65000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 65500  CPU: 566.345, 0.00833511/step  Wall: 1111.75, 0.016664/step, 0.159697 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 65500  averaging 10.1862 ns/day, 0.0169641 sec/step with standard deviation 0.00041836
+ENERGY:   65500         0.0000         0.0000         0.0000         0.0000         -21952.3746      2758.6893         0.0000         0.0000      3902.0968         -15291.5884       312.2068    -19193.6852    -15280.0295       309.9495           -783.7479      -765.9402     85640.7228      -584.8031      -585.5373
+
+TIMING: 66000  CPU: 570.635, 0.00858016/step  Wall: 1120.02, 0.0165358/step, 0.156171 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 66000  averaging 10.1882 ns/day, 0.0169608 sec/step with standard deviation 0.000418424
+ENERGY:   66000         0.0000         0.0000         0.0000         0.0000         -22011.6418      2796.5298         0.0000         0.0000      3864.8964         -15350.2156       309.2304    -19215.1120    -15344.8209       311.8683           -687.3797      -716.5591     85640.7228      -642.2573      -641.8849
+
+TIMING: 66500  CPU: 574.794, 0.0083183/step  Wall: 1128.16, 0.016272/step, 0.15142 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 66500  averaging 10.1913 ns/day, 0.0169556 sec/step with standard deviation 0.000421093
+ENERGY:   66500         0.0000         0.0000         0.0000         0.0000         -21988.9107      2826.3233         0.0000         0.0000      3884.8256         -15277.7618       310.8249    -19162.5874    -15267.9429       311.3286           -571.9184      -533.5855     85640.7228      -557.6778      -557.1408
+
+TIMING: 67000  CPU: 579.017, 0.00844607/step  Wall: 1136.23, 0.0161522/step, 0.148062 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 67000  averaging 10.1949 ns/day, 0.0169496 sec/step with standard deviation 0.00042521
+ENERGY:   67000         0.0000         0.0000         0.0000         0.0000         -22104.9171      2860.6609         0.0000         0.0000      3952.6322         -15291.6241       316.2501    -19244.2563    -15282.5698       314.2080           -440.4069      -458.9484     85640.7228      -567.0316      -567.3210
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 67500
+WRITING COORDINATES TO RESTART FILE AT STEP 67500
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 67500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 67500  CPU: 583.187, 0.00833999/step  Wall: 1144.59, 0.0167151/step, 0.1509 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 67500  averaging 10.1959 ns/day, 0.0169479 sec/step with standard deviation 0.000424101
+ENERGY:   67500         0.0000         0.0000         0.0000         0.0000         -22030.1482      2887.2090         0.0000         0.0000      3905.1082         -15237.8310       312.4477    -19142.9392    -15230.5167       313.2155           -328.4212      -309.6524     85640.7228      -532.6299      -530.9204
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 67500
+TIMING: 68000  CPU: 587.283, 0.00819089/step  Wall: 1152.7, 0.0162286/step, 0.144254 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 68000  averaging 10.1991 ns/day, 0.0169426 sec/step with standard deviation 0.000427006
+ENERGY:   68000         0.0000         0.0000         0.0000         0.0000         -21952.1746      2787.0733         0.0000         0.0000      3896.0916         -15269.0097       311.7263    -19165.1013    -15262.7878       312.6077           -616.7489      -601.4055     85640.7228      -566.3266      -565.0263
+
+LDB: ============= START OF LOAD BALANCING ============== 1158.18
+LDB: ============== END OF LOAD BALANCING =============== 1158.19
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1158.22
+LDB: ============= START OF LOAD BALANCING ============== 1159.89
+LDB: TIME 1159.9 LOAD: AVG 0.10228 MAX 0.182012  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 1159.9 LOAD: AVG 0.10228 MAX 0.182012  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 1159.91 LOAD: AVG 0.10228 MAX 0.182012  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 1159.91
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1160.04
+TIMING: 68500  CPU: 591.566, 0.00856694/step  Wall: 1161.08, 0.0167603/step, 0.146653 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 68500  averaging 10.1999 ns/day, 0.0169413 sec/step with standard deviation 0.000425718
+ENERGY:   68500         0.0000         0.0000         0.0000         0.0000         -21778.1881      2690.3017         0.0000         0.0000      3883.9258         -15203.9605       310.7529    -19087.8864    -15196.9620       314.8166           -766.7172      -725.6746     85640.7228      -440.6918      -439.4275
+
+TIMING: 69000  CPU: 595.852, 0.0085716/step  Wall: 1169.41, 0.0166559/step, 0.143426 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 69000  averaging 10.2012 ns/day, 0.0169392 sec/step with standard deviation 0.000424857
+ENERGY:   69000         0.0000         0.0000         0.0000         0.0000         -21942.4631      2734.9677         0.0000         0.0000      3920.4859         -15287.0095       313.6781    -19207.4955    -15278.8996       311.8123           -799.2113      -795.9715     85640.7228      -543.5027      -542.1708
+
+TIMING: 69500  CPU: 600.074, 0.00844347/step  Wall: 1177.53, 0.0162399/step, 0.137588 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 69500  averaging 10.2042 ns/day, 0.0169342 sec/step with standard deviation 0.00042745
+ENERGY:   69500         0.0000         0.0000         0.0000         0.0000         -21987.5712      2869.2861         0.0000         0.0000      3883.4628         -15234.8222       310.7159    -19118.2851    -15230.7781       313.4104           -244.6960      -261.0167     85640.7228      -524.6669      -524.2854
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 70000
+WRITING COORDINATES TO RESTART FILE AT STEP 70000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 70000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 70000  CPU: 604.359, 0.00856961/step  Wall: 1185.98, 0.0168985/step, 0.140821 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 70000  averaging 10.2044 ns/day, 0.0169339 sec/step with standard deviation 0.00042592
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   70000         0.0000         0.0000         0.0000         0.0000         -22035.6569      2827.7238         0.0000         0.0000      3883.0442         -15324.8889       310.6824    -19207.9331    -15313.9679       313.4029           -460.0941      -484.9628     85640.7228      -556.4577      -556.9003
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 70000
+TIMING: 70500  CPU: 608.638, 0.00855843/step  Wall: 1194.4, 0.0168384/step, 0.137981 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 70500  averaging 10.2048 ns/day, 0.0169333 sec/step with standard deviation 0.000424473
+ENERGY:   70500         0.0000         0.0000         0.0000         0.0000         -21961.1893      2831.4707         0.0000         0.0000      3867.9833         -15261.7353       309.4773    -19129.7186    -15249.7827       310.6619           -473.9121      -459.7390     85640.7228      -503.4878      -501.9032
+
+TIMING: 71000  CPU: 612.895, 0.00851342/step  Wall: 1202.74, 0.0166712/step, 0.134296 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 71000  averaging 10.2059 ns/day, 0.0169314 sec/step with standard deviation 0.000423536
+ENERGY:   71000         0.0000         0.0000         0.0000         0.0000         -21951.1256      2808.1461         0.0000         0.0000      3792.4607         -15350.5188       303.4348    -19142.9796    -15343.1134       311.7138           -574.2539      -569.4616     85640.7228      -574.0296      -572.4435
+
+TIMING: 71500  CPU: 617.034, 0.0082778/step  Wall: 1210.83, 0.0161919/step, 0.128186 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 71500  averaging 10.209 ns/day, 0.0169262 sec/step with standard deviation 0.000426549
+ENERGY:   71500         0.0000         0.0000         0.0000         0.0000         -21767.8115      2718.6707         0.0000         0.0000      3886.4564         -15162.6844       310.9554    -19049.1408    -15156.6488       311.8574           -760.0456      -736.2510     85640.7228      -578.0633      -579.0166
+
+TIMING: 72000  CPU: 621.263, 0.00845918/step  Wall: 1219.16, 0.0166563/step, 0.129549 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 72000  averaging 10.2101 ns/day, 0.0169244 sec/step with standard deviation 0.000425649
+ENERGY:   72000         0.0000         0.0000         0.0000         0.0000         -21899.5027      2681.3174         0.0000         0.0000      3847.6990         -15370.4863       307.8544    -19218.1853    -15363.2650       310.5415          -1070.4038     -1074.7629     85640.7228      -718.0491      -717.5239
+
+LDB: ============= START OF LOAD BALANCING ============== 1224.8
+LDB: ============== END OF LOAD BALANCING =============== 1224.81
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1224.83
+LDB: ============= START OF LOAD BALANCING ============== 1226.49
+LDB: TIME 1226.51 LOAD: AVG 0.0937035 MAX 0.161651  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 1226.51 LOAD: AVG 0.0937035 MAX 0.161651  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 1226.51 LOAD: AVG 0.0937035 MAX 0.161651  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 1226.52
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1226.63
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 72500
+WRITING COORDINATES TO RESTART FILE AT STEP 72500
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 72500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 72500  CPU: 625.677, 0.00882845/step  Wall: 1227.69, 0.0170651/step, 0.130359 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 72500  averaging 10.2095 ns/day, 0.0169253 sec/step with standard deviation 0.00042433
+ENERGY:   72500         0.0000         0.0000         0.0000         0.0000         -22016.5259      2859.3371         0.0000         0.0000      3808.0354         -15349.1534       304.6809    -19157.1888    -15342.2296       309.0727           -610.1632      -581.3610     85640.7228      -794.6390      -794.1431
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 72500
+TIMING: 73000  CPU: 630.074, 0.00879393/step  Wall: 1236.37, 0.0173506/step, 0.13013 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 73000  averaging 10.2078 ns/day, 0.0169283 sec/step with standard deviation 0.000424326
+ENERGY:   73000         0.0000         0.0000         0.0000         0.0000         -21887.9998      2793.6417         0.0000         0.0000      3883.9284         -15210.4298       310.7531    -19094.3581    -15203.4986       310.0467           -567.5109      -552.0875     85640.7228      -644.5605      -645.2931
+
+TIMING: 73500  CPU: 634.321, 0.00849235/step  Wall: 1244.71, 0.016688/step, 0.122842 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 73500  averaging 10.2088 ns/day, 0.0169266 sec/step with standard deviation 0.000423335
+ENERGY:   73500         0.0000         0.0000         0.0000         0.0000         -22028.2213      2743.8460         0.0000         0.0000      3932.0376         -15352.3377       314.6023    -19284.3753    -15344.4449       310.7035           -898.2486      -914.7689     85640.7228      -580.4694      -581.5664
+
+TIMING: 74000  CPU: 638.563, 0.00848434/step  Wall: 1253, 0.0165842/step, 0.119775 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 74000  averaging 10.2102 ns/day, 0.0169243 sec/step with standard deviation 0.00042283
+ENERGY:   74000         0.0000         0.0000         0.0000         0.0000         -21961.3812      2856.6719         0.0000         0.0000      3887.1069         -15217.6025       311.0074    -19104.7094    -15210.7653       311.8053           -394.0132      -379.5295     85640.7228      -476.2313      -477.2896
+
+TIMING: 74500  CPU: 642.82, 0.00851513/step  Wall: 1261.38, 0.016744/step, 0.118603 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 74500  averaging 10.2109 ns/day, 0.0169231 sec/step with standard deviation 0.000421658
+ENERGY:   74500         0.0000         0.0000         0.0000         0.0000         -21981.4354      2824.4134         0.0000         0.0000      3964.1358         -15192.8862       317.1705    -19157.0220    -15185.1203       312.6708           -554.8128      -563.3361     85640.7228      -605.7605      -606.1574
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 75000
+WRITING COORDINATES TO RESTART FILE AT STEP 75000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 75000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 75000  CPU: 647.119, 0.00859714/step  Wall: 1269.77, 0.0167875/step, 0.11658 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 75000  averaging 10.2114 ns/day, 0.0169222 sec/step with standard deviation 0.000420387
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   75000         0.0000         0.0000         0.0000         0.0000         -21914.3341      2782.0971         0.0000         0.0000      3893.8574         -15238.3795       311.5475    -19132.2369    -15235.1359       314.7091           -590.6929      -642.1079     85640.7228      -576.6012      -576.4558
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 75000
+TIMING: 75500  CPU: 651.427, 0.008617/step  Wall: 1278.3, 0.0170686/step, 0.116161 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 75500  averaging 10.2109 ns/day, 0.0169232 sec/step with standard deviation 0.000419152
+ENERGY:   75500         0.0000         0.0000         0.0000         0.0000         -22018.7336      2841.1840         0.0000         0.0000      3849.3083         -15328.2413       307.9832    -19177.5496    -15322.7295       311.3922           -522.0566      -528.1841     85640.7228      -735.4571      -734.7461
+
+TIMING: 76000  CPU: 655.59, 0.0083254/step  Wall: 1286.52, 0.0164399/step, 0.109599 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 76000  averaging 10.2128 ns/day, 0.01692 sec/step with standard deviation 0.000419597
+ENERGY:   76000         0.0000         0.0000         0.0000         0.0000         -22024.2711      2796.3720         0.0000         0.0000      3930.9156         -15296.9835       314.5126    -19227.8991    -15288.3165       310.7595           -673.5395      -658.5353     85640.7228      -622.0256      -621.0876
+
+LDB: ============= START OF LOAD BALANCING ============== 1292.21
+LDB: ============== END OF LOAD BALANCING =============== 1292.22
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1292.25
+LDB: ============= START OF LOAD BALANCING ============== 1293.95
+LDB: TIME 1293.96 LOAD: AVG 0.0936804 MAX 0.148592  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 1293.96 LOAD: AVG 0.0936804 MAX 0.148592  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 1293.96 LOAD: AVG 0.0936804 MAX 0.148592  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 1293.97
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1294.1
+TIMING: 76500  CPU: 659.966, 0.00875223/step  Wall: 1295.09, 0.0171281/step, 0.111809 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 76500  averaging 10.212 ns/day, 0.0169213 sec/step with standard deviation 0.000418553
+ENERGY:   76500         0.0000         0.0000         0.0000         0.0000         -21943.6614      2757.2385         0.0000         0.0000      3863.5342         -15322.8888       309.1214    -19186.4229    -15320.8385       311.7347           -635.5080      -628.0398     85640.7228      -681.5648      -680.9050
+
+TIMING: 77000  CPU: 664.111, 0.00828966/step  Wall: 1303.25, 0.016328/step, 0.104318 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 77000  averaging 10.2143 ns/day, 0.0169175 sec/step with standard deviation 0.000419914
+ENERGY:   77000         0.0000         0.0000         0.0000         0.0000         -22045.4751      2770.1887         0.0000         0.0000      3868.7914         -15406.4950       309.5420    -19275.2863    -15396.8462       311.3726           -813.7206      -819.9120     85640.7228      -588.6346      -588.9610
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 77500
+WRITING COORDINATES TO RESTART FILE AT STEP 77500
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 77500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 77500  CPU: 668.506, 0.0087902/step  Wall: 1311.56, 0.016622/step, 0.103888 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 77500  averaging 10.2154 ns/day, 0.0169156 sec/step with standard deviation 0.000419221
+ENERGY:   77500         0.0000         0.0000         0.0000         0.0000         -22164.4906      2923.3250         0.0000         0.0000      3931.7640         -15309.4016       314.5804    -19241.1656    -15297.2627       311.0172           -322.7352      -310.9788     85640.7228      -608.4751      -605.6860
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 77500
+TIMING: 78000  CPU: 672.677, 0.00834167/step  Wall: 1319.89, 0.016658/step, 0.101799 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 78000  averaging 10.2164 ns/day, 0.0169139 sec/step with standard deviation 0.000418375
+ENERGY:   78000         0.0000         0.0000         0.0000         0.0000         -22036.7524      2723.1312         0.0000         0.0000      3840.2470         -15473.3742       307.2582    -19313.6212    -15467.9559       309.7438           -928.4493      -918.9494     85640.7228      -543.8298      -544.8237
+
+TIMING: 78500  CPU: 676.854, 0.00835332/step  Wall: 1328.11, 0.0164402/step, 0.0981848 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 78500  averaging 10.2183 ns/day, 0.0169109 sec/step with standard deviation 0.000418742
+ENERGY:   78500         0.0000         0.0000         0.0000         0.0000         -22020.0692      2792.8737         0.0000         0.0000      3926.7117         -15300.4838       314.1762    -19227.1955    -15295.4227       308.2501           -719.1849      -694.2613     85640.7228      -674.1500      -674.5308
+
+TIMING: 79000  CPU: 681.031, 0.00835568/step  Wall: 1336.33, 0.0164397/step, 0.0958982 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 79000  averaging 10.2201 ns/day, 0.0169079 sec/step with standard deviation 0.000419086
+ENERGY:   79000         0.0000         0.0000         0.0000         0.0000         -22042.2321      2842.7861         0.0000         0.0000      3891.7367         -15307.7094       311.3778    -19199.4461    -15298.4349       313.2283           -470.3543      -490.3220     85640.7228      -609.2982      -610.6668
+
+TIMING: 79500  CPU: 685.212, 0.00836041/step  Wall: 1344.5, 0.0163365/step, 0.0930271 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 79500  averaging 10.2222 ns/day, 0.0169043 sec/step with standard deviation 0.000420209
+ENERGY:   79500         0.0000         0.0000         0.0000         0.0000         -22067.7238      2827.1495         0.0000         0.0000      3878.5881         -15361.9862       310.3258    -19240.5743    -15358.9999       310.4508           -490.3661      -490.6779     85640.7228      -533.4196      -533.9336
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 80000
+WRITING COORDINATES TO RESTART FILE AT STEP 80000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 80000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 80000  CPU: 689.621, 0.00881927/step  Wall: 1353.11, 0.0172227/step, 0.0956815 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 80000  averaging 10.221 ns/day, 0.0169063 sec/step with standard deviation 0.000419641
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   80000         0.0000         0.0000         0.0000         0.0000         -21958.5440      2776.3921         0.0000         0.0000      3937.5429         -15244.6090       315.0428    -19182.1518    -15238.3771       310.8003           -656.5654      -601.6173     85640.7228      -553.3861      -553.8684
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 80000
+LDB: ============= START OF LOAD BALANCING ============== 1358.75
+LDB: ============== END OF LOAD BALANCING =============== 1358.75
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1358.78
+LDB: ============= START OF LOAD BALANCING ============== 1360.49
+LDB: TIME 1360.5 LOAD: AVG 0.112681 MAX 0.17643  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 1360.5 LOAD: AVG 0.112681 MAX 0.17643  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 1360.5 LOAD: AVG 0.112681 MAX 0.17643  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 1360.51
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1360.61
+TIMING: 80500  CPU: 693.906, 0.00856998/step  Wall: 1361.59, 0.0169526/step, 0.0918268 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 80500  averaging 10.2209 ns/day, 0.0169066 sec/step with standard deviation 0.000418343
+ENERGY:   80500         0.0000         0.0000         0.0000         0.0000         -21966.1088      2768.8986         0.0000         0.0000      3907.5413         -15289.6689       312.6424    -19197.2102    -15286.9424       312.6813           -601.2600      -582.9517     85640.7228      -466.4280      -465.8504
+
+TIMING: 81000  CPU: 698.153, 0.00849434/step  Wall: 1369.8, 0.016424/step, 0.0866822 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 81000  averaging 10.2227 ns/day, 0.0169036 sec/step with standard deviation 0.000418762
+ENERGY:   81000         0.0000         0.0000         0.0000         0.0000         -22233.6492      2944.5333         0.0000         0.0000      3827.4933         -15461.6225       306.2377    -19289.1159    -15457.5296       311.6346           -280.3766      -260.4024     85640.7228      -568.8931      -567.9267
+
+TIMING: 81500  CPU: 702.413, 0.00852012/step  Wall: 1378.18, 0.0167692/step, 0.0861749 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 81500  averaging 10.2232 ns/day, 0.0169028 sec/step with standard deviation 0.0004176
+ENERGY:   81500         0.0000         0.0000         0.0000         0.0000         -22004.9740      2793.7627         0.0000         0.0000      3764.9713         -15446.2400       301.2354    -19211.2113    -15441.5192       310.2736           -642.4170      -659.3978     85640.7228      -506.8419      -506.3449
+
+TIMING: 82000  CPU: 706.608, 0.00838832/step  Wall: 1386.5, 0.0166391/step, 0.0831957 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 82000  averaging 10.2241 ns/day, 0.0169012 sec/step with standard deviation 0.000416826
+ENERGY:   82000         0.0000         0.0000         0.0000         0.0000         -22118.5380      2893.1816         0.0000         0.0000      3892.6737         -15332.6827       311.4528    -19225.3564    -15328.7393       312.0196           -320.6751      -338.6519     85640.7228      -513.7064      -514.1638
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 82500
+WRITING COORDINATES TO RESTART FILE AT STEP 82500
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 82500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 82500  CPU: 710.681, 0.00814605/step  Wall: 1394.72, 0.0164337/step, 0.0798862 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 82500  averaging 10.2258 ns/day, 0.0168984 sec/step with standard deviation 0.000417144
+ENERGY:   82500         0.0000         0.0000         0.0000         0.0000         -22031.5675      2865.4666         0.0000         0.0000      3880.6826         -15285.4182       310.4934    -19166.1008    -15279.7419       315.0363           -394.4236      -381.4066     85640.7228      -447.1366      -447.1524
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 82500
+TIMING: 83000  CPU: 714.993, 0.0086253/step  Wall: 1403.22, 0.01699/step, 0.0802304 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 83000  averaging 10.2255 ns/day, 0.0168989 sec/step with standard deviation 0.000415939
+ENERGY:   83000         0.0000         0.0000         0.0000         0.0000         -21881.0898      2716.0735         0.0000         0.0000      3889.8528         -15275.1636       311.2271    -19165.0163    -15267.2087       310.8691           -785.8833      -811.4373     85640.7228      -614.8969      -615.5284
+
+TIMING: 83500  CPU: 719.27, 0.00855374/step  Wall: 1411.52, 0.0166009/step, 0.0760876 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 83500  averaging 10.2266 ns/day, 0.0168971 sec/step with standard deviation 0.000415325
+ENERGY:   83500         0.0000         0.0000         0.0000         0.0000         -22102.1336      2858.4563         0.0000         0.0000      3925.1058         -15318.5715       314.0477    -19243.6773    -15311.9782       311.4277           -447.4588      -445.4387     85640.7228      -618.4304      -618.2114
+
+TIMING: 84000  CPU: 723.377, 0.00821421/step  Wall: 1419.66, 0.0162796/step, 0.0723538 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 84000  averaging 10.2288 ns/day, 0.0168935 sec/step with standard deviation 0.000416811
+ENERGY:   84000         0.0000         0.0000         0.0000         0.0000         -22094.5463      2754.1838         0.0000         0.0000      3863.2890         -15477.0734       309.1018    -19340.3625    -15468.4520       308.8135           -835.1827      -800.1434     85640.7228      -510.7979      -509.1534
+
+LDB: ============= START OF LOAD BALANCING ============== 1425.27
+LDB: ============== END OF LOAD BALANCING =============== 1425.28
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1425.3
+LDB: ============= START OF LOAD BALANCING ============== 1426.91
+LDB: TIME 1426.92 LOAD: AVG 0.109855 MAX 0.160626  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 1426.92 LOAD: AVG 0.109855 MAX 0.160626  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 1426.92 LOAD: AVG 0.109855 MAX 0.160626  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 1426.93
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1427.05
+TIMING: 84500  CPU: 727.628, 0.00850169/step  Wall: 1428, 0.0166797/step, 0.0718153 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 84500  averaging 10.2296 ns/day, 0.0168922 sec/step with standard deviation 0.000415894
+ENERGY:   84500         0.0000         0.0000         0.0000         0.0000         -22097.0037      2865.2118         0.0000         0.0000      3828.8703         -15402.9216       306.3479    -19231.7919    -15397.4448       306.8159           -451.8759      -432.9734     85640.7228      -578.0877      -578.5343
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 85000
+WRITING COORDINATES TO RESTART FILE AT STEP 85000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 85000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 85000  CPU: 732.025, 0.00879312/step  Wall: 1436.63, 0.0172784/step, 0.0719932 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 85000  averaging 10.2282 ns/day, 0.0168945 sec/step with standard deviation 0.000415718
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   85000         0.0000         0.0000         0.0000         0.0000         -22004.6287      2788.3701         0.0000         0.0000      3789.5725         -15426.6860       303.2037    -19216.2585    -15420.3045       307.2826           -681.0516      -661.3716     85640.7228      -462.8568      -462.9763
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 85000
+TIMING: 85500  CPU: 736.424, 0.00879834/step  Wall: 1445.09, 0.0169056/step, 0.068092 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 85500  averaging 10.2282 ns/day, 0.0168945 sec/step with standard deviation 0.000414495
+ENERGY:   85500         0.0000         0.0000         0.0000         0.0000         -22092.9672      2881.0875         0.0000         0.0000      3845.1342         -15366.7455       307.6492    -19211.8797    -15364.2660       309.2981           -374.4076      -379.4406     85640.7228      -516.0143      -518.0452
+
+TIMING: 86000  CPU: 740.534, 0.00822043/step  Wall: 1453.27, 0.01636/step, 0.0636221 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 86000  averaging 10.23 ns/day, 0.0168914 sec/step with standard deviation 0.000415286
+ENERGY:   86000         0.0000         0.0000         0.0000         0.0000         -21835.7673      2686.4212         0.0000         0.0000      3891.4703         -15257.8758       311.3565    -19149.3461    -15249.8840       311.6977           -793.0324      -820.4497     85640.7228      -580.6169      -581.7194
+
+TIMING: 86500  CPU: 744.843, 0.00861774/step  Wall: 1461.75, 0.0169678/step, 0.0636294 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 86500  averaging 10.2298 ns/day, 0.0168919 sec/step with standard deviation 0.000414118
+ENERGY:   86500         0.0000         0.0000         0.0000         0.0000         -22179.2601      2879.3622         0.0000         0.0000      3875.1921         -15424.7059       310.0541    -19299.8979    -15414.2704       311.3682           -443.0227      -450.3058     85640.7228      -549.2929      -549.4278
+
+TIMING: 87000  CPU: 749.072, 0.00845749/step  Wall: 1469.95, 0.0163922/step, 0.0591941 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 87000  averaging 10.2315 ns/day, 0.016889 sec/step with standard deviation 0.000414653
+ENERGY:   87000         0.0000         0.0000         0.0000         0.0000         -22159.2226      2843.1847         0.0000         0.0000      3847.7148         -15468.3232       307.8557    -19316.0380    -15462.3221       310.1339           -568.0345      -541.8605     85640.7228      -497.3513      -497.3022
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 87500
+WRITING COORDINATES TO RESTART FILE AT STEP 87500
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 87500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 87500  CPU: 753.286, 0.0084285/step  Wall: 1478.34, 0.0167907/step, 0.0583011 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 87500  averaging 10.2319 ns/day, 0.0168884 sec/step with standard deviation 0.000413526
+ENERGY:   87500         0.0000         0.0000         0.0000         0.0000         -22253.1355      2850.6313         0.0000         0.0000      3898.6468         -15503.8574       311.9307    -19402.5042    -15493.9441       308.9262           -546.4010      -565.2900     85640.7228      -493.7918      -494.9117
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 87500
+TIMING: 88000  CPU: 757.459, 0.00834662/step  Wall: 1486.52, 0.0163611/step, 0.054537 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 88000  averaging 10.2337 ns/day, 0.0168854 sec/step with standard deviation 0.000414255
+ENERGY:   88000         0.0000         0.0000         0.0000         0.0000         -21997.8656      2731.1864         0.0000         0.0000      3777.4676         -15489.2116       302.2352    -19266.6792    -15480.9629       305.4222           -753.9423      -774.0938     85640.7228      -529.1076      -527.5726
+
+LDB: ============= START OF LOAD BALANCING ============== 1492.02
+LDB: ============== END OF LOAD BALANCING =============== 1492.03
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1492.05
+LDB: ============= START OF LOAD BALANCING ============== 1493.7
+LDB: TIME 1493.72 LOAD: AVG 0.111616 MAX 0.194201  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 1493.72 LOAD: AVG 0.111616 MAX 0.194201  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 1493.72 LOAD: AVG 0.111616 MAX 0.194201  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 1493.73
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1493.8
+TIMING: 88500  CPU: 761.69, 0.00846159/step  Wall: 1494.76, 0.01648/step, 0.0526444 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 88500  averaging 10.2351 ns/day, 0.0168831 sec/step with standard deviation 0.000414199
+ENERGY:   88500         0.0000         0.0000         0.0000         0.0000         -22246.3744      2849.0472         0.0000         0.0000      3820.1782         -15577.1490       305.6525    -19397.3272    -15568.4303       307.9315           -574.2889      -566.7615     85640.7228      -506.0971      -505.6394
+
+TIMING: 89000  CPU: 765.914, 0.0084479/step  Wall: 1503.07, 0.016616/step, 0.050771 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 89000  averaging 10.236 ns/day, 0.0168816 sec/step with standard deviation 0.000413512
+ENERGY:   89000         0.0000         0.0000         0.0000         0.0000         -22495.3412      3027.3950         0.0000         0.0000      3817.1313         -15650.8149       305.4087    -19467.9462    -15642.4725       307.8094           -149.0686      -165.7525     85640.7228      -466.2031      -465.2743
+
+TIMING: 89500  CPU: 770.103, 0.00837888/step  Wall: 1511.28, 0.0164201/step, 0.0478919 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 89500  averaging 10.2375 ns/day, 0.0168791 sec/step with standard deviation 0.00041379
+ENERGY:   89500         0.0000         0.0000         0.0000         0.0000         -22346.9934      2883.0215         0.0000         0.0000      3802.5797         -15661.3923       304.2444    -19463.9719    -15652.7942       304.2628           -599.2117      -586.2473     85640.7228      -544.8723      -544.4872
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 90000
+WRITING COORDINATES TO RESTART FILE AT STEP 90000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 90000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 90000  CPU: 774.288, 0.00836936/step  Wall: 1519.76, 0.0169507/step, 0.0470853 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 90000  averaging 10.2373 ns/day, 0.0168795 sec/step with standard deviation 0.000412667
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   90000         0.0000         0.0000         0.0000         0.0000         -22224.3421      2812.9719         0.0000         0.0000      3825.2956         -15586.0746       306.0619    -19411.3702    -15581.0493       307.0977           -778.4821      -737.5842     85640.7228      -559.6068      -559.5142
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 90000
+TIMING: 90500  CPU: 778.67, 0.00876364/step  Wall: 1528.13, 0.0167415/step, 0.0441789 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 90500  averaging 10.2378 ns/day, 0.0168787 sec/step with standard deviation 0.000411647
+ENERGY:   90500         0.0000         0.0000         0.0000         0.0000         -22165.2556      2853.9560         0.0000         0.0000      3863.7170         -15447.5826       309.1360    -19311.2996    -15438.8546       308.2744           -530.3405      -538.7963     85640.7228      -487.7548      -487.7186
+
+TIMING: 91000  CPU: 782.941, 0.00854191/step  Wall: 1536.43, 0.0166079/step, 0.0415198 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 91000  averaging 10.2387 ns/day, 0.0168772 sec/step with standard deviation 0.000410998
+ENERGY:   91000         0.0000         0.0000         0.0000         0.0000         -22192.5086      2891.7072         0.0000         0.0000      3859.2133         -15441.5881       308.7757    -19300.8014    -15432.4477       310.5039           -488.2993      -527.9879     85640.7228      -572.4884      -573.6886
+
+TIMING: 91500  CPU: 787.286, 0.00869081/step  Wall: 1545.01, 0.0171522/step, 0.0404982 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 91500  averaging 10.2377 ns/day, 0.0168787 sec/step with standard deviation 0.000410371
+ENERGY:   91500         0.0000         0.0000         0.0000         0.0000         -22171.7637      2892.8009         0.0000         0.0000      3893.5248         -15385.4380       311.5209    -19278.9628    -15382.2120       308.4995           -511.6162      -485.7579     85640.7228      -698.3459      -698.7816
+
+TIMING: 92000  CPU: 791.489, 0.00840483/step  Wall: 1553.38, 0.0167357/step, 0.0371904 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 92000  averaging 10.2382 ns/day, 0.0168779 sec/step with standard deviation 0.000409384
+ENERGY:   92000         0.0000         0.0000         0.0000         0.0000         -22088.1904      2828.5321         0.0000         0.0000      3923.2307         -15336.4276       313.8977    -19259.6584    -15328.6050       310.2922           -471.9957      -505.3234     85640.7228      -565.6540      -566.0525
+
+LDB: ============= START OF LOAD BALANCING ============== 1558.96
+LDB: ============== END OF LOAD BALANCING =============== 1558.96
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1558.98
+LDB: ============= START OF LOAD BALANCING ============== 1560.61
+LDB: TIME 1560.62 LOAD: AVG 0.126416 MAX 0.203899  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 1560.62 LOAD: AVG 0.126416 MAX 0.203899  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 1560.62 LOAD: AVG 0.126416 MAX 0.203899  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 1560.66
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1560.75
+TIMING: 92500  CPU: 795.755, 0.00853258/step  Wall: 1561.7, 0.0166565/step, 0.034701 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 92500  averaging 10.2389 ns/day, 0.0168767 sec/step with standard deviation 0.000408595
+ENERGY:   92500         0.0000         0.0000         0.0000         0.0000         -22097.5548      2799.4460         0.0000         0.0000      3865.7727         -15432.3361       309.3005    -19298.1088    -15426.2884       309.0795           -707.2384      -719.2743     85640.7228      -479.2448      -478.6544
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 92500
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 92500
+WRITING COORDINATES TO RESTART FILE AT STEP 92500
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 92500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 93000  CPU: 800.217, 0.00892401/step  Wall: 1570.54, 0.0176715/step, 0.0343613 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 93000  averaging 10.2364 ns/day, 0.016881 sec/step with standard deviation 0.000411635
+ENERGY:   93000         0.0000         0.0000         0.0000         0.0000         -21919.6794      2732.4745         0.0000         0.0000      3772.4413         -15414.7636       301.8330    -19187.2049    -15410.8758       310.7161           -702.5989      -710.8109     85640.7228      -508.4590      -508.0775
+
+TIMING: 93500  CPU: 804.35, 0.00826592/step  Wall: 1578.64, 0.016192/step, 0.0292356 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 93500  averaging 10.2386 ns/day, 0.0168773 sec/step with standard deviation 0.000413608
+ENERGY:   93500         0.0000         0.0000         0.0000         0.0000         -22104.7051      2820.1317         0.0000         0.0000      3764.1061         -15520.4674       301.1661    -19284.5734    -15511.1269       308.4784           -650.4373      -591.5115     85640.7228      -455.8421      -455.6168
+
+TIMING: 94000  CPU: 808.59, 0.00848019/step  Wall: 1586.92, 0.0165601/step, 0.0276002 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 94000  averaging 10.2396 ns/day, 0.0168756 sec/step with standard deviation 0.000413148
+ENERGY:   94000         0.0000         0.0000         0.0000         0.0000         -22213.4534      2857.6277         0.0000         0.0000      3799.0972         -15556.7286       303.9658    -19355.8257    -15550.9384       306.9554           -715.2722      -694.2972     85640.7228      -614.7933      -613.2703
+
+TIMING: 94500  CPU: 812.809, 0.00843713/step  Wall: 1595.07, 0.0163121/step, 0.0249212 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 94500  averaging 10.2414 ns/day, 0.0168727 sec/step with standard deviation 0.000414082
+ENERGY:   94500         0.0000         0.0000         0.0000         0.0000         -21991.7195      2760.8808         0.0000         0.0000      3881.7919         -15349.0468       310.5822    -19230.8387    -15344.6020       309.1429           -767.5462      -752.7337     85640.7228      -564.4837      -563.0262
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 95000
+WRITING COORDINATES TO RESTART FILE AT STEP 95000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 95000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 95000  CPU: 816.984, 0.00835018/step  Wall: 1603.4, 0.0166572/step, 0.023135 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 95000  averaging 10.2421 ns/day, 0.0168715 sec/step with standard deviation 0.000413281
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   95000         0.0000         0.0000         0.0000         0.0000         -22080.9123      2832.4310         0.0000         0.0000      3908.1039         -15340.3774       312.6874    -19248.4813    -15333.4494       312.3829           -519.8912      -530.0122     85640.7228      -568.4866      -568.4060
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 95000
+TIMING: 95500  CPU: 821.095, 0.00822297/step  Wall: 1611.68, 0.0165506/step, 0.0206883 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 95500  averaging 10.2431 ns/day, 0.0168698 sec/step with standard deviation 0.000412846
+ENERGY:   95500         0.0000         0.0000         0.0000         0.0000         -21889.6877      2719.5220         0.0000         0.0000      3802.7413         -15367.4244       304.2573    -19170.1657    -15358.2089       311.0205           -914.8660      -928.6447     85640.7228      -539.2916      -539.3837
+
+TIMING: 96000  CPU: 825.461, 0.00873205/step  Wall: 1620.15, 0.016944/step, 0.0188267 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 96000  averaging 10.2429 ns/day, 0.0168702 sec/step with standard deviation 0.000411798
+ENERGY:   96000         0.0000         0.0000         0.0000         0.0000         -22083.6766      2795.6277         0.0000         0.0000      3920.4527         -15367.5962       313.6754    -19288.0488    -15360.8355       309.9343           -763.9406      -768.1474     85640.7228      -607.1150      -605.7901
+
+LDB: ============= START OF LOAD BALANCING ============== 1625.92
+LDB: ============== END OF LOAD BALANCING =============== 1625.93
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1625.96
+LDB: ============= START OF LOAD BALANCING ============== 1627.55
+LDB: TIME 1627.56 LOAD: AVG 0.0958608 MAX 0.173391  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 None MEM: 0 MB
+LDB: TIME 1627.56 LOAD: AVG 0.0958608 MAX 0.173391  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: TIME 1627.56 LOAD: AVG 0.0958608 MAX 0.173391  PROXIES: TOTAL 55 MAXPE 16 MAXPATCH 3 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 1627.57
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 1627.69
+TIMING: 96500  CPU: 829.875, 0.00882832/step  Wall: 1628.7, 0.0171039/step, 0.0166288 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 96500  averaging 10.2422 ns/day, 0.0168714 sec/step with standard deviation 0.000411069
+ENERGY:   96500         0.0000         0.0000         0.0000         0.0000         -22029.6410      2717.9272         0.0000         0.0000      3968.8890         -15342.8248       317.5508    -19311.7138    -15335.1453       310.6030          -1032.5255     -1003.1556     85640.7228      -744.5917      -744.7690
+
+TIMING: 97000  CPU: 834.179, 0.00860676/step  Wall: 1637.16, 0.016912/step, 0.0140933 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 97000  averaging 10.242 ns/day, 0.0168717 sec/step with standard deviation 0.000410013
+ENERGY:   97000         0.0000         0.0000         0.0000         0.0000         -22008.6963      2803.8650         0.0000         0.0000      3873.0270         -15331.8043       309.8809    -19204.8313    -15323.3890       312.1079           -650.3865      -651.4748     85640.7228      -644.6710      -644.1772
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 97500
+WRITING COORDINATES TO RESTART FILE AT STEP 97500
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 97500
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 97500  CPU: 838.346, 0.00833438/step  Wall: 1645.67, 0.0170256/step, 0.0118233 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 97500  averaging 10.2416 ns/day, 0.0168724 sec/step with standard deviation 0.000409103
+ENERGY:   97500         0.0000         0.0000         0.0000         0.0000         -22165.0731      2929.9648         0.0000         0.0000      3796.3591         -15438.7493       303.7467    -19235.1083    -15431.4526       308.2963           -253.7607      -288.4630     85640.7228      -587.1418      -587.9622
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 97500
+TIMING: 98000  CPU: 842.619, 0.00854648/step  Wall: 1654.02, 0.0167027/step, 0.00927927 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 98000  averaging 10.2421 ns/day, 0.0168716 sec/step with standard deviation 0.000408233
+ENERGY:   98000         0.0000         0.0000         0.0000         0.0000         -21866.7143      2676.8433         0.0000         0.0000      3926.9265         -15262.9445       314.1934    -19189.8710    -15258.5379       311.8049           -940.0568      -940.5242     85640.7228      -557.7735      -558.3429
+
+TIMING: 98500  CPU: 846.948, 0.00865813/step  Wall: 1662.46, 0.0168879/step, 0.00703662 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 98500  averaging 10.242 ns/day, 0.0168717 sec/step with standard deviation 0.000407192
+ENERGY:   98500         0.0000         0.0000         0.0000         0.0000         -22005.0159      2751.8915         0.0000         0.0000      3920.1115         -15333.0129       313.6481    -19253.1244    -15327.3714       311.6637           -830.8401      -808.7251     85640.7228      -598.4887      -598.2545
+
+TIMING: 99000  CPU: 851.18, 0.00846342/step  Wall: 1670.84, 0.0167519/step, 0.0046533 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 99000  averaging 10.2424 ns/day, 0.0168711 sec/step with standard deviation 0.000406246
+ENERGY:   99000         0.0000         0.0000         0.0000         0.0000         -21967.4883      2745.2466         0.0000         0.0000      3773.3041         -15448.9376       301.9021    -19222.2417    -15440.9300       307.6365           -751.8214      -758.3293     85640.7228      -588.8102      -590.1083
+
+TIMING: 99500  CPU: 855.264, 0.00816768/step  Wall: 1679.01, 0.0163443/step, 0.00227004 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 99500  averaging 10.244 ns/day, 0.0168684 sec/step with standard deviation 0.000406936
+ENERGY:   99500         0.0000         0.0000         0.0000         0.0000         -22069.0996      2861.1720         0.0000         0.0000      3936.2213         -15271.7062       314.9371    -19207.9275    -15268.9274       312.3694           -371.0240      -363.8491     85640.7228      -515.6486      -514.9070
+
+WRITING COORDINATES TO DCD FILE cl_aq_nvt_heat.dcd AT STEP 100000
+WRITING COORDINATES TO RESTART FILE AT STEP 100000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 100000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 100000  CPU: 859.44, 0.00835265/step  Wall: 1687.33, 0.0166407/step, 0 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 100000  averaging 10.2447 ns/day, 0.0168673 sec/step with standard deviation 0.000406231
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:  100000         0.0000         0.0000         0.0000         0.0000         -22228.5695      2854.1106         0.0000         0.0000      3929.8612         -15444.5977       314.4282    -19374.4589    -15437.9461       313.4319           -623.1025      -628.8903     85640.7228      -568.1436      -567.7831
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 100000
+WRITING EXTENDED SYSTEM TO OUTPUT FILE AT STEP 100000
+CLOSING EXTENDED SYSTEM TRAJECTORY FILE
+WRITING COORDINATES TO OUTPUT FILE AT STEP 100000
+CLOSING COORDINATE DCD FILE cl_aq_nvt_heat.dcd
+WRITING VELOCITIES TO OUTPUT FILE AT STEP 100000
+====================================================
+
+WallClock: 1688.375244  CPUTime: 859.770813  Memory: 0.000000 MB
+[Partition 0][Node 0] End of program

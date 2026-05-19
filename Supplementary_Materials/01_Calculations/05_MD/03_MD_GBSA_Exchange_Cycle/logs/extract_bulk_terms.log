@@ -1,0 +1,152 @@
+
+CPPTRAJ: Trajectory Analysis. V6.29.13 (AmberTools)
+    ___  ___  ___  ___
+     | \/ | \/ | \/ | 
+    _|_/\_|_/\_|_/\_|_
+
+| Date/time: 04/30/26 06:32:30
+| Available memory: 6.596 GB
+
+INPUT: Reading input from 'extract_bulk_terms.cpptraj'
+  [parm ../01_build_bulk/pfoa_aq.prmtop]
+	Reading '../01_build_bulk/pfoa_aq.prmtop' as Amber Topology
+	Radius Set: modified Bondi radii (mbondi)
+  [trajin ../02_namd_pfoa_aq/pfoa_aq_npt_0p5ns.dcd 1 50 1]
+	Reading '../02_namd_pfoa_aq/pfoa_aq_npt_0p5ns.dcd' as Charmm DCD
+	Symmetric shape matrix detected.
+  [autoimage]
+    AUTOIMAGE: To box center based on center of mass, anchor is first molecule.
+	Auto-imaging using molecule distances.
+  [strip :WAT]
+    STRIP: Stripping atoms in mask [:WAT]
+  [trajout pfoa_aq_50.nc netcdf]
+	Writing 'pfoa_aq_50.nc' as Amber NetCDF
+  [run]
+---------- RUN BEGIN -------------------------------------------------
+
+PARAMETER FILES (1 total):
+ 0: pfoa_aq.prmtop, 8233 atoms, 2737 res, box: Orthorhombic, 2737 mol, 2736 solvent
+
+INPUT TRAJECTORIES (1 total):
+ 0: 'pfoa_aq_npt_0p5ns.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm pfoa_aq.prmtop (Orthorhombic box) (reading 50 of 50)
+  Coordinate processing will occur on 50 frames.
+
+OUTPUT TRAJECTORIES (1 total):
+  'pfoa_aq_50.nc' (50 frames) is a NetCDF (NetCDF3) AMBER trajectory
+
+BEGIN TRAJECTORY PROCESSING:
+.....................................................
+ACTION SETUP FOR PARM 'pfoa_aq.prmtop' (2 actions):
+  0: [autoimage]
+	Using first molecule as anchor.
+	2736 molecules are mobile.
+  1: [strip :WAT]
+	Stripping 8208 atoms.
+	Stripped topology: 25 atoms, 1 res, box: Orthorhombic, 1 mol
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF frame chunk size requires compiling with HDF5 support.
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF frame chunk size requires compiling with HDF5 support.
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF frame chunk size requires compiling with HDF5 support.
+.....................................................
+ACTIVE OUTPUT TRAJECTORIES (1):
+  pfoa_aq_50.nc (coordinates, time, box)
+----- pfoa_aq_npt_0p5ns.dcd (1-50, 1) -----
+ 0% 10% 20% 31% 41% 51% 61% 71% 82% 92% 100% Complete.
+
+Read 50 frames and processed 50 frames.
+TIME: Avg. throughput= 271.6358 frames / second.
+
+ACTION OUTPUT:
+TIME: Analyses took 0.0000 seconds.
+
+RUN TIMING:
+TIME:		Init               : 0.0002 s (  0.11%)
+TIME:		Trajectory Process : 0.1841 s ( 91.35%)
+TIME:		Action Post        : 0.0000 s (  0.00%)
+TIME:		Analysis           : 0.0000 s (  0.00%)
+TIME:		Data File Write    : 0.0000 s (  0.00%)
+TIME:		Other              : 0.0172 s (  0.09%)
+TIME:	Run Total 0.2015 s
+---------- RUN END ---------------------------------------------------
+  [clear all]
+	Clearing Actions.
+	Clearing input trajectories/ensembles.
+	Clearing reference coordinates.
+	Clearing output trajectories.
+	Clearing topologies.
+	Clearing Analyses.
+	Clearing data files.
+	Clearing data sets.
+  [parm ../01_build_bulk/cl_aq.prmtop]
+	Reading '../01_build_bulk/cl_aq.prmtop' as Amber Topology
+	Radius Set: modified Bondi radii (mbondi)
+  [trajin ../03_namd_cl_aq/cl_aq_npt_0p5ns.dcd 1 50 1]
+	Reading '../03_namd_cl_aq/cl_aq_npt_0p5ns.dcd' as Charmm DCD
+	Symmetric shape matrix detected.
+  [autoimage]
+    AUTOIMAGE: To box center based on center of mass, anchor is first molecule.
+	Auto-imaging using molecule distances.
+  [strip :WAT]
+    STRIP: Stripping atoms in mask [:WAT]
+  [trajout cl_aq_50.nc netcdf]
+	Writing 'cl_aq_50.nc' as Amber NetCDF
+  [run]
+---------- RUN BEGIN -------------------------------------------------
+
+PARAMETER FILES (1 total):
+ 0: cl_aq.prmtop, 6289 atoms, 2097 res, box: Orthorhombic, 2097 mol, 2096 solvent
+
+INPUT TRAJECTORIES (1 total):
+ 0: 'cl_aq_npt_0p5ns.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm cl_aq.prmtop (Orthorhombic box) (reading 50 of 50)
+  Coordinate processing will occur on 50 frames.
+
+OUTPUT TRAJECTORIES (1 total):
+  'cl_aq_50.nc' (50 frames) is a NetCDF (NetCDF3) AMBER trajectory
+
+BEGIN TRAJECTORY PROCESSING:
+.....................................................
+ACTION SETUP FOR PARM 'cl_aq.prmtop' (2 actions):
+  0: [autoimage]
+	Using first molecule as anchor.
+	2096 molecules are mobile.
+  1: [strip :WAT]
+	Stripping 6288 atoms.
+	Stripped topology: 1 atoms, 1 res, box: Orthorhombic, 1 mol
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF frame chunk size requires compiling with HDF5 support.
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF frame chunk size requires compiling with HDF5 support.
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF frame chunk size requires compiling with HDF5 support.
+.....................................................
+ACTIVE OUTPUT TRAJECTORIES (1):
+  cl_aq_50.nc (coordinates, time, box)
+----- cl_aq_npt_0p5ns.dcd (1-50, 1) -----
+ 0% 10% 20% 31% 41% 51% 61% 71% 82% 92% 100% Complete.
+
+Read 50 frames and processed 50 frames.
+TIME: Avg. throughput= 357.0281 frames / second.
+
+ACTION OUTPUT:
+TIME: Analyses took 0.0000 seconds.
+
+RUN TIMING:
+TIME:		Init               : 0.0003 s (  0.16%)
+TIME:		Trajectory Process : 0.1400 s ( 84.39%)
+TIME:		Action Post        : 0.0000 s (  0.00%)
+TIME:		Analysis           : 0.0000 s (  0.00%)
+TIME:		Data File Write    : 0.0000 s (  0.00%)
+TIME:		Other              : 0.0256 s (  0.15%)
+TIME:	Run Total 0.1659 s
+---------- RUN END ---------------------------------------------------
+TIME: Total execution time: 0.7362 seconds.
+--------------------------------------------------------------------------------
+To cite CPPTRAJ use:
+Daniel R. Roe and Thomas E. Cheatham, III, "PTRAJ and CPPTRAJ: Software for
+  Processing and Analysis of Molecular Dynamics Trajectory Data". J. Chem.
+  Theory Comput., 2013, 9 (7), pp 3084-3095.
+

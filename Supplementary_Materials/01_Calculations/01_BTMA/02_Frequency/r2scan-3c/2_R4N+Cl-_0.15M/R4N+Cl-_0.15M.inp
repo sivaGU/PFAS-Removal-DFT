@@ -1,0 +1,25 @@
+# C30H32NO2F15 | Geometry Optimization + Freq | r2SCAN-3c/CPCM(SMD:Water)
+
+! r2SCAN-3c DefGrid3 TightOpt Freq CPCM
+
+%geom
+   MaxIter 350
+end
+
+%freq
+   TEMP 310.15
+end
+
+%maxcore 8000
+
+%pal
+   nprocs 16
+end
+
+%cpcm
+   smd true
+   SMDSolvent "Water"
+   epsilon 72.5
+end
+
+* xyzfile 0 1 BTMA-Cl_Cleaned.xyz

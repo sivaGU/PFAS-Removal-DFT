@@ -1,0 +1,35 @@
+# avogadro generated ORCA file
+# C8O2F15 | Frequencies | wB97X-D3/ma-def2-TZVP
+# 
+! r2scan-3c VeryTightSCF TRAH EDA CPCM
+
+%maxcore 4000
+
+%pal
+   nprocs 32
+end
+
+%cpcm
+   smd true
+   SMDSolvent "Water"
+   epsilon 72.5
+end
+
+%EDA
+  FRAG1_METHODFILE "frag1method.txt"
+  FRAG2_METHODFILE "frag2method.txt"
+  FRAG1_C 1
+  FRAG1_M 1
+  FRAG2_C -1
+  FRAG2_M 1
+end
+
+* xyzfile 0 1 R4N+PFOS-_0.15M.xyz
+
+%frag
+  Definition
+    1 {0:26} end
+    2 {27:55} end
+  end
+end
+

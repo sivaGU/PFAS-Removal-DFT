@@ -1,0 +1,31 @@
+# avogadro generated ORCA file
+# C8O2F15 | Frequencies | wB97X-D3/ma-def2-TZVP
+# 
+! wb97x-d3 def2-tzvpd DefGrid3 Freq CPCM
+
+%geom
+   MaxIter 350
+end
+
+%freq
+   TEMP 310.15
+end
+
+%maxcore 8500
+%pal
+  nprocs 32
+end
+
+%cpcm
+   smd true
+   SMDSolvent "Water"
+   epsilon 72.5
+end
+
+* xyzfile -1 1 PFOA_wb.xyz
+
+
+
+
+
+

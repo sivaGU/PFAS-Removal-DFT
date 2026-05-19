@@ -1,0 +1,20 @@
+# avogadro generated ORCA file
+# C8O2F15 | Frequencies | wB97X-D3/ma-def2-TZVP
+# 
+! XTB DefGrid3 TightOpt ALPB(Water)
+
+%geom
+   MaxIter 350
+   scan
+      B 1 25 = 9.679, 2.679, 10 
+      B 25 52 = 4.631, 11.631, 10
+   end
+end
+
+%maxcore 2000
+
+%pal
+   nprocs 64
+end
+
+* xyzfile -1 1 R4N+Cl-PFOA-_PESinit.xyz

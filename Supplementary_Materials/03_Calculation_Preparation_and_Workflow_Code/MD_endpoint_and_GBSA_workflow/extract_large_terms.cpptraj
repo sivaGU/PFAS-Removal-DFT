@@ -1,0 +1,14 @@
+parm ../../05_pfas_exchange/solvated_resin_pfoa_exchange.prmtop
+trajin ../../09_namd_pfoa_exchange/resin_pfoa_exchange_npt_1ns.dcd 1 100 1
+autoimage anchor :1 origin
+strip :WAT
+trajout r48_pfoa_47cl_100.nc netcdf
+run
+clear all
+
+parm ../../04_leap/solvated_resin_cl.prmtop
+trajin ../../07_namd_resin_only/resin_only_npt_2ns.dcd 101 200 1
+autoimage anchor :1 origin
+strip :WAT
+trajout r48_48cl_100.nc netcdf
+run

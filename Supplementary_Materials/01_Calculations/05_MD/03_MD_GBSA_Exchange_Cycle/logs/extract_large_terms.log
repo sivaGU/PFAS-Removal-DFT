@@ -1,0 +1,157 @@
+
+CPPTRAJ: Trajectory Analysis. V6.29.13 (AmberTools)
+    ___  ___  ___  ___
+     | \/ | \/ | \/ | 
+    _|_/\_|_/\_|_/\_|_
+
+| Date/time: 04/30/26 06:32:21
+| Available memory: 6.599 GB
+
+INPUT: Reading input from 'extract_large_terms.cpptraj'
+  [parm ../../05_pfas_exchange/solvated_resin_pfoa_exchange.prmtop]
+	Reading '../../05_pfas_exchange/solvated_resin_pfoa_exchange.prmtop' as Amber Topology
+	Radius Set: modified Bondi radii (mbondi)
+  [trajin ../../09_namd_pfoa_exchange/resin_pfoa_exchange_npt_1ns.dcd 1 100 1]
+	Reading '../../09_namd_pfoa_exchange/resin_pfoa_exchange_npt_1ns.dcd' as Charmm DCD
+	Symmetric shape matrix detected.
+  [autoimage anchor :1 origin]
+    AUTOIMAGE: To origin based on center of mass, anchor mask is [:1]
+	Auto-imaging using molecule distances.
+  [strip :WAT]
+    STRIP: Stripping atoms in mask [:WAT]
+  [trajout r48_pfoa_47cl_100.nc netcdf]
+	Writing 'r48_pfoa_47cl_100.nc' as Amber NetCDF
+  [run]
+---------- RUN BEGIN -------------------------------------------------
+
+PARAMETER FILES (1 total):
+ 0: solvated_resin_pfoa_exchange.prmtop, 133395 atoms, 43942 res, box: Orthorhombic, 43942 mol, 43893 solvent
+
+INPUT TRAJECTORIES (1 total):
+ 0: 'resin_pfoa_exchange_npt_1ns.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm solvated_resin_pfoa_exchange.prmtop (Orthorhombic box) (reading 100 of 100)
+  Coordinate processing will occur on 100 frames.
+
+OUTPUT TRAJECTORIES (1 total):
+  'r48_pfoa_47cl_100.nc' (100 frames) is a NetCDF (NetCDF3) AMBER trajectory
+
+BEGIN TRAJECTORY PROCESSING:
+.....................................................
+ACTION SETUP FOR PARM 'solvated_resin_pfoa_exchange.prmtop' (2 actions):
+  0: [autoimage anchor :1 origin]
+	Anchoring on atoms selected by mask ':1'
+	Mask [:1] corresponds to 1644 atoms.
+	Mask [:1] corresponds to molecule 1
+	1 molecules are fixed to anchor: 2
+	43940 molecules are mobile.
+  1: [strip :WAT]
+	Stripping 131679 atoms.
+	Stripped topology: 1716 atoms, 49 res, box: Orthorhombic, 49 mol
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF frame chunk size requires compiling with HDF5 support.
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF frame chunk size requires compiling with HDF5 support.
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF frame chunk size requires compiling with HDF5 support.
+.....................................................
+ACTIVE OUTPUT TRAJECTORIES (1):
+  r48_pfoa_47cl_100.nc (coordinates, time, box)
+----- resin_pfoa_exchange_npt_1ns.dcd (1-100, 1) -----
+ 0% 10% 20% 30% 40% 51% 61% 71% 81% 91% 100% Complete.
+
+Read 100 frames and processed 100 frames.
+TIME: Avg. throughput= 21.4818 frames / second.
+
+ACTION OUTPUT:
+TIME: Analyses took 0.0000 seconds.
+
+RUN TIMING:
+TIME:		Init               : 0.0003 s (  0.01%)
+TIME:		Trajectory Process : 4.6551 s ( 98.91%)
+TIME:		Action Post        : 0.0000 s (  0.00%)
+TIME:		Analysis           : 0.0000 s (  0.00%)
+TIME:		Data File Write    : 0.0000 s (  0.00%)
+TIME:		Other              : 0.0511 s (  0.01%)
+TIME:	Run Total 4.7065 s
+---------- RUN END ---------------------------------------------------
+  [clear all]
+	Clearing Actions.
+	Clearing input trajectories/ensembles.
+	Clearing reference coordinates.
+	Clearing output trajectories.
+	Clearing topologies.
+	Clearing Analyses.
+	Clearing data files.
+	Clearing data sets.
+  [parm ../../04_leap/solvated_resin_cl.prmtop]
+	Reading '../../04_leap/solvated_resin_cl.prmtop' as Amber Topology
+	Radius Set: modified Bondi radii (mbondi)
+  [trajin ../../07_namd_resin_only/resin_only_npt_2ns.dcd 101 200 1]
+	Reading '../../07_namd_resin_only/resin_only_npt_2ns.dcd' as Charmm DCD
+	Symmetric shape matrix detected.
+  [autoimage anchor :1 origin]
+    AUTOIMAGE: To origin based on center of mass, anchor mask is [:1]
+	Auto-imaging using molecule distances.
+  [strip :WAT]
+    STRIP: Stripping atoms in mask [:WAT]
+  [trajout r48_48cl_100.nc netcdf]
+	Writing 'r48_48cl_100.nc' as Amber NetCDF
+  [run]
+---------- RUN BEGIN -------------------------------------------------
+
+PARAMETER FILES (1 total):
+ 0: solvated_resin_cl.prmtop, 63990 atoms, 20815 res, box: Orthorhombic, 20815 mol, 20766 solvent
+
+INPUT TRAJECTORIES (1 total):
+ 0: 'resin_only_npt_2ns.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm solvated_resin_cl.prmtop (Orthorhombic box) (reading 100 of 200)
+  Coordinate processing will occur on 100 frames.
+
+OUTPUT TRAJECTORIES (1 total):
+  'r48_48cl_100.nc' (100 frames) is a NetCDF (NetCDF3) AMBER trajectory
+
+BEGIN TRAJECTORY PROCESSING:
+.....................................................
+ACTION SETUP FOR PARM 'solvated_resin_cl.prmtop' (2 actions):
+  0: [autoimage anchor :1 origin]
+	Anchoring on atoms selected by mask ':1'
+	Mask [:1] corresponds to 1644 atoms.
+	Mask [:1] corresponds to molecule 1
+	20814 molecules are mobile.
+  1: [strip :WAT]
+	Stripping 62298 atoms.
+	Stripped topology: 1692 atoms, 49 res, box: Orthorhombic, 49 mol
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF frame chunk size requires compiling with HDF5 support.
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF frame chunk size requires compiling with HDF5 support.
+Warning: Setting NetCDF variable compression requires compiling with HDF5 support.
+Warning: Setting NetCDF frame chunk size requires compiling with HDF5 support.
+.....................................................
+ACTIVE OUTPUT TRAJECTORIES (1):
+  r48_48cl_100.nc (coordinates, time, box)
+----- resin_only_npt_2ns.dcd (101-200, 1) -----
+ 0% 10% 20% 30% 40% 51% 61% 71% 81% 91% 100% Complete.
+
+Read 100 frames and processed 100 frames.
+TIME: Avg. throughput= 43.2418 frames / second.
+
+ACTION OUTPUT:
+TIME: Analyses took 0.0000 seconds.
+
+RUN TIMING:
+TIME:		Init               : 0.0003 s (  0.01%)
+TIME:		Trajectory Process : 2.3126 s ( 98.23%)
+TIME:		Action Post        : 0.0000 s (  0.00%)
+TIME:		Analysis           : 0.0000 s (  0.00%)
+TIME:		Data File Write    : 0.0000 s (  0.00%)
+TIME:		Other              : 0.0414 s (  0.02%)
+TIME:	Run Total 2.3543 s
+---------- RUN END ---------------------------------------------------
+TIME: Total execution time: 8.9701 seconds.
+--------------------------------------------------------------------------------
+To cite CPPTRAJ use:
+Daniel R. Roe and Thomas E. Cheatham, III, "PTRAJ and CPPTRAJ: Software for
+  Processing and Analysis of Molecular Dynamics Trajectory Data". J. Chem.
+  Theory Comput., 2013, 9 (7), pp 3084-3095.
+

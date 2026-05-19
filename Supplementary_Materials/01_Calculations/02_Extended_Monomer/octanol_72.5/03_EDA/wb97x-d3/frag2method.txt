@@ -1,0 +1,7 @@
+wb97x-d3 def2-TZVPD
+
+%cpcm
+   smd true
+   SMDSolvent "octanol"
+   epsilon 72.5
+end

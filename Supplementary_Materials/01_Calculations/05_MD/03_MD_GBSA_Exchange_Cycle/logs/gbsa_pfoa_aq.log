@@ -1,0 +1,25 @@
+Loading and checking parameter files for compatibility...
+cpptraj found! Using /home/zwa/miniforge3/envs/AmberTools25/bin/cpptraj
+mmpbsa_py_energy found! Using /home/zwa/miniforge3/envs/AmberTools25/bin/mmpbsa_py_energy
+Preparing trajectories for simulation...
+50 frames were processed by cpptraj for use in calculation.
+
+Running calculations on normal system...
+
+Beginning GB calculations with /home/zwa/miniforge3/envs/AmberTools25/bin/mmpbsa_py_energy
+  calculating complex contribution...
+
+Timing:
+Total setup time:                           0.028 sec.
+Creating trajectories with cpptraj:         0.269 sec.
+Total calculation time:                     1.825 sec.
+
+Total GB calculation time:                  1.823 sec.
+
+Statistics calculation & output writing:    0.079 sec.
+Total time taken:                           2.262 sec.
+
+
+MMPBSA.py Finished! Thank you for using. Please cite us if you publish this work with this paper:
+   Miller III, B. R., McGee Jr., T. D., Swails, J. M. Homeyer, N. Gohlke, H. and Roitberg, A. E.
+   J. Chem. Theory Comput., 2012, 8 (9) pp 3314--3321

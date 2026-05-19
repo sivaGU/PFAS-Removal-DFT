@@ -1,0 +1,14 @@
+parm ../01_build_bulk/pfoa_aq.prmtop
+trajin ../02_namd_pfoa_aq/pfoa_aq_npt_0p5ns.dcd 1 50 1
+autoimage
+strip :WAT
+trajout pfoa_aq_50.nc netcdf
+run
+clear all
+
+parm ../01_build_bulk/cl_aq.prmtop
+trajin ../03_namd_cl_aq/cl_aq_npt_0p5ns.dcd 1 50 1
+autoimage
+strip :WAT
+trajout cl_aq_50.nc netcdf
+run
