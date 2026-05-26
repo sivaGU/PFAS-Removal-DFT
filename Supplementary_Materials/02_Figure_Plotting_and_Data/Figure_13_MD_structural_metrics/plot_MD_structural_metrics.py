@@ -97,20 +97,35 @@ def style_axis(ax):
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.tick_params(length=5, width=1.2)
+    ax.xaxis.labelpad = 10
+    ax.yaxis.labelpad = 10
     ax.grid(axis="y", color="#d0d0d0", linestyle="--", linewidth=0.8, alpha=0.55)
 
 
 def add_panel_label(ax, letter: str):
-    ax.text(
-        -0.14,
-        1.10,
-        letter,
-        transform=ax.transAxes,
-        fontsize=BASE_FONT_SIZE + 8,
-        fontweight="bold",
-        va="top",
-        ha="right",
-    )
+    # Labels are placed after layout in figure coordinates so row labels align.
+    return
+
+
+def add_aligned_panel_labels(fig, axes: list[plt.Axes], letters: list[str]):
+    x_offset = 0.032
+    y_offset = 0.030
+    row_tops = {
+        0: max(ax.get_position().y1 for ax in axes[:3]),
+        1: max(ax.get_position().y1 for ax in axes[3:]),
+    }
+    for idx, (ax, letter) in enumerate(zip(axes, letters)):
+        pos = ax.get_position()
+        row = 0 if idx < 3 else 1
+        fig.text(
+            pos.x0 - x_offset,
+            row_tops[row] + y_offset,
+            letter,
+            fontsize=BASE_FONT_SIZE + 8,
+            fontweight="bold",
+            va="top",
+            ha="right",
+        )
 
 
 def draw_distance_timeseries(ax, metrics: pd.DataFrame):
@@ -127,7 +142,7 @@ def draw_distance_timeseries(ax, metrics: pd.DataFrame):
     ax.axhline(PFOA_AMMONIUM_PROXIMITY_THRESHOLD_A, color="#555555", lw=1.2, linestyle="--")
     ax.set_xlabel("Time (ns)")
     ax.set_ylabel("Minimum O...N distance (Å)")
-    ax.legend(frameon=False, loc="lower center", bbox_to_anchor=(0.68, 1.02), borderaxespad=0.0)
+    ax.legend(frameon=False, loc="lower center", bbox_to_anchor=(0.46, 1.02), borderaxespad=0.0)
     add_panel_label(ax, "A")
     style_axis(ax)
 
@@ -191,10 +206,10 @@ def draw_tail_hydration(ax, waters: pd.DataFrame, panel_label: str):
 def make_figure() -> dict:
     metrics, waters = load_data()
 
-    fig = plt.figure(figsize=(15.2, 10.7), dpi=DPI)
+    fig = plt.figure(figsize=(15.8, 10.9), dpi=DPI)
     fig.suptitle("PFOA- Structural Metrics in the R48+ Trajectory", y=0.985)
 
-    gs = fig.add_gridspec(2, 6, hspace=0.50, wspace=0.65)
+    gs = fig.add_gridspec(2, 6, hspace=0.58, wspace=1.12)
     axes = [
         fig.add_subplot(gs[0, 0:2]),
         fig.add_subplot(gs[0, 2:4]),
@@ -214,6 +229,7 @@ def make_figure() -> dict:
     draw_chloride_occupancy(axes[4], metrics, panel_label="E")
 
     fig.subplots_adjust(top=0.89)
+    add_aligned_panel_labels(fig, axes, ["A", "B", "C", "D", "E"])
 
     fig.savefig(OUT_PNG, dpi=DPI, bbox_inches="tight")
     FINAL_DIR.mkdir(exist_ok=True)

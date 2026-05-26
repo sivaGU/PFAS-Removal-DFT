@@ -13,6 +13,10 @@ ROOT = Path(__file__).resolve().parent
 TXT_PATH = ROOT / "eda_sections_main_out.txt"
 OUTDIR = ROOT / "eda_figures"
 OUTDIR.mkdir(exist_ok=True)
+FINAL_OUTDIR = next(
+    (parent / "final_plots" for parent in Path(__file__).resolve().parents if (parent / "final_plots").is_dir()),
+    None,
+)
 
 FONT_FAMILY = "DejaVu Sans"
 BASE_FONT_SIZE = 13
@@ -179,6 +183,10 @@ def draw_comparison_ladders(
     show_xlabel: bool,
     missing_note: str | None = None,
     step_order: list[tuple[str, str]] | None = None,
+    panel_title_fontsize: float | None = None,
+    panel_letter_x: float = -0.07,
+    panel_letter_y: float = 1.05,
+    panel_letter_fontsize: float = 18,
 ) -> None:
     step_order = step_order or STEP_ORDER
     if panel_df.empty:
@@ -296,18 +304,23 @@ def draw_comparison_ladders(
     ax.set_xlabel("EDA Component" if show_xlabel else "", fontsize=BASE_FONT_SIZE)
     ax.tick_params(axis="x", labelbottom=True, pad=6)
     ax.text(
-        -0.07,
-        1.05,
+        panel_letter_x,
+        panel_letter_y,
         panel_letter,
         transform=ax.transAxes,
-        fontsize=18,
+        fontsize=panel_letter_fontsize,
         fontweight="bold",
         va="top",
         ha="right",
     )
     ax.grid(axis="y", linestyle="--", alpha=0.25)
 
-    ax.set_title(f"{pfas_label}$^-$", fontsize=BASE_FONT_SIZE + 3, fontweight="bold", pad=12)
+    ax.set_title(
+        f"{pfas_label}$^-$",
+        fontsize=panel_title_fontsize or BASE_FONT_SIZE + 3,
+        fontweight="bold",
+        pad=12,
+    )
 
 
 def make_four_panel_figure(
@@ -321,6 +334,11 @@ def make_four_panel_figure(
     legend_y: float = 0.925,
     axes_top: float | None = None,
     hspace: float | None = None,
+    panel_title_fontsize: float | None = None,
+    panel_letter_x: float = -0.07,
+    panel_letter_y: float = 1.05,
+    panel_letter_fontsize: float = 18,
+    legend_fontsize: float | None = None,
 ) -> None:
     step_order = step_order or STEP_ORDER
     pfas_order = pfas_order or PFAS_ORDER
@@ -345,6 +363,10 @@ def make_four_panel_figure(
             show_xlabel=idx == len(pfas_order) - 1,
             missing_note=missing_note,
             step_order=step_order,
+            panel_title_fontsize=panel_title_fontsize,
+            panel_letter_x=panel_letter_x,
+            panel_letter_y=panel_letter_y,
+            panel_letter_fontsize=panel_letter_fontsize,
         )
 
     legend_handles = [
@@ -369,7 +391,7 @@ def make_four_panel_figure(
         columnspacing=1.1,
         handletextpad=0.45,
         borderaxespad=0.0,
-        fontsize=BASE_FONT_SIZE,
+        fontsize=legend_fontsize or BASE_FONT_SIZE,
     )
     fig.subplots_adjust(
         left=0.09,
@@ -379,8 +401,11 @@ def make_four_panel_figure(
         hspace=hspace if hspace is not None else (0.54 if len(pfas_order) > 2 else 0.62),
     )
 
-    outfile = OUTDIR / outfile
+    output_name = outfile
+    outfile = OUTDIR / output_name
     fig.savefig(outfile, bbox_inches="tight")
+    if FINAL_OUTDIR is not None and output_name.startswith("Figure_"):
+        fig.savefig(FINAL_OUTDIR / output_name, bbox_inches="tight")
     plt.close(fig)
 
 
@@ -399,6 +424,11 @@ make_four_panel_figure(
     legend_y=0.958,
     axes_top=0.905,
     hspace=0.34,
+    panel_title_fontsize=19,
+    panel_letter_x=-0.085,
+    panel_letter_y=1.10,
+    panel_letter_fontsize=22,
+    legend_fontsize=14,
 )
 
 make_four_panel_figure(
@@ -410,6 +440,11 @@ make_four_panel_figure(
     legend_y=0.958,
     axes_top=0.905,
     hspace=0.34,
+    panel_title_fontsize=19,
+    panel_letter_x=-0.085,
+    panel_letter_y=1.10,
+    panel_letter_fontsize=22,
+    legend_fontsize=14,
 )
 
 make_four_panel_figure(
@@ -422,6 +457,9 @@ make_four_panel_figure(
     legend_y=0.945,
     axes_top=0.872,
     hspace=0.24,
+    panel_letter_x=-0.085,
+    panel_letter_y=1.10,
+    panel_letter_fontsize=22,
 )
 
 print("\nDerived EDA component table (kcal/mol):\n")

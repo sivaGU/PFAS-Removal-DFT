@@ -63,6 +63,7 @@ class DatasetSpec:
     title_superscript: str | None
     title_right: str
     cation_label: str
+    title_font_size: int = 120
     xyz_suffix_by_species: dict[str, str] | None = None
     fallback_input_root: Path | None = None
     fallback_subdir_suffix: str | None = None
@@ -145,6 +146,7 @@ DATASETS = {
         title_superscript=None,
         title_right="Octanol, ε = 72.5)",
         cation_label="Extended\nMonomer",
+        title_font_size=88,
         panel_species=("PFOA", "PFOS"),
     ),
 }
@@ -385,8 +387,8 @@ def text_width(draw: ImageDraw.ImageDraw, text: str, text_font: ImageFont.FreeTy
 
 
 def draw_centered_title(draw: ImageDraw.ImageDraw, width: int, y: int, dataset: DatasetSpec) -> None:
-    title_font = font(90, bold=True)
-    superscript_font = font(54, bold=True)
+    title_font = font(dataset.title_font_size, bold=True)
+    superscript_font = font(round(dataset.title_font_size * 0.6), bold=True)
     left = dataset.title_left
     superscript = dataset.title_superscript
     right = dataset.title_right

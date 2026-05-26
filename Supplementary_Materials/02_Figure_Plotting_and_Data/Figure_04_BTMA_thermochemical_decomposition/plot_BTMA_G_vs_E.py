@@ -10,6 +10,10 @@ from matplotlib.colors import TwoSlopeNorm
 # =========================
 OUTDIR = Path(__file__).resolve().parent / "btma_figures"
 OUTDIR.mkdir(exist_ok=True)
+FINAL_OUTDIR = next(
+    (parent / "final_plots" for parent in Path(__file__).resolve().parents if (parent / "final_plots").is_dir()),
+    None,
+)
 
 FONT_FAMILY = "DejaVu Sans"
 DPI = 600
@@ -256,7 +260,7 @@ def draw_thermochemical_panel(ax, title, dataset, ylabel, letter, show_legend=Fa
         annotate_point(ax, x[i], high_y, f"{high_y:.2f}", FUNCTIONAL_STYLE[high_functional]["color"], 8)
 
     ax.axhline(0, color="black", linewidth=0.9, linestyle="--", alpha=0.45, zorder=0)
-    ax.set_title(title, pad=10)
+    ax.set_title(title, pad=10, fontweight="bold")
     ax.set_ylabel(ylabel)
     ax.set_xticks(x)
     ax.set_xticklabels(PFAS)
@@ -265,7 +269,7 @@ def draw_thermochemical_panel(ax, title, dataset, ylabel, letter, show_legend=Fa
     ax.set_ylim(*(ylim if ylim is not None else padded_limits(vals, extra=0.30)))
     ax.text(
         -0.12,
-        1.07,
+        1.13,
         letter,
         transform=ax.transAxes,
         fontsize=31,
@@ -551,17 +555,17 @@ def make_combined_thermochemical_origin():
     ax_d = fig.add_axes([0.08, 0.10, 0.37, 0.39])
     ax_e = fig.add_axes([0.565, 0.10, 0.34, 0.39])
 
-    fig.suptitle("Thermochemical Origin of Functional Dependence", y=1.015)
+    fig.suptitle("Thermochemical Origin of Functional Dependence", y=1.035)
     draw_thermochemical_panel(
         ax_a,
-        r"$\Delta E_{\mathrm{exchange}}$",
+        r"$\mathbf{\Delta E}_{\mathbf{exchange}}$",
         deltaE,
         "kcal/mol",
         "A",
     )
     draw_thermochemical_panel(
         ax_b,
-        r"$\Delta(G - E_{\mathrm{el}})_{\mathrm{exchange}}$",
+        r"$\mathbf{\Delta}(\mathbf{G} - \mathbf{E}_{\mathbf{el}})_{\mathbf{exchange}}$",
         deltaCorr,
         "kcal/mol",
         "B",
@@ -569,7 +573,7 @@ def make_combined_thermochemical_origin():
     )
     draw_thermochemical_panel(
         ax_c,
-        r"$\Delta G_{\mathrm{exchange}}$",
+        r"$\mathbf{\Delta G}_{\mathbf{exchange}}$",
         deltaG,
         "kcal/mol",
         "C",
@@ -583,6 +587,7 @@ def make_combined_thermochemical_origin():
     cbar.set_label(
         r"Signed contribution to $\Delta_F[G - E_{\mathrm{el}}]_{\mathrm{exchange}}$ (kcal/mol)",
         fontsize=19,
+        labelpad=18,
     )
     fig.text(
         0.50,
@@ -592,7 +597,10 @@ def make_combined_thermochemical_origin():
         va="bottom",
         fontsize=20,
     )
-    fig.savefig(OUTDIR / "Figure_04_thermochemical_origin_functional_dependence.png", dpi=DPI, bbox_inches="tight")
+    figure_name = "Figure_04_thermochemical_origin_functional_dependence.png"
+    fig.savefig(OUTDIR / figure_name, dpi=DPI, bbox_inches="tight")
+    if FINAL_OUTDIR is not None:
+        fig.savefig(FINAL_OUTDIR / figure_name, dpi=DPI, bbox_inches="tight")
     plt.close(fig)
 
 

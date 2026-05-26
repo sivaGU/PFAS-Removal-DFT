@@ -504,14 +504,14 @@ def make_combined_two_panel(df, outfile):
         (
             "DeltaE_exchange_kcalmol",
             "A",
-            r"$\Delta E_{\mathrm{exchange}}$",
+            r"$\mathbf{\Delta E}_{\mathbf{exchange}}$",
             r"$\Delta E_{\mathrm{exchange}}$ (kcal/mol)",
             (-3.05, 0.65),
         ),
         (
             "DeltaG_exchange_kcalmol",
             "B",
-            r"$\Delta G_{\mathrm{exchange}}$",
+            r"$\mathbf{\Delta G}_{\mathbf{exchange}}$",
             r"$\Delta G_{\mathrm{exchange}}$ (kcal/mol)",
             (4.10, 6.55),
         ),
@@ -574,15 +574,15 @@ def make_combined_two_panel(df, outfile):
                     zorder=4,
                 )
 
-        ax.set_title(title)
+        ax.set_title(title, fontsize=18, fontweight="bold", pad=8)
         ax.set_ylabel(ylabel)
         ax.set_xticks(range(len(PFAS_ORDER)))
         ax.set_xticklabels(PFAS_ORDER)
         ax.set_xlim(-0.45, len(PFAS_ORDER) - 0.55)
         ax.grid(axis="y", linestyle="--", linewidth=0.7, alpha=0.28)
         ax.text(
-            -0.10,
-            1.04,
+            -0.02,
+            1.08,
             letter,
             transform=ax.transAxes,
             fontsize=17,
@@ -623,7 +623,7 @@ def make_combined_two_panel(df, outfile):
         )
 
     handles, labels = axes[0, 0].get_legend_handles_labels()
-    fig.legend(handles, labels, frameon=False, loc="upper center", bbox_to_anchor=(0.5, 0.925), ncol=2)
+    fig.legend(handles, labels, frameon=False, loc="upper center", bbox_to_anchor=(0.5, 0.94), ncol=2)
 
     fig.subplots_adjust(left=0.07, right=0.985, bottom=0.04, top=0.86, wspace=0.18, hspace=0.18)
     fig.savefig(OUTDIR / outfile, bbox_inches="tight")

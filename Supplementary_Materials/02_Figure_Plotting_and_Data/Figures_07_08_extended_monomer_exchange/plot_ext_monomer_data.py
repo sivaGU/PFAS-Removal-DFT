@@ -373,6 +373,13 @@ def make_two_panel_paired_plot(
     outfile: str,
     ylims: list[tuple[float, float]],
     structure_paths: list[Path] | None = None,
+    figure_title_fontsize: int = 16,
+    panel_title_fontsize: int | None = None,
+    panel_label_x: float = -0.10,
+    legend_y: float = 0.925,
+    legend_fontsize: int | None = None,
+    legend_columnspacing: float = 2.0,
+    legend_markerscale: float = 1.0,
 ):
     use_structure_row = structure_paths is not None
     if use_structure_row:
@@ -399,7 +406,7 @@ def make_two_panel_paired_plot(
     else:
         fig, top_axes = plt.subplots(1, 2, figsize=(17.0, 6.2), dpi=300, sharex=True)
 
-    fig.suptitle(figure_title, fontsize=16, fontweight="bold", y=0.975)
+    fig.suptitle(figure_title, fontsize=figure_title_fontsize, fontweight="bold", y=0.978)
 
     configs = [
         ("DeltaE_exchange_kcalmol", r"$\Delta E_{\mathrm{exchange}}$ (kcal/mol)", "A"),
@@ -491,10 +498,13 @@ def make_two_panel_paired_plot(
         ax.set_xticklabels(pfas_order)
         ax.set_xlim(-0.75, len(pfas_order) - 0.25)
         ax.set_ylabel(ylabel)
-        ax.set_title(title)
+        if panel_title_fontsize is None:
+            ax.set_title(title)
+        else:
+            ax.set_title(title, fontsize=panel_title_fontsize, fontweight="bold", pad=8)
         ax.grid(axis="y", linestyle="--", linewidth=0.7, alpha=0.28)
         ax.text(
-            -0.10,
+            panel_label_x,
             1.08,
             letter,
             transform=ax.transAxes,
@@ -522,7 +532,18 @@ def make_two_panel_paired_plot(
                 ha="right",
             )
         handles, labels = top_axes[0].get_legend_handles_labels()
-        fig.legend(handles, labels, frameon=False, loc="upper center", bbox_to_anchor=(0.5, 0.925), ncol=len(handles))
+        fig.legend(
+            handles,
+            labels,
+            frameon=False,
+            loc="upper center",
+            bbox_to_anchor=(0.5, legend_y),
+            ncol=len(handles),
+            fontsize=legend_fontsize,
+            columnspacing=legend_columnspacing,
+            handletextpad=0.9,
+            markerscale=legend_markerscale,
+        )
         fig.subplots_adjust(left=0.07, right=0.985, bottom=0.04, top=0.86, wspace=0.18, hspace=0.18)
     else:
         handles, labels = top_axes[0].get_legend_handles_labels()
@@ -547,8 +568,8 @@ make_two_panel_paired_plot(
     pfas_order=PFAS_ORDER,
     figure_title="Model Size Effects on Exchange Energetics",
     panel_titles=[
-        r"$\Delta E_{\mathrm{exchange}}$",
-        r"$\Delta G_{\mathrm{exchange}}$",
+        r"$\mathbf{\Delta E}_{\mathbf{exchange}}$",
+        r"$\mathbf{\Delta G}_{\mathbf{exchange}}$",
     ],
     outfile="Figure_07_model_size_exchange_energetics.png",
     ylims=[(-10.8, 1.0), (-1.2, 7.8)],
@@ -556,6 +577,13 @@ make_two_panel_paired_plot(
         STRUCTURE_FIGURE_DIR / "Extended_Monomer_PFAS_r2SCAN-3c_structures_orthoscopic_no_panel_letters.png",
         STRUCTURE_FIGURE_DIR / "Extended_Monomer_PFAS_wB97X-D3_structures_orthoscopic_no_panel_letters.png",
     ],
+    figure_title_fontsize=20,
+    panel_title_fontsize=18,
+    panel_label_x=-0.02,
+    legend_y=0.94,
+    legend_fontsize=14,
+    legend_columnspacing=3.2,
+    legend_markerscale=1.25,
 )
 
 make_two_panel_paired_plot(
@@ -565,14 +593,21 @@ make_two_panel_paired_plot(
     pfas_order=["PFOA", "PFOS"],
     figure_title="Solvent Identity Effects on Extended Monomer Exchange",
     panel_titles=[
-        r"$\Delta E_{\mathrm{exchange}}$",
-        r"$\Delta G_{\mathrm{exchange}}$",
+        r"$\mathbf{\Delta E}_{\mathbf{exchange}}$",
+        r"$\mathbf{\Delta G}_{\mathbf{exchange}}$",
     ],
     outfile="Figure_08_solvent_identity_exchange_energetics.png",
     ylims=[(-10.95, -8.75), (-2.35, 1.35)],
     structure_paths=[
         STRUCTURE_FIGURE_DIR / "Extended_Monomer_PFAS_Octanol_epsilon72p5_structures_orthoscopic_no_panel_letters.png",
     ],
+    figure_title_fontsize=20,
+    panel_title_fontsize=18,
+    panel_label_x=-0.02,
+    legend_y=0.94,
+    legend_fontsize=14,
+    legend_columnspacing=3.2,
+    legend_markerscale=1.25,
 )
 
 print(f"\nSaved figures and tables to: {OUTDIR.resolve()}")

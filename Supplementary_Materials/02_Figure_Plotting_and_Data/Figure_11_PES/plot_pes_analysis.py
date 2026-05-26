@@ -15,13 +15,15 @@ FINAL_OUTDIR = PROJECT_ROOT / "final_plots"
 
 DPI = 600
 FONT_FAMILY = "DejaVu Sans"
+PANEL_TITLE_SIZE = 15
 
 PANEL_IMAGES = [
     {
         "letter": "A",
-        "title": "",
+        "title": r"PES Contour ($\mathbf{\Delta E}$ vs. $\mathbf{r_1}$, $\mathbf{r_2}$)",
         "path": ROOT / "plots" / "R4N+PFOA-_0.15M.contour.png",
         "crop_border": True,
+        "crop_embedded_title": True,
     },
     {
         "letter": "B",
@@ -31,9 +33,10 @@ PANEL_IMAGES = [
     },
     {
         "letter": "C",
-        "title": "",
+        "title": "Energy State Diagram of Anion Exchange",
         "path": FINAL_OUTDIR / "Figure 11 Panel B.png",
         "crop_border": True,
+        "crop_top_fraction": 0.075,
     },
 ]
 
@@ -41,8 +44,8 @@ plt.rcParams.update(
     {
         "font.family": FONT_FAMILY,
         "font.size": 12,
-        "axes.titlesize": 14,
-        "axes.titleweight": "normal",
+        "axes.titlesize": PANEL_TITLE_SIZE,
+        "axes.titleweight": "bold",
         "figure.titlesize": 17,
         "figure.titleweight": "bold",
     }
@@ -73,6 +76,24 @@ def crop_white_border(img, padding=8, threshold=248):
     return img[y0:y1, x0:x1]
 
 
+def crop_embedded_title(img, padding=10, min_dark_fraction=0.18):
+    """Remove source-image titles so panel titles can be styled consistently."""
+    rgb = img[..., :3]
+    if img.shape[-1] == 4:
+        mask = img[..., 3] > 0.01
+    else:
+        mask = np.ones(rgb.shape[:2], dtype=bool)
+
+    dark = (np.any(rgb < 0.30, axis=2) & mask)
+    row_fraction = dark.mean(axis=1)
+    candidates = np.where(row_fraction > min_dark_fraction)[0]
+    if candidates.size == 0:
+        return img
+
+    top = max(int(candidates[0]) - padding, 0)
+    return img[top:, :, :]
+
+
 def load_panel_image(panel):
     image_path = panel["path"]
 
@@ -83,6 +104,15 @@ def load_panel_image(panel):
 
     if panel.get("crop_border", False):
         img = crop_white_border(img)
+    if panel.get("crop_top_fraction"):
+        top = int(img.shape[0] * float(panel["crop_top_fraction"]))
+        img = img[top:, :, :]
+        if panel.get("crop_border", False):
+            img = crop_white_border(img)
+    if panel.get("crop_embedded_title", False):
+        img = crop_embedded_title(img)
+        if panel.get("crop_border", False):
+            img = crop_white_border(img)
 
     return img
 
@@ -159,7 +189,7 @@ def draw_image_panel(ax, panel, img):
     ax.imshow(img)
 
     if panel["title"]:
-        ax.set_title(panel["title"], pad=5, fontweight="normal")
+        ax.set_title(panel["title"], pad=6, fontsize=PANEL_TITLE_SIZE, fontweight="bold")
 
     ax.set_axis_off()
 
@@ -170,7 +200,7 @@ def add_panel_letters(fig, axes, panels, top_row_boxes):
     C is placed from the actual C axes position.
     """
     x_offset = 0.014
-    y_offset = 0.004
+    y_offset = -0.028
 
     # A/B: same row-level y anchor, regardless of slight axes-height differences
     for i in [0, 1]:

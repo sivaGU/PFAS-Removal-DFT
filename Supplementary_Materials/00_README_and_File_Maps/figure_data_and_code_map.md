@@ -98,9 +98,8 @@ Input data:
 
 ## Figures_14_15_MD_structural_rendering
 
-Scripts:
+Script:
 - `plot_MD_site_hopping_figure.py`
-- `extract_representative_frames.cpptraj`
 
 Input data:
 - representative PDB files in `input_data/`
