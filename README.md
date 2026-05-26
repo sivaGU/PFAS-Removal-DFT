@@ -1,24 +1,28 @@
-# Final Ronan GUI
+# PFAS-Removal-DFT
 
-This Streamlit app focuses on manuscript-aligned PFAS interaction visualization for cholestyramine complexes.
+Streamlit GUI for generating ORCA input files used in PFAS/cholestyramine DFT workflows.
 
-## What it does
+## What It Does
 
-- Loads bundled PFAS structures from `PFAS Files/` (included inside this folder)
-- Supports user-uploaded `.xyz` (required) and `.cube` (optional) files
-- Renders 3D molecular interaction maps
-- Highlights likely ionic headgroup contacts and local tail proximity
-- Displays manuscript-aligned EDA, NOCV, and NBO summaries for PFOS/PFOA/PFHxA/FHEA
-- Shows cube volumetric grid metadata for orbital context checks
+- Generates ORCA input decks without hand-editing templates.
+- Provides built-in XYZ examples for PFOA, PFOS, PFHxA, and FHEA.
+- Provides built-in BTMA and Extended Monomer PFAS-complex XYZ examples.
+- Generates inputs for GOAT/GFN2-xTB, r2SCAN-3c optimization, wB97X-D3 optimization, frequency calculations, EDA-NOCV, and NBO.
+- Generates exchange-energy frequency inputs for `R4N+X-`, `R4N+Cl-`, `X-`, and `Cl-`.
+- Allows optional upload of custom PFAS, complex, and `R4N+Cl-` XYZ structures.
 
-## Run locally
+The app generates input files only. ORCA calculations should be run on suitable local or HPC resources.
+
+## Run Locally
 
 ```bash
 pip install -r requirements.txt
 streamlit run streamlit_app.py
 ```
 
-## Notes
+## Repository Layout
 
-- Interaction detection is heuristic and designed for quick visual interpretation.
-- Manuscript metrics are preloaded for bundled PFAS names; custom uploads still receive full geometric visualization.
+- `streamlit_app.py`: Streamlit entry point.
+- `app/`: template, workflow, theme, and XYZ helper code.
+- `examples/`: lightweight XYZ files bundled with the deployed app.
+- `Supplementary_Materials/`: manuscript-supporting calculation and table files.
