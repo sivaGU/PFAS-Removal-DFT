@@ -24,11 +24,33 @@ CALC_TYPES = [
     "NBO analysis",
 ]
 
+GEOMETRY_CALC_TYPES = [
+    "r2SCAN-3c geometry optimization",
+    "wB97X-D3 geometry optimization",
+]
+
 
 def _functional_keyword(settings: OrcaSettings) -> str:
     if settings.functional == "r2SCAN-3c":
         return "r2SCAN-3c"
     return f"{settings.functional} {settings.basis}"
+
+
+def fragment_method_file(settings: OrcaSettings) -> str:
+    """Method-file contents for ORCA EDA fragments.
+
+    ORCA accepts fragment methods directly in %EDA or through method files. The
+    method-file form is useful here because the manuscript workflow includes
+    CPCM/SMD settings that would otherwise make the fragment method line bulky.
+    """
+    return "\n".join(
+        [
+            _functional_keyword(settings),
+            "",
+            _cpcm_block(settings),
+            "",
+        ]
+    )
 
 
 def _pal_block(settings: OrcaSettings) -> str:

@@ -4,7 +4,7 @@ from pathlib import Path
 
 import streamlit as st
 
-from app.orca_templates import CALC_TYPES, OrcaSettings
+from app.orca_templates import CALC_TYPES, GEOMETRY_CALC_TYPES, OrcaSettings
 from app.presets import (
     MODEL_NAMES,
     PFAS_NAMES,
@@ -15,7 +15,7 @@ from app.presets import (
     validate_examples,
 )
 from app.theme import apply_theme
-from app.workflow_builder import exchange_bundle, full_workflow_bundle, single_calculation_bundle
+from app.workflow_builder import exchange_bundle, interaction_bundle, single_calculation_bundle
 from app.xyz_utils import XyzStructure, render_xyz_preview, xyz_from_upload
 
 
@@ -23,13 +23,14 @@ st.set_page_config(page_title="PFAS-Removal-DFT", layout="wide")
 apply_theme()
 
 
-def settings_panel(prefix: str = "") -> OrcaSettings:
-    st.subheader("Computational Settings")
+def settings_panel(prefix: str = "", heading: str = "Computational Settings", default_functional: str = "wB97X-D3") -> OrcaSettings:
+    st.subheader(heading)
     c1, c2, c3 = st.columns(3)
+    functional_options = ["wB97X-D3", "r2SCAN-3c"]
     functional = c1.selectbox(
         "Functional",
-        ["wB97X-D3", "r2SCAN-3c"],
-        index=0,
+        functional_options,
+        index=functional_options.index(default_functional) if default_functional in functional_options else 0,
         key=f"{prefix}_functional",
     )
     basis = c2.selectbox(
@@ -113,9 +114,9 @@ def render_home() -> None:
         """
         **Supported workflows**
 
-        - Full workflow inputs for GOAT/GFN2-xTB, r2SCAN-3c optimization, wB97X-D3 optimization, frequency, EDA-NOCV, and NBO calculations.
+        - Exchange energetics inputs with configurable geometry optimization, frequency, and optional GOAT/GFN2-xTB stages.
+        - Interaction analysis inputs for EDA-NOCV and/or NBO calculations.
         - Single ORCA input generation from one uploaded XYZ file.
-        - Exchange-energy component frequency inputs using R4N+X-, R4N+Cl-, X-, and Cl- structures.
 
         Built-in examples are provided for PFOA, PFOS, PFHxA, and FHEA with BTMA and Extended Monomer complexes.
         """
@@ -129,46 +130,118 @@ def render_home() -> None:
         st.success("Built-in PFAS, complex, and chloride-complex examples are available.")
 
 
-def render_full_workflow() -> None:
-    st.title("Full Workflow Generator")
-    pfas_name, model, pfas, complex_structure = source_selector("full", require_complex=True)
+def render_exchange_analysis() -> None:
+    st.title("Exchange Energetics Analysis")
+    st.write(
+        "Generate the ORCA inputs needed for anion-exchange energetics using R4N+X-, R4N+Cl-, X-, and Cl- structures."
+    )
+    pfas_name, model, pfas, complex_structure = source_selector("exchange", require_complex=True)
+    assert complex_structure is not None
+    st.subheader("R4N+Cl- coordinate source")
+    uploaded_cl_complex = st.file_uploader(
+        "Optional: upload custom R4N+Cl- XYZ",
+        type=["xyz"],
+        key="exchange_custom_r4ncl",
+    )
+    chloride_complex = (
+        xyz_from_upload(uploaded_cl_complex, "R4N+Cl-")
+        if uploaded_cl_complex is not None
+        else load_chloride_complex(model)
+    )
+    chloride = load_chloride()
+
+    with st.expander("Structure previews", expanded=False):
+        tabs = st.tabs(["R4N+X-", "R4N+Cl-", "X-", "Cl-"])
+        with tabs[0]:
+            render_xyz_preview(complex_structure, height=360)
+        with tabs[1]:
+            render_xyz_preview(chloride_complex, height=360)
+        with tabs[2]:
+            render_xyz_preview(pfas, height=360)
+        with tabs[3]:
+            render_xyz_preview(chloride, height=300)
+
+    with st.expander("1. Geometry optimization configuration", expanded=True):
+        geometry_calc_type = st.selectbox(
+            "Geometry optimization template",
+            GEOMETRY_CALC_TYPES,
+            index=1,
+            key="exchange_geometry_calc_type",
+        )
+        default_geom_functional = "r2SCAN-3c" if geometry_calc_type.startswith("r2SCAN") else "wB97X-D3"
+        geometry_settings = settings_panel("exchange_geom", "Geometry Optimization Settings", default_geom_functional)
+
+    with st.expander("2. Frequency calculation configuration", expanded=True):
+        frequency_settings = settings_panel("exchange_freq", "Frequency Settings", "wB97X-D3")
+
+    with st.expander("Optional GOAT global optimization", expanded=False):
+        include_goat = st.checkbox("Generate GOAT/GFN2-xTB inputs before optimization", value=False)
+        goat_settings = settings_panel("exchange_goat", "GOAT Settings", "wB97X-D3") if include_goat else None
+
+    bundle = exchange_bundle(
+        pfas_name=pfas_name,
+        model_name=model,
+        pfas=pfas,
+        complex_structure=complex_structure,
+        chloride_complex=chloride_complex,
+        chloride=chloride,
+        geometry_calc_type=geometry_calc_type,
+        geometry_settings=geometry_settings,
+        frequency_settings=frequency_settings,
+        include_goat=include_goat,
+        goat_settings=goat_settings,
+    )
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("R4N+X- atoms", complex_structure.atom_count)
+    c2.metric("R4N+Cl- atoms", chloride_complex.atom_count)
+    c3.metric("X- atoms", pfas.atom_count)
+    c4.metric("Cl- atoms", chloride.atom_count)
+    st.metric("Files in ZIP", len(bundle.files))
+    st.dataframe({"Generated file": sorted(bundle.files)}, hide_index=True, use_container_width=True)
+    download_zip(bundle, f"{model.replace(' ', '_')}_{pfas_name}_exchange_energetics_inputs.zip", "Download exchange energetics ZIP")
+
+
+def render_interaction_analysis() -> None:
+    st.title("Interaction Analysis")
+    st.write("Generate EDA-NOCV and/or NBO ORCA inputs for PFAS-cholestyramine interaction analysis.")
+    pfas_name, model, pfas, complex_structure = source_selector("interaction", require_complex=True)
     assert complex_structure is not None
 
-    with st.expander("Preview structures", expanded=False):
-        c1, c2 = st.columns(2)
+    with st.expander("Preview complex and fragment assignment", expanded=False):
+        c1, c2 = st.columns([2, 1])
         with c1:
-            st.markdown(f"**{pfas_name} anion** ({pfas.atom_count} atoms)")
-            render_xyz_preview(pfas, height=360)
+            render_xyz_preview(complex_structure, height=390)
         with c2:
-            st.markdown(f"**{model} {pfas_name} complex** ({complex_structure.atom_count} atoms)")
-            render_xyz_preview(complex_structure, height=360)
+            frag2_start = complex_structure.atom_count - pfas.atom_count
+            st.metric("Complex atoms", complex_structure.atom_count)
+            st.metric("PFAS fragment atoms", pfas.atom_count)
+            st.markdown("**Generated EDA fragment blocks**")
+            st.code(
+                f"1 {{0:{frag2_start - 1}}} end\n2 {{{frag2_start}:{complex_structure.atom_count - 1}}} end",
+                language="text",
+            )
+            st.caption("The bundled complexes place the PFAS atoms as the final block in the XYZ file.")
 
-    settings = settings_panel("full")
-    st.subheader("Calculations to Generate")
-    c1, c2, c3 = st.columns(3)
-    include_goat = c1.checkbox("GOAT global optimization (GFN2-xTB)", value=True)
-    include_r2 = c1.checkbox("r2SCAN-3c geometry optimization", value=True)
-    include_wb = c2.checkbox("wB97X-D3 geometry optimization", value=True)
-    include_freq = c2.checkbox("Frequency calculation", value=True)
-    include_eda = c3.checkbox("EDA-NOCV analysis", value=True)
-    include_nbo = c3.checkbox("NBO analysis", value=True)
-
-    bundle = full_workflow_bundle(
+    settings = settings_panel("interaction", "Interaction Calculation Settings", "wB97X-D3")
+    st.subheader("Analyses to Generate")
+    c1, c2 = st.columns(2)
+    include_eda = c1.checkbox("EDA-NOCV analysis", value=True)
+    include_nbo = c2.checkbox("NBO analysis", value=True)
+    if not include_eda and not include_nbo:
+        st.warning("Select at least one interaction analysis.")
+        return
+    bundle = interaction_bundle(
         pfas_name=pfas_name,
         model_name=model,
         pfas=pfas,
         complex_structure=complex_structure,
         settings=settings,
-        include_goat=include_goat,
-        include_r2scan_opt=include_r2,
-        include_wb97xd3_opt=include_wb,
-        include_frequency=include_freq,
         include_eda=include_eda,
         include_nbo=include_nbo,
     )
     st.metric("Files in ZIP", len(bundle.files))
     st.dataframe({"Generated file": sorted(bundle.files)}, hide_index=True, use_container_width=True)
-    download_zip(bundle, f"{model.replace(' ', '_')}_{pfas_name}_ORCA_workflow.zip", "Download full workflow ZIP")
+    download_zip(bundle, f"{model.replace(' ', '_')}_{pfas_name}_interaction_analysis_inputs.zip", "Download interaction analysis ZIP")
 
 
 def render_single_calculation() -> None:
@@ -211,41 +284,6 @@ def render_single_calculation() -> None:
     download_zip(bundle, f"{structure.name}_{calc_type.split()[0]}_ORCA_input.zip", "Download ORCA input ZIP")
 
 
-def render_exchange_generator() -> None:
-    st.title("Exchange-Energy Component Generator")
-    pfas_name, model, pfas, complex_structure = source_selector("exchange", require_complex=True)
-    assert complex_structure is not None
-    st.subheader("R4N+Cl- coordinate source")
-    uploaded_cl_complex = st.file_uploader(
-        "Optional: upload custom R4N+Cl- XYZ",
-        type=["xyz"],
-        key="exchange_custom_r4ncl",
-    )
-    chloride_complex = (
-        xyz_from_upload(uploaded_cl_complex, "R4N+Cl-")
-        if uploaded_cl_complex is not None
-        else load_chloride_complex(model)
-    )
-    chloride = load_chloride()
-    settings = settings_panel("exchange")
-    bundle = exchange_bundle(
-        pfas_name=pfas_name,
-        model_name=model,
-        pfas=pfas,
-        complex_structure=complex_structure,
-        chloride_complex=chloride_complex,
-        chloride=chloride,
-        settings=settings,
-    )
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("R4N+X- atoms", complex_structure.atom_count)
-    c2.metric("R4N+Cl- atoms", chloride_complex.atom_count)
-    c3.metric("X- atoms", pfas.atom_count)
-    c4.metric("Cl- atoms", chloride.atom_count)
-    st.dataframe({"Generated file": sorted(bundle.files)}, hide_index=True, use_container_width=True)
-    download_zip(bundle, f"{model.replace(' ', '_')}_{pfas_name}_exchange_frequency_inputs.zip", "Download exchange input ZIP")
-
-
 def render_documentation() -> None:
     st.title("Documentation")
     st.markdown(
@@ -256,8 +294,12 @@ def render_documentation() -> None:
 
         - Built-in PFAS examples include standalone PFAS anions and matching BTMA/Extended Monomer complexes.
         - Custom PFAS uploads are accepted as XYZ files.
-        - Full complex workflows for custom PFAS require a matching `R4N+X-` complex XYZ upload.
+        - Exchange energetics inputs use `R4N+X-`, `R4N+Cl-`, `X-`, and `Cl-` components.
+        - Custom `R4N+Cl-` uploads are optional; otherwise the bundled BTMA/Extended Monomer chloride complex is used.
+        - Interaction-analysis inputs for custom PFAS require a matching `R4N+X-` complex XYZ upload.
         - EDA-NOCV fragment definitions assume the cholestyramine model atoms come first and the PFAS atoms are the final block in the complex XYZ.
+        - Every generated ORCA input references a local XYZ filename only, with the corresponding XYZ copied into the same ZIP folder.
+        - EDA-NOCV ZIP folders include `frag1method.txt` and `frag2method.txt` for fragment methods and CPCM settings.
 
         **Default settings**
 
@@ -275,8 +317,8 @@ def render_documentation() -> None:
 
 PAGES = {
     "Home": render_home,
-    "Full Workflow Generator": render_full_workflow,
-    "Exchange Energy Inputs": render_exchange_generator,
+    "Exchange Energetics Analysis": render_exchange_analysis,
+    "Interaction Analysis": render_interaction_analysis,
     "Single Calculation Generator": render_single_calculation,
     "Documentation": render_documentation,
 }

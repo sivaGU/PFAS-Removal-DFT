@@ -7,9 +7,10 @@ Streamlit GUI for generating ORCA input files used in PFAS/cholestyramine DFT wo
 - Generates ORCA input decks without hand-editing templates.
 - Provides built-in XYZ examples for PFOA, PFOS, PFHxA, and FHEA.
 - Provides built-in BTMA and Extended Monomer PFAS-complex XYZ examples.
-- Generates inputs for GOAT/GFN2-xTB, r2SCAN-3c optimization, wB97X-D3 optimization, frequency calculations, EDA-NOCV, and NBO.
-- Generates exchange-energy frequency inputs for `R4N+X-`, `R4N+Cl-`, `X-`, and `Cl-`.
+- Generates exchange energetics inputs for `R4N+X-`, `R4N+Cl-`, `X-`, and `Cl-`, including configurable geometry optimization, configurable frequency inputs, and optional GOAT/GFN2-xTB inputs.
+- Generates interaction-analysis inputs for EDA-NOCV and/or NBO.
 - Allows optional upload of custom PFAS, complex, and `R4N+Cl-` XYZ structures.
+- Writes each generated ORCA input next to the XYZ file it references, so `* xyzfile` lines use local filenames only.
 
 The app generates input files only. ORCA calculations should be run on suitable local or HPC resources.
 
