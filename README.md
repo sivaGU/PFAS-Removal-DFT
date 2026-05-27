@@ -1,4 +1,4 @@
-# PFAS-Removal-DFT
+# PFAS Removal
 
 Streamlit GUI for generating ORCA input files used in PFAS/cholestyramine DFT workflows.
 

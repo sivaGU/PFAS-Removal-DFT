@@ -1,1 +1,1 @@
-"""PFAS-Removal-DFT Streamlit application helpers."""
+"""PFAS Removal Streamlit application helpers."""

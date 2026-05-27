@@ -19,7 +19,7 @@ from app.workflow_builder import exchange_bundle, interaction_bundle, single_cal
 from app.xyz_utils import XyzStructure, render_xyz_preview, xyz_from_upload
 
 
-st.set_page_config(page_title="PFAS-Removal-DFT", layout="wide")
+st.set_page_config(page_title="PFAS Removal", layout="wide")
 apply_theme()
 
 
@@ -106,7 +106,7 @@ def source_selector(prefix: str, *, require_complex: bool) -> tuple[str, str, Xy
 
 
 def render_home() -> None:
-    st.title("PFAS-Removal-DFT ORCA Input Generator")
+    st.title("PFAS Removal ORCA Input Generator")
     st.write(
         "Generate manuscript-style ORCA input files for PFAS/cholestyramine DFT workflows without editing input decks by hand."
     )
@@ -335,7 +335,7 @@ with st.sidebar:
             st.session_state.current_page = page_name
             st.rerun()
     st.divider()
-    st.caption("PFAS-Removal-DFT")
+    st.caption("PFAS Removal")
     st.caption("ORCA input generation for manuscript-style workflows.")
 
 PAGES[st.session_state.current_page]()
