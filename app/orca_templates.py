@@ -40,7 +40,7 @@ def fragment_method_file(settings: OrcaSettings) -> str:
     """Method-file contents for ORCA EDA fragments.
 
     ORCA accepts fragment methods directly in %EDA or through method files. The
-    method-file form is useful here because the manuscript workflow includes
+    method-file form is useful here because the study workflow includes
     CPCM/SMD settings that would otherwise make the fragment method line bulky.
     """
     return "\n".join(

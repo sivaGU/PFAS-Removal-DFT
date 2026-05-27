@@ -73,12 +73,12 @@ def download_zip(bundle, filename: str, label: str) -> None:
 def source_selector(prefix: str, *, require_complex: bool) -> tuple[str, str, XyzStructure, XyzStructure | None]:
     pfas_mode = st.radio(
         "PFAS coordinate source",
-        ["Built-in manuscript PFAS", "Upload custom PFAS XYZ"],
+        ["Demo PFAS", "Upload custom PFAS XYZ"],
         horizontal=True,
         key=f"{prefix}_pfas_mode",
     )
     model = st.selectbox("Cholestyramine model", MODEL_NAMES, key=f"{prefix}_model")
-    if pfas_mode == "Built-in manuscript PFAS":
+    if pfas_mode == "Demo PFAS":
         pfas_name = st.selectbox("PFAS", PFAS_NAMES, key=f"{prefix}_pfas")
         pfas = load_pfas(pfas_name)
         complex_structure = load_complex(model, pfas_name)
@@ -108,7 +108,7 @@ def source_selector(prefix: str, *, require_complex: bool) -> tuple[str, str, Xy
 def render_home() -> None:
     st.title("PFAS Removal ORCA Input Generator")
     st.write(
-        "Generate manuscript-style ORCA input files for PFAS/cholestyramine DFT workflows without editing input decks by hand."
+        "Generate ORCA input files for PFAS/cholestyramine DFT workflows without editing input decks by hand."
     )
     st.markdown(
         """
@@ -118,22 +118,30 @@ def render_home() -> None:
         - Interaction analysis inputs for EDA-NOCV and/or NBO calculations.
         - Single ORCA input generation from one uploaded XYZ file.
 
-        Built-in examples are provided for PFOA, PFOS, PFHxA, and FHEA with BTMA and Extended Monomer complexes.
+        Demo examples are provided for PFOA, PFOS, PFHxA, and FHEA with BTMA and Extended Monomer complexes.
         """
     )
+    workflow_image = Path(__file__).resolve().parent / "assets" / "workflow_diagram.png"
+    if workflow_image.exists():
+        st.image(str(workflow_image), use_container_width=True)
+        st.markdown(
+            """
+            Workflow diagram of study methods. Step 1 summarizes the gathering of starting geometries for PFAS, BTMA, and cholestyramine model structures from PubChem. Polymer construction is described in Sections 2.1.1 and 2.1.2. Step 2 covers structure cleaning, assignment of protonation states at physiological pH, hydrogen addition, and basic optimization using force fields, as described in Section 2.1.1. Step 3a covers conformer searching with the GOAT global optimizer and GFN2-xTB for the extended monomer systems, as described in Section 2.3.1. Step 3b covers DFT geometry optimization and vibrational frequency calculations using r²SCAN-3c and ωB97X-D3 as described in Sections 2.2.1, 2.2.2, and 2.3.1. Step 3c covers calculation of electronic exchange energies and Gibbs free energies of exchange using the thermodynamic cycles defined in the Methods, as described in Sections 2.2.1, 2.2.3, and 2.3.1. Step 4a covers EDA-NOCV analysis of PFAS resin complexes to separate electrostatic, Pauli, orbital, dispersion, exchange-correlation, solvation, and preparation energy terms, as described in Section 2.4. Step 4b covers NBO analysis of donor-acceptor orbital interactions in selected PFAS-BTMA complexes, as described in Section 2.4. Step 5 presents the relaxed potential energy surface scan used to evaluate the local exchange coordinate for PFOA, chloride, and BTMA, as described in Section 2.5. Step 6 presents MD simulations of solvated 48-unit cholestyramine oligomers and the associated MD exchange free energy workflow, as described in Section 2.6. Step 7 presents the graphical user interface developed to generate ORCA input files, parse ORCA outputs, and support reproducible application of the workflow, as described in Section 2.7. Implicit solvation with water was used for the BTMA and extended monomer calculations unless otherwise stated. The extended monomer PFOA and PFOS bound states were also evaluated with 1-octanol implicit solvation to approximate the local resin microenvironment.
+            """
+        )
     st.info("This Streamlit app generates input files only. ORCA, GOAT, and NBO calculations should be run on your own computing resources.")
     missing = validate_examples()
     if missing:
-        st.error("Some built-in example structures are missing.")
+        st.error("Some Demo example structures are missing.")
         st.code("\n".join(missing))
     else:
-        st.success("Built-in PFAS, complex, and chloride-complex examples are available.")
+        st.success("Demo PFAS, complex, and chloride complex examples are available.")
 
 
 def render_exchange_analysis() -> None:
     st.title("Exchange Energetics Analysis")
     st.write(
-        "Generate the ORCA inputs needed for anion-exchange energetics using R4N+X-, R4N+Cl-, X-, and Cl- structures."
+        "Generate the ORCA inputs needed for anion exchange energetics using R4N+X-, R4N+Cl-, X-, and Cl- structures."
     )
     pfas_name, model, pfas, complex_structure = source_selector("exchange", require_complex=True)
     assert complex_structure is not None
@@ -288,15 +296,15 @@ def render_documentation() -> None:
     st.title("Documentation")
     st.markdown(
         """
-        This GUI generates ORCA input files that follow the DFT workflow described in the manuscript methods section.
+        This GUI generates ORCA input files that follow the DFT workflow described in the methods section.
 
         **Coordinate assumptions**
 
-        - Built-in PFAS examples include standalone PFAS anions and matching BTMA/Extended Monomer complexes.
+        - Demo PFAS examples include standalone PFAS anions and matching BTMA/Extended Monomer complexes.
         - Custom PFAS uploads are accepted as XYZ files.
         - Exchange energetics inputs use `R4N+X-`, `R4N+Cl-`, `X-`, and `Cl-` components.
         - Custom `R4N+Cl-` uploads are optional; otherwise the bundled BTMA/Extended Monomer chloride complex is used.
-        - Interaction-analysis inputs for custom PFAS require a matching `R4N+X-` complex XYZ upload.
+        - Interaction analysis inputs for custom PFAS require a matching `R4N+X-` complex XYZ upload.
         - EDA-NOCV fragment definitions assume the cholestyramine model atoms come first and the PFAS atoms are the final block in the complex XYZ.
         - Every generated ORCA input references a local XYZ filename only, with the corresponding XYZ copied into the same ZIP folder.
         - EDA-NOCV ZIP folders include `frag1method.txt` and `frag2method.txt` for fragment methods and CPCM settings.
@@ -336,6 +344,6 @@ with st.sidebar:
             st.rerun()
     st.divider()
     st.caption("PFAS Removal")
-    st.caption("ORCA input generation for manuscript-style workflows.")
+    st.caption("ORCA input generation for exchange energetics and interaction analysis workflows.")
 
 PAGES[st.session_state.current_page]()
