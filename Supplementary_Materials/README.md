@@ -22,8 +22,9 @@ modified by this archive.
   structures, and the latest 48mer resin builder code.
 - `05_MD_Animations/`: rendered MD trajectory animations and the scripts used
   to generate them.
-- `06_Table_Workbooks/`: Excel workbook versions of the supplementary CSV
-  tables, with one worksheet per table and source-path cross-references.
+- `06_Table_Workbooks/`: consolidated Excel workbook containing the labeled
+  supplementary tables, with one worksheet per table. Source-data
+  cross-references are provided in the table index.
 
 ## Packaging note
 
