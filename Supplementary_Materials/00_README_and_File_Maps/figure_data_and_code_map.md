@@ -96,13 +96,18 @@ Input data:
 - `input_data/pfoa_association_mechanism_metrics_summary.txt`
 - `input_data/pfoa_tail_waters_within_5A.dat`
 
-## Figures_14_15_MD_structural_rendering
+## Figure_14_MD_structural_rendering
 
-Script:
-- `plot_MD_site_hopping_figure.py`
+Scripts:
+- `render_figure14_raws.py`
+- `assemble_figure14.py`
+
+Helper:
+- `figure14_render_core.py`
 
 Input data:
 - representative PDB files in `input_data/`
+- Amber topology files in `input_data/` for PRMTOP-derived connectivity
 
 Shared helper:
 - `shared_helpers/render_structure_3d.py`
