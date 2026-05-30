@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import shutil
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont, ImageOps
@@ -12,8 +11,10 @@ from render_figure14_raws import PANEL_C_FINAL
 ROOT = fig14.ROOT
 FINAL_DIR = fig14.FINAL_DIR
 CURRENT_FINAL = FINAL_DIR / "Figure_14_MD_structural_snapshots_strip_manual_labels.png"
-BACKUP_FINAL = FINAL_DIR / "_figure_backups" / "Figure_14_MD_structural_snapshots_strip_manual_labels.before_panel_c.png"
+AB_BASE = FINAL_DIR / "Figure_14_MD_structural_snapshots_strip_no_structure_labels.png"
 ASSEMBLED_BASE = FINAL_DIR / "_figure_backups" / "Figure_14_MD_structural_snapshots_strip_panel_c_base.png"
+LABELING_GUI_DIR = Path(__file__).resolve().parent / "labeling_gui"
+LABEL_DRAGGER_BASE = LABELING_GUI_DIR / "Figure_14_label_dragger_base.png"
 
 
 def load_font(size: int, bold: bool = True) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
@@ -55,11 +56,16 @@ def fit_into(image: Image.Image, box_size: tuple[int, int], margin: int = 75) ->
 
 
 def assemble() -> None:
-    if CURRENT_FINAL.exists() and not BACKUP_FINAL.exists():
-        shutil.copyfile(CURRENT_FINAL, BACKUP_FINAL)
+    if not AB_BASE.exists():
+        raise FileNotFoundError(
+            f"Missing {AB_BASE}. Run render_figure14_raws.py before assemble_figure14.py."
+        )
+    if not PANEL_C_FINAL.exists():
+        raise FileNotFoundError(
+            f"Missing {PANEL_C_FINAL}. Run render_figure14_raws.py before assemble_figure14.py."
+        )
 
-    source_path = BACKUP_FINAL if BACKUP_FINAL.exists() else CURRENT_FINAL
-    source = Image.open(source_path).convert("RGB")
+    source = Image.open(AB_BASE).convert("RGB")
     top_and_a = source.crop((0, 0, source.width, 5863))
     b_tight = source.crop((1180, 6410, 5620, 10855))
     c_tight = Image.open(PANEL_C_FINAL).convert("RGB")
@@ -93,11 +99,14 @@ def assemble() -> None:
         canvas.paste(fitted, (x, y))
 
     ASSEMBLED_BASE.parent.mkdir(exist_ok=True)
+    LABELING_GUI_DIR.mkdir(exist_ok=True)
     canvas.save(ASSEMBLED_BASE)
     canvas.save(CURRENT_FINAL)
+    canvas.save(LABEL_DRAGGER_BASE)
 
 
 if __name__ == "__main__":
     assemble()
     print(f"Updated {CURRENT_FINAL}")
     print(f"Panel-C base composite saved to {ASSEMBLED_BASE}")
+    print(f"Label-dragger base saved to {LABEL_DRAGGER_BASE}")

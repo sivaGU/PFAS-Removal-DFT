@@ -34,6 +34,38 @@ METRICS_DIR = THIS_DIR / "input_data"
 VMD_DIR = THIS_DIR / "input_data"
 GBSA_DIR = THIS_DIR / "input_data"
 
+SNAPSHOT_PDBS = [
+    METRICS_DIR / "pfoa_assoc_frame_001_resin_pfo_cl.pdb",
+    METRICS_DIR / "pfoa_assoc_frame_025_resin_pfo_cl.pdb",
+    METRICS_DIR / "pfoa_assoc_frame_050_resin_pfo_cl.pdb",
+    METRICS_DIR / "pfoa_assoc_frame_100_resin_pfo_cl.pdb",
+]
+SNAPSHOT_LABELS = ["Frame 1", "Frame 25", "Frame 50", "Frame 100"]
+PANEL_SCALE_FACTORS = [1.18, 1.16, 1.20, 1.00]
+WHOLE_SYSTEM_PDB = VMD_DIR / "resin_pfoa_exchange_npt_1ns_final_imaged.pdb"
+SNAPSHOT_PRMTOP = GBSA_DIR / "r48_pfoa_47cl.prmtop"
+WHOLE_SYSTEM_PRMTOP = VMD_DIR / "solvated_resin_pfoa_exchange.prmtop"
+
+OUT_STRIP = FINAL_DIR / "figure_MD_structural_snapshots_strip.png"
+OUT_WHOLE = FINAL_DIR / "figure_MD_whole_system_water_transparent.png"
+FINAL_STRIP = FINAL_DIR / OUT_STRIP.name
+FINAL_WHOLE = FINAL_DIR / OUT_WHOLE.name
+FINAL_STRIP_NUMBERED = FINAL_DIR / "Figure_14_MD_structural_snapshots_strip.png"
+FINAL_WHOLE_NUMBERED = FINAL_DIR / "Figure_14_MD_whole_system_water_transparent.png"
+FINAL_LABEL_ANCHORS_JSON = FINAL_DIR / "Figure_14_label_anchors.json"
+FINAL_LABEL_ANCHORS_JS = FINAL_DIR / "Figure_14_label_anchors.js"
+FINAL_MANUAL_LABEL_LAYOUT = FINAL_DIR / "Figure_14_manual_label_layout.json"
+SHOW_STRUCTURE_LABELS = os.environ.get("MD_FIG14_STRUCTURE_LABELS", "0").lower() not in {"0", "false", "no"}
+HIDE_LABELS_PML = """
+python
+from pymol import cmd
+for obj in cmd.get_names("objects"):
+    if obj.startswith("lbl_") or obj.startswith("lead_") or obj.startswith("anchor_"):
+        cmd.disable(obj)
+cmd.hide("labels", "all")
+python end
+"""
+
 
 def require_inputs(paths: list[Path]) -> None:
     missing = [str(p) for p in paths if not p.exists()]
@@ -614,7 +646,8 @@ def make_snapshot_strip() -> None:
         dpi=700,
     )
     FINAL_DIR.mkdir(exist_ok=True)
-    shutil.copyfile(OUT_STRIP, FINAL_STRIP)
+    if OUT_STRIP.resolve() != FINAL_STRIP.resolve():
+        shutil.copyfile(OUT_STRIP, FINAL_STRIP)
 
     for result in panel_results:
         Path(result["image"]).unlink(missing_ok=True)
@@ -886,8 +919,10 @@ def make_whole_system_figure() -> None:
         pad=10,
     )
     FINAL_DIR.mkdir(exist_ok=True)
-    shutil.copyfile(OUT_WHOLE, FINAL_WHOLE)
-    shutil.copyfile(OUT_WHOLE, FINAL_WHOLE_NUMBERED)
+    if OUT_WHOLE.resolve() != FINAL_WHOLE.resolve():
+        shutil.copyfile(OUT_WHOLE, FINAL_WHOLE)
+    if OUT_WHOLE.resolve() != FINAL_WHOLE_NUMBERED.resolve():
+        shutil.copyfile(OUT_WHOLE, FINAL_WHOLE_NUMBERED)
 
     marker_records = []
     for record in json.loads(out_marker_json.read_text()):

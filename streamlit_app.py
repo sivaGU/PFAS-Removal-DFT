@@ -114,7 +114,7 @@ def render_home() -> None:
         """
         **Supported workflows**
 
-        - Exchange energetics inputs with configurable geometry optimization, frequency, and optional GOAT/GFN2-xTB stages.
+        - Anion exchange energetics inputs with configurable geometry optimization, frequency, and optional GOAT/GFN2-xTB stages.
         - Interaction analysis inputs for EDA-NOCV and/or NBO calculations.
         - Single ORCA input generation from one uploaded XYZ file.
 
@@ -139,7 +139,7 @@ def render_home() -> None:
 
 
 def render_exchange_analysis() -> None:
-    st.title("Exchange Energetics Analysis")
+    st.title("Anion Exchange Energetics Analysis")
     st.write(
         "Generate the ORCA inputs needed for anion exchange energetics using R4N+X-, R4N+Cl-, X-, and Cl- structures."
     )
@@ -206,7 +206,7 @@ def render_exchange_analysis() -> None:
     c4.metric("Cl- atoms", chloride.atom_count)
     st.metric("Files in ZIP", len(bundle.files))
     st.dataframe({"Generated file": sorted(bundle.files)}, hide_index=True, use_container_width=True)
-    download_zip(bundle, f"{model.replace(' ', '_')}_{pfas_name}_exchange_energetics_inputs.zip", "Download exchange energetics ZIP")
+    download_zip(bundle, f"{model.replace(' ', '_')}_{pfas_name}_anion_exchange_energetics_inputs.zip", "Download anion exchange energetics ZIP")
 
 
 def render_interaction_analysis() -> None:
@@ -302,7 +302,7 @@ def render_documentation() -> None:
 
         - Demo PFAS examples include standalone PFAS anions and matching BTMA/Extended Monomer complexes.
         - Custom PFAS uploads are accepted as XYZ files.
-        - Exchange energetics inputs use `R4N+X-`, `R4N+Cl-`, `X-`, and `Cl-` components.
+        - Anion exchange energetics inputs use `R4N+X-`, `R4N+Cl-`, `X-`, and `Cl-` components.
         - Custom `R4N+Cl-` uploads are optional; otherwise the bundled BTMA/Extended Monomer chloride complex is used.
         - Interaction analysis inputs for custom PFAS require a matching `R4N+X-` complex XYZ upload.
         - EDA-NOCV fragment definitions assume the cholestyramine model atoms come first and the PFAS atoms are the final block in the complex XYZ.
@@ -325,14 +325,14 @@ def render_documentation() -> None:
 
 PAGES = {
     "Home": render_home,
-    "Exchange Energetics Analysis": render_exchange_analysis,
+    "Anion Exchange Energetics": render_exchange_analysis,
     "Interaction Analysis": render_interaction_analysis,
     "Single Calculation Generator": render_single_calculation,
     "Documentation": render_documentation,
 }
 
 
-if "current_page" not in st.session_state:
+if "current_page" not in st.session_state or st.session_state.current_page not in PAGES:
     st.session_state.current_page = "Home"
 
 with st.sidebar:
@@ -344,6 +344,6 @@ with st.sidebar:
             st.rerun()
     st.divider()
     st.caption("PFAS Removal")
-    st.caption("ORCA input generation for exchange energetics and interaction analysis workflows.")
+    st.caption("ORCA input generation for anion exchange energetics and interaction analysis workflows.")
 
 PAGES[st.session_state.current_page]()
