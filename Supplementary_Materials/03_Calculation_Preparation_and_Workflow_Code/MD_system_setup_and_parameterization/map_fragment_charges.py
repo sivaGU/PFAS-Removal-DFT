@@ -294,7 +294,7 @@ def main():
     UNITS_GLOBAL = units
     meta = json.loads(MAP_JSON.read_text())
 
-    # The model build script writes these keys after antechamber has generated the mol2 files.
+    # Model outputs
     for name in ["model_internal", "model_terminal", "model_adjacent", "model_crosslink"]:
         gaff2 = Path("models") / f"{name}_gaff2.mol2"
         if not gaff2.exists():
@@ -304,6 +304,7 @@ def main():
     charges = [None] * mol.GetNumAtoms()
     group_reports = []
 
+    # Charge templates
     templates = {}
     for category, model_name, core_key in [
         ("internal", "model_internal", "internal_template_unit"),
@@ -311,7 +312,6 @@ def main():
         ("adjacent", "model_adjacent", "adjacent_template_unit"),
     ]:
         atoms, model_adj, full_to_model, _ = model_charges(model_name, meta)
-        # core_groups in fragment_model_map.json are stored as zero-based unit indices.
         unit_idx = meta["models"][model_name]["core_groups"][core_key][0]
         roles = unit_heavy_roles(mol, units[unit_idx], category, adjacency, categories)
         templates[category] = averaged_template_for_unit(mol, units[unit_idx], roles, atoms, model_adj, full_to_model)
@@ -322,7 +322,7 @@ def main():
             group_atoms = apply_template(charges, mol, unit, roles, templates[categories[idx]])
             group_reports.append(normalize_group(charges, group_atoms, 1.0, mol, f"unit_{idx + 1}_{categories[idx]}"))
 
-    # Crosslink model charges are mapped directly to the two crosslinked units plus the DVB ring.
+    # Crosslink charges
     x_atoms, x_adj, x_full_to_model, _ = model_charges("model_crosslink", meta)
     cross_units = [idx for idx, cat in categories.items() if cat == "crosslink"]
     cross_heavy = set(crosslink_ring)
@@ -342,7 +342,7 @@ def main():
 
     total = sum(charges)
     residual = 48.0 - total
-    # Final rounding-level correction over all carbon-bound hydrogens.
+    # Charge correction
     adjust = [
         idx
         for idx, atom in enumerate(mol.GetAtoms())

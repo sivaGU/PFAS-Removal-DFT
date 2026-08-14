@@ -1,20 +1,15 @@
 from pathlib import Path
-import re
 
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import pandas as pd
 
-# =========================
-# USER SETTINGS
-# =========================
-OUTDIR = Path(__file__).resolve().parent / "ext_monomer_figures"
+# Settings
+HERE = Path(__file__).resolve().parent
+INPUT_CSV = HERE / "input_data" / "ext_monomer_exchange_summary.csv"
+OUTDIR = HERE / "outputs"
 OUTDIR.mkdir(exist_ok=True)
-FINAL_OUTDIR = Path(__file__).resolve().parents[1] / "final_plots"
-FINAL_OUTDIR.mkdir(exist_ok=True)
-STRUCTURE_FIGURE_DIR = FINAL_OUTDIR / "structure_figures"
-
-TXT_PATH = Path(__file__).resolve().parent / "ext_monomer_wb_energy_summary_merged.txt"
+STRUCTURE_FIGURE_DIR = HERE / "input_structures"
 
 HARTREE_TO_KCAL = 627.509474
 FONT_FAMILY = "DejaVu Sans"
@@ -23,23 +18,6 @@ PFAS_ORDER = ["FHEA", "PFHxA", "PFOA", "PFOS"]
 
 plt.rcParams["font.family"] = FONT_FAMILY
 
-# Shared water-solvated chloride reference from the original BTMA wB97X-D3 set.
-# The merged extended-monomer summary does not include a free Cl- output, and the
-# chloride term is unchanged across the water / octanol comparison requested here.
-WATER_CL_REFERENCE = {
-    "single_point_Eh": -460.385228974217,
-    "gibbs_Eh": -460.40097343,
-}
-
-# Reuse the already-checked BTMA wB97X-D3 exchange values so the comparison series
-# remains visually and numerically consistent with the BTMA figure set.
-BTMA_WB_EXCHANGE = [
-    {"PFAS": "FHEA", "DeltaE_exchange_kcalmol": 0.17857897586430851, "DeltaG_exchange_kcalmol": 5.580717856348864},
-    {"PFAS": "PFHxA", "DeltaE_exchange_kcalmol": -1.7573050473106888, "DeltaG_exchange_kcalmol": 4.5434572460769385},
-    {"PFAS": "PFOA", "DeltaE_exchange_kcalmol": -1.0482346184238442, "DeltaG_exchange_kcalmol": 5.729588204061311},
-    {"PFAS": "PFOS", "DeltaE_exchange_kcalmol": -0.06280654348649041, "DeltaG_exchange_kcalmol": 6.028878847618401},
-]
-
 SERIES_STYLES = {
     "BTMA_wB97X-D3": {
         "label": r"BTMA $\omega$B97X-D3",
@@ -47,185 +25,25 @@ SERIES_STYLES = {
         "marker": "s",
     },
     "ExtendedMonomer_Water": {
-        "label": "Extended Monomer (Water)",
+        "label": r"DVB-BTMA$^{+}$ (Water)",
         "color": "#1b9e77",
         "marker": "D",
     },
     "ExtendedMonomer_Octanol72.5": {
-        "label": r"Extended Monomer (Octanol, $\epsilon = 72.5$)",
+        "label": r"DVB-BTMA$^{+}$ (Octanol, $\epsilon = 72.5$)",
         "color": "#7570b3",
         "marker": "^",
     },
 }
 
 
-def parse_summary_file(path: Path) -> pd.DataFrame:
-    rows = []
-    section = None
-    lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
-    i = 0
-    while i < len(lines):
-        line = lines[i]
-        if line.startswith("SECTION: "):
-            section = line.split(": ", 1)[1]
-        elif line.startswith("FILE: "):
-            file_path = line.split(": ", 1)[1]
-            sp = lines[i + 1].split(": ", 1)[1]
-            gibbs = lines[i + 2].split(": ", 1)[1]
-            rows.append(
-                {
-                    "section": section,
-                    "file": file_path,
-                    "single_point_Eh": float(sp),
-                    "gibbs_Eh": float(gibbs),
-                }
-            )
-            i += 2
-        i += 1
-    return pd.DataFrame(rows)
-
-
-def classify_record(file_path: str) -> pd.Series:
-    if "1-6_ExtFreqGlobMin" in file_path:
-        solvent = "water"
-        if "\\1_R4N+X-_freqGMwb\\" in file_path:
-            role = "R4N+X-"
-        elif "\\2_R4N+Cl-_freqGMwb\\" in file_path:
-            role = "R4N+Cl-"
-        elif "\\3_X-_freqGMwb\\" in file_path:
-            role = "X-"
-        else:
-            role = "unknown"
-    elif "1-7_OtherSolvents" in file_path:
-        solvent = "octanol72.5"
-        if "\\1_R4N+X-\\" in file_path:
-            role = "R4N+X-"
-        elif "\\2_R4N+Cl-\\" in file_path:
-            role = "R4N+Cl-"
-        else:
-            role = "unknown"
-    else:
-        solvent = "unknown"
-        role = "unknown"
-
-    species = None
-    for pfas in PFAS_ORDER:
-        if pfas in file_path:
-            species = pfas
-            break
-    if role == "R4N+Cl-":
-        species = "Cl"
-
-    return pd.Series({"role": role, "species": species, "solvent": solvent})
-
-
-raw_df = parse_summary_file(TXT_PATH)
-if raw_df.empty:
-    raise RuntimeError(f"No records parsed from {TXT_PATH}")
-
-raw_df = raw_df.join(raw_df["file"].apply(classify_record))
-raw_df.to_csv(OUTDIR / "parsed_ext_monomer_raw_energies.csv", index=False)
-
-water_df = raw_df[raw_df["solvent"] == "water"].copy()
-octanol_df = raw_df[raw_df["solvent"] == "octanol72.5"].copy()
-
-water_r4n_cl = water_df[water_df["role"] == "R4N+Cl-"]
-if water_r4n_cl.empty:
-    raise RuntimeError("Missing water-solvated R4N+Cl- reference in extended monomer summary.")
-
-water_r4n_cl = water_r4n_cl.iloc[0]
-
-summary_rows = []
-
-for pfas in PFAS_ORDER:
-    bound = water_df[(water_df["role"] == "R4N+X-") & (water_df["species"] == pfas)]
-    free_x = water_df[(water_df["role"] == "X-") & (water_df["species"] == pfas)]
-    if bound.empty or free_x.empty:
-        raise RuntimeError(f"Missing water-solvated extended monomer data for {pfas}")
-
-    bound = bound.iloc[0]
-    free_x = free_x.iloc[0]
-    delta_e = (
-        bound["single_point_Eh"]
-        - water_r4n_cl["single_point_Eh"]
-        - free_x["single_point_Eh"]
-        + WATER_CL_REFERENCE["single_point_Eh"]
-    )
-    delta_g = (
-        bound["gibbs_Eh"]
-        - water_r4n_cl["gibbs_Eh"]
-        - free_x["gibbs_Eh"]
-        + WATER_CL_REFERENCE["gibbs_Eh"]
-    )
-    summary_rows.append(
-        {
-            "series": "ExtendedMonomer_Water",
-            "PFAS": pfas,
-            "DeltaE_exchange_Eh": delta_e,
-            "DeltaG_exchange_Eh": delta_g,
-            "DeltaE_exchange_kcalmol": delta_e * HARTREE_TO_KCAL,
-            "DeltaG_exchange_kcalmol": delta_g * HARTREE_TO_KCAL,
-        }
-    )
-
-octanol_r4n_cl = octanol_df[octanol_df["role"] == "R4N+Cl-"]
-if octanol_r4n_cl.empty:
-    raise RuntimeError("Missing octanol-solvated R4N+Cl- reference in extended monomer summary.")
-octanol_r4n_cl = octanol_r4n_cl.iloc[0]
-
-for pfas in ["PFOA", "PFOS"]:
-    bound = octanol_df[(octanol_df["role"] == "R4N+X-") & (octanol_df["species"] == pfas)]
-    free_x = water_df[(water_df["role"] == "X-") & (water_df["species"] == pfas)]
-    if bound.empty or free_x.empty:
-        raise RuntimeError(f"Missing octanol comparison data for {pfas}")
-
-    bound = bound.iloc[0]
-    free_x = free_x.iloc[0]
-    delta_e = (
-        bound["single_point_Eh"]
-        - octanol_r4n_cl["single_point_Eh"]
-        - free_x["single_point_Eh"]
-        + WATER_CL_REFERENCE["single_point_Eh"]
-    )
-    delta_g = (
-        bound["gibbs_Eh"]
-        - octanol_r4n_cl["gibbs_Eh"]
-        - free_x["gibbs_Eh"]
-        + WATER_CL_REFERENCE["gibbs_Eh"]
-    )
-    summary_rows.append(
-        {
-            "series": "ExtendedMonomer_Octanol72.5",
-            "PFAS": pfas,
-            "DeltaE_exchange_Eh": delta_e,
-            "DeltaG_exchange_Eh": delta_g,
-            "DeltaE_exchange_kcalmol": delta_e * HARTREE_TO_KCAL,
-            "DeltaG_exchange_kcalmol": delta_g * HARTREE_TO_KCAL,
-        }
-    )
-
-for row in BTMA_WB_EXCHANGE:
-    summary_rows.append(
-        {
-            "series": "BTMA_wB97X-D3",
-            "PFAS": row["PFAS"],
-            "DeltaE_exchange_Eh": row["DeltaE_exchange_kcalmol"] / HARTREE_TO_KCAL,
-            "DeltaG_exchange_Eh": row["DeltaG_exchange_kcalmol"] / HARTREE_TO_KCAL,
-            "DeltaE_exchange_kcalmol": row["DeltaE_exchange_kcalmol"],
-            "DeltaG_exchange_kcalmol": row["DeltaG_exchange_kcalmol"],
-        }
-    )
-
-summary_df = pd.DataFrame(summary_rows)
+summary_df = pd.read_csv(INPUT_CSV)
+required_columns = {"series", "PFAS", "DeltaE_exchange_kcalmol", "DeltaG_exchange_kcalmol"}
+missing_columns = required_columns - set(summary_df.columns)
+if missing_columns:
+    raise ValueError(f"{INPUT_CSV} is missing columns: {sorted(missing_columns)}")
 summary_df["PFAS"] = pd.Categorical(summary_df["PFAS"], categories=PFAS_ORDER, ordered=True)
 summary_df = summary_df.sort_values(["series", "PFAS"]).reset_index(drop=True)
-summary_df.to_csv(OUTDIR / "ext_monomer_exchange_summary.csv", index=False)
-
-print("\nDerived extended monomer / BTMA exchange values (kcal/mol):\n")
-print(
-    summary_df[["series", "PFAS", "DeltaE_exchange_kcalmol", "DeltaG_exchange_kcalmol"]]
-    .to_string(index=False, float_format=lambda x: f"{x:0.3f}")
-)
 
 
 def make_paired_plot(
@@ -551,7 +369,6 @@ def make_two_panel_paired_plot(
         fig.subplots_adjust(left=0.075, right=0.985, bottom=0.14, top=0.76, wspace=0.22)
 
     fig.savefig(OUTDIR / outfile, bbox_inches="tight")
-    fig.savefig(FINAL_OUTDIR / outfile, bbox_inches="tight")
     plt.close(fig)
 
 
@@ -591,7 +408,7 @@ make_two_panel_paired_plot(
     series_left="ExtendedMonomer_Water",
     series_right="ExtendedMonomer_Octanol72.5",
     pfas_order=["PFOA", "PFOS"],
-    figure_title="Solvent Identity Effects on Extended Monomer Exchange",
+    figure_title=r"Solvent Identity Effects on DVB-BTMA$^{+}$ Exchange",
     panel_titles=[
         r"$\mathbf{\Delta E}_{\mathbf{exchange}}$",
         r"$\mathbf{\Delta G}_{\mathbf{exchange}}$",

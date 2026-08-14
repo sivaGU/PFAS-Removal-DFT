@@ -5,25 +5,20 @@ import numpy as np
 import pandas as pd
 
 
-# =========================
-# USER SETTINGS
-# =========================
-ROOT = Path(__file__).resolve().parents[2]
+# Settings
 THIS_DIR = Path(__file__).resolve().parent
-FINAL_DIR = ROOT / "final_plots"
-METRICS_DIR = ROOT / "work_amber" / "17_exchange_cycle_proxy" / "05_metrics"
+METRICS_DIR = THIS_DIR / "input_data"
+OUTPUT_DIR = THIS_DIR / "outputs"
 
 ASSOCIATION_METRICS_CSV = METRICS_DIR / "pfoa_association_mechanism_metrics.csv"
-TAIL_WATER_DAT = METRICS_DIR / "pfoa_tail_waters_within_5A.dat"
+TAIL_WATER_CSV = METRICS_DIR / "pfoa_tail_waters.csv"
 
-OUT_PNG = THIS_DIR / "figure_MD_structural_metrics.png"
-FINAL_PNG = FINAL_DIR / OUT_PNG.name
-FINAL_NUMBERED_PNG = FINAL_DIR / "Figure_13_MD_structural_metrics.png"
+OUTPUT = OUTPUT_DIR / "Figure_13_MD_structural_metrics.png"
 
 DPI = 600
 FONT_FAMILY = "DejaVu Sans"
 BASE_FONT_SIZE = 13
-FRAME_SPACING_NS = 0.01  # README reports 10 ps spacing for the PFOA-associated trajectory frames.
+FRAME_SPACING_NS = 0.01
 PFOA_AMMONIUM_PROXIMITY_THRESHOLD_A = 5.0
 TAIL_RESIN_CONTACT_CUTOFF_A = 4.0
 CHLORIDE_OCCUPANCY_CUTOFF_A = 5.0
@@ -57,27 +52,21 @@ def require_inputs(paths: list[Path]) -> None:
             + "\nExpected columns/files:\n"
             + "  pfoa_association_mechanism_metrics.csv: frame, nearest_carboxylate_O_to_any_resin_N_A, "
             + "pfoa_tail_resin_heavy_contacts_4A, chlorides_within_5A_of_nearest_N\n"
-            + "  pfoa_tail_waters_within_5A.dat: cpptraj watershell table with frame and water count columns"
+            + "  pfoa_tail_waters.csv: frame, tail_waters_5A"
         )
         raise FileNotFoundError(msg)
 
 
 def load_tail_waters(path: Path) -> pd.DataFrame:
-    rows = []
-    for line in path.read_text().splitlines():
-        if not line.strip() or line.lstrip().startswith("#"):
-            continue
-        parts = line.split()
-        if len(parts) < 3:
-            continue
-        rows.append({"frame": int(parts[0]), "tail_waters_5A": float(parts[1])})
-    if not rows:
-        raise ValueError(f"No watershell rows could be parsed from {path}")
-    return pd.DataFrame(rows)
+    waters = pd.read_csv(path)
+    required = {"frame", "tail_waters_5A"}
+    if not required.issubset(waters.columns):
+        raise ValueError(f"{path} must contain columns {sorted(required)}")
+    return waters
 
 
 def load_data() -> tuple[pd.DataFrame, pd.DataFrame]:
-    require_inputs([ASSOCIATION_METRICS_CSV, TAIL_WATER_DAT])
+    require_inputs([ASSOCIATION_METRICS_CSV, TAIL_WATER_CSV])
     metrics = pd.read_csv(ASSOCIATION_METRICS_CSV)
     required = {
         "frame",
@@ -87,7 +76,7 @@ def load_data() -> tuple[pd.DataFrame, pd.DataFrame]:
     }
     if not required.issubset(metrics.columns):
         raise ValueError(f"{ASSOCIATION_METRICS_CSV} must contain columns {sorted(required)}")
-    waters = load_tail_waters(TAIL_WATER_DAT)
+    waters = load_tail_waters(TAIL_WATER_CSV)
     metrics["time_ns"] = (metrics["frame"] - metrics["frame"].min()) * FRAME_SPACING_NS
     waters["time_ns"] = (waters["frame"] - waters["frame"].min()) * FRAME_SPACING_NS
     return metrics, waters
@@ -103,7 +92,6 @@ def style_axis(ax):
 
 
 def add_panel_label(ax, letter: str):
-    # Labels are placed after layout in figure coordinates so row labels align.
     return
 
 
@@ -207,7 +195,7 @@ def make_figure() -> dict:
     metrics, waters = load_data()
 
     fig = plt.figure(figsize=(15.8, 10.9), dpi=DPI)
-    fig.suptitle("PFOA- Structural Metrics in the R48+ Trajectory", y=0.985)
+    fig.suptitle(r"PFOA$^{-}$ Structural Metrics in the Ph-BTMA$_{48}^{48+}$ Trajectory", y=0.985)
 
     gs = fig.add_gridspec(2, 6, hspace=0.58, wspace=1.12)
     axes = [
@@ -222,19 +210,14 @@ def make_figure() -> dict:
     draw_distance_distribution(axes[1], metrics)
     draw_tail_contacts(axes[2], metrics)
 
-    # Swapped content only:
-    # D position now contains the old E content.
-    # E position now contains the old D content.
     draw_tail_hydration(axes[3], waters, panel_label="D")
     draw_chloride_occupancy(axes[4], metrics, panel_label="E")
 
     fig.subplots_adjust(top=0.89)
     add_aligned_panel_labels(fig, axes, ["A", "B", "C", "D", "E"])
 
-    fig.savefig(OUT_PNG, dpi=DPI, bbox_inches="tight")
-    FINAL_DIR.mkdir(exist_ok=True)
-    fig.savefig(FINAL_PNG, dpi=DPI, bbox_inches="tight")
-    fig.savefig(FINAL_NUMBERED_PNG, dpi=DPI, bbox_inches="tight")
+    OUTPUT_DIR.mkdir(exist_ok=True)
+    fig.savefig(OUTPUT, dpi=DPI, bbox_inches="tight")
     plt.close(fig)
 
     return {
@@ -252,7 +235,7 @@ if __name__ == "__main__":
     summary = make_figure()
 
     print("MD structural metrics figure generated.")
-    print(f"Input files used:\n  - {ASSOCIATION_METRICS_CSV}\n  - {TAIL_WATER_DAT}")
+    print(f"Input files used:\n  - {ASSOCIATION_METRICS_CSV}\n  - {TAIL_WATER_CSV}")
     print(f"PFOA O...N proximity threshold: {PFOA_AMMONIUM_PROXIMITY_THRESHOLD_A:.1f} Å")
     print(f"Tail-resin contact cutoff: {TAIL_RESIN_CONTACT_CUTOFF_A:.1f} Å")
     print(f"Chloride occupancy cutoff: {CHLORIDE_OCCUPANCY_CUTOFF_A:.1f} Å")
@@ -262,4 +245,4 @@ if __name__ == "__main__":
     for key, value in summary.items():
         print(f"  {key}: {value:.4f}")
 
-    print(f"Outputs:\n  - {OUT_PNG}\n  - {FINAL_PNG}\n  - {FINAL_NUMBERED_PNG}")
+    print(f"Output:\n  - {OUTPUT}")

@@ -1,22 +1,15 @@
 from pathlib import Path
-import re
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
 
-# =========================
-# USER SETTINGS
-# =========================
+# Settings
 ROOT = Path(__file__).resolve().parent
-TXT_PATH = ROOT / "eda_sections_main_out.txt"
-OUTDIR = ROOT / "eda_figures"
+INPUT_CSV = ROOT / "input_data" / "eda_component_summary.csv"
+OUTDIR = ROOT / "outputs"
 OUTDIR.mkdir(exist_ok=True)
-FINAL_OUTDIR = next(
-    (parent / "final_plots" for parent in Path(__file__).resolve().parents if (parent / "final_plots").is_dir()),
-    None,
-)
 
 FONT_FAMILY = "DejaVu Sans"
 BASE_FONT_SIZE = 13
@@ -42,12 +35,12 @@ SERIES_STYLES = {
         "marker": "s",
     },
     "ExtendedMonomer_Water": {
-        "label": "Extended Monomer (Water)",
+        "label": r"DVB-BTMA$^{+}$ (Water)",
         "color": "#1b9e77",
         "marker": "D",
     },
     "ExtendedMonomer_Octanol72.5": {
-        "label": r"Extended Monomer (Octanol, $\epsilon = 72.5$)",
+        "label": r"DVB-BTMA$^{+}$ (Octanol, $\epsilon = 72.5$)",
         "color": "#7570b3",
         "marker": "^",
     },
@@ -70,99 +63,14 @@ STEP_ORDER_WITHOUT_GCP = [
 ]
 
 
-def parse_eda_sections(path: Path) -> list[dict]:
-    text = path.read_text(encoding="utf-8", errors="replace")
-    chunks = [chunk for chunk in text.split("FILE: ") if chunk.strip()]
-    rows = []
-
-    for chunk in chunks:
-        lines = chunk.splitlines()
-        file_path = lines[0].strip()
-        block = "\n".join(lines[1:])
-        values = {}
-
-        for line in lines[1:]:
-            match = re.match(r"\s*(.+?)\s+(-?\d+\.\d+)\s+(-?\d+\.\d+)\s*$", line)
-            if not match:
-                continue
-
-            key = match.group(1).strip()
-            kcal = float(match.group(3))
-
-            if key in values:
-                if np.isclose(values[key], kcal, atol=1e-8):
-                    continue
-            values[key] = kcal
-
-        rows.append({"file": file_path, "block": block, "values": values})
-
-    return rows
-
-
-def classify_record(file_path: str) -> dict:
-    species = next((pfas for pfas in PFAS_ORDER if pfas in file_path), None)
-
-    if "\\BTMA\\r2\\" in file_path:
-        series = "BTMA_r2SCAN-3c"
-    elif "\\BTMA\\wb\\" in file_path:
-        series = "BTMA_wB97X-D3"
-    elif "\\ExtendedMonomer\\Water\\" in file_path:
-        series = "ExtendedMonomer_Water"
-    elif "\\ExtendedMonomer\\Octanol_72.5\\" in file_path:
-        series = "ExtendedMonomer_Octanol72.5"
-    else:
-        series = "Unknown"
-
-    return {"PFAS": species, "series": series}
-
-
-def build_component_table(parsed_rows: list[dict]) -> pd.DataFrame:
-    table_rows = []
-
-    for row in parsed_rows:
-        meta = classify_record(row["file"])
-        if meta["PFAS"] is None or meta["series"] == "Unknown":
-            continue
-
-        vals = row["values"]
-        bond = vals.get("Bond Energy")
-        if bond is None:
-            continue
-
-        pauli = vals.get("Pauli Energy", 0.0)
-        elstat = vals.get("Electrostatic Energy", 0.0)
-        orb = vals.get("Orbital Energy", 0.0)
-        disp = vals.get("Delta Dispersion", 0.0)
-        xc = vals.get("Delta E^0(XC)", 0.0)
-        gcp = vals.get("Delta gCP correction", 0.0)
-        solv = vals.get("Delta CPCM Dielectric", 0.0)
-
-        interaction_sum = pauli + elstat + orb + disp + xc + gcp + solv
-        prep = bond - interaction_sum
-
-        table_rows.append(
-            {
-                "file": row["file"],
-                "PFAS": meta["PFAS"],
-                "series": meta["series"],
-                "Bond Energy": bond,
-                "Preparation Energy": prep,
-                "Pauli Energy": pauli,
-                "Electrostatic Energy": elstat,
-                "Orbital Energy": orb,
-                "Delta Dispersion": disp,
-                "Delta E^0(XC)": xc,
-                "Delta gCP correction": gcp,
-                "Delta CPCM Dielectric": solv,
-            }
-        )
-
-    df = pd.DataFrame(table_rows)
-    if df.empty:
-        raise RuntimeError(f"No usable EDA rows parsed from {TXT_PATH}")
+def load_component_table() -> pd.DataFrame:
+    df = pd.read_csv(INPUT_CSV)
+    required = {"PFAS", "series", "Bond Energy", *(key for key, _ in STEP_ORDER)}
+    missing = required - set(df.columns)
+    if missing:
+        raise ValueError(f"{INPUT_CSV} is missing columns: {sorted(missing)}")
     df["PFAS"] = pd.Categorical(df["PFAS"], categories=PFAS_ORDER, ordered=True)
-    df = df.sort_values(["PFAS", "series"]).reset_index(drop=True)
-    return df
+    return df.sort_values(["PFAS", "series"]).reset_index(drop=True)
 
 
 def build_levels(record: pd.Series, step_order: list[tuple[str, str]] | None = None) -> list[float]:
@@ -404,14 +312,10 @@ def make_four_panel_figure(
     output_name = outfile
     outfile = OUTDIR / output_name
     fig.savefig(outfile, bbox_inches="tight")
-    if FINAL_OUTDIR is not None and output_name.startswith("Figure_"):
-        fig.savefig(FINAL_OUTDIR / output_name, bbox_inches="tight")
     plt.close(fig)
 
 
-parsed_rows = parse_eda_sections(TXT_PATH)
-component_df = build_component_table(parsed_rows)
-component_df.to_csv(OUTDIR / "eda_component_summary.csv", index=False)
+component_df = load_component_table()
 
 for pfas_name in PFAS_ORDER:
     pass
@@ -435,7 +339,7 @@ make_four_panel_figure(
     component_df,
     ["BTMA_wB97X-D3", "ExtendedMonomer_Water"],
     "Figure_09_extended_monomer_eda_across_pfas.png",
-    "Extended Monomer Energy Decomposition Analysis",
+    r"DVB-BTMA$^{+}$ Energy Decomposition Analysis",
     step_order=STEP_ORDER_WITHOUT_GCP,
     legend_y=0.958,
     axes_top=0.905,
@@ -451,7 +355,7 @@ make_four_panel_figure(
     component_df,
     ["ExtendedMonomer_Water", "ExtendedMonomer_Octanol72.5"],
     "Figure_10_solvent_dependence_extended_monomer_eda.png",
-    "Solvent Dependence of Extended Monomer EDA",
+    r"Solvent Dependence of DVB-BTMA$^{+}$ EDA",
     pfas_order=["PFOA", "PFOS"],
     step_order=STEP_ORDER_WITHOUT_GCP,
     legend_y=0.945,

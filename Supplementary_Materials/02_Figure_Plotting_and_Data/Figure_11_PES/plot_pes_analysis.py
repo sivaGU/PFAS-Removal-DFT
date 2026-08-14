@@ -1,291 +1,330 @@
+#!/usr/bin/env python3
+"""Generate Figure 11 from bundled PES data and local structure renders."""
+
+from __future__ import annotations
+
+import subprocess
+import sys
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
+from matplotlib.offsetbox import AnnotationBbox, OffsetImage
+from PIL import Image, ImageDraw, ImageFont
 
 
-# =========================
-# USER SETTINGS
-# =========================
-ROOT = Path(__file__).resolve().parent
-PROJECT_ROOT = ROOT.parent
-OUTDIR = ROOT / "plots"
-OUTDIR.mkdir(exist_ok=True)
-FINAL_OUTDIR = PROJECT_ROOT / "final_plots"
+THIS_DIR = Path(__file__).resolve().parent
+INPUT_DIR = THIS_DIR / "input_data"
+RENDER_DIR = THIS_DIR / "structure_renders"
+OUTPUT_DIR = THIS_DIR / "outputs"
+OUTPUT = OUTPUT_DIR / "Figure_11_PES_analysis_local_exchange.png"
+
+
+def load_pes_data():
+    grid = pd.read_csv(INPUT_DIR / "R4N+PFOA-_0.15M.grid.csv")
+    mep = pd.read_csv(INPUT_DIR / "pes_mep_profile.csv")
+    required_mep = {"step", "relative_energy_kcal_mol", "state"}
+    if not required_mep.issubset(mep.columns):
+        raise ValueError(f"pes_mep_profile.csv must contain {sorted(required_mep)}")
+
+    r1 = grid.iloc[:, 0].to_numpy(float)
+    r2 = np.asarray([float(value) for value in grid.columns[1:]], dtype=float)
+    energies = grid.iloc[:, 1:].to_numpy(float)
+    min_index = np.unravel_index(np.argmin(energies), energies.shape)
+    minimum = {"r1": r1[min_index[0]], "r2": r2[min_index[1]]}
+    return r1, r2, energies, minimum, mep
+
+
+R1_VALUES, R2_VALUES, DELTA_E_KCAL_MOL, GLOBAL_MINIMUM, MEP_DATA = load_pes_data()
+MEP_STEPS = MEP_DATA["step"].to_numpy(int)
+MEP_RELATIVE_ENERGIES_KCAL_MOL = MEP_DATA["relative_energy_kcal_mol"].to_numpy(float)
+MEP_INSETS = {
+    "approach": {"title": "PFOA Approaches Ammonium Site"},
+    "displacement": {"title": "PFOA Displaces Cl-"},
+    "bound": {"title": "PFOA Cholestyramine Complex"},
+}
 
 DPI = 600
-FONT_FAMILY = "DejaVu Sans"
+FONT = "DejaVu Sans"
+TITLE_COLOR = "#111111"
 PANEL_TITLE_SIZE = 15
+DISTANCE_COLORS = {
+    "3.68 Å": "#d62728",
+    "4.12 Å": "#1f77b4",
+    "8.52 Å": "#2ca02c",
+}
 
-PANEL_IMAGES = [
-    {
-        "letter": "A",
-        "title": r"PES Contour ($\mathbf{\Delta E}$ vs. $\mathbf{r_1}$, $\mathbf{r_2}$)",
-        "path": ROOT / "plots" / "R4N+PFOA-_0.15M.contour.png",
-        "crop_border": True,
-        "crop_embedded_title": True,
-    },
-    {
-        "letter": "B",
-        "title": "Global Minimum Structure",
-        "path": FINAL_OUTDIR / "Figure 11 Panel C.png",
-        "crop_border": True,
-    },
-    {
-        "letter": "C",
-        "title": "Energy State Diagram of Anion Exchange",
-        "path": FINAL_OUTDIR / "Figure 11 Panel B.png",
-        "crop_border": True,
-        "crop_top_fraction": 0.075,
-    },
-]
+STRUCTURE_RENDERS = {
+    "global": RENDER_DIR / "panel_b_global_minimum.png",
+    "approach": RENDER_DIR / "panel_c_approach.png",
+    "displacement": RENDER_DIR / "panel_c_displacement.png",
+    "bound": RENDER_DIR / "panel_c_bound.png",
+}
+
 
 plt.rcParams.update(
     {
-        "font.family": FONT_FAMILY,
+        "font.family": FONT,
         "font.size": 12,
         "axes.titlesize": PANEL_TITLE_SIZE,
         "axes.titleweight": "bold",
-        "figure.titlesize": 17,
+        "figure.titlesize": 18,
         "figure.titleweight": "bold",
     }
 )
 
 
-def crop_white_border(img, padding=8, threshold=248):
-    """Trim source-image whitespace so embedded plots can fill their panel."""
-    rgb = img[..., :3]
-
-    if img.shape[-1] == 4:
-        mask = img[..., 3] > 0.01
-    else:
-        mask = np.ones(rgb.shape[:2], dtype=bool)
-
-    nonwhite = np.any(rgb < threshold / 255.0, axis=2) & mask
-    rows = np.where(nonwhite.any(axis=1))[0]
-    cols = np.where(nonwhite.any(axis=0))[0]
-
-    if rows.size == 0 or cols.size == 0:
-        return img
-
-    y0 = max(rows[0] - padding, 0)
-    y1 = min(rows[-1] + padding + 1, img.shape[0])
-    x0 = max(cols[0] - padding, 0)
-    x1 = min(cols[-1] + padding + 1, img.shape[1])
-
-    return img[y0:y1, x0:x1]
-
-
-def crop_embedded_title(img, padding=10, min_dark_fraction=0.18):
-    """Remove source-image titles so panel titles can be styled consistently."""
-    rgb = img[..., :3]
-    if img.shape[-1] == 4:
-        mask = img[..., 3] > 0.01
-    else:
-        mask = np.ones(rgb.shape[:2], dtype=bool)
-
-    dark = (np.any(rgb < 0.30, axis=2) & mask)
-    row_fraction = dark.mean(axis=1)
-    candidates = np.where(row_fraction > min_dark_fraction)[0]
-    if candidates.size == 0:
-        return img
-
-    top = max(int(candidates[0]) - padding, 0)
-    return img[top:, :, :]
-
-
-def load_panel_image(panel):
-    image_path = panel["path"]
-
-    if not image_path.exists():
-        return None
-
-    img = plt.imread(image_path)
-
-    if panel.get("crop_border", False):
-        img = crop_white_border(img)
-    if panel.get("crop_top_fraction"):
-        top = int(img.shape[0] * float(panel["crop_top_fraction"]))
-        img = img[top:, :, :]
-        if panel.get("crop_border", False):
-            img = crop_white_border(img)
-    if panel.get("crop_embedded_title", False):
-        img = crop_embedded_title(img)
-        if panel.get("crop_border", False):
-            img = crop_white_border(img)
-
-    return img
-
-
-def add_aspect_preserved_axes(
-    fig,
-    img,
-    max_box,
-    h_align="center",
-    v_align="center",
-    x_nudge=0.0,
-    y_nudge=0.0,
-):
-    """
-    Add an axes inside max_box while preserving the image aspect ratio.
-
-    max_box is [x0, y0, width, height] in figure coordinates.
-    x_nudge and y_nudge are small figure-coordinate adjustments applied
-    after aspect-preserved placement.
-    """
-    if img is None:
-        x0, y0, w, h = max_box
-        return fig.add_axes([x0 + x_nudge, y0 + y_nudge, w, h])
-
-    fig_w, fig_h = fig.get_size_inches()
-    x0, y0, max_w, max_h = max_box
-
-    img_h, img_w = img.shape[:2]
-    img_aspect = img_h / img_w
-
-    max_w_in = max_w * fig_w
-    max_h_in = max_h * fig_h
-    box_aspect = max_h_in / max_w_in
-
-    if img_aspect > box_aspect:
-        ax_h = max_h
-        ax_w = (max_h_in / img_aspect) / fig_w
-    else:
-        ax_w = max_w
-        ax_h = (max_w_in * img_aspect) / fig_h
-
-    if h_align == "left":
-        ax_x = x0
-    elif h_align == "right":
-        ax_x = x0 + max_w - ax_w
-    else:
-        ax_x = x0 + (max_w - ax_w) / 2
-
-    if v_align == "bottom":
-        ax_y = y0
-    elif v_align == "top":
-        ax_y = y0 + max_h - ax_h
-    else:
-        ax_y = y0 + (max_h - ax_h) / 2
-
-    return fig.add_axes([ax_x + x_nudge, ax_y + y_nudge, ax_w, ax_h])
-
-
-def draw_image_panel(ax, panel, img):
-    if img is None:
-        ax.text(
-            0.5,
-            0.5,
-            f"Missing image:\n{panel['path']}",
-            transform=ax.transAxes,
-            ha="center",
-            va="center",
-            fontsize=10,
-        )
-        ax.set_axis_off()
+def ensure_structure_renders() -> None:
+    if all(path.exists() for path in STRUCTURE_RENDERS.values()):
         return
-
-    # No aspect="auto"; this preserves native source-image aspect ratio.
-    ax.imshow(img)
-
-    if panel["title"]:
-        ax.set_title(panel["title"], pad=6, fontsize=PANEL_TITLE_SIZE, fontweight="bold")
-
-    ax.set_axis_off()
+    subprocess.run([sys.executable, str(THIS_DIR / "render_pes_structures.py")], cwd=THIS_DIR, check=True)
 
 
-def add_panel_letters(fig, axes, panels, top_row_boxes):
-    """
-    Keep A and B labels on the same horizontal guide line.
-    C is placed from the actual C axes position.
-    """
-    x_offset = 0.014
-    y_offset = -0.028
+def crop_nonwhite(path: Path, padding: int = 12) -> Image.Image:
+    img = Image.open(path).convert("RGBA")
+    arr = np.asarray(img)
+    rgb = arr[..., :3]
+    alpha = arr[..., 3] > 0
+    nonwhite = np.any(rgb < 247, axis=2) & alpha
+    rows, cols = np.where(nonwhite)
+    if rows.size == 0:
+        return img
+    left = max(int(cols.min()) - padding, 0)
+    upper = max(int(rows.min()) - padding, 0)
+    right = min(int(cols.max()) + padding + 1, img.width)
+    lower = min(int(rows.max()) + padding + 1, img.height)
+    return img.crop((left, upper, right, lower))
 
-    # A/B: same row-level y anchor, regardless of slight axes-height differences
-    for i in [0, 1]:
-        x0, y0, w, h = top_row_boxes[i]
-        fig.text(
-            x0 - x_offset,
-            y0 + h - y_offset,
-            panels[i]["letter"],
-            fontsize=18,
-            fontweight="bold",
-            va="top",
-            ha="right",
+
+def title_font(size: int) -> ImageFont.ImageFont:
+    for candidate in [
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+        "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf",
+    ]:
+        path = Path(candidate)
+        if path.exists():
+            return ImageFont.truetype(str(path), size)
+    return ImageFont.load_default()
+
+
+def dashed_rectangle(draw: ImageDraw.ImageDraw, xy, fill, width: int = 2, dash: int = 10, gap: int = 6) -> None:
+    x0, y0, x1, y1 = map(int, xy)
+    for x in range(x0, x1, dash + gap):
+        draw.line([(x, y0), (min(x + dash, x1), y0)], fill=fill, width=width)
+        draw.line([(x, y1), (min(x + dash, x1), y1)], fill=fill, width=width)
+    for y in range(y0, y1, dash + gap):
+        draw.line([(x0, y), (x0, min(y + dash, y1))], fill=fill, width=width)
+        draw.line([(x1, y), (x1, min(y + dash, y1))], fill=fill, width=width)
+
+
+def draw_dashed_line(draw: ImageDraw.ImageDraw, xy, fill, width: int = 4, dash: int = 12, gap: int = 8) -> None:
+    x0, y0, x1, y1 = map(float, xy)
+    length = float(np.hypot(x1 - x0, y1 - y0))
+    if length <= 0:
+        return
+    ux, uy = (x1 - x0) / length, (y1 - y0) / length
+    dist = 0.0
+    while dist < length:
+        end = min(dist + dash, length)
+        draw.line(
+            [(x0 + ux * dist, y0 + uy * dist), (x0 + ux * end, y0 + uy * end)],
+            fill=fill,
+            width=width,
         )
+        dist += dash + gap
 
-    # C: anchor to the actual C axes box
-    pos = axes[2].get_position()
-    fig.text(
-        pos.x0 - x_offset,
-        pos.y1 - y_offset,
-        panels[2]["letter"],
-        fontsize=18,
+
+def structure_inset_image(path: Path, width: int = 760, height: int = 430) -> Image.Image:
+    img = crop_nonwhite(path, padding=8).convert("RGBA")
+    canvas = Image.new("RGBA", (width, height), "white")
+
+    body_top = 18
+    max_w = width - 44
+    max_h = height - body_top - 22
+    scale = min(max_w / img.width, max_h / img.height)
+    new_size = (max(1, int(img.width * scale)), max(1, int(img.height * scale)))
+    img = img.resize(new_size, Image.Resampling.LANCZOS)
+    x = (width - img.width) // 2
+    y = body_top + (max_h - img.height) // 2
+    canvas.alpha_composite(img, (x, y))
+    return canvas
+
+
+def panel_b_composite(path: Path, width: int = 1320, height: int = 1040) -> Image.Image:
+    img = crop_nonwhite(path, padding=24).convert("RGBA")
+    canvas = Image.new("RGBA", (width, height), "white")
+    max_w, max_h = 930, 720
+    scale = min(max_w / img.width, max_h / img.height)
+    new_size = (max(1, int(img.width * scale)), max(1, int(img.height * scale)))
+    img = img.resize(new_size, Image.Resampling.LANCZOS)
+    canvas.alpha_composite(img, (55, 145))
+
+    draw = ImageDraw.Draw(canvas)
+    label_font = title_font(42)
+    legend_font = title_font(32)
+
+    draw.text((64, height - 78), "PFOA", fill=(0, 0, 0, 255), font=label_font)
+    draw.text((790, height - 78), "BTMA", fill=(0, 0, 0, 255), font=label_font)
+
+    box = (1000, 88, 1255, 235)
+    dashed_rectangle(draw, box, fill=(120, 120, 120, 255), width=2, dash=12, gap=7)
+    for i, (label, color) in enumerate(DISTANCE_COLORS.items()):
+        y = 120 + i * 42
+        rgb = tuple(int(color[j : j + 2], 16) for j in (1, 3, 5)) + (255,)
+        draw_dashed_line(draw, (1026, y + 12, 1084, y + 12), fill=rgb, width=4, dash=13, gap=8)
+        draw.text((1105, y - 6), label, fill=(0, 0, 0, 255), font=legend_font)
+    return canvas
+
+
+def add_top_panel_labels(fig, ax_a, ax_b) -> None:
+    pos_a = ax_a.get_position()
+    pos_b = ax_b.get_position()
+    y = max(pos_a.y1, pos_b.y1) + 0.032
+    fig.text(pos_a.x0 - 0.047, y, "A", fontsize=19, fontweight="bold", ha="left", va="bottom")
+    fig.text(pos_b.x0 - 0.047, y, "B", fontsize=19, fontweight="bold", ha="left", va="bottom")
+
+
+def add_bottom_panel_label(fig, ax_a, ax_c) -> None:
+    pos_a = ax_a.get_position()
+    pos_c = ax_c.get_position()
+    fig.text(pos_a.x0 - 0.047, pos_c.y1 + 0.032, "C", fontsize=19, fontweight="bold", ha="left", va="bottom")
+
+
+def draw_contour(ax) -> None:
+    r1 = np.asarray(R1_VALUES, dtype=float)
+    r2 = np.asarray(R2_VALUES, dtype=float)
+    z = np.asarray(DELTA_E_KCAL_MOL, dtype=float)
+    mesh_r2, mesh_r1 = np.meshgrid(r2, r1)
+    levels = np.arange(0, max(46, np.ceil(z.max())) + 2, 2)
+
+    contour = ax.contourf(mesh_r1, mesh_r2, z, levels=levels, cmap="viridis")
+    ax.contour(mesh_r1, mesh_r2, z, levels=levels, colors="black", linewidths=0.35, alpha=0.55)
+    ax.plot(GLOBAL_MINIMUM["r1"], GLOBAL_MINIMUM["r2"], marker="*", ms=15, color="#d62728", mec="black", mew=0.5)
+    ax.text(
+        GLOBAL_MINIMUM["r1"] + 0.18,
+        GLOBAL_MINIMUM["r2"] + 0.18,
+        "minimum",
+        fontsize=10,
         fontweight="bold",
-        va="top",
-        ha="right",
+        color="#d62728",
+    )
+    cbar = plt.colorbar(contour, ax=ax, fraction=0.046, pad=0.035)
+    cbar.set_label(r"$\Delta E$ (kcal mol$^{-1}$)", fontweight="bold")
+    ax.set_xlabel(r"$r_1$ (Å)", fontweight="bold")
+    ax.set_ylabel(r"$r_2$ (Å)", fontweight="bold")
+    ax.set_title(r"PES Contour ($\mathbf{\Delta E}$ vs. $\mathbf{r_1}$, $\mathbf{r_2}$)", pad=13)
+    ax.set_xlim(min(r1), max(r1))
+    ax.set_ylim(min(r2), max(r2))
+
+
+def draw_global_structure(ax) -> None:
+    img = panel_b_composite(STRUCTURE_RENDERS["global"])
+    ax.imshow(img)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    for spine in ax.spines.values():
+        spine.set_visible(True)
+        spine.set_linewidth(1.1)
+        spine.set_color("#111111")
+    ax.set_title("Global Minimum Structure", pad=13)
+
+
+def add_structure_inset(
+    ax,
+    key: str,
+    xybox: tuple[float, float],
+    xydata: tuple[float, float],
+    zoom: float,
+    width: int,
+    height: int,
+) -> None:
+    title = MEP_INSETS[key]["title"]
+    img = structure_inset_image(STRUCTURE_RENDERS[key], width=width, height=height)
+    inset = OffsetImage(np.asarray(img), zoom=zoom)
+    box = AnnotationBbox(
+        inset,
+        xybox,
+        xycoords="data",
+        frameon=True,
+        bboxprops={
+            "edgecolor": "#1f77b4",
+            "linewidth": 1.5,
+            "facecolor": "white",
+            "boxstyle": "square,pad=0.0",
+        },
+        zorder=5,
+    )
+    ax.add_artist(box)
+    ax.plot([xydata[0], xybox[0]], [xydata[1], xybox[1]], color="#1f77b4", lw=1.5, zorder=3)
+    ax.text(
+        xybox[0],
+        xybox[1] + 7.5,
+        title,
+        ha="center",
+        va="bottom",
+        fontsize=13.5,
+        fontweight="bold",
+        zorder=6,
+        clip_on=False,
     )
 
 
-def make_pes_analysis_figure():
-    loaded_images = [load_panel_image(panel) for panel in PANEL_IMAGES]
+def draw_energy_state_diagram(ax) -> None:
+    x = np.asarray(MEP_STEPS, dtype=float)
+    y = np.asarray(MEP_RELATIVE_ENERGIES_KCAL_MOL, dtype=float)
+    ax.plot(x, y, "-o", color="#1f77b4", lw=2.3, ms=8.5, mec="#1f77b4", mfc="#1f77b4", zorder=2)
 
-    fig = plt.figure(figsize=(12.0, 12.9), dpi=DPI)
-    fig.suptitle("PES Analysis of Local Exchange", y=0.982)
+    ax.grid(True, color="#c7c7c7", alpha=0.45, linewidth=1.1)
+    ax.set_xlim(0.4, 16.7)
+    ax.set_ylim(-1.8, 35.8)
+    ax.set_xlabel("Step Index (PES Scan)", fontsize=17)
+    ax.set_ylabel("E (kcal/mol)", fontsize=15)
+    ax.set_title("Energy State Diagram of Anion Exchange", pad=8)
+    ax.tick_params(axis="both", labelsize=13, width=1.3, length=6)
+    for spine in ax.spines.values():
+        spine.set_linewidth(1.2)
 
-    # A/B share the same row box. Center alignment avoids the previous
-    # too-high / too-low behavior.
-    top_row_boxes = [
-        [0.075, 0.595, 0.405, 0.300],  # A
-        [0.545, 0.595, 0.405, 0.300],  # B
-    ]
+    inset_size = {"zoom": 0.255, "width": 850, "height": 500}
+    add_structure_inset(ax, "approach", xybox=(3.20, 17.4), xydata=(1, y[0]), **inset_size)
+    add_structure_inset(ax, "displacement", xybox=(7.75, 18.0), xydata=(8, y[7]), **inset_size)
+    add_structure_inset(ax, "bound", xybox=(12.95, 12.4), xydata=(12, y[11]), **inset_size)
 
-    # C is moved upward to reduce whitespace between rows.
-    c_box = [0.125, 0.105, 0.750, 0.455]
 
-    ax_a = add_aspect_preserved_axes(
-        fig,
-        loaded_images[0],
-        top_row_boxes[0],
-        h_align="center",
-        v_align="center",
+def make_figure() -> None:
+    ensure_structure_renders()
+    OUTPUT_DIR.mkdir(exist_ok=True)
+
+    fig = plt.figure(figsize=(14.0, 13.35), dpi=DPI)
+    fig.suptitle("PES Analysis of Local Anion Exchange", y=0.992)
+
+    grid = fig.add_gridspec(
+        2,
+        2,
+        left=0.065,
+        right=0.975,
+        top=0.892,
+        bottom=0.066,
+        height_ratios=[1.0, 1.25],
+        hspace=0.25,
+        wspace=0.30,
     )
 
-    ax_b = add_aspect_preserved_axes(
-        fig,
-        loaded_images[1],
-        top_row_boxes[1],
-        h_align="center",
-        v_align="center",
-        y_nudge=0.006,  # small lift: between prior top-align and bottom-align versions
-    )
+    ax_a = fig.add_subplot(grid[0, 0])
+    ax_b = fig.add_subplot(grid[0, 1])
+    ax_c = fig.add_subplot(grid[1, :])
 
-    ax_c = add_aspect_preserved_axes(
-        fig,
-        loaded_images[2],
-        c_box,
-        h_align="center",
-        v_align="top",
-    )
+    draw_contour(ax_a)
+    draw_global_structure(ax_b)
+    draw_energy_state_diagram(ax_c)
 
-    axes = [ax_a, ax_b, ax_c]
+    add_top_panel_labels(fig, ax_a, ax_b)
+    add_bottom_panel_label(fig, ax_a, ax_c)
 
-    for ax, panel, img in zip(axes, PANEL_IMAGES, loaded_images):
-        draw_image_panel(ax, panel, img)
-
-    add_panel_letters(fig, axes, PANEL_IMAGES, top_row_boxes)
-
-    out_path = OUTDIR / "Figure_11_PES_analysis_local_exchange.png"
-    final_path = FINAL_OUTDIR / "Figure_11_PES_analysis_local_exchange.png"
-
-    fig.savefig(out_path, dpi=DPI, bbox_inches="tight")
-    fig.savefig(final_path, dpi=DPI, bbox_inches="tight")
+    fig.savefig(OUTPUT, dpi=DPI, bbox_inches="tight")
     plt.close(fig)
-
-    print(f"Saved figure to: {out_path}")
-    print(f"Saved figure to: {final_path}")
+    print(f"Saved {OUTPUT}")
 
 
 if __name__ == "__main__":
-    make_pes_analysis_figure()
+    make_figure()

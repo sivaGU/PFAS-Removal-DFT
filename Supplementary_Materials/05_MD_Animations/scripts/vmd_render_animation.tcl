@@ -1,13 +1,4 @@
-# Render a short MD trajectory animation with VMD/TachyonInternal.
-#
-# Usage:
-#   vmd -dispdev text -eofexit -e vmd_render_animation.tcl \
-#     -args topology.prmtop trajectory.dcd frame_directory mode max_frames
-#
-# Modes:
-#   pfoa_assoc       R48+ + PFOA- + Cl- trajectory, full view with tail waters.
-#   pfoa_assoc_zoom  R48+ + PFOA- + Cl- trajectory, zoomed in around PFOA-.
-#   r48_cl           R48+ + Cl- reference trajectory.
+# VMD rendering
 
 proc safe {cmd} {
     if {[catch {eval $cmd} err]} {
@@ -58,9 +49,7 @@ if {$mode eq "pfoa_assoc_zoom"} {
     set cl_scope "element Cl"
 }
 
-# R48+ resin: heavy atoms only. Hydrogens are intentionally hidden.
-# Split representations make ammonium nitrogens visible as blue atoms instead
-# of letting the whole resin collapse into one gray tangle.
+# Resin
 mol representation Licorice 0.08 8 8
 mol color ColorID 2
 mol selection "$r48_scope and element C"
@@ -80,14 +69,14 @@ mol material Transparent
 mol addrep top
 
 if {$mode eq "pfoa_assoc" || $mode eq "pfoa_assoc_zoom"} {
-    # PFOA- is the focus of the associated trajectory.
+    # PFOA
     mol representation Licorice 0.25 16 16
     mol color Element
     mol selection "resname PFO and not hydrogen"
     mol material Opaque
     mol addrep top
 
-    # Show waters close to the fluorinated tail only, keeping the view readable.
+    # Tail waters
     mol representation VDW 0.18 8
     mol color ColorID 0
     if {$mode eq "pfoa_assoc_zoom"} {
@@ -99,7 +88,7 @@ if {$mode eq "pfoa_assoc" || $mode eq "pfoa_assoc_zoom"} {
     mol addrep top
 }
 
-# Chloride ions are shown for both endpoint trajectories.
+# Chloride
 mol representation VDW 0.55 16
 mol color ColorID 7
 mol selection "$cl_scope"
@@ -113,7 +102,7 @@ set rendered 0
 for {set frame 0} {$frame < $nframes} {incr frame $stride} {
     animate goto $frame
 
-    # Stabilize the movie by fitting each frame to the first R48+ frame.
+    # Alignment
     set mobile [atomselect top $align_sel frame $frame]
     set all [atomselect top all frame $frame]
     set transform [measure fit $mobile $ref]

@@ -1,16 +1,18 @@
+import csv
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 
 
-# =========================
-# USER SETTINGS
-# =========================
+# Settings
 OUTDIR = Path(__file__).resolve().parent
-OUTFILE = OUTDIR / "nao_to_nbo_pfoa_cholestyramine.png"
+DATAFILE = OUTDIR / "input_data" / "nbo_nao_orbital_levels.csv"
+OUTPUT_DIR = OUTDIR / "outputs"
+OUTFILE = OUTPUT_DIR / "Figure_06_NBO_analysis_pfoa_cholestyramine.png"
 
 FONT_FAMILY = "DejaVu Sans"
 DPI = 600
+HARTREE_TO_EV = 27.211386245988
 
 plt.rcParams.update(
     {
@@ -25,37 +27,69 @@ plt.rcParams.update(
 )
 
 
-# =========================
-# HARD-CODED DATA
-# =========================
-data = {
-    "Ch_H_1s": {
-        "E": 2.15,
-        "Label": "Ch H(38) 1s",
-    },
-    "O_2pz": {
-        "E": -10.85,
-        "Label": r"O 2p$_z$ (n)",
-    },
-    "O_2px": {"E": -11.42},
-    "O_2py": {"E": -11.35},
-    "CH_Sigma_Star": {
-        "E": 5.45,
-        "Label": r"$\sigma^*$ C13-H38 (NBO 224)",
-        "Hyb_C": "C13: 25.4% s, 74.4% p",
-        "Hyb_H": "H38: 99.9% s, 0.1% p",
-    },
-    "O_LP": {
-        "E": -11.05,
-        "Label": r"n$_O$ (NBO 98)",
-        "Hyb_O": "O: 6.2% s, 93.7% p",
-    },
+# Data
+REQUIRED_KEYS = {
+    "Ch_H_1s",
+    "O_2px",
+    "O_2py",
+    "O_2pz",
+    "CH_Sigma_Star",
+    "O_LP",
+}
+REQUIRED_COLUMNS = {
+    "key",
+    "label",
+    "orbital_or_nbo_number",
+    "occupancy",
+    "energy_hartree",
+    "hybridization_primary",
+    "hybridization_secondary",
+    "source_section",
 }
 
 
-# =========================
-# PLOT HELPERS
-# =========================
+def load_orbital_data(datafile=DATAFILE):
+    with datafile.open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        missing_columns = REQUIRED_COLUMNS - set(reader.fieldnames or [])
+        if missing_columns:
+            names = ", ".join(sorted(missing_columns))
+            raise ValueError(f"Missing required CSV columns: {names}")
+
+        records = {}
+        for line_number, row in enumerate(reader, start=2):
+            key = row["key"].strip()
+            if not key:
+                raise ValueError(f"Missing record key on CSV line {line_number}")
+            if key in records:
+                raise ValueError(f"Duplicate record key in CSV: {key}")
+
+            try:
+                energy_hartree = float(row["energy_hartree"])
+                occupancy = float(row["occupancy"])
+            except ValueError as exc:
+                raise ValueError(
+                    f"Invalid numeric value for {key} on CSV line {line_number}"
+                ) from exc
+
+            records[key] = {
+                "E": energy_hartree * HARTREE_TO_EV,
+                "Energy_Hartree": energy_hartree,
+                "Occupancy": occupancy,
+                "Label": row["label"].strip(),
+                "Hyb_Primary": row["hybridization_primary"].strip(),
+                "Hyb_Secondary": row["hybridization_secondary"].strip(),
+            }
+
+    missing_keys = REQUIRED_KEYS - records.keys()
+    if missing_keys:
+        names = ", ".join(sorted(missing_keys))
+        raise ValueError(f"Missing required orbital records: {names}")
+
+    return records
+
+
+# Helpers
 def draw_level(ax, x, y, width, color="k", style="-", lw=4):
     ax.hlines(y, x - width, x + width, color=color, lw=lw, linestyles=style, zorder=4)
 
@@ -112,17 +146,15 @@ def label_box(ax, x, y, text, color="black", ha="center", va="center", size=18, 
     )
 
 
-# =========================
-# FIGURE GENERATION
-# =========================
+# Figure
 def make_nao_to_nbo_diagram():
+    data = load_orbital_data()
     fig, ax = plt.subplots(figsize=(15.5, 18))
 
     x_ch, x_cpx, x_pfoa = 0.35, 2.75, 5.15
     w = 0.42
     w_stag = 0.18
 
-    # Orbital relationship lines are drawn first and kept faint so labels stay readable.
     connect(
         ax,
         x_pfoa - w_stag,
@@ -164,7 +196,6 @@ def make_nao_to_nbo_diagram():
         alpha=0.28,
     )
 
-    # Cholestyramine fragment.
     draw_level(ax, x_ch, data["Ch_H_1s"]["E"], w, "black")
     label_box(
         ax,
@@ -175,7 +206,6 @@ def make_nao_to_nbo_diagram():
         size=18,
     )
 
-    # PFOA fragment manifold.
     draw_level(ax, x_pfoa, data["O_2pz"]["E"], w_stag, "#1f77b4")
     draw_arrows(ax, x_pfoa, data["O_2pz"]["E"], 2, "#1f77b4")
     label_box(
@@ -197,14 +227,13 @@ def make_nao_to_nbo_diagram():
         ax,
         x_pfoa - 0.46,
         data["O_2px"]["E"] - 0.54,
-        "O 2p$_x$/2p$_y$\n-11.42 / -11.35 eV",
+        f"O44 2p$_x$/2p$_y$\n{data['O_2px']['E']:.2f} / {data['O_2py']['E']:.2f} eV",
         color="#7b3294",
         ha="right",
         va="top",
         size=16,
     )
 
-    # Complex NBO levels.
     draw_level(ax, x_cpx, data["CH_Sigma_Star"]["E"], w, "#d62728")
     label_box(
         ax,
@@ -220,7 +249,8 @@ def make_nao_to_nbo_diagram():
         ax,
         x_cpx + w + 0.24,
         data["CH_Sigma_Star"]["E"] - 0.22,
-        f"{data['CH_Sigma_Star']['Hyb_C']}\n{data['CH_Sigma_Star']['Hyb_H']}",
+        f"{data['CH_Sigma_Star']['Hyb_Primary']}\n"
+        f"{data['CH_Sigma_Star']['Hyb_Secondary']}",
         color="#d62728",
         ha="left",
         va="top",
@@ -244,7 +274,7 @@ def make_nao_to_nbo_diagram():
         ax,
         x_cpx + w + 0.24,
         data["O_LP"]["E"] + 0.45,
-        data["O_LP"]["Hyb_O"],
+        data["O_LP"]["Hyb_Primary"],
         color="#1f77b4",
         ha="left",
         va="bottom",
@@ -252,7 +282,6 @@ def make_nao_to_nbo_diagram():
         weight="normal",
     )
 
-    # Formatting.
     ax.set_ylabel("")
     fig.text(
         0.09,
@@ -266,12 +295,12 @@ def make_nao_to_nbo_diagram():
     )
     ax.set_xticks([x_ch, x_cpx, x_pfoa])
     ax.set_xticklabels(
-        ["Cholestyramine\n(NAO)", "PFOA-Ch Interaction\n(NBO)", "PFOA\n(NAO)"],
+        ["BTMA$^{+}$\n(NAO)", "BTMA$^{+}$ + PFOA$^{-}$ Interaction\n(NBO)", "PFOA$^{-}$\n(NAO)"],
         fontweight="bold",
     )
     ax.set_xlim(-0.7, 6.2)
-    ax.set_ylim(-15.6, 8.6)
-    ax.set_title("NAO-to-NBO Interaction Diagram: PFOA-Cholestyramine", pad=20)
+    ax.set_ylim(-15.6, 14.2)
+    ax.set_title(r"NAO-to-NBO Interaction Diagram: BTMA$^{+}$ + PFOA$^{-}$", pad=20)
     ax.grid(axis="y", linestyle="--", linewidth=0.8, alpha=0.22)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
@@ -279,6 +308,7 @@ def make_nao_to_nbo_diagram():
     ax.tick_params(axis="y", width=1.4, length=7)
 
     fig.tight_layout(rect=[0.075, 0.02, 1.0, 0.97])
+    OUTPUT_DIR.mkdir(exist_ok=True)
     fig.savefig(OUTFILE, dpi=DPI, bbox_inches="tight")
     plt.close(fig)
     print(f"Saved figure to: {OUTFILE}")

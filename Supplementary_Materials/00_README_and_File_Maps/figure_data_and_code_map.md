@@ -11,8 +11,10 @@ Script:
 
 Input data:
 - `input_data/btma_exchange_summary.csv`
-- `input_data/parsed_raw_energies.csv`
-- `input_data/selectivity_energy_summary.txt`
+- manuscript structure panels in `input_structures/`
+
+The numerical CSV is curated from the BTMA optimization and frequency outputs
+archived under `01_Calculations/01_BTMA`.
 
 ## Figure_04_BTMA_thermochemical_decomposition
 
@@ -20,8 +22,10 @@ Script:
 - `plot_BTMA_G_vs_E.py`
 
 Input data:
-- `input_data/full_thermo_BTMA.txt`
-- `input_data/btma_exchange_summary.csv`
+- `input_data/thermochemical_decomposition.csv`
+
+The curated values are derived from the BTMA frequency calculations archived
+under `01_Calculations/01_BTMA/02_Frequency`.
 
 ## Figures_05_09_10_EDA
 
@@ -29,8 +33,6 @@ Script:
 - `plot_eda_data.py`
 
 Input data:
-- `input_data/eda_sections_main_out.txt`
-- `input_data/nocv_sections_main_out.txt`
 - `input_data/eda_component_summary.csv`
 
 This single script/data bundle supports the BTMA EDA, extended-monomer EDA, and
@@ -42,11 +44,11 @@ Script:
 - `plot_nao_nbo_interaction.py`
 
 Input data:
-- `input_data/NBO_source_output_R4N+PFOA-_EDA.out.gz`
+- `input_data/nbo_nao_orbital_levels.csv`
 
-The plotting script contains the extracted NBO/NAO values used in the figure.
-The copied output file provides the source run context and is gzip-compressed
-to keep individual supplementary files below upload limits.
+The CSV contains the NBO/NAO values used by the plotting script. The complete
+source output is archived at
+`01_Calculations/03_NBO/R4N+PFOA-/R4N+PFOA-_EDA.out.gz`.
 
 ## Figures_07_08_extended_monomer_exchange
 
@@ -54,60 +56,58 @@ Script:
 - `plot_ext_monomer_data.py`
 
 Input data:
-- `input_data/ext_monomer_wb_energy_summary_merged.txt`
 - `input_data/ext_monomer_exchange_summary.csv`
-- `input_data/parsed_ext_monomer_raw_energies.csv`
+- manuscript structure panels in `input_structures/`
+
+The numerical CSV is curated from calculations archived under
+`01_Calculations/01_BTMA` and `01_Calculations/02_Extended_Monomer`.
 
 ## Figure_11_PES
 
-Scripts:
-- `analyze_pes.py`
+Script:
 - `plot_pes_analysis.py`
 
 Input data:
-- `input_data/R4N+PFOA-_0.15M.relaxscanact.dat`
-- `input_data/R4N+PFOA-_0.15M.relaxscanscf.dat`
 - `input_data/R4N+PFOA-_0.15M.grid.csv`
+- `input_data/pes_mep_profile.csv`
+- molecular structures in `input_structures/`
+- curated structure panels in `structure_renders/`
+
+The PES grid, trajectory, and ORCA source files are archived under
+`01_Calculations/04_PES`.
 
 ## Figure_12_MD_GBSA_exchange_cycle
 
-Scripts:
+Script:
 - `plot_MD_exchange_cycle.py`
-- `combine_exchange_gbsa.py`
 
 Input data:
 - `input_data/exchange_cycle_proxy_summary.csv`
 - `input_data/exchange_cycle_proxy_per_frame.csv`
-- `input_data/FINAL_CL_AQ_GBSA.dat`
-- `input_data/FINAL_PFOA_AQ_GBSA.dat`
-- `input_data/FINAL_R48_48CL_GBSA.dat`
-- `input_data/FINAL_R48_PFOA_47CL_GBSA.dat`
-- `input_data/README_exchange_cycle_proxy_results.txt`
+
+The four endpoint MM/GBSA output tables used to curate these CSVs are archived
+under `01_Calculations/05_MD/03_MD_GBSA_Exchange_Cycle/04_gbsa`.
 
 ## Figure_13_MD_structural_metrics
 
-Scripts:
+Script:
 - `plot_MD_structural_metrics.py`
-- `pfoa_association_metrics.py`
-- `waters_within_5A_tail.cpptraj`
 
 Input data:
 - `input_data/pfoa_association_mechanism_metrics.csv`
-- `input_data/pfoa_association_mechanism_metrics_summary.txt`
-- `input_data/pfoa_tail_waters_within_5A.dat`
+- `input_data/pfoa_tail_waters.csv`
+
+The trajectory-derived source tables and structural frames are archived under
+`01_Calculations/05_MD/03_MD_GBSA_Exchange_Cycle/05_metrics`.
 
 ## Figure_14_MD_structural_rendering
 
-Scripts:
-- `render_figure14_raws.py`
-- `assemble_figure14.py`
-
-Helper:
-- `figure14_render_core.py`
+Script:
+- `figure14_plot.py`
 
 Input data:
-- representative PDB files in `input_data/`
-- Amber topology files in `input_data/` for PRMTOP-derived connectivity
+- `input_render/Figure_14_MD_structural_snapshots.png`
 
-Shared helper:
-- `shared_helpers/render_structure_3d.py`
+The curated raster preserves the approved camera placement, transparency, and
+labels. Its source PDB files, Amber topologies, and MD endpoint structures are
+archived under `01_Calculations/05_MD`.

@@ -1,0 +1,57 @@
+panel,series,category,pfas,value_kcal_mol
+exchange,r2SCAN-3c,DeltaE,FHEA,-1.07
+exchange,r2SCAN-3c,DeltaE,PFHxA,-2.69
+exchange,r2SCAN-3c,DeltaE,PFOA,-1.95
+exchange,r2SCAN-3c,DeltaE,PFOS,-1.04
+exchange,wB97X-D3,DeltaE,FHEA,0.18
+exchange,wB97X-D3,DeltaE,PFHxA,-1.76
+exchange,wB97X-D3,DeltaE,PFOA,-1.05
+exchange,wB97X-D3,DeltaE,PFOS,-0.06
+exchange,r2SCAN-3c,DeltaCorr,FHEA,7.06
+exchange,r2SCAN-3c,DeltaCorr,PFHxA,7.20
+exchange,r2SCAN-3c,DeltaCorr,PFOA,7.86
+exchange,r2SCAN-3c,DeltaCorr,PFOS,7.30
+exchange,wB97X-D3,DeltaCorr,FHEA,5.41
+exchange,wB97X-D3,DeltaCorr,PFHxA,6.30
+exchange,wB97X-D3,DeltaCorr,PFOA,6.78
+exchange,wB97X-D3,DeltaCorr,PFOS,6.10
+exchange,r2SCAN-3c,DeltaG,FHEA,5.99
+exchange,r2SCAN-3c,DeltaG,PFHxA,4.52
+exchange,r2SCAN-3c,DeltaG,PFOA,5.91
+exchange,r2SCAN-3c,DeltaG,PFOS,6.26
+exchange,wB97X-D3,DeltaG,FHEA,5.58
+exchange,wB97X-D3,DeltaG,PFHxA,4.54
+exchange,wB97X-D3,DeltaG,PFOA,5.73
+exchange,wB97X-D3,DeltaG,PFOS,6.03
+species,functional_difference,BTMA-PFAS complex,FHEA,2.83
+species,functional_difference,BTMA-PFAS complex,PFHxA,3.03
+species,functional_difference,BTMA-PFAS complex,PFOA,3.48
+species,functional_difference,BTMA-PFAS complex,PFOS,4.46
+species,functional_difference,BTMA-Cl complex,FHEA,-2.45
+species,functional_difference,BTMA-Cl complex,PFHxA,-2.45
+species,functional_difference,BTMA-Cl complex,PFOA,-2.45
+species,functional_difference,BTMA-Cl complex,PFOS,-2.45
+species,functional_difference,Free PFAS anion,FHEA,-2.03
+species,functional_difference,Free PFAS anion,PFHxA,-1.48
+species,functional_difference,Free PFAS anion,PFOA,-2.11
+species,functional_difference,Free PFAS anion,PFOS,-3.21
+species,functional_difference,Free Cl-,FHEA,0.00
+species,functional_difference,Free Cl-,PFHxA,0.00
+species,functional_difference,Free Cl-,PFOA,0.00
+species,functional_difference,Free Cl-,PFOS,0.00
+component,functional_difference,ZPE,FHEA,-0.18
+component,functional_difference,ZPE,PFHxA,0.07
+component,functional_difference,ZPE,PFOA,-0.13
+component,functional_difference,ZPE,PFOS,-0.13
+component,functional_difference,Thermal correction,FHEA,0.17
+component,functional_difference,Thermal correction,PFHxA,0.08
+component,functional_difference,Thermal correction,PFOA,0.15
+component,functional_difference,Thermal correction,PFOS,0.13
+component,functional_difference,Entropy contribution,FHEA,-1.65
+component,functional_difference,Entropy contribution,PFHxA,-1.04
+component,functional_difference,Entropy contribution,PFOA,-1.10
+component,functional_difference,Entropy contribution,PFOS,-1.19
+component_total,functional_difference,Total,FHEA,-1.65
+component_total,functional_difference,Total,PFHxA,-0.90
+component_total,functional_difference,Total,PFOA,-1.08
+component_total,functional_difference,Total,PFOS,-1.20

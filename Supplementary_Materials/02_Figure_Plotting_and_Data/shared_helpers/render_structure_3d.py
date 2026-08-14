@@ -204,6 +204,8 @@ def parse_contact(spec: str) -> Contact:
         raise argparse.ArgumentTypeError("Contact atom indices must be integers") from exc
     color = parts[2] if len(parts) >= 3 and parts[2] else "#d62728"
     label = parts[3] if len(parts) >= 4 and parts[3] else None
+    if label and label.lower() in {"nolabel", "no_label", "hide", "none"}:
+        label = ""
     return Contact(i=i, j=j, color=color, label=label)
 
 

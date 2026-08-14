@@ -2,18 +2,15 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 from matplotlib.colors import TwoSlopeNorm
 
 
-# =========================
-# USER SETTINGS
-# =========================
-OUTDIR = Path(__file__).resolve().parent / "btma_figures"
+# Settings
+HERE = Path(__file__).resolve().parent
+INPUT_CSV = HERE / "input_data" / "thermochemical_decomposition.csv"
+OUTDIR = HERE / "outputs"
 OUTDIR.mkdir(exist_ok=True)
-FINAL_OUTDIR = next(
-    (parent / "final_plots" for parent in Path(__file__).resolve().parents if (parent / "final_plots").is_dir()),
-    None,
-)
 
 FONT_FAMILY = "DejaVu Sans"
 DPI = 600
@@ -34,9 +31,7 @@ plt.rcParams.update(
 )
 
 
-# =========================
-# HARD-CODED DATA
-# =========================
+# Data
 PFAS = ["FHEA", "PFHxA", "PFOA", "PFOS"]
 FUNCTIONALS = ["r2SCAN-3c", "wB97X-D3"]
 
@@ -53,50 +48,58 @@ FUNCTIONAL_STYLE = {
     },
 }
 
-deltaE = {
-    "r2SCAN-3c": [-1.07, -2.69, -1.95, -1.04],
-    "wB97X-D3": [0.18, -1.76, -1.05, -0.06],
-}
-
-deltaCorr = {
-    "r2SCAN-3c": [7.06, 7.20, 7.86, 7.30],
-    "wB97X-D3": [5.41, 6.30, 6.78, 6.10],
-}
-
-deltaG = {
-    "r2SCAN-3c": [5.99, 4.52, 5.91, 6.26],
-    "wB97X-D3": [5.58, 4.54, 5.73, 6.03],
-}
-
 species_rows = ["BTMA-PFAS complex", "BTMA-Cl complex", "Free PFAS anion", "Free Cl-"]
-
-species_contrib = {
-    "FHEA": [2.83, -2.45, -2.03, 0.00],
-    "PFHxA": [3.03, -2.45, -1.48, 0.00],
-    "PFOA": [3.48, -2.45, -2.11, 0.00],
-    "PFOS": [4.46, -2.45, -3.21, 0.00],
-}
-
+species_display_rows = [
+    r"BTMA$^{+}$ P$^{-}$ complex",
+    r"BTMA$^{+}$ Cl$^{-}$ complex",
+    "Free PFAS anion",
+    r"Free Cl$^{-}$",
+]
 component_rows = ["ZPE", "Thermal correction", "Entropy contribution"]
 
-component_contrib = {
-    "FHEA": [-0.18, 0.17, -1.65],
-    "PFHxA": [0.07, 0.08, -1.04],
-    "PFOA": [-0.13, 0.15, -1.10],
-    "PFOS": [-0.13, 0.13, -1.19],
-}
 
-component_totals = {
-    "FHEA": -1.65,
-    "PFHxA": -0.90,
-    "PFOA": -1.08,
-    "PFOS": -1.20,
-}
+def load_curated_data():
+    data = pd.read_csv(INPUT_CSV)
+    required = {"panel", "series", "category", "pfas", "value_kcal_mol"}
+    missing = required - set(data.columns)
+    if missing:
+        raise ValueError(f"{INPUT_CSV} is missing columns: {sorted(missing)}")
+
+    def exchange_values(category):
+        subset = data[(data["panel"] == "exchange") & (data["category"] == category)]
+        return {
+            functional: [
+                float(subset[(subset["series"] == functional) & (subset["pfas"] == pfas)]["value_kcal_mol"].iloc[0])
+                for pfas in PFAS
+            ]
+            for functional in FUNCTIONALS
+        }
+
+    def grouped_values(panel, categories):
+        subset = data[data["panel"] == panel]
+        return {
+            pfas: [
+                float(subset[(subset["pfas"] == pfas) & (subset["category"] == category)]["value_kcal_mol"].iloc[0])
+                for category in categories
+            ]
+            for pfas in PFAS
+        }
+
+    totals = data[data["panel"] == "component_total"].set_index("pfas")["value_kcal_mol"]
+    return (
+        exchange_values("DeltaE"),
+        exchange_values("DeltaCorr"),
+        exchange_values("DeltaG"),
+        grouped_values("species", species_rows),
+        grouped_values("component", component_rows),
+        {pfas: float(totals.loc[pfas]) for pfas in PFAS},
+    )
 
 
-# =========================
-# HELPERS
-# =========================
+deltaE, deltaCorr, deltaG, species_contrib, component_contrib, component_totals = load_curated_data()
+
+
+# Helpers
 def padded_limits(values, extra=0.22, include_zero=True):
     flat = np.asarray(values, dtype=float).ravel()
     if include_zero:
@@ -130,9 +133,7 @@ def save_figure(fig, filename, rect=None):
     plt.close(fig)
 
 
-# =========================
-# FIGURE 1: THERMOCHEMICAL DECOMPOSITION DUMBBELLS
-# =========================
+# Decomposition
 def make_thermochemical_decomposition():
     panels = [
         (
@@ -185,7 +186,6 @@ def make_thermochemical_decomposition():
                 zorder=3,
             )
 
-        # Place labels above the larger point and below the smaller point at each PFAS.
         for i in range(len(PFAS)):
             pair = {functional: dataset[functional][i] for functional in FUNCTIONALS}
             ordered = sorted(pair.items(), key=lambda item: item[1])
@@ -281,9 +281,7 @@ def draw_thermochemical_panel(ax, title, dataset, ylabel, letter, show_legend=Fa
         ax.legend(loc="upper left", bbox_to_anchor=(1.02, 1.0), frameon=False)
 
 
-# =========================
-# FIGURE 2: SPECIES-LEVEL CONTRIBUTIONS HEATMAP
-# =========================
+# Species contributions
 def make_species_contributions_heatmap():
     data = np.array([[species_contrib[pfas][i] for pfas in PFAS] for i in range(len(species_rows))])
     vmax = float(np.max(np.abs(data)))
@@ -309,7 +307,7 @@ def make_species_contributions_heatmap():
     ax.set_xticks(np.arange(len(PFAS)))
     ax.set_xticklabels(PFAS)
     ax.set_yticks(np.arange(len(species_rows)))
-    ax.set_yticklabels(species_rows)
+    ax.set_yticklabels(species_display_rows)
 
     for row in range(data.shape[0]):
         for col in range(data.shape[1]):
@@ -350,7 +348,7 @@ def draw_species_heatmap(ax, letter):
     ax.set_xticks(np.arange(len(PFAS)))
     ax.set_xticklabels(PFAS)
     ax.set_yticks(np.arange(len(species_rows)))
-    ax.set_yticklabels(species_rows)
+    ax.set_yticklabels(species_display_rows)
 
     for row in range(data.shape[0]):
         for col in range(data.shape[1]):
@@ -384,9 +382,7 @@ def draw_species_heatmap(ax, letter):
     return image
 
 
-# =========================
-# FIGURE 3: COMPONENT-LEVEL CONTRIBUTIONS
-# =========================
+# Component contributions
 def make_component_contributions():
     y = np.arange(len(PFAS))
     bar_height = 0.2
@@ -599,8 +595,6 @@ def make_combined_thermochemical_origin():
     )
     figure_name = "Figure_04_thermochemical_origin_functional_dependence.png"
     fig.savefig(OUTDIR / figure_name, dpi=DPI, bbox_inches="tight")
-    if FINAL_OUTDIR is not None:
-        fig.savefig(FINAL_OUTDIR / figure_name, dpi=DPI, bbox_inches="tight")
     plt.close(fig)
 
 
