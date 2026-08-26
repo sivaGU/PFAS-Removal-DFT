@@ -1,0 +1,8 @@
+record_type,key,model,representation,label,orbital_number,occupancy,energy_hartree,hybridization_primary,hybridization_secondary,donor_key,acceptor_key,e2_kcal_mol,energy_gap_hartree,fock_coupling_hartree,source_section,source_output_line,plot_annotation
+orbital,DVB_H_1s,DVB-BTMA+PFOA-,NAO,H38 1s,955,0.75287,0.05907,,,,,,,,Natural Population Analysis,4798,
+orbital,O_2px,DVB-BTMA+PFOA-,NAO,O72 2p_x,1761,1.71824,-0.33523,,,,,,,,Natural Population Analysis,5638,
+orbital,O_2py,DVB-BTMA+PFOA-,NAO,O72 2p_y,1765,1.58446,-0.32053,,,,,,,,Natural Population Analysis,5642,
+orbital,O_2pz,DVB-BTMA+PFOA-,NAO,O72 2p_z,1769,1.71221,-0.33629,,,,,,,,Natural Population Analysis,5646,
+orbital,O_LP,DVB-BTMA+PFOA-,NBO,n(O72) (NBO 98),98,1.87873,-0.35502,"O72: 0.04% s, 99.78% p, 0.17% d, 0.01% f",,,,,,,Natural Bond Orbital Analysis,8698,"O72: 0.04% s, 99.78% p"
+orbital,CH_Sigma_Star,DVB-BTMA+PFOA-,NBO,σ*(C13-H38) (NBO 224),224,0.00834,0.45983,"C13: 37.67%; 25.59% s, 74.25% p, 0.14% d, 0.02% f","H38: 62.33%; 99.90% s, 0.10% p",,,,,,Natural Bond Orbital Analysis,10991,"C13: 37.67% / H38: 62.33%"
+interaction,O_LP_to_CH_Sigma_Star,DVB-BTMA+PFOA-,NBO,n(O72) → σ*(C13-H38),,,,,,O_LP,CH_Sigma_Star,0.20,0.81,0.011,Second Order Perturbation Theory Analysis,30253,

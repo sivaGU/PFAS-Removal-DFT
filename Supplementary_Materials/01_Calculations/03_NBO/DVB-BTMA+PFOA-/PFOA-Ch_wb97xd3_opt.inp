@@ -1,0 +1,18 @@
+! wb97x-d3 def2-TZVPD TightSCF NBO CPCM
+%pal
+  nprocs 64
+end
+
+
+%maxcore 6000
+
+%cpcm
+  smd true
+  SMDSolvent "Water"
+end
+
+* xyzfile 0 1 PFOA-Ch_wb97xd3_opt.xyz
+
+%nbo
+  NBOKEYLIST = "$NBO NBO NPA NLMO BNDIDX CMO DIPOLE ARCHIVE MEMORY=6GB $END"
+end

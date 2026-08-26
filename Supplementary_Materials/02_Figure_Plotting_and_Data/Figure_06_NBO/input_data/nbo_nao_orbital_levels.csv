@@ -1,7 +1,0 @@
-key,label,orbital_or_nbo_number,occupancy,energy_hartree,hybridization_primary,hybridization_secondary,source_section
-Ch_H_1s,BTMA H18 1s,457,0.75897,0.06217,,,Natural Population Analysis
-O_2px,O44 2p$_x$,1193,1.87339,-0.35294,,,Natural Population Analysis
-O_2py,O44 2p$_y$,1197,1.56894,-0.31983,,,Natural Population Analysis
-O_2pz,O44 2p$_z$,1201,1.56890,-0.32002,,,Natural Population Analysis
-CH_Sigma_Star,$\sigma^*$ C4-H18 (NBO 153),153,0.00588,0.46507,"C4: 25.7% s, 74.1% p","H18: 99.9% s, 0.1% p",Natural Bond Orbital Summary
-O_LP,n$_{O44}$ (NBO 86),86,1.87998,-0.35546,"O44: 0.0% s, 99.8% p, 0.2% d",,Natural Bond Orbital Summary

@@ -51,13 +51,17 @@ are needed.
 
 ## 03_NBO
 
-Path: `01_Calculations/03_NBO/R4N+PFOA-`
+Path: `01_Calculations/03_NBO/DVB-BTMA+PFOA-`
 
 Purpose:
-NBO/NAO analysis for the PFOA-BTMA interaction.
+NBO/NAO analysis for the DVB-BTMA+PFOA- extended-monomer complex. The
+calculation is an ORCA 6.1.0 single point at the
+ωB97X-D3/def2-TZVPD level with TightSCF and SMD water, using the supplied
+optimized geometry.
 
 Note:
-The copied NBO ORCA output is gzip-compressed as `.out.gz` to keep individual
+The original `PFOA-Ch_wb97xd3_opt` job stem is retained for provenance. The
+complete ORCA/NBO output is gzip-compressed as `.out.gz` to keep individual
 supplementary files below upload limits. It can be decompressed with `gzip -d`.
 
 ## 04_PES

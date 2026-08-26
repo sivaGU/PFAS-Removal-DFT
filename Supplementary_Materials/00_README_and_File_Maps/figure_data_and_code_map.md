@@ -44,11 +44,12 @@ Script:
 - `plot_nao_nbo_interaction.py`
 
 Input data:
-- `input_data/nbo_nao_orbital_levels.csv`
+- `input_data/figure_06_nbo_data.csv`
 
-The CSV contains the NBO/NAO values used by the plotting script. The complete
-source output is archived at
-`01_Calculations/03_NBO/R4N+PFOA-/R4N+PFOA-_EDA.out.gz`.
+The curated CSV contains the NAO/NBO levels and selected donor-acceptor
+interaction read by the plotting script for the DVB-BTMA+PFOA- complex. The
+complete source output is archived at
+`01_Calculations/03_NBO/DVB-BTMA+PFOA-/PFOA-Ch_wb97xd3_opt.out.gz`.
 
 ## Figures_07_08_extended_monomer_exchange
 

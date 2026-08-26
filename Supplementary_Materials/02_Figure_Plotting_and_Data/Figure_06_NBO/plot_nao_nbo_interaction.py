@@ -1,318 +1,263 @@
+import argparse
 import csv
+import math
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 
 
-# Settings
-OUTDIR = Path(__file__).resolve().parent
-DATAFILE = OUTDIR / "input_data" / "nbo_nao_orbital_levels.csv"
-OUTPUT_DIR = OUTDIR / "outputs"
-OUTFILE = OUTPUT_DIR / "Figure_06_NBO_analysis_pfoa_cholestyramine.png"
-
-FONT_FAMILY = "DejaVu Sans"
-DPI = 600
+ROOT = Path(__file__).resolve().parent
+DATA_FILE = ROOT / "input_data" / "figure_06_nbo_data.csv"
+DEFAULT_OUTPUT_DIR = ROOT / "outputs"
+OUTPUT_STEM = "Figure_06_NAO_NBO_DVB_BTMA_PFOA"
 HARTREE_TO_EV = 27.211386245988
 
-plt.rcParams.update(
-    {
-        "font.family": FONT_FAMILY,
-        "font.size": 18,
-        "axes.titlesize": 24,
-        "axes.titleweight": "bold",
-        "axes.labelsize": 22,
-        "xtick.labelsize": 19,
-        "ytick.labelsize": 18,
-    }
-)
-
-
-# Data
-REQUIRED_KEYS = {
-    "Ch_H_1s",
-    "O_2px",
-    "O_2py",
-    "O_2pz",
-    "CH_Sigma_Star",
-    "O_LP",
-}
 REQUIRED_COLUMNS = {
-    "key",
-    "label",
-    "orbital_or_nbo_number",
-    "occupancy",
-    "energy_hartree",
-    "hybridization_primary",
-    "hybridization_secondary",
-    "source_section",
+    "record_type", "key", "model", "representation", "label",
+    "orbital_number", "occupancy", "energy_hartree",
+    "hybridization_primary", "hybridization_secondary", "donor_key",
+    "acceptor_key", "e2_kcal_mol", "energy_gap_hartree",
+    "fock_coupling_hartree", "source_section", "source_output_line",
+    "plot_annotation",
 }
+REQUIRED_ORBITALS = {
+    "DVB_H_1s", "O_2px", "O_2py", "O_2pz", "O_LP", "CH_Sigma_Star",
+}
+MODEL = "DVB-BTMA+PFOA-"
 
 
-def load_orbital_data(datafile=DATAFILE):
-    with datafile.open(newline="", encoding="utf-8") as handle:
+def parse_args():
+    parser = argparse.ArgumentParser(description="Generate the Figure 6 NAO-NBO diagram")
+    parser.add_argument(
+        "--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR,
+        help="directory for generated figure files",
+    )
+    parser.add_argument(
+        "--formats", nargs="+", choices=("png", "pdf"), default=("png", "pdf"),
+        help="output formats to generate",
+    )
+    return parser.parse_args()
+
+
+def read_records(path=DATA_FILE):
+    with path.open(newline="", encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
         missing_columns = REQUIRED_COLUMNS - set(reader.fieldnames or [])
         if missing_columns:
             names = ", ".join(sorted(missing_columns))
             raise ValueError(f"Missing required CSV columns: {names}")
-
-        records = {}
-        for line_number, row in enumerate(reader, start=2):
-            key = row["key"].strip()
-            if not key:
-                raise ValueError(f"Missing record key on CSV line {line_number}")
-            if key in records:
-                raise ValueError(f"Duplicate record key in CSV: {key}")
-
-            try:
-                energy_hartree = float(row["energy_hartree"])
-                occupancy = float(row["occupancy"])
-            except ValueError as exc:
-                raise ValueError(
-                    f"Invalid numeric value for {key} on CSV line {line_number}"
-                ) from exc
-
-            records[key] = {
-                "E": energy_hartree * HARTREE_TO_EV,
-                "Energy_Hartree": energy_hartree,
-                "Occupancy": occupancy,
-                "Label": row["label"].strip(),
-                "Hyb_Primary": row["hybridization_primary"].strip(),
-                "Hyb_Secondary": row["hybridization_secondary"].strip(),
-            }
-
-    missing_keys = REQUIRED_KEYS - records.keys()
-    if missing_keys:
-        names = ", ".join(sorted(missing_keys))
-        raise ValueError(f"Missing required orbital records: {names}")
-
-    return records
+        return list(reader)
 
 
-# Helpers
-def draw_level(ax, x, y, width, color="k", style="-", lw=4):
-    ax.hlines(y, x - width, x + width, color=color, lw=lw, linestyles=style, zorder=4)
+def parse_float(row, field):
+    try:
+        value = float(row[field])
+    except ValueError as exc:
+        raise ValueError(f"Invalid {field} for record {row['key']}") from exc
+    if not math.isfinite(value):
+        raise ValueError(f"Non-finite {field} for record {row['key']}")
+    return value
 
 
-def draw_arrows(ax, x, y, count, color="k"):
-    scale = 0.52
-    sep = 0.065
-    arrow_kwargs = {
-        "head_width": 0.055,
-        "head_length": 0.14,
-        "fc": color,
-        "ec": color,
-        "linewidth": 1.2,
-        "length_includes_head": True,
-        "zorder": 6,
-    }
-    if count > 0:
-        ax.arrow(x - sep, y - scale / 2, 0, scale, **arrow_kwargs)
-    if count > 1:
-        ax.arrow(x + sep, y + scale / 2, 0, -scale, **arrow_kwargs)
+def load_data():
+    orbitals = {}
+    interactions = []
+    seen_keys = set()
+
+    for row in read_records():
+        key = row["key"].strip()
+        if not key:
+            raise ValueError("Every CSV record requires a key")
+        if key in seen_keys:
+            raise ValueError(f"Duplicate CSV record key: {key}")
+        seen_keys.add(key)
+
+        if row["model"].strip() != MODEL:
+            raise ValueError(f"Unexpected model for record {key}: {row['model']}")
+        if not row["label"].strip() or not row["source_section"].strip():
+            raise ValueError(f"Missing label or source section for record {key}")
+
+        record_type = row["record_type"].strip().lower()
+        if record_type == "orbital":
+            row["occupancy"] = parse_float(row, "occupancy")
+            row["energy_hartree"] = parse_float(row, "energy_hartree")
+            row["energy_ev"] = row["energy_hartree"] * HARTREE_TO_EV
+            orbitals[key] = row
+        elif record_type == "interaction":
+            row["e2_kcal_mol"] = parse_float(row, "e2_kcal_mol")
+            row["energy_gap_hartree"] = parse_float(row, "energy_gap_hartree")
+            row["fock_coupling_hartree"] = parse_float(row, "fock_coupling_hartree")
+            interactions.append(row)
+        else:
+            raise ValueError(f"Unknown record_type for {key}: {record_type}")
+
+    missing_orbitals = REQUIRED_ORBITALS - orbitals.keys()
+    extra_orbitals = orbitals.keys() - REQUIRED_ORBITALS
+    if missing_orbitals or extra_orbitals:
+        raise ValueError(
+            "Orbital record mismatch; "
+            f"missing={sorted(missing_orbitals)}, extra={sorted(extra_orbitals)}"
+        )
+    if len(interactions) != 1:
+        raise ValueError("Exactly one donor-acceptor interaction is required")
+
+    interaction = interactions[0]
+    if interaction["donor_key"] not in orbitals or interaction["acceptor_key"] not in orbitals:
+        raise ValueError("Interaction donor_key and acceptor_key must identify orbital records")
+    return orbitals, interaction
 
 
-def connect(ax, x1, y1, x2, y2, color="gray", style="--", alpha=0.38):
-    """Draw faint orbital relationship lines behind labels and levels."""
-    arrowstyle = "-"
-    ax.annotate(
-        "",
-        xy=(x2, y2),
-        xytext=(x1, y1),
-        arrowprops=dict(
-            arrowstyle=arrowstyle,
-            color=color,
-            linestyle=style,
-            lw=2.0,
-            alpha=alpha,
-            connectionstyle="arc3,rad=0",
-        ),
-        zorder=1,
-    )
+def draw_level(ax, x, y, half_width, color, linewidth=4):
+    ax.hlines(y, x - half_width, x + half_width, color=color, linewidth=linewidth, zorder=4)
 
 
-def label_box(ax, x, y, text, color="black", ha="center", va="center", size=18, weight="bold"):
+def label(ax, x, y, text, color="black", ha="center", va="center", size=13):
     ax.text(
-        x,
-        y,
-        text,
-        ha=ha,
-        va=va,
-        fontsize=size,
-        fontweight=weight,
-        color=color,
-        zorder=10,
-        bbox=dict(boxstyle="round,pad=0.28", facecolor="white", edgecolor="none", alpha=0.88),
+        x, y, text, color=color, fontsize=size, ha=ha, va=va, linespacing=1.25,
+        zorder=8,
+        bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.90, "pad": 2.5},
     )
 
 
-# Figure
-def make_nao_to_nbo_diagram():
-    data = load_orbital_data()
-    fig, ax = plt.subplots(figsize=(15.5, 18))
-
-    x_ch, x_cpx, x_pfoa = 0.35, 2.75, 5.15
-    w = 0.42
-    w_stag = 0.18
-
-    connect(
-        ax,
-        x_pfoa - w_stag,
-        data["O_2pz"]["E"],
-        x_cpx + w,
-        data["O_LP"]["E"],
-        color="#1f77b4",
-        style="--",
-        alpha=0.34,
-    )
-    connect(
-        ax,
-        x_pfoa - w_stag,
-        data["O_2pz"]["E"],
-        x_cpx + w,
-        data["CH_Sigma_Star"]["E"],
-        color="#1f77b4",
-        style=":",
-        alpha=0.30,
-    )
-    connect(
-        ax,
-        x_ch + w,
-        data["Ch_H_1s"]["E"],
-        x_cpx - w,
-        data["CH_Sigma_Star"]["E"],
-        color="black",
-        style="--",
-        alpha=0.34,
-    )
-    connect(
-        ax,
-        x_ch + w,
-        data["Ch_H_1s"]["E"],
-        x_cpx - w,
-        data["O_LP"]["E"],
-        color="black",
-        style=":",
-        alpha=0.28,
+def occupancy_label(ax, x, y, occupancy, size=13.5):
+    ax.text(
+        x, y + 0.13, f"Occ. = {occupancy:.3f} e",
+        color="black", fontsize=size, ha="center", va="bottom", zorder=8,
     )
 
-    draw_level(ax, x_ch, data["Ch_H_1s"]["E"], w, "black")
-    label_box(
-        ax,
-        x_ch - 0.12,
-        data["Ch_H_1s"]["E"] + 0.78,
-        f"{data['Ch_H_1s']['Label']}\n{data['Ch_H_1s']['E']:.2f} eV",
-        ha="center",
-        size=18,
+
+def orbital_energy_label(ax, x, y, text, size):
+    ax.text(
+        x, y, text, color="black", fontsize=size, ha="center", va="center",
+        zorder=8,
+        bbox={
+            "boxstyle": "square,pad=0.28", "facecolor": "white",
+            "edgecolor": "black", "linewidth": 1.0,
+        },
     )
 
-    draw_level(ax, x_pfoa, data["O_2pz"]["E"], w_stag, "#1f77b4")
-    draw_arrows(ax, x_pfoa, data["O_2pz"]["E"], 2, "#1f77b4")
-    label_box(
-        ax,
-        x_pfoa + 0.24,
-        data["O_2pz"]["E"] + 0.66,
-        f"{data['O_2pz']['Label']}\n{data['O_2pz']['E']:.2f} eV",
-        color="#1f77b4",
-        ha="left",
-        va="bottom",
-        size=18,
+
+def format_p_label(orbital_label):
+    atom = orbital_label.split(maxsplit=1)[0]
+    axis = orbital_label.rsplit("_", maxsplit=1)[-1]
+    return f"{atom} 2p$_{axis}$"
+
+
+def make_figure(output_dir, formats):
+    orbitals, interaction = load_data()
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    fig, ax = plt.subplots(figsize=(17.5, 13.5))
+    x_dvb, x_complex, x_pfoa = 1.25, 4.85, 8.8
+    level_width = 0.85
+    p_width = 0.62
+
+    h = orbitals["DVB_H_1s"]
+    lp = orbitals[interaction["donor_key"]]
+    sigma_star = orbitals[interaction["acceptor_key"]]
+    p_levels = [orbitals[key] for key in ("O_2px", "O_2py", "O_2pz")]
+    p_offsets = (-1.55, 0.0, 1.55)
+
+    ax.plot(
+        [x_dvb + level_width, x_complex - level_width],
+        [h["energy_ev"], sigma_star["energy_ev"]],
+        color="black", linestyle="--", linewidth=2.0, zorder=1,
+    )
+    p_2px_x = x_pfoa + p_offsets[0]
+    ax.plot(
+        [x_complex + level_width, p_2px_x - p_width],
+        [lp["energy_ev"], orbitals["O_2px"]["energy_ev"]],
+        color="black", linestyle="--", linewidth=2.0, zorder=1,
     )
 
-    draw_level(ax, x_pfoa + 0.42, data["O_2py"]["E"], w_stag, "#7b3294")
-    draw_arrows(ax, x_pfoa + 0.42, data["O_2py"]["E"], 2, "#7b3294")
-    draw_level(ax, x_pfoa - 0.42, data["O_2px"]["E"], w_stag, "#7b3294")
-    draw_arrows(ax, x_pfoa - 0.42, data["O_2px"]["E"], 2, "#7b3294")
-    label_box(
-        ax,
-        x_pfoa - 0.46,
-        data["O_2px"]["E"] - 0.54,
-        f"O44 2p$_x$/2p$_y$\n{data['O_2px']['E']:.2f} / {data['O_2py']['E']:.2f} eV",
-        color="#7b3294",
-        ha="right",
-        va="top",
-        size=16,
+    arrow_x = x_complex + 1.45
+    ax.annotate(
+        "", xy=(arrow_x, sigma_star["energy_ev"] - 0.25),
+        xytext=(arrow_x, lp["energy_ev"] + 0.90),
+        arrowprops={"arrowstyle": "-|>", "color": "#1565c0", "linewidth": 1.8},
+        zorder=3,
+    )
+    label(
+        ax, arrow_x + 0.15, (lp["energy_ev"] + sigma_star["energy_ev"]) / 2,
+        f"{interaction['label']}\nE(2) = {interaction['e2_kcal_mol']:.2f} kcal mol$^{{-1}}$",
+        ha="left", size=12,
     )
 
-    draw_level(ax, x_cpx, data["CH_Sigma_Star"]["E"], w, "#d62728")
-    label_box(
-        ax,
-        x_cpx - 0.22,
-        data["CH_Sigma_Star"]["E"] + 0.76,
-        f"{data['CH_Sigma_Star']['Label']}\n{data['CH_Sigma_Star']['E']:.2f} eV",
-        color="#d62728",
-        ha="center",
-        va="bottom",
-        size=18,
+    draw_level(ax, x_dvb, h["energy_ev"], level_width, "black")
+    orbital_energy_label(
+        ax, x_dvb, h["energy_ev"] + 1.75,
+        f"{h['label']}: [{h['energy_ev']:.2f} eV]", size=14,
     )
-    label_box(
-        ax,
-        x_cpx + w + 0.24,
-        data["CH_Sigma_Star"]["E"] - 0.22,
-        f"{data['CH_Sigma_Star']['Hyb_Primary']}\n"
-        f"{data['CH_Sigma_Star']['Hyb_Secondary']}",
-        color="#d62728",
-        ha="left",
-        va="top",
-        size=14,
-        weight="normal",
-    )
+    occupancy_label(ax, x_dvb, h["energy_ev"], h["occupancy"])
 
-    draw_level(ax, x_cpx, data["O_LP"]["E"], w, "#1f77b4")
-    draw_arrows(ax, x_cpx, data["O_LP"]["E"], 2, "#1f77b4")
-    label_box(
-        ax,
-        x_cpx - 0.18,
-        data["O_LP"]["E"] - 0.78,
-        f"{data['O_LP']['Label']}\n{data['O_LP']['E']:.2f} eV",
-        color="#1f77b4",
-        ha="center",
-        va="top",
-        size=18,
-    )
-    label_box(
-        ax,
-        x_cpx + w + 0.24,
-        data["O_LP"]["E"] + 0.45,
-        data["O_LP"]["Hyb_Primary"],
-        color="#1f77b4",
-        ha="left",
-        va="bottom",
-        size=14,
-        weight="normal",
-    )
+    nao_color = "black"
+    for level, offset in zip(p_levels, p_offsets):
+        level_x = x_pfoa + offset
+        draw_level(ax, level_x, level["energy_ev"], p_width, nao_color, linewidth=3.5)
+        orbital_energy_label(
+            ax, level_x, level["energy_ev"] + 1.68,
+            f"{format_p_label(level['label'])}: [{level['energy_ev']:.2f} eV]",
+            size=12.5,
+        )
+        occupancy_label(ax, level_x, level["energy_ev"], level["occupancy"], size=12.5)
 
-    ax.set_ylabel("")
-    fig.text(
-        0.09,
-        0.5,
-        "Energy (eV)",
-        ha="center",
-        va="center",
-        rotation="vertical",
-        fontsize=22,
-        fontweight="bold",
+    draw_level(ax, x_complex, lp["energy_ev"], level_width, "#0072b2")
+    orbital_energy_label(
+        ax, x_complex - 0.15, lp["energy_ev"] + 2.55,
+        f"{lp['label']}: [{lp['energy_ev']:.2f} eV]", size=13.5,
     )
-    ax.set_xticks([x_ch, x_cpx, x_pfoa])
+    label(
+        ax, x_complex - 0.15, lp["energy_ev"] - 0.82,
+        lp["plot_annotation"], size=13.5,
+    )
+    occupancy_label(ax, x_complex, lp["energy_ev"], lp["occupancy"])
+
+    draw_level(ax, x_complex, sigma_star["energy_ev"], level_width, "#c62828")
+    orbital_energy_label(
+        ax, x_complex - 0.15, sigma_star["energy_ev"] + 1.95,
+        f"{sigma_star['label']}: [{sigma_star['energy_ev']:.2f} eV]", size=13.5,
+    )
+    label(
+        ax, x_complex - 0.15, sigma_star["energy_ev"] - 0.78,
+        sigma_star["plot_annotation"], size=13.5,
+    )
+    occupancy_label(ax, x_complex, sigma_star["energy_ev"], sigma_star["occupancy"])
+
+    ax.set_xlim(0.0, 11.2)
+    ax.set_ylim(-12.0, 16.0)
+    ax.set_ylabel("Orbital energy (eV)", fontsize=18)
+    ax.set_xticks([x_dvb, x_complex, x_pfoa])
     ax.set_xticklabels(
-        ["BTMA$^{+}$\n(NAO)", "BTMA$^{+}$ + PFOA$^{-}$ Interaction\n(NBO)", "PFOA$^{-}$\n(NAO)"],
-        fontweight="bold",
+        ["DVB-BTMA$^+$\nNAOs", "DVB-BTMA$^+$PFOA$^-$\nNBOs", "PFOA$^-$\nNAOs"],
+        fontsize=16,
     )
-    ax.set_xlim(-0.7, 6.2)
-    ax.set_ylim(-15.6, 14.2)
-    ax.set_title(r"NAO-to-NBO Interaction Diagram: BTMA$^{+}$ + PFOA$^{-}$", pad=20)
-    ax.grid(axis="y", linestyle="--", linewidth=0.8, alpha=0.22)
+    ax.set_title("NAO-NBO Energy Level Diagram", fontsize=18, weight="bold", pad=28)
+
+    legend_handle = Line2D([0], [0], color="#1565c0", linewidth=1.8)
+    ax.legend(
+        handles=[legend_handle], labels=["donor-acceptor delocalization"],
+        loc="upper right", frameon=False, fontsize=10.5,
+    )
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.tick_params(axis="x", pad=14)
-    ax.tick_params(axis="y", width=1.4, length=7)
+    ax.spines["bottom"].set_visible(True)
+    ax.spines["bottom"].set_color("black")
+    ax.spines["bottom"].set_linewidth(1.0)
+    ax.tick_params(axis="x", length=0, pad=16)
+    ax.grid(axis="y", color="#dddddd", linewidth=0.7, alpha=0.55)
 
-    fig.tight_layout(rect=[0.075, 0.02, 1.0, 0.97])
-    OUTPUT_DIR.mkdir(exist_ok=True)
-    fig.savefig(OUTFILE, dpi=DPI, bbox_inches="tight")
+    fig.subplots_adjust(left=0.12, right=0.96, top=0.90, bottom=0.14)
+    for file_format in formats:
+        output_file = output_dir / f"{OUTPUT_STEM}.{file_format}"
+        save_options = {"bbox_inches": "tight"}
+        if file_format == "png":
+            save_options["dpi"] = 600
+        fig.savefig(output_file, **save_options)
+        print(f"Wrote {output_file}")
     plt.close(fig)
-    print(f"Saved figure to: {OUTFILE}")
 
 
 if __name__ == "__main__":
-    make_nao_to_nbo_diagram()
+    args = parse_args()
+    make_figure(args.output_dir, args.formats)
