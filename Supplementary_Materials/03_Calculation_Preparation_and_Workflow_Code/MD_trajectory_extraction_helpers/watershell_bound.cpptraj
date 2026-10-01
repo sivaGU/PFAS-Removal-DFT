@@ -1,5 +1,0 @@
-parm ../05_pfas_exchange/solvated_resin_pfoa_exchange.prmtop
-trajin ../09_namd_pfoa_exchange/resin_pfoa_exchange_npt_1ns.dcd
-autoimage anchor :1 origin
-watershell :PFO@F*,C,C1,C2,C3,C4,C5,C6 lower 3.5 upper 5.0 out bound_tail_watershell.dat
-run

@@ -1,0 +1,6 @@
+Stage 07 completed successfully.
+Target external NaCl: 0.150 M
+Added NaCl pairs: 19
+Neutralizing Cl-: 12
+Nominal achieved external NaCl: 0.15358621 M
+Initial box volume: 205423.661276 A^3

@@ -1,0 +1,37 @@
+{
+  "source_stage08_atoms": 15973,
+  "box_A": [
+    51.1182059808,
+    55.5869599164,
+    56.8970717044
+  ],
+  "origin_A": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "selected_repeat": 9,
+  "selected_polymer_atom_index_1based": 112,
+  "selected_N_name": "N9",
+  "head_center_target_distance_A": 4.8,
+  "axial_rotation_deg": 300,
+  "initial_nearest_carboxylate_O_N_A": 4.429568984285031,
+  "initial_min_PFOA_polymer_heavy_A": 4.1193649990142465,
+  "initial_min_PFOA_ion_A": 6.1821739320881495,
+  "removed_chloride_source_serial": 378,
+  "removed_chloride_distance_to_selected_N_A": 33.72288261235202,
+  "removed_chloride_min_distance_to_polymer_heavy_A": 27.505270715500203,
+  "removed_chloride_remote_minimum_required_A": 6.0,
+  "removed_water_residue_count": 20,
+  "kept_water_residue_count": 5163,
+  "expected_Na_count": 19,
+  "expected_Cl_count": 30,
+  "expected_PFO_count": 1,
+  "construction_interpretation": "preassociated endpoint; chloride removal is stoichiometric bookkeeping only",
+  "candidate_pose_count": 523,
+  "placement_minimum_heavy_clearance_required_A": 2.8,
+  "placement_nearest_O_N_allowed_A": [
+    2.8,
+    5.0
+  ]
+}

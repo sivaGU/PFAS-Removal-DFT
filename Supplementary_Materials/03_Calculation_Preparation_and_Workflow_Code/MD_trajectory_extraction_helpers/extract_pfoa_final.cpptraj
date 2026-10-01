@@ -1,5 +1,0 @@
-parm ../05_pfas_exchange/solvated_resin_pfoa_exchange.prmtop
-trajin resin_pfoa_exchange_npt_short.dcd lastframe
-autoimage anchor :1 origin
-trajout resin_pfoa_exchange_npt_short_final_imaged.pdb pdb
-run

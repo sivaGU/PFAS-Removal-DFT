@@ -1,0 +1,11 @@
+{
+  "unique_records": 13,
+  "main_table_display_rows": 14,
+  "covers_figures": [
+    7,
+    11,
+    12
+  ],
+  "energy_unit": "kcal/mol",
+  "preparation_energy_column": false
+}

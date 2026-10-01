@@ -1,0 +1,66 @@
+{
+  "all_repeat_sums_within_1e-10_of_plus1": true,
+  "charges_file": "pVBTMA12_rct_charges.txt",
+  "internal_role_variability": {
+    "maximum_population_sd_e": 0.006018490028422598,
+    "mean_population_sd_e": 0.0015990632553066618,
+    "roles_with_sd_gt_0p01_e": []
+  },
+  "library_normalization": {
+    "head": {
+      "atoms_per_repeat": 32,
+      "normalized_library_charge_sum": 1.0000000000000002,
+      "raw_library_charge_sum": 0.994003,
+      "uniform_per_atom_normalization": 0.00018740625000000094
+    },
+    "internal": {
+      "atoms_per_repeat": 31,
+      "normalized_library_charge_sum": 1.0000000000000004,
+      "raw_library_charge_sum": 0.991665,
+      "uniform_per_atom_normalization": 0.00026887096774193487
+    },
+    "tail": {
+      "atoms_per_repeat": 32,
+      "normalized_library_charge_sum": 1.0,
+      "raw_library_charge_sum": 1.026003,
+      "uniform_per_atom_normalization": -0.00081259375
+    }
+  },
+  "source_atoms": 157,
+  "source_delta_from_plus5": -0.004999000000000642,
+  "source_reduced_mol2": "rct5_antechamber_work/pVBTMA5_gaff2_am1bcc.mol2",
+  "source_serialized_charge_sum": 4.995000999999999,
+  "target_atoms": 374,
+  "target_delta_from_plus12": 0.0,
+  "target_repeat_charge_sums": {
+    "1": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "2": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0
+  },
+  "target_role_multiplicity_checks": {
+    "1": true,
+    "10": true,
+    "11": true,
+    "12": true,
+    "2": true,
+    "3": true,
+    "4": true,
+    "5": true,
+    "6": true,
+    "7": true,
+    "8": true,
+    "9": true
+  },
+  "target_total_charge": 12.0,
+  "total_within_1e-10_of_plus12": true,
+  "transfer_validation_pass": true
+}

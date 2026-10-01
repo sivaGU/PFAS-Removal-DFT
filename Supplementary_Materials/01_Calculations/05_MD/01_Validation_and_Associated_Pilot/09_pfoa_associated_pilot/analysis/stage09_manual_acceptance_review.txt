@@ -1,0 +1,57 @@
+Stage 09 manual acceptance review
+
+Technical workflow: PASS
+Decision: ACCEPTED
+Frames: 500 of 500 at 2 ps spacing
+CPPTRAJ PBC-sensitive actions preceded RMS fitting.
+VMD/PBCTools validation: PASS
+XST records compared: 100
+Maximum VMD-versus-XST length difference: 0.000002395 A
+
+Acceptance thermodynamics
+Mean temperature: 310.3537 K
+Temperature SD: 2.3947 K
+Mean group pressure: 7.1831 bar
+Group-pressure SD: 194.9641 bar
+Final running group-pressure average: 1.3808 bar
+Mean volume: 162441.8668 A^3
+Volume SD: 641.1870 A^3
+
+Polymer structure
+RMSD: 2.4856 +/- 0.4110 A (range 0.0000-3.3306 A)
+Radius of gyration: 9.5445 +/- 0.2223 A (range 8.8080-10.1145 A)
+End-to-end distance: 23.3758 +/- 1.4905 A (range 19.0488-28.0292 A)
+Minimum polymer periodic-image distance: 24.0675 A
+Final-200-ps RMSD: 2.4158 +/- 0.3577 A
+Final-200-ps radius of gyration: 9.6572 +/- 0.1358 A
+Final-200-ps end-to-end distance: 23.2952 +/- 1.4117 A
+
+Prepared selected-site association (carboxylate O to N9, 5 A threshold)
+Initial prepared distance: 4.4296 A
+Trajectory mean: 7.4296 +/- 2.4774 A
+Range: 3.5770-14.0490 A
+Contact occupancy: 15.8%
+Longest continuous contact: 32 ps (650-680 ps saved-frame interval)
+Final distance: 6.9330 A
+Final 200 ps: 9.9846 +/- 1.9612 A (range 5.0970-13.5030 A), 0% contact
+Final 100 ps: 8.7176 +/- 1.6222 A (range 5.0970-11.5290 A), 0% contact
+
+Association with any ammonium site
+Trajectory mean: 5.0807 +/- 0.8518 A
+Range: 3.4840-7.6380 A
+Contact occupancy: 52.8%
+Longest continuous contact: 48 ps (94-140 ps saved-frame interval)
+Final distance: 5.0810 A
+Final 200 ps: 4.7203 +/- 0.4845 A, 77.0% contact
+Final 100 ps: 4.7089 +/- 0.5426 A, 78.0% contact
+Mean PFOA-polymer heavy-atom minimum distance: 2.9921 A
+
+Interpretation
+PFOA moved away from the deliberately selected N9 site and did not re-establish
+a selected-site contact during the final 200 ps. It nevertheless remained
+resin-associated and frequently sampled proximity to other ammonium sites.
+This is persistence and rearrangement of a prepared associated state, not
+evidence of spontaneous binding or chloride displacement.
+
+No catastrophic structural, topology, PBC, or periodic-image problem was found.
+Stage 09 is complete and frozen. Stage 10 was not started or authorized.

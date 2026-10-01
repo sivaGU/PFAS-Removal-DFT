@@ -1,0 +1,10 @@
+FINAL STATUS: ACCEPTED
+Stage 08 dynamics completed through the 1.0 ns chloride-form acceptance trajectory and analysis-only validation completed successfully.
+CPPTRAJ PBC-sensitive actions were evaluated before RMS fitting, preventing fitted coordinate/cell rotation from contaminating imaging or box analysis.
+VMD/PBCTools independently read the NAMD DCD periodic cell and passed the XST-matched cell cross-check and polymer reconstruction smoke test.
+Manual review confirmed that the flagged 128 ps repeat-1 central contact broke, was not sustained at the endpoint, and was not accompanied by clear late structural instability.
+Stage 09 progression is allowed.
+This trajectory is not a production replica.
+See analysis/acceptance_summary.txt, analysis/box_validation.txt, and analysis/vmd_pbc_validation.txt for the accepted Stage 08 evidence.
+Completed: 2026-09-19T02:48:33-04:00
+Manual acceptance review: 2026-09-19T16:38:14-04:00

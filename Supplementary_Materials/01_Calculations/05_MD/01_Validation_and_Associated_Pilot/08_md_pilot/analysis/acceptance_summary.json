@@ -1,0 +1,108 @@
+{
+  "purpose": "chloride-form pVBTMA12 model/protocol acceptance; not a production replica",
+  "trajectory_frames": 500,
+  "trajectory_interval_ps": 2.0,
+  "polymer_rmsd_A": {
+    "n": 500,
+    "mean": 3.8714308,
+    "min": 0.0,
+    "max": 5.1488,
+    "sd": 0.9536847077369753
+  },
+  "radius_of_gyration_A": {
+    "n": 500,
+    "mean": 9.1117594,
+    "min": 8.64,
+    "max": 9.5942,
+    "sd": 0.15452514077534438
+  },
+  "end_to_end_A": {
+    "n": 500,
+    "mean": 21.941205999999998,
+    "min": 18.4661,
+    "max": 26.7221,
+    "sd": 1.4788981286768876
+  },
+  "Rg_first_200ps_mean_A": 8.99197,
+  "Rg_last_200ps_mean_A": 9.119911,
+  "Rg_relative_change": 0.014228361527006858,
+  "terminal_repeat_1_to_central": {
+    "mindist_A": {
+      "n": 500,
+      "mean": 5.899006,
+      "min": 2.919,
+      "max": 7.963,
+      "sd": 1.212312609009739
+    },
+    "contact_cutoff_A": 4.5,
+    "contact_occupancy": 0.156,
+    "longest_contiguous_contact_ps": 128.0
+  },
+  "terminal_repeat_12_to_central": {
+    "mindist_A": {
+      "n": 500,
+      "mean": 6.614366,
+      "min": 4.099,
+      "max": 8.053,
+      "sd": 0.8172125011549933
+    },
+    "contact_cutoff_A": 4.5,
+    "contact_occupancy": 0.004,
+    "longest_contiguous_contact_ps": 2.0
+  },
+  "polymer_periodic_image_mindist_A": {
+    "n": 500,
+    "mean": 31.0299908,
+    "min": 26.2524,
+    "max": 34.7031,
+    "sd": 1.7966038749472182
+  },
+  "namd_temperature_K": {
+    "n": 1001,
+    "mean": 310.2491247752248,
+    "min": 303.0647,
+    "max": 318.0762,
+    "sd": 2.451003512626341
+  },
+  "namd_pressure_bar": {
+    "n": 1001,
+    "mean": -87.48480559440559,
+    "min": -736.4423,
+    "max": 540.1151,
+    "sd": 189.04393305680784
+  },
+  "namd_volume_A3": {
+    "n": 1001,
+    "mean": 162682.34826393606,
+    "min": 160696.1566,
+    "max": 164899.9845,
+    "sd": 635.7199998354441
+  },
+  "namd_xst_cell": {
+    "records": 101,
+    "mean_lengths_A": [
+      51.22892392103663,
+      55.70735681971782,
+      57.02030620495743
+    ],
+    "mean_angles_deg": [
+      90.0,
+      90.0,
+      90.0
+    ],
+    "volume_A3": {
+      "n": 101,
+      "mean": 162726.87245081348,
+      "min": 161658.31669075423,
+      "max": 164206.69750175127,
+      "sd": 596.8784118308367
+    }
+  },
+  "periodic_cell_validation_file": "analysis/box_validation.txt",
+  "review_flags": [
+    "repeat 1 central-contact persistence: occupancy=0.156, longest=128.0 ps"
+  ],
+  "hard_failures": [],
+  "automated_status": "REVIEW",
+  "interpretation": "Terminal contacts are review flags, not automatic failures. Final Stage 08 acceptance requires trajectory/metric review before production model freeze."
+}

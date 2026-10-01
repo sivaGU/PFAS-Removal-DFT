@@ -1,0 +1,5 @@
+component,total_or_eligible,drawn,selection
+panel A waters,5163,0,not displayed in overview
+panel B eligible waters,321,95,"oxygen in fixed camera |u|,|v| <= 12 Å and |depth| <= 10 Å; SHA-256 seed 'Figure14B-v1' on residue ID; uniform fraction 0.30; all sampled waters complete"
+Na+ ions,19,0,<= 8 Å from PFOA heavy atom
+Cl- ions,30,1,<= 8 Å from PFOA heavy atom

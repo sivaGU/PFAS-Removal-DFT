@@ -1,0 +1,2623 @@
+{
+  "n_repeats": 12,
+  "atoms": [
+    {
+      "atom_index_1based": 1,
+      "element": "C",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "u01_C"
+    },
+    {
+      "atom_index_1based": 2,
+      "element": "C",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "u02_C"
+    },
+    {
+      "atom_index_1based": 3,
+      "element": "C",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "u03_C"
+    },
+    {
+      "atom_index_1based": 4,
+      "element": "C",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "u04_C"
+    },
+    {
+      "atom_index_1based": 5,
+      "element": "C",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "u05_C"
+    },
+    {
+      "atom_index_1based": 6,
+      "element": "C",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "u06_C"
+    },
+    {
+      "atom_index_1based": 7,
+      "element": "C",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "u07_C"
+    },
+    {
+      "atom_index_1based": 8,
+      "element": "N",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "Nq"
+    },
+    {
+      "atom_index_1based": 9,
+      "element": "C",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 10,
+      "element": "C",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 11,
+      "element": "C",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 12,
+      "element": "C",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "u12_C"
+    },
+    {
+      "atom_index_1based": 13,
+      "element": "C",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "u13_C"
+    },
+    {
+      "atom_index_1based": 14,
+      "element": "C",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "u01_C"
+    },
+    {
+      "atom_index_1based": 15,
+      "element": "C",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "u02_C"
+    },
+    {
+      "atom_index_1based": 16,
+      "element": "C",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "u03_C"
+    },
+    {
+      "atom_index_1based": 17,
+      "element": "C",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "u04_C"
+    },
+    {
+      "atom_index_1based": 18,
+      "element": "C",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "u05_C"
+    },
+    {
+      "atom_index_1based": 19,
+      "element": "C",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "u06_C"
+    },
+    {
+      "atom_index_1based": 20,
+      "element": "C",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "u07_C"
+    },
+    {
+      "atom_index_1based": 21,
+      "element": "N",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "Nq"
+    },
+    {
+      "atom_index_1based": 22,
+      "element": "C",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 23,
+      "element": "C",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 24,
+      "element": "C",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 25,
+      "element": "C",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "u12_C"
+    },
+    {
+      "atom_index_1based": 26,
+      "element": "C",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "u13_C"
+    },
+    {
+      "atom_index_1based": 27,
+      "element": "C",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "u01_C"
+    },
+    {
+      "atom_index_1based": 28,
+      "element": "C",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "u02_C"
+    },
+    {
+      "atom_index_1based": 29,
+      "element": "C",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "u03_C"
+    },
+    {
+      "atom_index_1based": 30,
+      "element": "C",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "u04_C"
+    },
+    {
+      "atom_index_1based": 31,
+      "element": "C",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "u05_C"
+    },
+    {
+      "atom_index_1based": 32,
+      "element": "C",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "u06_C"
+    },
+    {
+      "atom_index_1based": 33,
+      "element": "C",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "u07_C"
+    },
+    {
+      "atom_index_1based": 34,
+      "element": "N",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "Nq"
+    },
+    {
+      "atom_index_1based": 35,
+      "element": "C",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 36,
+      "element": "C",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 37,
+      "element": "C",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 38,
+      "element": "C",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "u12_C"
+    },
+    {
+      "atom_index_1based": 39,
+      "element": "C",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "u13_C"
+    },
+    {
+      "atom_index_1based": 40,
+      "element": "C",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "u01_C"
+    },
+    {
+      "atom_index_1based": 41,
+      "element": "C",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "u02_C"
+    },
+    {
+      "atom_index_1based": 42,
+      "element": "C",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "u03_C"
+    },
+    {
+      "atom_index_1based": 43,
+      "element": "C",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "u04_C"
+    },
+    {
+      "atom_index_1based": 44,
+      "element": "C",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "u05_C"
+    },
+    {
+      "atom_index_1based": 45,
+      "element": "C",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "u06_C"
+    },
+    {
+      "atom_index_1based": 46,
+      "element": "C",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "u07_C"
+    },
+    {
+      "atom_index_1based": 47,
+      "element": "N",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "Nq"
+    },
+    {
+      "atom_index_1based": 48,
+      "element": "C",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 49,
+      "element": "C",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 50,
+      "element": "C",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 51,
+      "element": "C",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "u12_C"
+    },
+    {
+      "atom_index_1based": 52,
+      "element": "C",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "u13_C"
+    },
+    {
+      "atom_index_1based": 53,
+      "element": "C",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "u01_C"
+    },
+    {
+      "atom_index_1based": 54,
+      "element": "C",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "u02_C"
+    },
+    {
+      "atom_index_1based": 55,
+      "element": "C",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "u03_C"
+    },
+    {
+      "atom_index_1based": 56,
+      "element": "C",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "u04_C"
+    },
+    {
+      "atom_index_1based": 57,
+      "element": "C",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "u05_C"
+    },
+    {
+      "atom_index_1based": 58,
+      "element": "C",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "u06_C"
+    },
+    {
+      "atom_index_1based": 59,
+      "element": "C",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "u07_C"
+    },
+    {
+      "atom_index_1based": 60,
+      "element": "N",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "Nq"
+    },
+    {
+      "atom_index_1based": 61,
+      "element": "C",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 62,
+      "element": "C",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 63,
+      "element": "C",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 64,
+      "element": "C",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "u12_C"
+    },
+    {
+      "atom_index_1based": 65,
+      "element": "C",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "u13_C"
+    },
+    {
+      "atom_index_1based": 66,
+      "element": "C",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "u01_C"
+    },
+    {
+      "atom_index_1based": 67,
+      "element": "C",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "u02_C"
+    },
+    {
+      "atom_index_1based": 68,
+      "element": "C",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "u03_C"
+    },
+    {
+      "atom_index_1based": 69,
+      "element": "C",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "u04_C"
+    },
+    {
+      "atom_index_1based": 70,
+      "element": "C",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "u05_C"
+    },
+    {
+      "atom_index_1based": 71,
+      "element": "C",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "u06_C"
+    },
+    {
+      "atom_index_1based": 72,
+      "element": "C",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "u07_C"
+    },
+    {
+      "atom_index_1based": 73,
+      "element": "N",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "Nq"
+    },
+    {
+      "atom_index_1based": 74,
+      "element": "C",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 75,
+      "element": "C",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 76,
+      "element": "C",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 77,
+      "element": "C",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "u12_C"
+    },
+    {
+      "atom_index_1based": 78,
+      "element": "C",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "u13_C"
+    },
+    {
+      "atom_index_1based": 79,
+      "element": "C",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "u01_C"
+    },
+    {
+      "atom_index_1based": 80,
+      "element": "C",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "u02_C"
+    },
+    {
+      "atom_index_1based": 81,
+      "element": "C",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "u03_C"
+    },
+    {
+      "atom_index_1based": 82,
+      "element": "C",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "u04_C"
+    },
+    {
+      "atom_index_1based": 83,
+      "element": "C",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "u05_C"
+    },
+    {
+      "atom_index_1based": 84,
+      "element": "C",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "u06_C"
+    },
+    {
+      "atom_index_1based": 85,
+      "element": "C",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "u07_C"
+    },
+    {
+      "atom_index_1based": 86,
+      "element": "N",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "Nq"
+    },
+    {
+      "atom_index_1based": 87,
+      "element": "C",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 88,
+      "element": "C",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 89,
+      "element": "C",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 90,
+      "element": "C",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "u12_C"
+    },
+    {
+      "atom_index_1based": 91,
+      "element": "C",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "u13_C"
+    },
+    {
+      "atom_index_1based": 92,
+      "element": "C",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "u01_C"
+    },
+    {
+      "atom_index_1based": 93,
+      "element": "C",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "u02_C"
+    },
+    {
+      "atom_index_1based": 94,
+      "element": "C",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "u03_C"
+    },
+    {
+      "atom_index_1based": 95,
+      "element": "C",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "u04_C"
+    },
+    {
+      "atom_index_1based": 96,
+      "element": "C",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "u05_C"
+    },
+    {
+      "atom_index_1based": 97,
+      "element": "C",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "u06_C"
+    },
+    {
+      "atom_index_1based": 98,
+      "element": "C",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "u07_C"
+    },
+    {
+      "atom_index_1based": 99,
+      "element": "N",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "Nq"
+    },
+    {
+      "atom_index_1based": 100,
+      "element": "C",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 101,
+      "element": "C",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 102,
+      "element": "C",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 103,
+      "element": "C",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "u12_C"
+    },
+    {
+      "atom_index_1based": 104,
+      "element": "C",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "u13_C"
+    },
+    {
+      "atom_index_1based": 105,
+      "element": "C",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "u01_C"
+    },
+    {
+      "atom_index_1based": 106,
+      "element": "C",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "u02_C"
+    },
+    {
+      "atom_index_1based": 107,
+      "element": "C",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "u03_C"
+    },
+    {
+      "atom_index_1based": 108,
+      "element": "C",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "u04_C"
+    },
+    {
+      "atom_index_1based": 109,
+      "element": "C",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "u05_C"
+    },
+    {
+      "atom_index_1based": 110,
+      "element": "C",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "u06_C"
+    },
+    {
+      "atom_index_1based": 111,
+      "element": "C",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "u07_C"
+    },
+    {
+      "atom_index_1based": 112,
+      "element": "N",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "Nq"
+    },
+    {
+      "atom_index_1based": 113,
+      "element": "C",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 114,
+      "element": "C",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 115,
+      "element": "C",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 116,
+      "element": "C",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "u12_C"
+    },
+    {
+      "atom_index_1based": 117,
+      "element": "C",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "u13_C"
+    },
+    {
+      "atom_index_1based": 118,
+      "element": "C",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "u01_C"
+    },
+    {
+      "atom_index_1based": 119,
+      "element": "C",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "u02_C"
+    },
+    {
+      "atom_index_1based": 120,
+      "element": "C",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "u03_C"
+    },
+    {
+      "atom_index_1based": 121,
+      "element": "C",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "u04_C"
+    },
+    {
+      "atom_index_1based": 122,
+      "element": "C",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "u05_C"
+    },
+    {
+      "atom_index_1based": 123,
+      "element": "C",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "u06_C"
+    },
+    {
+      "atom_index_1based": 124,
+      "element": "C",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "u07_C"
+    },
+    {
+      "atom_index_1based": 125,
+      "element": "N",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "Nq"
+    },
+    {
+      "atom_index_1based": 126,
+      "element": "C",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 127,
+      "element": "C",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 128,
+      "element": "C",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 129,
+      "element": "C",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "u12_C"
+    },
+    {
+      "atom_index_1based": 130,
+      "element": "C",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "u13_C"
+    },
+    {
+      "atom_index_1based": 131,
+      "element": "C",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "u01_C"
+    },
+    {
+      "atom_index_1based": 132,
+      "element": "C",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "u02_C"
+    },
+    {
+      "atom_index_1based": 133,
+      "element": "C",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "u03_C"
+    },
+    {
+      "atom_index_1based": 134,
+      "element": "C",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "u04_C"
+    },
+    {
+      "atom_index_1based": 135,
+      "element": "C",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "u05_C"
+    },
+    {
+      "atom_index_1based": 136,
+      "element": "C",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "u06_C"
+    },
+    {
+      "atom_index_1based": 137,
+      "element": "C",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "u07_C"
+    },
+    {
+      "atom_index_1based": 138,
+      "element": "N",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "Nq"
+    },
+    {
+      "atom_index_1based": 139,
+      "element": "C",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 140,
+      "element": "C",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 141,
+      "element": "C",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 142,
+      "element": "C",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "u12_C"
+    },
+    {
+      "atom_index_1based": 143,
+      "element": "C",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "u13_C"
+    },
+    {
+      "atom_index_1based": 144,
+      "element": "C",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "u01_C"
+    },
+    {
+      "atom_index_1based": 145,
+      "element": "C",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "u02_C"
+    },
+    {
+      "atom_index_1based": 146,
+      "element": "C",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "u03_C"
+    },
+    {
+      "atom_index_1based": 147,
+      "element": "C",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "u04_C"
+    },
+    {
+      "atom_index_1based": 148,
+      "element": "C",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "u05_C"
+    },
+    {
+      "atom_index_1based": 149,
+      "element": "C",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "u06_C"
+    },
+    {
+      "atom_index_1based": 150,
+      "element": "C",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "u07_C"
+    },
+    {
+      "atom_index_1based": 151,
+      "element": "N",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "Nq"
+    },
+    {
+      "atom_index_1based": 152,
+      "element": "C",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 153,
+      "element": "C",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 154,
+      "element": "C",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "NMe_C"
+    },
+    {
+      "atom_index_1based": 155,
+      "element": "C",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "u12_C"
+    },
+    {
+      "atom_index_1based": 156,
+      "element": "C",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "u13_C"
+    },
+    {
+      "atom_index_1based": 157,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 158,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 159,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 160,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "H@u02_C"
+    },
+    {
+      "atom_index_1based": 161,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "H@u04_C"
+    },
+    {
+      "atom_index_1based": 162,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "H@u05_C"
+    },
+    {
+      "atom_index_1based": 163,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 164,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 165,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 166,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 167,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 168,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 169,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 170,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 171,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 172,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 173,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 174,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "H@u12_C"
+    },
+    {
+      "atom_index_1based": 175,
+      "element": "H",
+      "repeat_index_1based": 1,
+      "repeat_kind": "head",
+      "role": "H@u13_C"
+    },
+    {
+      "atom_index_1based": 176,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 177,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 178,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "H@u02_C"
+    },
+    {
+      "atom_index_1based": 179,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "H@u04_C"
+    },
+    {
+      "atom_index_1based": 180,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "H@u05_C"
+    },
+    {
+      "atom_index_1based": 181,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 182,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 183,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 184,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 185,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 186,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 187,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 188,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 189,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 190,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 191,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 192,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "H@u12_C"
+    },
+    {
+      "atom_index_1based": 193,
+      "element": "H",
+      "repeat_index_1based": 2,
+      "repeat_kind": "internal",
+      "role": "H@u13_C"
+    },
+    {
+      "atom_index_1based": 194,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 195,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 196,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "H@u02_C"
+    },
+    {
+      "atom_index_1based": 197,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "H@u04_C"
+    },
+    {
+      "atom_index_1based": 198,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "H@u05_C"
+    },
+    {
+      "atom_index_1based": 199,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 200,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 201,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 202,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 203,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 204,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 205,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 206,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 207,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 208,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 209,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 210,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "H@u12_C"
+    },
+    {
+      "atom_index_1based": 211,
+      "element": "H",
+      "repeat_index_1based": 3,
+      "repeat_kind": "internal",
+      "role": "H@u13_C"
+    },
+    {
+      "atom_index_1based": 212,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 213,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 214,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "H@u02_C"
+    },
+    {
+      "atom_index_1based": 215,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "H@u04_C"
+    },
+    {
+      "atom_index_1based": 216,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "H@u05_C"
+    },
+    {
+      "atom_index_1based": 217,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 218,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 219,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 220,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 221,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 222,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 223,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 224,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 225,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 226,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 227,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 228,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "H@u12_C"
+    },
+    {
+      "atom_index_1based": 229,
+      "element": "H",
+      "repeat_index_1based": 4,
+      "repeat_kind": "internal",
+      "role": "H@u13_C"
+    },
+    {
+      "atom_index_1based": 230,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 231,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 232,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "H@u02_C"
+    },
+    {
+      "atom_index_1based": 233,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "H@u04_C"
+    },
+    {
+      "atom_index_1based": 234,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "H@u05_C"
+    },
+    {
+      "atom_index_1based": 235,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 236,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 237,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 238,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 239,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 240,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 241,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 242,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 243,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 244,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 245,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 246,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "H@u12_C"
+    },
+    {
+      "atom_index_1based": 247,
+      "element": "H",
+      "repeat_index_1based": 5,
+      "repeat_kind": "internal",
+      "role": "H@u13_C"
+    },
+    {
+      "atom_index_1based": 248,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 249,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 250,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "H@u02_C"
+    },
+    {
+      "atom_index_1based": 251,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "H@u04_C"
+    },
+    {
+      "atom_index_1based": 252,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "H@u05_C"
+    },
+    {
+      "atom_index_1based": 253,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 254,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 255,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 256,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 257,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 258,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 259,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 260,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 261,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 262,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 263,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 264,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "H@u12_C"
+    },
+    {
+      "atom_index_1based": 265,
+      "element": "H",
+      "repeat_index_1based": 6,
+      "repeat_kind": "internal",
+      "role": "H@u13_C"
+    },
+    {
+      "atom_index_1based": 266,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 267,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 268,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "H@u02_C"
+    },
+    {
+      "atom_index_1based": 269,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "H@u04_C"
+    },
+    {
+      "atom_index_1based": 270,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "H@u05_C"
+    },
+    {
+      "atom_index_1based": 271,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 272,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 273,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 274,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 275,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 276,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 277,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 278,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 279,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 280,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 281,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 282,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "H@u12_C"
+    },
+    {
+      "atom_index_1based": 283,
+      "element": "H",
+      "repeat_index_1based": 7,
+      "repeat_kind": "internal",
+      "role": "H@u13_C"
+    },
+    {
+      "atom_index_1based": 284,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 285,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 286,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "H@u02_C"
+    },
+    {
+      "atom_index_1based": 287,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "H@u04_C"
+    },
+    {
+      "atom_index_1based": 288,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "H@u05_C"
+    },
+    {
+      "atom_index_1based": 289,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 290,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 291,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 292,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 293,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 294,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 295,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 296,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 297,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 298,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 299,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 300,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "H@u12_C"
+    },
+    {
+      "atom_index_1based": 301,
+      "element": "H",
+      "repeat_index_1based": 8,
+      "repeat_kind": "internal",
+      "role": "H@u13_C"
+    },
+    {
+      "atom_index_1based": 302,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 303,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 304,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "H@u02_C"
+    },
+    {
+      "atom_index_1based": 305,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "H@u04_C"
+    },
+    {
+      "atom_index_1based": 306,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "H@u05_C"
+    },
+    {
+      "atom_index_1based": 307,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 308,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 309,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 310,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 311,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 312,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 313,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 314,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 315,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 316,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 317,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 318,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "H@u12_C"
+    },
+    {
+      "atom_index_1based": 319,
+      "element": "H",
+      "repeat_index_1based": 9,
+      "repeat_kind": "internal",
+      "role": "H@u13_C"
+    },
+    {
+      "atom_index_1based": 320,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 321,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 322,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "H@u02_C"
+    },
+    {
+      "atom_index_1based": 323,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "H@u04_C"
+    },
+    {
+      "atom_index_1based": 324,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "H@u05_C"
+    },
+    {
+      "atom_index_1based": 325,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 326,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 327,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 328,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 329,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 330,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 331,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 332,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 333,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 334,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 335,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 336,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "H@u12_C"
+    },
+    {
+      "atom_index_1based": 337,
+      "element": "H",
+      "repeat_index_1based": 10,
+      "repeat_kind": "internal",
+      "role": "H@u13_C"
+    },
+    {
+      "atom_index_1based": 338,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 339,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 340,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "H@u02_C"
+    },
+    {
+      "atom_index_1based": 341,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "H@u04_C"
+    },
+    {
+      "atom_index_1based": 342,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "H@u05_C"
+    },
+    {
+      "atom_index_1based": 343,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 344,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 345,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 346,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 347,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 348,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 349,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 350,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 351,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 352,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 353,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 354,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "H@u12_C"
+    },
+    {
+      "atom_index_1based": 355,
+      "element": "H",
+      "repeat_index_1based": 11,
+      "repeat_kind": "internal",
+      "role": "H@u13_C"
+    },
+    {
+      "atom_index_1based": 356,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 357,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "H@u01_C"
+    },
+    {
+      "atom_index_1based": 358,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "H@u02_C"
+    },
+    {
+      "atom_index_1based": 359,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "H@u02_C"
+    },
+    {
+      "atom_index_1based": 360,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "H@u04_C"
+    },
+    {
+      "atom_index_1based": 361,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "H@u05_C"
+    },
+    {
+      "atom_index_1based": 362,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 363,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "H@u07_C"
+    },
+    {
+      "atom_index_1based": 364,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 365,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 366,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 367,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 368,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 369,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 370,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 371,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 372,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "NMe_H"
+    },
+    {
+      "atom_index_1based": 373,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "H@u12_C"
+    },
+    {
+      "atom_index_1based": 374,
+      "element": "H",
+      "repeat_index_1based": 12,
+      "repeat_kind": "tail",
+      "role": "H@u13_C"
+    }
+  ]
+}

@@ -1,45 +1,34 @@
-# MD animation supplements
+# pVBTMA12-PFOA Production Movies
 
-This directory contains rendered trajectory animations and the scripts used to generate them. The temporary rendered frame directories are intentionally not retained.
+`videos/` contains one MP4 for each independent Stage 10 production replica.
+Each movie samples the replica's ten consecutive 1 ns DCD chunks in order,
+then includes the exact final frame. `frame_manifests/replica_XX.csv` gives
+the source chunk, source frame and production time for every movie frame.
+All three use the same Stage 09 associated-system topology as the Stage 10
+`inputs/pVBTMA12_PFOA_assoc.prmtop` file. The topology checksum matches
+between those source locations.
 
-## Animations
+The VMD script in `scripts/` images residues around the polymer under PBC,
+fits polymer heavy atoms to the first sampled frame, recenters on the
+polymer/PFOA, and uses a fixed camera thereafter. Polymer and PFOA heavy
+atoms and nearby sodium/chloride are shown; bulk water is hidden for clarity.
+No atom coordinates in the raw DCDs were edited. Frames were sampled every
+50 DCD frames (100 ps at the saved 2 ps interval), starting at the first
+production frame and ending with the exact 10 ns frame. Videos use 10 frames
+per second, 960 x 720 pixels and an on-screen replica/time label.
 
-- `videos/R48_PFOA_associated_MD.mp4`
-  - Source topology: `work_amber/05_pfas_exchange/solvated_resin_pfoa_exchange.prmtop`
-  - Source trajectory: `work_amber/09_namd_pfoa_exchange/resin_pfoa_exchange_npt_1ns.dcd`
-  - Visual content: R48+ resin heavy atoms only, PFOA-, Cl-, and water oxygens within 5 Å of the PFOA fluorinated tail.
-
-- `videos/R48_PFOA_associated_zoom_MD.mp4`
-  - Source topology: `work_amber/05_pfas_exchange/solvated_resin_pfoa_exchange.prmtop`
-  - Source trajectory: `work_amber/09_namd_pfoa_exchange/resin_pfoa_exchange_npt_1ns.dcd`
-  - Visual content: zoomed PFOA- binding-site view with nearby R48+ heavy atoms, Cl-, and water oxygens within 6 Å of the PFOA fluorinated tail.
-
-- `videos/R48_chloride_form_MD.mp4`
-  - Source topology: `work_amber/04_leap/solvated_resin_cl.prmtop`
-  - Source trajectory: `work_amber/07_namd_resin_only/resin_only_npt_2ns.dcd`
-  - Visual content: R48+ resin heavy atoms only and Cl- ions.
-
-## Rendering notes
-
-- R48+ hydrogens are hidden in all animations.
-- R48+ carbons are gray and R48+ nitrogens are blue.
-- Trajectory frames are aligned to the first frame using R48+ heavy atoms.
-- VMD `TachyonInternal` is used to render temporary `.tga` frames.
-- FFmpeg is used to encode MP4 files from the temporary frame sequence.
-- Default rendering settings: 100 sampled frames, 12 frames/s, 1080-pixel output height.
-
-## Re-rendering
-
-From the repository root:
+Run from the supplementary root with VMD, PBCTools and FFmpeg available:
 
 ```bash
-bash Supplementary_Materials/05_MD_Animations/scripts/render_md_animations.sh
+MODE=test VMD_BIN=/path/to/vmd FFMPEG_BIN=/path/to/ffmpeg \
+  bash 05_MD_Animations/scripts/render_md_animations.sh
+MODE=final VMD_BIN=/path/to/vmd FFMPEG_BIN=/path/to/ffmpeg \
+  bash 05_MD_Animations/scripts/render_md_animations.sh
 ```
 
-Optional overrides:
+The renderer's temporary TGA frames are written to `_video_render_work` beside
+the supplementary root by default. Set `WORK_ROOT` to use another location.
+`SHA256SUMS.txt` covers the three MP4s, manifests and source scripts. Raw
+production topologies, configurations, logs, XSTs and DCDs are in
+`../01_Calculations/05_MD/02_PFOA_Associated_Production`.
 
-```bash
-MAX_FRAMES=60 FPS=12 HEIGHT=1080 bash Supplementary_Materials/05_MD_Animations/scripts/render_md_animations.sh
-```
-
-If VMD or FFmpeg are installed somewhere else, set `VMD_BIN` or `FFMPEG_BIN` before running the script. During the original render, FFmpeg was provided through a temporary conda environment at `/tmp/md_anim_env`; that environment is not part of the supplementary files.

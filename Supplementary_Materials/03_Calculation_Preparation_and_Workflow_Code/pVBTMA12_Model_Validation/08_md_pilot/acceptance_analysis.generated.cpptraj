@@ -1,0 +1,21 @@
+# Generated from repeat_groups.json; do not hand-edit atom assignments.
+parm ../07_solvation_ion_validation/pVBTMA12_12Cl_015MNaCl_pilot.prmtop
+# NAMD/VMD DCD unit-cell records from this trajectory are read with explicit
+# CHARMM shape-matrix decoding. Keep all PBC-sensitive actions BEFORE the RMS
+# best-fit action: CPPTRAJ RMS fitting modifies coordinates and can rotate the
+# unit-cell vectors seen by later actions.
+trajin 05_acceptance_npt_1ns/acceptance1ns.dcd shape
+
+autoimage
+# PBC-sensitive / box-sensitive measurements on the unrotated cell.
+radgyr :1 out analysis/polymer_rg.dat mass
+distance EndToEnd @1,2,3,4,5,6,7,8,9,10,11,12,13,14 @145,146,147,148,149,150,151,152,153,154,155,156 geom out analysis/end_to_end.dat
+mindist mask1 @1,2,3,4,5,6,7,8,9,10,11,12,13,14 mask2 @54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105 byatom name Term1Central out analysis/terminal1_central_mindist.dat
+mindist mask1 @145,146,147,148,149,150,151,152,153,154,155,156 mask2 @54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105 byatom name Term12Central out analysis/terminal12_central_mindist.dat
+minimage PolymerSelfImage :1&!@H= :1&!@H= out analysis/polymer_self_image.dat
+avgbox AverageBox out analysis/average_box.dat
+check :1
+# RMS fitting is deliberately LAST so its coordinate/cell rotation cannot
+# contaminate PBC-sensitive analysis above.
+rms PolymerRMSD first :1&!@H= mass out analysis/polymer_rmsd.dat
+run

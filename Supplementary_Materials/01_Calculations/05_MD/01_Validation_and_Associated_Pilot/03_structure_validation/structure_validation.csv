@@ -1,0 +1,4 @@
+file,constitutional_pass,exact_stereoisomer_pass,minimum_nonbonded_heavy_distance_A,formula,formal_charge,heavy_atoms,components,dummy_atoms,quaternary_ammonium_sites,aromatic_six_membered_rings
+pVBTMA12_gen3d.sdf,True,True,2.0749761396218513,C144H218N12+12,12,156,1,0,12,12
+pVBTMA12_gen3d_uffmin.sdf,True,True,2.367750039594551,C144H218N12+12,12,156,1,0,12,12
+pVBTMA12_gen3d_mmffmin.sdf,True,True,2.3526178780243936,C144H218N12+12,12,156,1,0,12,12

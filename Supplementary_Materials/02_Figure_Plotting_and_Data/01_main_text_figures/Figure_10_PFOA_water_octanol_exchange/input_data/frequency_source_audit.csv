@@ -1,0 +1,7 @@
+species,E_freq_Eh,G_freq_Eh,source_output
+water_PFOA_complex,-2865.791899333968,-2865.26946538,04-01_Calculations.zip/01_Calculations/02_Extended_Monomer/water/02_Frequency/wb97x-d3/1_R4N+X-_freqGMwb/R4N+PFOA-_freqGMwb/R4N+PFOA-_freqGMwb.out
+water_Cl_complex,-1372.713160371018,-1372.26934478,04-01_Calculations.zip/01_Calculations/02_Extended_Monomer/water/02_Frequency/wb97x-d3/2_R4N+Cl-_freqGMwb/R4N+Cl-_freqGMwb.out
+aqueous_PFOA,-1953.448760992937,-1953.40037072,04-01_Calculations.zip/01_Calculations/02_Extended_Monomer/water/02_Frequency/wb97x-d3/3_X-_freqGMwb/PFOA_freqGMwb/PFOA_freqGMwb.out
+aqueous_Cl,-460.385228974217,-460.40097343,04-01_Calculations.zip/01_Calculations/01_BTMA/02_Frequency/wb97x-d3/4_Cl-_wb/Cl-_wb.out
+octanol_PFOA_complex,-2865.805580031053,-2865.28317784,07-PFOA_octanol_results_20260926.zip/00-2-octanol_redo/02_Frequency/wb97x-d3/1_R4N+X-_freqGMwb/R4N+PFOA-_freqGMwb/1/R4N+PFOA-_freqGMwb.out
+octanol_Cl_complex,-1372.72715811557,-1372.2834657,07-PFOA_octanol_results_20260926.zip/00-2-octanol_redo/02_Frequency/wb97x-d3/2_R4N+Cl-_freqGMwb/1/R4N+Cl-_freqGMwb.out

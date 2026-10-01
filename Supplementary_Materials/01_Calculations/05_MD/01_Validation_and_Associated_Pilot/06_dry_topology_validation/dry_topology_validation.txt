@@ -1,0 +1,7 @@
+atoms_prmtop: 374
+atoms_mol2: 374
+bonds_prmtop: 385
+bonds_mol2: 385
+partial_charge_sum: 11.99999404
+bond_index_set_match: True
+box: None

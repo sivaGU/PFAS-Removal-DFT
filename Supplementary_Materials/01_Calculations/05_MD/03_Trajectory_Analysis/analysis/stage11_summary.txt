@@ -1,0 +1,17 @@
+Stage 11 cross-replica convergence summary
+technical status: PASS
+production analyzed: 3 x 10 ns
+convergence decision: MANUAL_REVIEW_AFTER_10NS
+
+Key diagnostics:
+- rg: min ESS 11.5; max early-late shift 2.212 SD; replica spread 0.169 pooled SD
+- end_to_end: min ESS 5.9; max early-late shift 2.000 SD; replica spread 0.647 pooled SD
+- head_any: min ESS 38.4; max early-late shift 0.687 SD; replica spread 0.122 pooled SD
+- pfoa_polymer: min ESS 54.7; max early-late shift 0.779 SD; replica spread 0.294 pooled SD
+
+Interpretation: prepared associated-state persistence/rearrangement only.
+These diagnostics do not establish spontaneous binding, chloride displacement, or equilibrium binding free energy.
+
+Tail contacts and hydration (per-replica means; descriptive, not equilibrium estimates):
+- tail_contacts: replica 1: 16.27, replica 2: 15.49, replica 3: 18.01
+- tail_waters: replica 1: 37.41, replica 2: 36.06, replica 3: 36.23

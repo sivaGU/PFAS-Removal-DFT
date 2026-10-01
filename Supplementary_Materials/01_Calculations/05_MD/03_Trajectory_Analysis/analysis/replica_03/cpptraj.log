@@ -1,0 +1,249 @@
+
+CPPTRAJ: Trajectory Analysis. V6.29.13 (AmberTools)
+    ___  ___  ___  ___
+     | \/ | \/ | \/ | 
+    _|_/\_|_/\_|_/\_|_
+
+| Date/time: 09/27/26 01:56:51
+| Available memory: 15.559 GB
+
+INPUT: Reading input from 'analysis/replica_03.cpptraj'
+  [parm /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/inputs/pVBTMA12_PFOA_assoc.prmtop]
+	Reading '/mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/inputs/pVBTMA12_PFOA_assoc.prmtop' as Amber Topology
+	Radius Set: modified Bondi radii (mbondi)
+  [trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/01_prod_1ns/prod_01.dcd shape]
+	Reading '/mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/01_prod_1ns/prod_01.dcd' as Charmm DCD
+  [trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/02_prod_1ns/prod_02.dcd shape]
+	Reading '/mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/02_prod_1ns/prod_02.dcd' as Charmm DCD
+  [trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/03_prod_1ns/prod_03.dcd shape]
+	Reading '/mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/03_prod_1ns/prod_03.dcd' as Charmm DCD
+  [trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/04_prod_1ns/prod_04.dcd shape]
+	Reading '/mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/04_prod_1ns/prod_04.dcd' as Charmm DCD
+  [trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/05_prod_1ns/prod_05.dcd shape]
+	Reading '/mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/05_prod_1ns/prod_05.dcd' as Charmm DCD
+  [trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/06_prod_1ns/prod_06.dcd shape]
+	Reading '/mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/06_prod_1ns/prod_06.dcd' as Charmm DCD
+  [trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/07_prod_1ns/prod_07.dcd shape]
+	Reading '/mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/07_prod_1ns/prod_07.dcd' as Charmm DCD
+  [trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/08_prod_1ns/prod_08.dcd shape]
+	Reading '/mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/08_prod_1ns/prod_08.dcd' as Charmm DCD
+  [trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/09_prod_1ns/prod_09.dcd shape]
+	Reading '/mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/09_prod_1ns/prod_09.dcd' as Charmm DCD
+  [trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/10_prod_1ns/prod_10.dcd shape]
+	Reading '/mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_03/10_prod_1ns/prod_10.dcd' as Charmm DCD
+  [autoimage anchor :PVB]
+    AUTOIMAGE: To box center based on center of mass, anchor mask is [:PVB]
+	Auto-imaging using molecule distances.
+  [radgyr :PVB out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/polymer_rg.dat mass]
+    RADGYR: Calculating for atoms in mask :PVB using mass weighting.
+  [distance EndToEnd @1,2,3,4,5,6,7,8,9,10,11,12,13,14 @145,146,147,148,149,150,151,152,153,154,155,156 geom out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/end_to_end.dat]
+    DISTANCE: @1,2,3,4,5,6,7,8,9,10,11,12,13,14 to @145,146,147,148,149,150,151,152,153,154,155,156, geometric center.
+  [mindist mask1 :PFO@O,O1 mask2 @112 byatom name HeadSelectedN out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_head_selectedN.dat]
+    MINMAXDIST: Calculating minimum distance for selected atoms.
+	Mask1: :PFO@O,O1
+	Mask2: @112
+	Distances will use minimum image convention if box info present.
+	Data set name: HeadSelectedN
+	Data file name: /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_head_selectedN.dat
+  [mindist mask1 :PFO@O,O1 mask2 :PVB@N1,N2,N3,N4,N5,N6,N7,N8,N9,N10,N11,N12 byatom name HeadAnyN out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_head_anyN.dat]
+    MINMAXDIST: Calculating minimum distance for selected atoms.
+	Mask1: :PFO@O,O1
+	Mask2: :PVB@N1,N2,N3,N4,N5,N6,N7,N8,N9,N10,N11,N12
+	Distances will use minimum image convention if box info present.
+	Data set name: HeadAnyN
+	Data file name: /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_head_anyN.dat
+  [mindist mask1 :PFO&!@H= mask2 :PVB&!@H= byatom name PFOAPolymer out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_polymer_mindist.dat]
+    MINMAXDIST: Calculating minimum distance for selected atoms.
+	Mask1: :PFO&!@H*
+	Mask2: :PVB&!@H*
+	Distances will use minimum image convention if box info present.
+	Data set name: PFOAPolymer
+	Data file name: /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_polymer_mindist.dat
+  [mask "((:PFO@F*,C,C1,C2,C3,C4,C5,C6<@4.0)&(:PVB&!@H=))" name TailPolymerHeavy4A nselectedout /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_tail_polymer_heavy_contacts_4A.dat]
+    ACTIONMASK: Information on atoms in mask ((:PFO@F*,C,C1,C2,C3,C4,C5,C6<@4.0)&(:PVB&!@H*)) will be printed.
+	Data sets will be saved with name 'TailPolymerHeavy4A'
+  [watershell :PFO@F*,C,C1,C2,C3,C4,C5,C6 lower 5.0 upper 5.0 out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_tail_waters_within_5A.dat]
+    WATERSHELL: Output to /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_tail_waters_within_5A.dat
+	The first shell will contain solvent < 5.000 angstroms from
+	  the solute; the second shell < 5.000 angstroms...
+	Solute atoms will be specified by [:PFO@F*,C,C1,C2,C3,C4,C5,C6]
+	# solvent molecules in 'lower' shell stored in set 'WS_00014[lower]'
+	# solvent molecules in 'upper' shell stored in set 'WS_00014[upper]'
+  [minimage PolymerSelfImage :PVB&!@H= :PVB&!@H= out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/polymer_self_image.dat]
+    MINIMAGE: Looking for closest approach of atoms in :PVB&!@H*
+	to images of atoms in :PVB&!@H*
+  [minimage PFOASelfImage :PFO&!@H= :PFO&!@H= out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_self_image.dat]
+    MINIMAGE: Looking for closest approach of atoms in :PFO&!@H*
+	to images of atoms in :PFO&!@H*
+  [avgbox AverageBox out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/average_box.dat]
+    AVGBOX: Calculating average box.
+	Average box set: AverageBox[avg]
+	Output to file: /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/average_box.dat
+  [check :PVB,PFO]
+    CHECKSTRUCTURE: Checking atoms in mask ':PVB,PFO', warnings output to STDOUT.
+	Number of problems in each frame will be saved to set 'CHECK_00023'
+	Checking for bond lengths greater than eq. length + 1.15 Ang and
+	  less than eq. length - 0.50 Ang.
+	Checking for inter-atomic distances < 0.80 Ang.
+	Cutoff for building pair list is 4.000000 Ang.
+  [rms PolymerRMSD first :PVB&!@H= mass out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/polymer_rmsd.dat]
+    RMSD: (:PVB&!@H*), reference is first frame (:PVB&!@H*), mass-weighted.
+	Best-fit RMSD will be calculated, coords will be rotated and translated.
+  [run]
+---------- RUN BEGIN -------------------------------------------------
+
+PARAMETER FILES (1 total):
+ 0: pVBTMA12_PFOA_assoc.prmtop, 15937 atoms, 5214 res, box: Orthorhombic, 5214 mol, 5163 solvent
+
+INPUT TRAJECTORIES (10 total):
+ 0: 'prod_01.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm pVBTMA12_PFOA_assoc.prmtop (Orthorhombic box) (reading 500 of 500)
+ 1: 'prod_02.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm pVBTMA12_PFOA_assoc.prmtop (Orthorhombic box) (reading 500 of 500)
+ 2: 'prod_03.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm pVBTMA12_PFOA_assoc.prmtop (Orthorhombic box) (reading 500 of 500)
+ 3: 'prod_04.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm pVBTMA12_PFOA_assoc.prmtop (Orthorhombic box) (reading 500 of 500)
+ 4: 'prod_05.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm pVBTMA12_PFOA_assoc.prmtop (Orthorhombic box) (reading 500 of 500)
+ 5: 'prod_06.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm pVBTMA12_PFOA_assoc.prmtop (Orthorhombic box) (reading 500 of 500)
+ 6: 'prod_07.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm pVBTMA12_PFOA_assoc.prmtop (Orthorhombic box) (reading 500 of 500)
+ 7: 'prod_08.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm pVBTMA12_PFOA_assoc.prmtop (Orthorhombic box) (reading 500 of 500)
+ 8: 'prod_09.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm pVBTMA12_PFOA_assoc.prmtop (Orthorhombic box) (reading 500 of 500)
+ 9: 'prod_10.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm pVBTMA12_PFOA_assoc.prmtop (Orthorhombic box) (reading 500 of 500)
+  Coordinate processing will occur on 5000 frames.
+
+BEGIN TRAJECTORY PROCESSING:
+.....................................................
+ACTION SETUP FOR PARM 'pVBTMA12_PFOA_assoc.prmtop' (13 actions):
+  0: [autoimage anchor :PVB]
+	Anchoring on atoms selected by mask ':PVB'
+	Mask [:PVB] corresponds to 374 atoms.
+	Mask [:PVB] corresponds to molecule 1
+	1 molecules are fixed to anchor: 2
+	5212 molecules are mobile.
+  1: [radgyr :PVB out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/polymer_rg.dat mass]
+	:PVB (374 atoms).
+  2: [distance EndToEnd @1,2,3,4,5,6,7,8,9,10,11,12,13,14 @145,146,147,148,149,150,151,152,153,154,155,156 geom out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/end_to_end.dat]
+	@1,2,3,4,5,6,7,8,9,10,11,12,13,14 (14 atoms) to @145,146,147,148,149,150,151,152,153,154,155,156 (12 atoms), imaged.
+  3: [mindist mask1 :PFO@O,O1 mask2 @112 byatom name HeadSelectedN out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_head_selectedN.dat]
+	Distance imaging on.
+	Mask [:PFO@O,O1] corresponds to 2 atoms.
+	Mask [@112] corresponds to 1 atoms.
+  4: [mindist mask1 :PFO@O,O1 mask2 :PVB@N1,N2,N3,N4,N5,N6,N7,N8,N9,N10,N11,N12 byatom name HeadAnyN out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_head_anyN.dat]
+	Distance imaging on.
+	Mask [:PFO@O,O1] corresponds to 2 atoms.
+	Mask [:PVB@N1,N2,N3,N4,N5,N6,N7,N8,N9,N10,N11,N12] corresponds to 12 atoms.
+  5: [mindist mask1 :PFO&!@H= mask2 :PVB&!@H= byatom name PFOAPolymer out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_polymer_mindist.dat]
+	Distance imaging on.
+	Mask [:PFO&!@H*] corresponds to 25 atoms.
+	Mask [:PVB&!@H*] corresponds to 156 atoms.
+  6: [mask "((:PFO@F*,C,C1,C2,C3,C4,C5,C6<@4.0)&(:PVB&!@H=))" name TailPolymerHeavy4A nselectedout /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_tail_polymer_heavy_contacts_4A.dat]
+  7: [watershell :PFO@F*,C,C1,C2,C3,C4,C5,C6 lower 5.0 upper 5.0 out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_tail_waters_within_5A.dat]
+	Mask [:PFO@F*,C,C1,C2,C3,C4,C5,C6] corresponds to 22 atoms.
+	Selecting all solvent atoms (15489 total)
+	Imaging is on.
+  8: [minimage PolymerSelfImage :PVB&!@H= :PVB&!@H= out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/polymer_self_image.dat]
+	:PVB&!@H* (156 atoms) to :PVB&!@H* (156 atoms)
+  9: [minimage PFOASelfImage :PFO&!@H= :PFO&!@H= out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/pfoa_self_image.dat]
+	:PFO&!@H* (25 atoms) to :PFO&!@H* (25 atoms)
+  10: [avgbox AverageBox out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/average_box.dat]
+  11: [check :PVB,PFO]
+	Using pair list.
+	Total Grid memory: 87.865 MB
+TIME:	Pair List Setup: 0.0644 s
+	Grid dimensions: 37 40 41 (60680 total).
+	Excluding bond interactions.
+	Memory used by full exclusion list: 4.868 kB
+	Mask [:PVB,PFO] corresponds to 399 atoms.
+	Checking 409 bonds.
+	Imaging on.
+  12: [rms PolymerRMSD first :PVB&!@H= mass out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_03/polymer_rmsd.dat]
+	Target mask: [:PVB&!@H*](156)
+	Reference topology: pVBTMA12_PFOA_assoc.prmtop
+	Reference mask: [:PVB&!@H*](156)
+----- prod_01.dcd (1-500, 1) -----
+ 0% 
+----- prod_02.dcd (1-500, 1) -----
+10% 
+----- prod_03.dcd (1-500, 1) -----
+20% 
+----- prod_04.dcd (1-500, 1) -----
+30% 
+----- prod_05.dcd (1-500, 1) -----
+40% 
+----- prod_06.dcd (1-500, 1) -----
+50% 
+----- prod_07.dcd (1-500, 1) -----
+60% 
+----- prod_08.dcd (1-500, 1) -----
+70% 
+----- prod_09.dcd (1-500, 1) -----
+80% 
+----- prod_10.dcd (1-500, 1) -----
+90% 100% Complete.
+
+Read 5000 frames and processed 5000 frames.
+TIME: Avg. throughput= 157.7044 frames / second.
+
+ACTION OUTPUT:
+    AVGBOX:
+    Average Unit Cell Vectors:
+        51.1928533462     0.0000000000     0.0000000000
+         0.0000000000    55.6681330179     0.0000000000
+         0.0000000000     0.0000000000    56.9801581598
+	Box: 'Orthorhombic' XYZ= {   51.193   55.668   56.980 } ABG= {  90.00  90.00  90.00 }
+TIME: Analyses took 0.0000 seconds.
+
+DATASETS (24 total):
+	RoG_00001 "RoG_00001" (double), size is 5000 (40.000 kB)
+	RoG_00001[Max] "RoG_00001[Max]" (double), size is 5000 (40.000 kB)
+	EndToEnd "EndToEnd" (double, distance), size is 5000 (40.000 kB)
+	HeadSelectedN "HeadSelectedN" (float), size is 5000 (20.000 kB)
+	HeadAnyN "HeadAnyN" (float), size is 5000 (20.000 kB)
+	PFOAPolymer "PFOAPolymer" (float), size is 5000 (20.000 kB)
+	TailPolymerHeavy4A "TailPolymerHeavy4A" (integer), size is 5000 (20.000 kB)
+	TailPolymerHeavy4A[Frm] "TailPolymerHeavy4A[Frm]" (integer), size is 90040 (360.160 kB)
+	TailPolymerHeavy4A[AtNum] "TailPolymerHeavy4A[AtNum]" (integer), size is 90040 (360.160 kB)
+	TailPolymerHeavy4A[Aname] "TailPolymerHeavy4A[Aname]" (string), size is 90040 (360.160 kB)
+	TailPolymerHeavy4A[Rnum] "TailPolymerHeavy4A[Rnum]" (integer), size is 90040 (360.160 kB)
+	TailPolymerHeavy4A[Rname] "TailPolymerHeavy4A[Rname]" (string), size is 90040 (360.160 kB)
+	TailPolymerHeavy4A[Mnum] "TailPolymerHeavy4A[Mnum]" (integer), size is 90040 (360.160 kB)
+	WS_00014[lower] "WS_00014[lower]" (integer), size is 5000 (20.000 kB)
+	WS_00014[upper] "WS_00014[upper]" (integer), size is 5000 (20.000 kB)
+	PolymerSelfImage "PolymerSelfImage" (double, distance), size is 5000 (40.000 kB)
+	PolymerSelfImage[A1] "PolymerSelfImage[A1]" (integer, distance), size is 5000 (20.000 kB)
+	PolymerSelfImage[A2] "PolymerSelfImage[A2]" (integer, distance), size is 5000 (20.000 kB)
+	PFOASelfImage "PFOASelfImage" (double, distance), size is 5000 (40.000 kB)
+	PFOASelfImage[A1] "PFOASelfImage[A1]" (integer, distance), size is 5000 (20.000 kB)
+	PFOASelfImage[A2] "PFOASelfImage[A2]" (integer, distance), size is 5000 (20.000 kB)
+	AverageBox[avg] "AverageBox[avg]" (3x3 matrices), size is 1 (0.072 kB)
+	CHECK_00023 "CHECK_00023" (integer), size is 5000 (20.000 kB)
+	PolymerRMSD "PolymerRMSD" (double, rms), size is 5000 (40.000 kB)
+    Total data set memory usage is at least 2.621 MB
+
+DATAFILES (12 total):
+  polymer_rg.dat (Standard Data File):  RoG_00001 RoG_00001[Max]
+  end_to_end.dat (Standard Data File):  EndToEnd
+  pfoa_head_selectedN.dat (Standard Data File):  HeadSelectedN
+  pfoa_head_anyN.dat (Standard Data File):  HeadAnyN
+  pfoa_polymer_mindist.dat (Standard Data File):  PFOAPolymer
+  pfoa_tail_polymer_heavy_contacts_4A.dat (Standard Data File):  TailPolymerHeavy4A
+  pfoa_tail_waters_within_5A.dat (Standard Data File):  WS_00014[lower] WS_00014[upper]
+  polymer_self_image.dat (Standard Data File):  PolymerSelfImage PolymerSelfImage[A1] PolymerSelfImage[A2]
+  pfoa_self_image.dat (Standard Data File):  PFOASelfImage PFOASelfImage[A1] PFOASelfImage[A2]
+  average_box.dat (Standard Data File):  AverageBox[avg]
+  polymer_rmsd.dat (Standard Data File):  PolymerRMSD
+  STDOUT (Structure check)
+
+RUN TIMING:
+TIME:		Init               : 0.0003 s (  0.00%)
+TIME:		Trajectory Process : 31.7049 s ( 97.31%)
+TIME:		Action Post        : 0.0000 s (  0.00%)
+TIME:		Analysis           : 0.0000 s (  0.00%)
+TIME:		Data File Write    : 0.8705 s (  2.67%)
+TIME:		Other              : 0.0073 s (  0.00%)
+TIME:	Run Total 32.5830 s
+---------- RUN END ---------------------------------------------------
+TIME: Total execution time: 32.9731 seconds.
+--------------------------------------------------------------------------------
+To cite CPPTRAJ use:
+Daniel R. Roe and Thomas E. Cheatham, III, "PTRAJ and CPPTRAJ: Software for
+  Processing and Analysis of Molecular Dynamics Trajectory Data". J. Chem.
+  Theory Comput., 2013, 9 (7), pp 3084-3095.
+

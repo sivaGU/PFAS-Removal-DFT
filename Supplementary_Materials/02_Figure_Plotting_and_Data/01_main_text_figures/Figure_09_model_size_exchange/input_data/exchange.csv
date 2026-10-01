@@ -1,0 +1,9 @@
+PFAS,model,DeltaE_kcal_mol,DeltaG_kcal_mol,source
+6:2 FTCA,BTMA,-3.1297438311337054,2.0710699184812347,shared aqueous references; see 03_reporting_tables/DFT_reference_reconciliation/common_reference_cycles.csv
+6:2 FTCA,DVB-BTMA,-6.803509988017407,1.9031797589330988,shared aqueous references; see 03_reporting_tables/DFT_reference_reconciliation/common_reference_cycles.csv
+PFHxA,BTMA,-2.0435866614425082,4.53251975590068,shared aqueous references; see 03_reporting_tables/DFT_reference_reconciliation/common_reference_cycles.csv
+PFHxA,DVB-BTMA,-7.0734623048251555,1.6776842292750218,shared aqueous references; see 03_reporting_tables/DFT_reference_reconciliation/common_reference_cycles.csv
+PFOA,BTMA,0.8237123209124209,8.07385692216097,shared aqueous references; see 03_reporting_tables/DFT_reference_reconciliation/common_reference_cycles.csv
+PFOA,DVB-BTMA,-9.542501575049522,-0.45388387764655413,shared aqueous references; see 03_reporting_tables/DFT_reference_reconciliation/common_reference_cycles.csv
+PFOS,BTMA,-0.4590016591347714,5.72848378743837,shared aqueous references; see 03_reporting_tables/DFT_reference_reconciliation/common_reference_cycles.csv
+PFOS,DVB-BTMA,-9.118182637428175,1.044978976861112,shared aqueous references; see 03_reporting_tables/DFT_reference_reconciliation/common_reference_cycles.csv

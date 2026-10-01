@@ -1,0 +1,5 @@
+# NAMD extended system trajectory file
+#$LABELS step a_x a_y a_z b_x b_y b_z c_x c_y c_z o_x o_y o_z
+0 51.118206 0 0 0 55.58696 0 0 0 56.897072 0 0 0
+5000 51.118206 0 0 0 55.58696 0 0 0 56.897072 0 0 0
+10000 51.118206 0 0 0 55.58696 0 0 0 56.897072 0 0 0

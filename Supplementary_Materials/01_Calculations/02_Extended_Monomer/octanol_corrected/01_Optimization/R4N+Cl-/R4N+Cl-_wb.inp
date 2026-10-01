@@ -1,0 +1,19 @@
+# Native octanol
+! wb97x-d3 def2-tzvpd DefGrid3 TightOpt CPCM
+
+%geom
+   MaxIter 350
+end
+
+%cpcm
+   smd true
+   SMDSolvent "octanol"
+end
+
+%maxcore 2500
+
+%pal
+  nprocs 16
+end
+
+* xyzfile 0 1 R4N+Cl-_wb_water_start.xyz

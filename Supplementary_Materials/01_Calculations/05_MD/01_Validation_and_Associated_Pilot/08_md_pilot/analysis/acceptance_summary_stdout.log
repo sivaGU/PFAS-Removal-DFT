@@ -1,0 +1,20 @@
+Stage 08 acceptance summary
+automated_status: REVIEW
+frames: 500 at 2.0 ps
+Rg mean: 9.1118 A
+RMSD mean: 3.8714 A
+end-to-end mean: 21.9412 A
+terminal1-central occupancy <4.5 A: 0.1560; longest 128.0 ps
+terminal12-central occupancy <4.5 A: 0.0040; longest 2.0 ps
+minimum polymer-image distance: 26.2524 A
+mean temperature: 310.249 K
+mean volume from NAMD ENERGY records: 162682.348 A^3
+mean XST cell lengths: 51.2289 x 55.7074 x 57.0203 A
+mean XST cell angles: 90.0000, 90.0000, 90.0000 deg
+mean XST cell volume: 162726.872 A^3
+periodic-cell validation: see analysis/box_validation.txt
+review_flags:
+  - repeat 1 central-contact persistence: occupancy=0.156, longest=128.0 ps
+hard_failures:
+  - none
+Final acceptance is not assigned automatically; review metrics/trajectory before model freeze.

@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "vmd_frames": 5000,
+  "xst_records_compared": 1000,
+  "max_length_delta_A": 2.397000002929417e-06,
+  "max_angle_delta_deg": 0.0,
+  "issues": []
+}

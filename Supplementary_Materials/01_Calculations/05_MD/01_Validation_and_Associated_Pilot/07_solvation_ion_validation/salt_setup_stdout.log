@@ -1,0 +1,6 @@
+box_volume_angstrom3: 205423.661276
+continuous_target_nacl_pairs: 18.55635305
+added_nacl_pairs: 19
+achieved_nominal_added_nacl_molar: 0.15358621
+expected_final_Na: 19
+expected_final_Cl: 31

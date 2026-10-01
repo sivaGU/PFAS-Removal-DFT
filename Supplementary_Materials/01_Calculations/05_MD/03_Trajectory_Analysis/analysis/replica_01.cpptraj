@@ -1,0 +1,26 @@
+# PBC-sensitive actions precede RMS fitting.
+parm /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/inputs/pVBTMA12_PFOA_assoc.prmtop
+trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_01/01_prod_1ns/prod_01.dcd shape
+trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_01/02_prod_1ns/prod_02.dcd shape
+trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_01/03_prod_1ns/prod_03.dcd shape
+trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_01/04_prod_1ns/prod_04.dcd shape
+trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_01/05_prod_1ns/prod_05.dcd shape
+trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_01/06_prod_1ns/prod_06.dcd shape
+trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_01/07_prod_1ns/prod_07.dcd shape
+trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_01/08_prod_1ns/prod_08.dcd shape
+trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_01/09_prod_1ns/prod_09.dcd shape
+trajin /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/10_pfoa_associated_production/replica_01/10_prod_1ns/prod_10.dcd shape
+autoimage anchor :PVB
+radgyr :PVB out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_01/polymer_rg.dat mass
+distance EndToEnd @1,2,3,4,5,6,7,8,9,10,11,12,13,14 @145,146,147,148,149,150,151,152,153,154,155,156 geom out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_01/end_to_end.dat
+mindist mask1 :PFO@O,O1 mask2 @112 byatom name HeadSelectedN out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_01/pfoa_head_selectedN.dat
+mindist mask1 :PFO@O,O1 mask2 :PVB@N1,N2,N3,N4,N5,N6,N7,N8,N9,N10,N11,N12 byatom name HeadAnyN out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_01/pfoa_head_anyN.dat
+mindist mask1 :PFO&!@H= mask2 :PVB&!@H= byatom name PFOAPolymer out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_01/pfoa_polymer_mindist.dat
+mask "((:PFO@F*,C,C1,C2,C3,C4,C5,C6<@4.0)&(:PVB&!@H=))" name TailPolymerHeavy4A nselectedout /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_01/pfoa_tail_polymer_heavy_contacts_4A.dat
+watershell :PFO@F*,C,C1,C2,C3,C4,C5,C6 lower 5.0 upper 5.0 out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_01/pfoa_tail_waters_within_5A.dat
+minimage PolymerSelfImage :PVB&!@H= :PVB&!@H= out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_01/polymer_self_image.dat
+minimage PFOASelfImage :PFO&!@H= :PFO&!@H= out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_01/pfoa_self_image.dat
+avgbox AverageBox out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_01/average_box.dat
+check :PVB,PFO
+rms PolymerRMSD first :PVB&!@H= mass out /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_production/11_pfoa_associated_convergence/analysis/replica_01/polymer_rmsd.dat
+run

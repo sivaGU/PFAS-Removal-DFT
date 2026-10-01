@@ -1,0 +1,7 @@
+{
+  "replicas": 3,
+  "chunks_per_replica": 10,
+  "production_ns_per_replica": 10,
+  "frame_spacing_ps": 2,
+  "expected_frames_per_replica": 5000
+}

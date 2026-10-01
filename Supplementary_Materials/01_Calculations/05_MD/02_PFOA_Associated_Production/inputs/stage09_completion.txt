@@ -1,0 +1,9 @@
+FINAL STATUS: ACCEPTED
+TECHNICAL WORKFLOW: PASS
+MANUAL REVIEW: COMPLETED
+Stage 09 prepared-PFOA minimization, NVT, NPT, 1 ns acceptance trajectory, and PBC validation completed successfully.
+PFOA moved away from the selected N9 site but remained resin-associated and frequently sampled other ammonium-proximal configurations.
+The trajectory begins from a deliberately preassociated state and does not establish spontaneous binding or chloride displacement.
+Stage 09 is complete and frozen.
+Stage 10 was not started and is not authorized automatically.
+See analysis/stage09_summary.txt and analysis/stage09_manual_acceptance_review.txt.

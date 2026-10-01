@@ -1,0 +1,57 @@
+panel,series,category,pfas,value_kcal_mol
+exchange,r2SCAN-3c,DeltaE,FHEA,-1.0733844858639712
+exchange,r2SCAN-3c,DeltaE,PFHxA,-2.687975989159849
+exchange,r2SCAN-3c,DeltaE,PFOA,-1.0318409278657459
+exchange,r2SCAN-3c,DeltaE,PFOS,-1.04078310854542
+exchange,wB97X-D3,DeltaE,FHEA,-3.1297438311337054
+exchange,wB97X-D3,DeltaE,PFHxA,-2.0435866614425082
+exchange,wB97X-D3,DeltaE,PFOA,0.8237123209124209
+exchange,wB97X-D3,DeltaE,PFOS,-0.4590016591347714
+exchange,r2SCAN-3c,DeltaCorr,FHEA,7.0654222525016666
+exchange,r2SCAN-3c,DeltaCorr,PFHxA,7.203483963279748
+exchange,r2SCAN-3c,DeltaCorr,PFOA,8.390198997923584
+exchange,r2SCAN-3c,DeltaCorr,PFOS,7.297171791190543
+exchange,wB97X-D3,DeltaCorr,FHEA,5.20081374961494
+exchange,wB97X-D3,DeltaCorr,PFHxA,6.576106417343188
+exchange,wB97X-D3,DeltaCorr,PFOA,7.250144601248551
+exchange,wB97X-D3,DeltaCorr,PFOS,6.187485446573142
+exchange,r2SCAN-3c,DeltaG,FHEA,5.992037766637695
+exchange,r2SCAN-3c,DeltaG,PFHxA,4.515507974119899
+exchange,r2SCAN-3c,DeltaG,PFOA,7.358358070057838
+exchange,r2SCAN-3c,DeltaG,PFOS,6.256388682645123
+exchange,wB97X-D3,DeltaG,FHEA,2.0710699184812347
+exchange,wB97X-D3,DeltaG,PFHxA,4.53251975590068
+exchange,wB97X-D3,DeltaG,PFOA,8.07385692216097
+exchange,wB97X-D3,DeltaG,PFOS,5.72848378743837
+species,functional_difference,BTMA-PFAS complex,FHEA,2.8261422153652602
+species,functional_difference,BTMA-PFAS complex,PFHxA,3.029389017388829
+species,functional_difference,BTMA-PFAS complex,PFOA,3.47119840210513
+species,functional_difference,BTMA-PFAS complex,PFOS,4.46110723225294
+species,functional_difference,BTMA-Cl complex,FHEA,-2.452877447457996
+species,functional_difference,BTMA-Cl complex,PFHxA,-2.452877447457996
+species,functional_difference,BTMA-Cl complex,PFOA,-2.452877447457996
+species,functional_difference,BTMA-Cl complex,PFOS,-2.452877447457996
+species,functional_difference,Free PFAS anion,FHEA,-2.237871506851839
+species,functional_difference,Free PFAS anion,PFHxA,-1.2038873519252409
+species,functional_difference,Free PFAS anion,PFOA,-2.158373587380015
+species,functional_difference,Free PFAS anion,PFOS,-3.117914365470193
+species,functional_difference,Free Cl-,FHEA,-1.763942151924766e-06
+species,functional_difference,Free Cl-,PFHxA,-1.763942151924766e-06
+species,functional_difference,Free Cl-,PFOA,-1.763942151924766e-06
+species,functional_difference,Free Cl-,PFOS,-1.763942151924766e-06
+component,functional_difference,ZPE,FHEA,-0.09299690404682681
+component,functional_difference,ZPE,PFHxA,0.14788515773756714
+component,functional_difference,ZPE,PFOA,-0.15408495134072436
+component,functional_difference,ZPE,PFOS,-0.0772087656809543
+component,functional_difference,Thermal correction,FHEA,0.2421729800450454
+component,functional_difference,Thermal correction,PFHxA,0.028463980978316816
+component,functional_difference,Thermal correction,PFOA,0.15041256160846184
+component,functional_difference,Thermal correction,PFOS,0.14966241862358587
+component,functional_difference,Entropy contribution,FHEA,-2.0137783035818417
+component,functional_difference,Entropy contribution,PFHxA,-0.8037204093939447
+component,functional_difference,Entropy contribution,PFOA,-1.136382006845567
+component,functional_difference,Entropy contribution,PFOS,-1.1821525478791228
+component_total,functional_difference,Total,FHEA,-1.8646085028867265
+component_total,functional_difference,Total,PFHxA,-0.62737754593656
+component_total,functional_difference,Total,PFOA,-1.1400543966750325
+component_total,functional_difference,Total,PFOS,-1.1096863446174012

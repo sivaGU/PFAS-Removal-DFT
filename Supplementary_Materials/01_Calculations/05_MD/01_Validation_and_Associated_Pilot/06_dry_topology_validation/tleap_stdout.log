@@ -1,0 +1,63 @@
+-I: Adding /home/zwa/miniforge3/envs/AmberTools25/dat/leap/prep to search path.
+-I: Adding /home/zwa/miniforge3/envs/AmberTools25/dat/leap/lib to search path.
+-I: Adding /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm to search path.
+-I: Adding /home/zwa/miniforge3/envs/AmberTools25/dat/leap/cmd to search path.
+-f: Source build_dry.leap.
+
+Welcome to LEaP!
+(no leaprc in search path)
+Sourcing: ./build_dry.leap
+----- Source: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/cmd/leaprc.gaff2
+----- Source of /home/zwa/miniforge3/envs/AmberTools25/dat/leap/cmd/leaprc.gaff2 done
+Log file: ./leap.log
+Loading parameters: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm/gaff2.dat
+Reading title:
+AMBER General Force Field for organic molecules (Version 2.2.20, March 2021)
+Loading parameters: ../05_forcefield_parameter_validation/pVBTMA12.frcmod
+Reading force field modification type file (frcmod)
+Reading title:
+Remark line goes here
+Loading Mol2 file: ../04_charge_parameterization/pVBTMA12_gaff2_rct.mol2
+Reading MOLECULE named PVB
+Checking 'PVB'....
+
+/home/zwa/miniforge3/envs/AmberTools25/bin/teLeap: Warning!
+The unperturbed charge of the unit (11.999994) is not zero.
+Checking parameters for unit 'PVB'.
+Checking for bond parameters.
+Checking for angle parameters.
+check:  Warnings: 1
+Unit is OK.
+Total unperturbed charge:  11.999994
+Total perturbed charge:    11.999994
+Checking Unit.
+
+/home/zwa/miniforge3/envs/AmberTools25/bin/teLeap: Warning!
+The unperturbed charge of the unit (11.999994) is not zero.
+
+/home/zwa/miniforge3/envs/AmberTools25/bin/teLeap: Note.
+Ignoring the warning from Unit Checking.
+
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 72 improper torsions applied
+Building H-Bond parameters.
+Incorporating Non-Bonded adjustments.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	PVB	1
+  )
+ (no restraints)
+Writing pdb file: pVBTMA12_dry.pdb
+	Quit
+
+Exiting LEaP: Errors = 0; Warnings = 2; Notes = 1.

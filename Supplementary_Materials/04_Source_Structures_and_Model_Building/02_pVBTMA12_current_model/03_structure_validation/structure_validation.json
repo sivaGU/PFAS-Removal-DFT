@@ -1,0 +1,46 @@
+{
+  "rdkit_version": "2023.09.3",
+  "reference_model_definition": "pVBTMA12_model_definition.smi",
+  "files": [
+    {
+      "file": "pVBTMA12_gen3d.sdf",
+      "constitutional_pass": true,
+      "exact_stereoisomer_pass": true,
+      "minimum_nonbonded_heavy_distance_A": 2.0749761396218513,
+      "formula": "C144H218N12+12",
+      "formal_charge": 12,
+      "heavy_atoms": 156,
+      "components": 1,
+      "dummy_atoms": 0,
+      "quaternary_ammonium_sites": 12,
+      "aromatic_six_membered_rings": 12
+    },
+    {
+      "file": "pVBTMA12_gen3d_uffmin.sdf",
+      "constitutional_pass": true,
+      "exact_stereoisomer_pass": true,
+      "minimum_nonbonded_heavy_distance_A": 2.367750039594551,
+      "formula": "C144H218N12+12",
+      "formal_charge": 12,
+      "heavy_atoms": 156,
+      "components": 1,
+      "dummy_atoms": 0,
+      "quaternary_ammonium_sites": 12,
+      "aromatic_six_membered_rings": 12
+    },
+    {
+      "file": "pVBTMA12_gen3d_mmffmin.sdf",
+      "constitutional_pass": true,
+      "exact_stereoisomer_pass": true,
+      "minimum_nonbonded_heavy_distance_A": 2.3526178780243936,
+      "formula": "C144H218N12+12",
+      "formal_charge": 12,
+      "heavy_atoms": 156,
+      "components": 1,
+      "dummy_atoms": 0,
+      "quaternary_ammonium_sites": 12,
+      "aromatic_six_membered_rings": 12
+    }
+  ],
+  "overall_pass": true
+}

@@ -1,0 +1,7 @@
+FINAL STATUS: ANALYSIS COMPLETE
+PRODUCTION ANALYZED: 3 x 10 ns
+CONVERGENCE DECISION: MANUAL_REVIEW_AFTER_10NS
+See analysis/stage11_summary.txt, analysis/convergence_diagnostics.csv,
+analysis/tail_contact_hydration_by_frame.csv, and
+analysis/tail_contact_hydration_blocks.png.
+Scientific interpretation remains prepared associated-state persistence/rearrangement only.

@@ -1,0 +1,14 @@
+source leaprc.gaff2
+source leaprc.water.tip3p
+loadAmberParams frcmod.ionsjc_tip3p
+loadAmberParams inputs/polymer/pVBTMA12.frcmod
+loadAmberParams inputs/pfoa/pfoa.frcmod
+PVB = loadMol2 inputs/polymer/pVBTMA12_gaff2_rct.mol2
+PFO = loadMol2 inputs/pfoa/pfoa_gaff2.mol2
+SYS = loadPdb build/stage09_start.pdb
+set SYS box { 51.118206 55.586960 56.897072 }
+check SYS
+charge SYS
+saveAmberParm SYS build/pVBTMA12_PFOA_assoc.prmtop build/pVBTMA12_PFOA_assoc.inpcrd
+savePdb SYS build/pVBTMA12_PFOA_assoc.pdb
+quit

@@ -1,0 +1,8 @@
+source leaprc.gaff2
+loadAmberParams ../05_forcefield_parameter_validation/pVBTMA12.frcmod
+PVB = loadMol2 ../04_charge_parameterization/pVBTMA12_gaff2_rct.mol2
+check PVB
+charge PVB
+saveAmberParm PVB pVBTMA12_dry.prmtop pVBTMA12_dry.inpcrd
+savePdb PVB pVBTMA12_dry.pdb
+quit

@@ -1,0 +1,21 @@
+{
+  "rdkit_version": "2023.09.3",
+  "n_repeats": 12,
+  "repeat_template": "[*:1]CC(c1ccc(C[N+](C)(C)C)cc1)[*:2]",
+  "canonical_smiles": "CC(CC(CC(CC(CC(CC(CC(CC(CC(CC(CC(CCc1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1",
+  "formula": "C144H218N12+12",
+  "molecular_weight_g_mol": 2117.411999999997,
+  "heavy_atoms": 156,
+  "connected_components": 1,
+  "dummy_atoms_remaining": 0,
+  "formal_charge": 12,
+  "quaternary_ammonium_sites": 12,
+  "aromatic_six_membered_rings": 12,
+  "aromatic_bearing_backbone_centers": 12,
+  "nearest_aromatic_bearing_center_graph_distance_bonds": [
+    2
+  ],
+  "all_aromatic_substitutions_para": true,
+  "sanitized": true,
+  "expected_checks_pass": true
+}

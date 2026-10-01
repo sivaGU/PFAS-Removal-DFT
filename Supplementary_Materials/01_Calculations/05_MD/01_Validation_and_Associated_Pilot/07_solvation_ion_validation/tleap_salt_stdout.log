@@ -1,0 +1,137 @@
+-I: Adding /home/zwa/miniforge3/envs/AmberTools25/dat/leap/prep to search path.
+-I: Adding /home/zwa/miniforge3/envs/AmberTools25/dat/leap/lib to search path.
+-I: Adding /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm to search path.
+-I: Adding /home/zwa/miniforge3/envs/AmberTools25/dat/leap/cmd to search path.
+-f: Source build_chloride_pilot_salted.generated.leap.
+
+Welcome to LEaP!
+(no leaprc in search path)
+Sourcing: ./build_chloride_pilot_salted.generated.leap
+----- Source: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/cmd/leaprc.gaff2
+----- Source of /home/zwa/miniforge3/envs/AmberTools25/dat/leap/cmd/leaprc.gaff2 done
+Log file: ./leap.log
+Loading parameters: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm/gaff2.dat
+Reading title:
+AMBER General Force Field for organic molecules (Version 2.2.20, March 2021)
+----- Source: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/cmd/leaprc.water.tip3p
+----- Source of /home/zwa/miniforge3/envs/AmberTools25/dat/leap/cmd/leaprc.water.tip3p done
+Loading library: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/lib/atomic_ions.lib
+Loading library: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/lib/solvents.lib
+Loading parameters: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm/frcmod.tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+This is the additional/replacement parameter set for TIP3P water
+Loading parameters: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm/frcmod.ions1lm_126_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Li/Merz ion parameters of monovalent ions for TIP3P water model (12-6 normal usage set)
+Loading parameters: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm/frcmod.ionsjc_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Monovalent ion parameters for Ewald and TIP3P water from Joung & Cheatham JPCB (2008)
+Loading parameters: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm/frcmod.ions234lm_126_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Li/Merz ion parameters of divalent to tetravalent ions for TIP3P water model (12-6 normal usage set)
+Loading parameters: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm/frcmod.ionsjc_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Monovalent ion parameters for Ewald and TIP3P water from Joung & Cheatham JPCB (2008)
+Loading parameters: ../05_forcefield_parameter_validation/pVBTMA12.frcmod
+Reading force field modification type file (frcmod)
+Reading title:
+Remark line goes here
+Loading Mol2 file: ../04_charge_parameterization/pVBTMA12_gaff2_rct.mol2
+Reading MOLECULE named PVB
+  Solute vdw bounding box:              22.642 26.909 28.372
+  Total bounding box for atom centers:  52.642 56.909 58.372
+  Solvent unit box:                     18.774 18.774 18.774
+  Total vdw box size:                   55.366 60.207 61.626 angstroms.
+  Volume: 205423.661 A^3 
+  Total mass 96395.032 amu,  Density 0.779 g/cc
+  Added 5233 residues.
+Adding 12 counter ions to "SYS". 5221 solvent molecules will remain.
+0: Placed Cl- in SYS at (-15.58, -11.86, 23.85).
+0: Placed Cl- in SYS at (24.43, -25.69, 21.67).
+0: Placed Cl- in SYS at (-4.28, 25.09, 11.65).
+0: Placed Cl- in SYS at (17.18, 7.80, 17.15).
+0: Placed Cl- in SYS at (-4.52, 10.53, -17.45).
+0: Placed Cl- in SYS at (-17.05, 14.76, -12.21).
+0: Placed Cl- in SYS at (12.51, 26.70, -19.41).
+0: Placed Cl- in SYS at (-9.48, -15.94, 0.55).
+0: Placed Cl- in SYS at (-8.03, 17.70, 25.37).
+0: Placed Cl- in SYS at (19.73, -21.90, -5.98).
+0: Placed Cl- in SYS at (-11.28, 25.88, 27.61).
+0: Placed Cl- in SYS at (24.21, -26.97, -13.18).
+Adding 38 counter ions to "SYS". 5183 solvent molecules will remain.
+0: Placed Na+ in SYS at (14.50, 25.09, -7.13).
+Placed Cl- in SYS at (-10.29, 23.43, -8.72).
+0: Placed Na+ in SYS at (25.18, 22.47, 4.06).
+Placed Cl- in SYS at (2.56, 26.14, -1.19).
+0: Placed Na+ in SYS at (-19.88, -12.96, 2.60).
+Placed Cl- in SYS at (-9.16, 2.14, -28.22).
+0: Placed Na+ in SYS at (24.58, 1.93, -27.93).
+Placed Cl- in SYS at (-25.23, 22.99, -22.25).
+0: Placed Na+ in SYS at (-6.31, -23.16, -24.16).
+Placed Cl- in SYS at (24.28, 8.85, 7.76).
+0: Placed Na+ in SYS at (-16.21, 26.14, -19.96).
+Placed Cl- in SYS at (14.74, 25.68, -12.29).
+0: Placed Na+ in SYS at (-22.60, -16.99, 8.75).
+Placed Cl- in SYS at (-11.56, -15.17, 14.32).
+0: Placed Na+ in SYS at (-12.97, 1.93, -27.93).
+Placed Cl- in SYS at (23.95, 3.27, 6.89).
+0: Placed Na+ in SYS at (10.09, 8.16, -8.50).
+Placed Cl- in SYS at (-2.10, 26.90, -16.78).
+0: Placed Na+ in SYS at (-11.99, 19.49, 3.60).
+Placed Cl- in SYS at (-4.35, -17.02, -23.53).
+0: Placed Na+ in SYS at (-1.11, 5.82, 2.60).
+Placed Cl- in SYS at (-22.66, -5.41, -4.76).
+0: Placed Na+ in SYS at (-10.51, -8.12, -15.39).
+Placed Cl- in SYS at (21.82, 23.51, 13.25).
+0: Placed Na+ in SYS at (-5.77, 13.01, -17.71).
+Placed Cl- in SYS at (5.50, -9.92, 26.54).
+0: Placed Na+ in SYS at (4.72, -14.80, -16.94).
+Placed Cl- in SYS at (-12.91, -5.38, 24.50).
+0: Placed Na+ in SYS at (18.90, 20.87, -2.10).
+Placed Cl- in SYS at (-1.62, 5.97, 5.47).
+0: Placed Na+ in SYS at (24.64, -24.16, 5.73).
+Placed Cl- in SYS at (-13.21, 16.80, -5.08).
+0: Placed Na+ in SYS at (21.00, -23.89, -26.04).
+Placed Cl- in SYS at (10.48, -8.99, 17.24).
+0: Placed Na+ in SYS at (4.72, 22.74, 1.83).
+Placed Cl- in SYS at (-4.79, -15.07, 0.23).
+0: Placed Na+ in SYS at (-23.05, 25.09, -7.13).
+Placed Cl- in SYS at (17.21, 5.20, -21.07).
+Checking 'SYS'....
+Checking parameters for unit 'SYS'.
+Checking for bond parameters.
+Checking for angle parameters.
+Unit is OK.
+Total unperturbed charge:  -0.000006
+Total perturbed charge:    -0.000006
+Checking Unit.
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 72 improper torsions applied
+Building H-Bond parameters.
+Incorporating Non-Bonded adjustments.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	PVB	1
+	WAT	5183
+  )
+ (no restraints)
+Writing pdb file: pVBTMA12_12Cl_015MNaCl_pilot.pdb
+   printing CRYST1 record to PDB file with box info
+	Quit
+
+Exiting LEaP: Errors = 0; Warnings = 0; Notes = 0.

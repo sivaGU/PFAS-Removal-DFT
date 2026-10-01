@@ -1,0 +1,10 @@
+## SLURM PROLOG ###############################################################
+##    Job ID : 6683249
+##  Job Name : orca_submit.sh
+##  Nodelist : node1820
+##      CPUs : 32
+##  Mem/Node : 99520 MB
+## Directory : /oscar/home/rzwa/work/orca/run/00_09-GOATsens/02_Frequency/r2scan-3c/2_R4N+Cl-_freqGMr2/R4N+Cl-_altA_freqGMr2
+##   Job Started : Fri Sep 25 12:12:13 AM EDT 2026
+###############################################################################
+Staging files from /oscar/home/rzwa/work/orca/run/00_09-GOATsens/02_Frequency/r2scan-3c/2_R4N+Cl-_freqGMr2/R4N+Cl-_altA_freqGMr2 to /sss/jobtmp/rzwa/R4N+Cl-_altA_freqGMr2_20260925_001215...

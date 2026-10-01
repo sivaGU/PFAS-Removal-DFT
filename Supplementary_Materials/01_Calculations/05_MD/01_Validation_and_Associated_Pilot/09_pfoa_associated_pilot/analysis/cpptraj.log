@@ -1,0 +1,172 @@
+
+CPPTRAJ: Trajectory Analysis. V6.29.13 (AmberTools)
+    ___  ___  ___  ___
+     | \/ | \/ | \/ | 
+    _|_/\_|_/\_|_/\_|_
+
+| Date/time: 09/19/26 23:45:38
+| Available memory: 15.655 GB
+
+INPUT: Reading input from 'stage09_analysis.generated.cpptraj'
+  [parm build/pVBTMA12_PFOA_assoc.prmtop]
+	Reading 'build/pVBTMA12_PFOA_assoc.prmtop' as Amber Topology
+	Radius Set: modified Bondi radii (mbondi)
+  [trajin 03_acceptance_npt_1ns/acceptance1ns.dcd shape]
+	Reading '03_acceptance_npt_1ns/acceptance1ns.dcd' as Charmm DCD
+  [autoimage anchor :PVB]
+    AUTOIMAGE: To box center based on center of mass, anchor mask is [:PVB]
+	Auto-imaging using molecule distances.
+  [radgyr :PVB out analysis/polymer_rg.dat mass]
+    RADGYR: Calculating for atoms in mask :PVB using mass weighting.
+  [mindist mask1 :PFO@O,O1 mask2 @112 byatom name HeadSelectedN out analysis/pfoa_head_selectedN.dat]
+    MINMAXDIST: Calculating minimum distance for selected atoms.
+	Mask1: :PFO@O,O1
+	Mask2: @112
+	Distances will use minimum image convention if box info present.
+	Data set name: HeadSelectedN
+	Data file name: analysis/pfoa_head_selectedN.dat
+  [mindist mask1 :PFO@O,O1 mask2 :PVB@N1,N2,N3,N4,N5,N6,N7,N8,N9,N10,N11,N12 byatom name HeadAnyN out analysis/pfoa_head_anyN.dat]
+    MINMAXDIST: Calculating minimum distance for selected atoms.
+	Mask1: :PFO@O,O1
+	Mask2: :PVB@N1,N2,N3,N4,N5,N6,N7,N8,N9,N10,N11,N12
+	Distances will use minimum image convention if box info present.
+	Data set name: HeadAnyN
+	Data file name: analysis/pfoa_head_anyN.dat
+  [mindist mask1 :PFO&!@H= mask2 :PVB&!@H= byatom name PFOAPolymer out analysis/pfoa_polymer_mindist.dat]
+    MINMAXDIST: Calculating minimum distance for selected atoms.
+	Mask1: :PFO&!@H*
+	Mask2: :PVB&!@H*
+	Distances will use minimum image convention if box info present.
+	Data set name: PFOAPolymer
+	Data file name: analysis/pfoa_polymer_mindist.dat
+  [minimage PolymerSelfImage :PVB&!@H= :PVB&!@H= out analysis/polymer_self_image.dat]
+    MINIMAGE: Looking for closest approach of atoms in :PVB&!@H*
+	to images of atoms in :PVB&!@H*
+  [minimage PFOASelfImage :PFO&!@H= :PFO&!@H= out analysis/pfoa_self_image.dat]
+    MINIMAGE: Looking for closest approach of atoms in :PFO&!@H*
+	to images of atoms in :PFO&!@H*
+  [avgbox AverageBox out analysis/average_box.dat]
+    AVGBOX: Calculating average box.
+	Average box set: AverageBox[avg]
+	Output to file: analysis/average_box.dat
+  [check :PVB,PFO]
+    CHECKSTRUCTURE: Checking atoms in mask ':PVB,PFO', warnings output to STDOUT.
+	Number of problems in each frame will be saved to set 'CHECK_00013'
+	Checking for bond lengths greater than eq. length + 1.15 Ang and
+	  less than eq. length - 0.50 Ang.
+	Checking for inter-atomic distances < 0.80 Ang.
+	Cutoff for building pair list is 4.000000 Ang.
+  [rms PolymerRMSD first :PVB&!@H= mass out analysis/polymer_rmsd.dat]
+    RMSD: (:PVB&!@H*), reference is first frame (:PVB&!@H*), mass-weighted.
+	Best-fit RMSD will be calculated, coords will be rotated and translated.
+  [run]
+---------- RUN BEGIN -------------------------------------------------
+
+PARAMETER FILES (1 total):
+ 0: pVBTMA12_PFOA_assoc.prmtop, 15937 atoms, 5214 res, box: Orthorhombic, 5214 mol, 5163 solvent
+
+INPUT TRAJECTORIES (1 total):
+ 0: 'acceptance1ns.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm pVBTMA12_PFOA_assoc.prmtop (Orthorhombic box) (reading 500 of 500)
+  Coordinate processing will occur on 500 frames.
+
+BEGIN TRAJECTORY PROCESSING:
+.....................................................
+ACTION SETUP FOR PARM 'pVBTMA12_PFOA_assoc.prmtop' (10 actions):
+  0: [autoimage anchor :PVB]
+	Anchoring on atoms selected by mask ':PVB'
+	Mask [:PVB] corresponds to 374 atoms.
+	Mask [:PVB] corresponds to molecule 1
+	1 molecules are fixed to anchor: 2
+	5212 molecules are mobile.
+  1: [radgyr :PVB out analysis/polymer_rg.dat mass]
+	:PVB (374 atoms).
+  2: [mindist mask1 :PFO@O,O1 mask2 @112 byatom name HeadSelectedN out analysis/pfoa_head_selectedN.dat]
+	Distance imaging on.
+	Mask [:PFO@O,O1] corresponds to 2 atoms.
+	Mask [@112] corresponds to 1 atoms.
+  3: [mindist mask1 :PFO@O,O1 mask2 :PVB@N1,N2,N3,N4,N5,N6,N7,N8,N9,N10,N11,N12 byatom name HeadAnyN out analysis/pfoa_head_anyN.dat]
+	Distance imaging on.
+	Mask [:PFO@O,O1] corresponds to 2 atoms.
+	Mask [:PVB@N1,N2,N3,N4,N5,N6,N7,N8,N9,N10,N11,N12] corresponds to 12 atoms.
+  4: [mindist mask1 :PFO&!@H= mask2 :PVB&!@H= byatom name PFOAPolymer out analysis/pfoa_polymer_mindist.dat]
+	Distance imaging on.
+	Mask [:PFO&!@H*] corresponds to 25 atoms.
+	Mask [:PVB&!@H*] corresponds to 156 atoms.
+  5: [minimage PolymerSelfImage :PVB&!@H= :PVB&!@H= out analysis/polymer_self_image.dat]
+	:PVB&!@H* (156 atoms) to :PVB&!@H* (156 atoms)
+  6: [minimage PFOASelfImage :PFO&!@H= :PFO&!@H= out analysis/pfoa_self_image.dat]
+	:PFO&!@H* (25 atoms) to :PFO&!@H* (25 atoms)
+  7: [avgbox AverageBox out analysis/average_box.dat]
+  8: [check :PVB,PFO]
+	Using pair list.
+	Total Grid memory: 87.865 MB
+TIME:	Pair List Setup: 0.0953 s
+	Grid dimensions: 37 40 41 (60680 total).
+	Excluding bond interactions.
+	Memory used by full exclusion list: 4.868 kB
+	Mask [:PVB,PFO] corresponds to 399 atoms.
+	Checking 409 bonds.
+	Imaging on.
+  9: [rms PolymerRMSD first :PVB&!@H= mass out analysis/polymer_rmsd.dat]
+	Target mask: [:PVB&!@H*](156)
+	Reference topology: pVBTMA12_PFOA_assoc.prmtop
+	Reference mask: [:PVB&!@H*](156)
+----- acceptance1ns.dcd (1-500, 1) -----
+ 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% Complete.
+
+Read 500 frames and processed 500 frames.
+TIME: Avg. throughput= 310.2089 frames / second.
+
+ACTION OUTPUT:
+    AVGBOX:
+    Average Unit Cell Vectors:
+        51.1979179700     0.0000000000     0.0000000000
+         0.0000000000    55.6736403910     0.0000000000
+         0.0000000000     0.0000000000    56.9857953346
+	Box: 'Orthorhombic' XYZ= {   51.198   55.674   56.986 } ABG= {  90.00  90.00  90.00 }
+TIME: Analyses took 0.0000 seconds.
+
+DATASETS (14 total):
+	RoG_00001 "RoG_00001" (double), size is 500 (4.000 kB)
+	RoG_00001[Max] "RoG_00001[Max]" (double), size is 500 (4.000 kB)
+	HeadSelectedN "HeadSelectedN" (float), size is 500 (2.000 kB)
+	HeadAnyN "HeadAnyN" (float), size is 500 (2.000 kB)
+	PFOAPolymer "PFOAPolymer" (float), size is 500 (2.000 kB)
+	PolymerSelfImage "PolymerSelfImage" (double, distance), size is 500 (4.000 kB)
+	PolymerSelfImage[A1] "PolymerSelfImage[A1]" (integer, distance), size is 500 (2.000 kB)
+	PolymerSelfImage[A2] "PolymerSelfImage[A2]" (integer, distance), size is 500 (2.000 kB)
+	PFOASelfImage "PFOASelfImage" (double, distance), size is 500 (4.000 kB)
+	PFOASelfImage[A1] "PFOASelfImage[A1]" (integer, distance), size is 500 (2.000 kB)
+	PFOASelfImage[A2] "PFOASelfImage[A2]" (integer, distance), size is 500 (2.000 kB)
+	AverageBox[avg] "AverageBox[avg]" (3x3 matrices), size is 1 (0.072 kB)
+	CHECK_00013 "CHECK_00013" (integer), size is 500 (2.000 kB)
+	PolymerRMSD "PolymerRMSD" (double, rms), size is 500 (4.000 kB)
+    Total data set memory usage is at least 36.072 kB
+
+DATAFILES (9 total):
+  polymer_rg.dat (Standard Data File):  RoG_00001 RoG_00001[Max]
+  pfoa_head_selectedN.dat (Standard Data File):  HeadSelectedN
+  pfoa_head_anyN.dat (Standard Data File):  HeadAnyN
+  pfoa_polymer_mindist.dat (Standard Data File):  PFOAPolymer
+  polymer_self_image.dat (Standard Data File):  PolymerSelfImage PolymerSelfImage[A1] PolymerSelfImage[A2]
+  pfoa_self_image.dat (Standard Data File):  PFOASelfImage PFOASelfImage[A1] PFOASelfImage[A2]
+  average_box.dat (Standard Data File):  AverageBox[avg]
+  polymer_rmsd.dat (Standard Data File):  PolymerRMSD
+  STDOUT (Structure check)
+
+RUN TIMING:
+TIME:		Init               : 0.0001 s (  0.01%)
+TIME:		Trajectory Process : 1.6118 s ( 91.25%)
+TIME:		Action Post        : 0.0000 s (  0.00%)
+TIME:		Analysis           : 0.0000 s (  0.00%)
+TIME:		Data File Write    : 0.1517 s (  8.59%)
+TIME:		Other              : 0.0026 s (  0.00%)
+TIME:	Run Total 1.7664 s
+---------- RUN END ---------------------------------------------------
+TIME: Total execution time: 1.9007 seconds.
+--------------------------------------------------------------------------------
+To cite CPPTRAJ use:
+Daniel R. Roe and Thomas E. Cheatham, III, "PTRAJ and CPPTRAJ: Software for
+  Processing and Analysis of Molecular Dynamics Trajectory Data". J. Chem.
+  Theory Comput., 2013, 9 (7), pp 3084-3095.
+

@@ -1,0 +1,23 @@
+{
+  "target_added_nacl_molar": 0.15,
+  "neutralizing_chloride_count": 12,
+  "neutralizing_ions_counted_toward_added_salt": false,
+  "box_angstrom": [
+    55.366399,
+    60.20653,
+    61.625519,
+    90.0,
+    90.0,
+    90.0
+  ],
+  "box_volume_angstrom3": 205423.66127634226,
+  "box_volume_liter": 2.0542366127634227e-22,
+  "water_residues_before_ion_replacement": 5233,
+  "continuous_target_nacl_pairs": 18.556353054610415,
+  "added_nacl_pairs": 19,
+  "expected_final_sodium_count": 19,
+  "expected_final_chloride_count": 31,
+  "achieved_nominal_added_nacl_molar": 0.15358621339077744,
+  "rounding_rule": "nearest integer, half up",
+  "concentration_definition": "added NaCl pairs divided by initial periodic-cell volume; neutralizing Cl- excluded"
+}

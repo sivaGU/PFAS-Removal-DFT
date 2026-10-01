@@ -1,0 +1,5 @@
+STATUS: PASS
+Prepared PFOA-associated pVBTMA12 endpoint from the ACCEPTED Stage 08 final coordinates/cell.
+PFOA was deliberately preassociated; no spontaneous binding or dynamic chloride displacement is claimed.
+One remote chloride was removed only for stoichiometric charge neutrality.
+See construction_report.json, build_validation.json, tleap.log, and SHA256SUMS.txt.

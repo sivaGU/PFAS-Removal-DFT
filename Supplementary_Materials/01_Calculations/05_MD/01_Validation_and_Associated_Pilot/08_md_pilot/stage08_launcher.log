@@ -1,0 +1,110 @@
+===== Stage 08 tmux worker started: 2026-09-18T21:46:04-04:00 =====
+host=tamburello
+pid=8204
+pwd=/mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_pVBTMA12_validation/08_md_pilot
+NAMD_BIN=/home/zwa/namd/NAMD_Git-2025-12-04_Linux-x86_64-multicore-CUDA/namd3
+NAMD_ARGS=+p8 +setcpuaffinity +devices 0
+NAMD_BIN=/home/zwa/namd/NAMD_Git-2025-12-04_Linux-x86_64-multicore-CUDA/namd3
+NAMD_ARGS=+p8 +setcpuaffinity +devices 0
+NAMD executable metadata:
+-rwxr-xr-x 1 zwa zwa 514947056 Dec  4  2025 /home/zwa/namd/NAMD_Git-2025-12-04_Linux-x86_64-multicore-CUDA/namd3
+0ab1e0707c8e3dee1b24f2afb08b0954541bf0aa6f3e51f942acc9ed9d7f0bb5  /home/zwa/namd/NAMD_Git-2025-12-04_Linux-x86_64-multicore-CUDA/namd3
+Stage 08 static configuration validation: PASS
+- Langevin switch defined exactly once per stage
+- NAMD3 nonbondedFreq spelling is used explicitly
+- ambercoor is declared in every AMBER-mode stage, including restart continuations
+- velocities initialized once at 100 K and continued through later stages
+- NVT/NPT thermostat and piston switches are stage-local
+{
+  "status": "PASS",
+  "natom": 15973,
+  "box_A": [
+    55.366399,
+    60.20653,
+    61.625519
+  ],
+  "repeat_group_sizes": {
+    "1": 35,
+    "2": 31,
+    "3": 31,
+    "4": 31,
+    "5": 31,
+    "6": 31,
+    "7": 31,
+    "8": 31,
+    "9": 31,
+    "10": 31,
+    "11": 31,
+    "12": 29
+  },
+  "anchors": [
+    2,
+    15,
+    28,
+    41,
+    54,
+    67,
+    80,
+    93,
+    106,
+    119,
+    132,
+    145
+  ]
+}
+===== START 00_minimize.conf 2026-09-18T21:46:16-04:00 =====
+NAMD exit status: 0
+{
+  "log": "00_minimize/minimize.log",
+  "normal_completion_marker": true,
+  "max_energy_step": 10000,
+  "issues": []
+}
+===== END 00_minimize.conf 2026-09-18T21:47:57-04:00 =====
+===== START 01_heat_100K.conf 2026-09-18T21:47:57-04:00 =====
+NAMD exit status: 0
+{
+  "log": "01_heat_100K/heat100.log",
+  "normal_completion_marker": true,
+  "max_energy_step": 12500,
+  "issues": []
+}
+===== END 01_heat_100K.conf 2026-09-18T21:49:40-04:00 =====
+===== START 02_heat_200K.conf 2026-09-18T21:49:40-04:00 =====
+NAMD exit status: 0
+{
+  "log": "02_heat_200K/heat200.log",
+  "normal_completion_marker": true,
+  "max_energy_step": 12500,
+  "issues": []
+}
+===== END 02_heat_200K.conf 2026-09-18T21:51:17-04:00 =====
+===== START 03_heat_310K.conf 2026-09-18T21:51:17-04:00 =====
+NAMD exit status: 0
+{
+  "log": "03_heat_310K/heat310.log",
+  "normal_completion_marker": true,
+  "max_energy_step": 25000,
+  "issues": []
+}
+===== END 03_heat_310K.conf 2026-09-18T21:52:06-04:00 =====
+===== START 04_equil_npt_500ps.conf 2026-09-18T21:52:06-04:00 =====
+NAMD exit status: 0
+{
+  "log": "04_equil_npt_500ps/equil500ps.log",
+  "normal_completion_marker": true,
+  "max_energy_step": 250000,
+  "issues": []
+}
+===== END 04_equil_npt_500ps.conf 2026-09-18T22:00:45-04:00 =====
+===== START 05_acceptance_npt_1ns.conf 2026-09-18T22:00:45-04:00 =====
+NAMD exit status: 0
+{
+  "log": "05_acceptance_npt_1ns/acceptance1ns.log",
+  "normal_completion_marker": true,
+  "max_energy_step": 500000,
+  "issues": []
+}
+===== END 05_acceptance_npt_1ns.conf 2026-09-18T22:17:21-04:00 =====
+Wrote acceptance_analysis.generated.cpptraj
+===== Stage 08 tmux worker finished: 2026-09-18T22:17:24-04:00; exit=1 =====

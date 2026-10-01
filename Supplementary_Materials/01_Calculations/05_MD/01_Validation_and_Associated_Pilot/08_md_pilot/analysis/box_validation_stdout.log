@@ -1,0 +1,8 @@
+Stage 08 periodic-cell / CPPTRAJ validation
+status: PASS
+NAMD XST mean lengths (A): 51.228924 x 55.707357 x 57.020306
+NAMD XST mean angles (deg): 90.000000, 90.000000, 90.000000
+NAMD XST mean volume (A^3): 162726.872451
+CPPTRAJ avgbox vs XST max matrix delta (A): 0.004574
+errors:
+  - none

@@ -1,0 +1,10 @@
+Stage 08 VMD/PBCTools periodic-cell validation
+status: PASS
+VMD DCD frames: 500
+XST records compared at matching DCD steps: 100
+mean VMD DCD cell lengths (A): 51.224815 x 55.702888 x 57.015732
+mean VMD DCD cell angles (deg): 90.000000, 90.000000, 90.000000
+max VMD DCD vs XST length delta (A): 0.000002
+max VMD DCD vs XST angle delta (deg): 0.000000
+errors:
+  - none
