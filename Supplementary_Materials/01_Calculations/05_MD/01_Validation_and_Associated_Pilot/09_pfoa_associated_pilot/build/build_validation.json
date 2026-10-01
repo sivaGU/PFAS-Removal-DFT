@@ -1,0 +1,138 @@
+{
+  "status": "PASS",
+  "natom": 15937,
+  "residue_counts": {
+    "PVB": 1,
+    "PFO": 1,
+    "Na+": 19,
+    "Cl-": 30,
+    "WAT": 5163
+  },
+  "Na_count": 19,
+  "Cl_count": 30,
+  "water_count": 5163,
+  "total_charge": -5.9546819007570695e-06,
+  "box": [
+    51.118206,
+    55.58696,
+    56.897072,
+    90.0,
+    90.0,
+    90.0
+  ],
+  "constructed_residue_class_order": [
+    {
+      "class": "PVB",
+      "residue_count": 1
+    },
+    {
+      "class": "PFO",
+      "residue_count": 1
+    },
+    {
+      "class": "WAT",
+      "residue_count": 5163
+    },
+    {
+      "class": "NA",
+      "residue_count": 19
+    },
+    {
+      "class": "CL",
+      "residue_count": 30
+    }
+  ],
+  "leap_residue_class_order": [
+    {
+      "class": "PVB",
+      "residue_count": 1
+    },
+    {
+      "class": "PFO",
+      "residue_count": 1
+    },
+    {
+      "class": "NA",
+      "residue_count": 19
+    },
+    {
+      "class": "CL",
+      "residue_count": 30
+    },
+    {
+      "class": "WAT",
+      "residue_count": 5163
+    }
+  ],
+  "topology_residue_class_order": [
+    {
+      "class": "PVB",
+      "residue_count": 1
+    },
+    {
+      "class": "PFO",
+      "residue_count": 1
+    },
+    {
+      "class": "NA",
+      "residue_count": 19
+    },
+    {
+      "class": "CL",
+      "residue_count": 30
+    },
+    {
+      "class": "WAT",
+      "residue_count": 5163
+    }
+  ],
+  "atom_identity_mapping_status": "PASS",
+  "direct_index_raw_max_A": 125.00791452717026,
+  "mapped_raw_max_A": 47.276468535819234,
+  "mapped_minimum_image_max_before_origin_alignment_A": 47.27646853581922,
+  "mapped_minimum_image_rms_before_origin_alignment_A": 47.27646853581922,
+  "mapped_minimum_image_atoms_over_0.02_A_before_origin_alignment": 15937,
+  "leap_global_origin_shift_A": [
+    25.559103,
+    27.79348,
+    28.448536
+  ],
+  "mapped_aligned_minimum_image_max_A": 1.1783018260144473e-14,
+  "mapped_aligned_minimum_image_rms_A": 3.831672311767033e-15,
+  "mapped_aligned_minimum_image_atoms_over_0.02_A": 0,
+  "coordinate_validation_by_class": {
+    "PVB": {
+      "atom_count": 374,
+      "max_residual_A": 1.1783018260144473e-14,
+      "rms_residual_A": 4.640179129545282e-15,
+      "atoms_over_0.02_A": 0
+    },
+    "PFO": {
+      "atom_count": 25,
+      "max_residual_A": 8.702335715267317e-15,
+      "rms_residual_A": 5.317214951750688e-15,
+      "atoms_over_0.02_A": 0
+    },
+    "WAT": {
+      "atom_count": 15489,
+      "max_residual_A": 6.153480596427404e-15,
+      "rms_residual_A": 3.807363006082159e-15,
+      "atoms_over_0.02_A": 0
+    },
+    "NA": {
+      "atom_count": 19,
+      "max_residual_A": 6.153480596427404e-15,
+      "rms_residual_A": 3.552713678800501e-15,
+      "atoms_over_0.02_A": 0
+    },
+    "CL": {
+      "atom_count": 30,
+      "max_residual_A": 6.153480596427404e-15,
+      "rms_residual_A": 3.891802844472395e-15,
+      "atoms_over_0.02_A": 0
+    }
+  },
+  "postbuild_nearest_carboxylate_O_N_A": 4.429751008803991,
+  "max_bond_minimum_image_A": 1.6217277823358642,
+  "issues": []
+}

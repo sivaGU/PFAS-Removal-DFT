@@ -1,0 +1,23 @@
+! r2scan-3c DefGrid3 Freq CPCM
+
+%geom
+   MaxIter 350
+end
+
+%freq
+   TEMP 310.15
+end
+
+%maxcore 2610
+
+%pal
+   nprocs 32
+end
+
+%cpcm
+   smd true
+   SMDSolvent "Water"
+   epsilon 72.5
+end
+
+* xyzfile 0 1 R4N+Cl-_altA_r2.xyz

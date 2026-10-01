@@ -1,0 +1,7 @@
+status: PASS
+VMD frames: 500
+XST records compared: 100
+max length delta A: 2.3947999991946745e-06
+max angle delta deg: 0.0
+errors:
+  - none

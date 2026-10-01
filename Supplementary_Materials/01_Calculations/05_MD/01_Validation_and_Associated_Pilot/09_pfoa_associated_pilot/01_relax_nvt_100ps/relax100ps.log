@@ -1,0 +1,939 @@
+Charm++: standalone mode (not using charmrun)
+Charm++> Running in Multicore mode: 8 threads (PEs)
+Charm++> Using recursive bisection (scheme 3) for topology aware partitions
+Converse/Charm++ Commit ID: 
+CharmLB> Load balancer assumes all CPUs are same.
+Charm++> cpu affinity enabled. 
+Charm++> Running on 1 hosts (1 sockets x 8 cores x 2 PUs = 16-way SMP)
+Charm++> cpu topology info is gathered in 0.000 seconds.
+Info: Built with CUDA version 11080
+Pe 0 physical rank 0 will use CUDA device of pe 4
+Pe 3 physical rank 3 will use CUDA device of pe 4
+Pe 4 physical rank 4 binding to CUDA device 0 on tamburello: 'NVIDIA GeForce RTX 4050 Laptop GPU'  Mem: 6140MB  Rev: 8.9  PCI: 0:1:0
+Pe 1 physical rank 1 will use CUDA device of pe 4
+Pe 7 physical rank 7 will use CUDA device of pe 4
+Pe 6 physical rank 6 will use CUDA device of pe 4
+Pe 5 physical rank 5 will use CUDA device of pe 4
+Pe 2 physical rank 2 will use CUDA device of pe 4
+CharmLB> Load balancing instrumentation for communication is off.
+Info: NAMD Git-2025-12-04 for Linux-x86_64-multicore-CUDA
+Info: 
+Info: Please visit http://www.ks.uiuc.edu/Research/namd/
+Info: for updates, documentation, and support information.
+Info: 
+Info: Please cite Phillips et al., J. Chem. Phys. 153:044130 (2020) doi:10.1063/5.0014475
+Info: in all publications reporting results obtained with NAMD.
+Info: 
+Info: Based on Charm++/Converse 80000 for multicore-linux-x86_64-gcc
+Info: Built Thu Dec 4 09:52:36 CST 2025 by dhardy on athine.ks.uiuc.edu
+Info: Source code at Git commit ID b856a9378ca44bcf5aa708d4b681af4ceb86d8ca
+Info: 1 NAMD  Git-2025-12-04  Linux-x86_64-multicore-CUDA  8    tamburello  zwa
+Info: Running on 8 processors, 1 nodes, 1 physical nodes.
+Info: CPU topology information available.
+Info: Charm++/Converse parallel runtime startup completed at 0.170953 s
+CkLoopLib is used in SMP with simple dynamic scheduling (converse-level notification)
+Info: 0 MB of memory in use based on /proc/self/stat
+Info: Configuration file is 01_relax_nvt_100ps.conf
+Info: Working in the current directory /mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_pVBTMA12_validation/09_pfoa_associated_pilot
+TCL: Suspending until startup complete.
+Warning: Always using force tables for GPU nonbonded kernel due to unsupported config parameters.
+Info: SIMULATION PARAMETERS:
+Info: TIMESTEP               2
+Info: NUMBER OF STEPS        0
+Info: STEPS PER CYCLE        10
+Info: PERIODIC CELL BASIS 1  51.1182 0 0
+Info: PERIODIC CELL BASIS 2  0 55.587 0
+Info: PERIODIC CELL BASIS 3  0 0 56.8971
+Info: PERIODIC CELL CENTER   0 0 0
+Info: WRAPPING ALL CLUSTERS AROUND PERIODIC BOUNDARIES ON OUTPUT.
+Info: LOAD BALANCER  Centralized
+Info: LOAD BALANCING STRATEGY  New Load Balancers -- DEFAULT
+Info: LDB PERIOD             2000 steps
+Info: FIRST LDB TIMESTEP     50
+Info: LAST LDB TIMESTEP     -1
+Info: LDB BACKGROUND SCALING 1
+Info: HOM BACKGROUND SCALING 1
+Info: PME BACKGROUND SCALING 1
+Info: MIN ATOMS PER PATCH    40
+Info: EMPTY PATCH LOAD       40 ATOMS
+Info: INITIAL TEMPERATURE    310.15
+Info: CENTER OF MASS MOVING INITIALLY? NO
+Info: DIELECTRIC             1
+Info: EXCLUDE                SCALED ONE-FOUR
+Info: 1-4 ELECTROSTATICS SCALED BY 0.833333
+Info: MODIFIED 1-4 VDW PARAMETERS WILL BE USED
+Info: DCD FILENAME           01_relax_nvt_100ps/relax100ps.dcd
+Info: DCD FREQUENCY          1000
+Info: DCD FIRST STEP         1000
+Info: DCD FILE WILL CONTAIN UNIT CELL DATA
+Info: XST FILENAME           01_relax_nvt_100ps/relax100ps.xst
+Info: XST FREQUENCY          5000
+Info: NO VELOCITY DCD OUTPUT
+Info: NO FORCE DCD OUTPUT
+Info: OUTPUT FILENAME        01_relax_nvt_100ps/relax100ps
+Info: BINARY OUTPUT FILES WILL BE USED
+Info: RESTART FILENAME       01_relax_nvt_100ps/relax100ps.restart
+Info: RESTART FREQUENCY      5000
+Info: BINARY RESTART FILES WILL BE USED
+Info: NAMD will save positions and velocities to 01_relax_nvt_100ps/relax100ps.crash.csv when  atoms are moving too fast.
+Info: CUTOFF                 9
+Info: PAIRLIST DISTANCE      11
+Info: PAIRLIST SHRINK RATE   0.01
+Info: PAIRLIST GROW RATE     0.01
+Info: PAIRLIST TRIGGER       0.3
+Info: PAIRLISTS PER CYCLE    2
+Info: PAIRLISTS ENABLED
+Info: MARGIN                 0
+Info: HYDROGEN GROUP CUTOFF  2.5
+Info: PATCH DIMENSION        13.5
+Info: ENERGY OUTPUT STEPS    500
+Info: ENERGY EVALUATION STEPS    500
+Info: OUTPUT ENERGY PRECISION 4
+Info: CROSSTERM ENERGY INCLUDED IN DIHEDRAL
+Info: TIMING OUTPUT STEPS    5000
+Info: LANGEVIN DYNAMICS ACTIVE
+Info: LANGEVIN TEMPERATURE   310.15
+Info: LANGEVIN USING BBK INTEGRATOR
+Info: LANGEVIN DAMPING COEFFICIENT IS 1 INVERSE PS
+Info: LANGEVIN DYNAMICS APPLIED TO HYDROGENS
+Info: PARTICLE MESH EWALD (PME) ACTIVE
+Info: PME TOLERANCE               1e-06
+Info: PME EWALD COEFFICIENT       0.348832
+Info: PME INTERPOLATION ORDER     4
+Info: PME GRID DIMENSIONS         54 56 60
+Info: PME MAXIMUM GRID SPACING    1
+Info: PME CALCULATION WILL BE PERFORMED ON GPU
+Info: FULL ELECTROSTATIC EVALUATION FREQUENCY      2
+Info: USING VERLET I (r-RESPA) MTS SCHEME.
+Info: C1 SPLITTING OF LONG RANGE ELECTROSTATICS
+Info: PLACING ATOMS IN PATCHES BY HYDROGEN GROUPS
+Info: RIGID BONDS TO HYDROGEN : ALL
+Info:         ERROR TOLERANCE : 1e-08
+Info:          MAX ITERATIONS : 100
+Info: RIGID WATER USING SETTLE ALGORITHM
+Info: RANDOM NUMBER SEED     202609191
+Info: USE HYDROGEN BONDS?    NO
+Info: Using AMBER format force field!
+Info: AMBER PARM FILE        build/pVBTMA12_PFOA_assoc.prmtop
+Info: AMBER COORDINATE FILE  build/pVBTMA12_PFOA_assoc.inpcrd
+Info: Exclusions will be read from PARM file!
+Info: SCNB (VDW SCALING)     2
+Info: USING ARITHMETIC MEAN TO COMBINE L-J SIGMA PARAMETERS
+Info: BINARY COORDINATES     00_minimize/minimize.coor
+Info: === Start reading AMBER parm7 format file build/pVBTMA12_PFOA_assoc.prmtop ===
+Info: Complete reading ATOM_NAME with 15937 fields.
+Info: Complete reading CHARGE with 15937 fields.
+Info: Complete reading ATOMIC_NUMBER with 15937 fields.
+Info: Complete reading MASS with 15937 fields.
+Info: Complete reading ATOM_TYPE_INDEX with 15937 fields.
+Info: Complete reading NUMBER_EXCLUDED_ATOMS with 15937 fields.
+Info: Complete reading NONBONDED_PARM_INDEX with 144 fields.
+Info: Complete reading RESIDUE_LABEL with 5214 fields.
+Info: Complete reading RESIDUE_POINTER with 5214 fields.
+Info: Complete reading BOND_FORCE_CONSTANT with 12 fields.
+Info: Complete reading BOND_EQUIL_VALUE with 12 fields.
+Info: Complete reading ANGLE_FORCE_CONSTANT with 19 fields.
+Info: Complete reading ANGLE_EQUIL_VALUE with 19 fields.
+Info: Complete reading DIHEDRAL_FORCE_CONSTANT with 19 fields.
+Info: Complete reading DIHEDRAL_PERIODICITY with 19 fields.
+Info: Complete reading DIHEDRAL_PHASE with 19 fields.
+Info: Complete reading SCEE_SCALE_FACTOR with 19 fields.
+Info: Complete reading SCNB_SCALE_FACTOR with 19 fields.
+Info: Complete reading LENNARD_JONES_ACOEF with 78 fields.
+Info: Complete reading LENNARD_JONES_BCOEF with 78 fields.
+Info: Complete reading BONDS_INC_HYDROGEN with 47121 fields.
+Info: Complete reading BONDS_WITHOUT_HYDROGEN with 573 fields.
+Info: Complete reading ANGLES_INC_HYDROGEN with 1884 fields.
+Info: Complete reading ANGLES_WITHOUT_HYDROGEN with 1176 fields.
+Info: Complete reading DIHEDRALS_INC_HYDROGEN with 4370 fields.
+Info: Complete reading DIHEDRALS_WITHOUT_HYDROGEN with 1980 fields.
+Info: Complete reading EXCLUDED_ATOMS_LIST with 23045 fields.
+Info: Complete reading HBOND_ACOEF with 0 fields.
+Info: Complete reading HBOND_BCOEF with 0 fields.
+Info: Complete reading AMBER_ATOM_TYPE with 15937 fields.
+Info: Complete reading TREE_CHAIN_CLASSIFICATION with 15937 fields.
+Info: Complete reading ATOMS_PER_MOLECULE with 5214 fields.
+Info: Complete reading BOX_DIMENSIONS with 4 fields.
+Info: Complete reading RADIUS_SET with 1 fields.
+Info: Complete reading RADII with 15937 fields.
+Info: Complete reading SCREEN with 15937 fields.
+Info: === Finish reading AMBER parm7 format file. ===
+Warning: Found 5163 H-H bonds.
+Info: SUMMARY OF PARAMETERS:
+Info: 12 BONDS
+Info: 19 ANGLES
+Info:   19 HARMONIC
+Info:   0 COSINE-BASED
+Info: 19 DIHEDRAL
+Info: 0 IMPROPER
+Info: 0 CROSSTERM
+Info: 0 VDW
+Info: 78 VDW_PAIRS
+Info: 0 NBTHOLE_PAIRS
+Info: TIME FOR READING PDB FILE: 5.32e-06
+Info: 
+Info: LONG-RANGE LJ: APPLYING ANALYTICAL CORRECTIONS TO ENERGY AND PRESSURE
+Info: LONG-RANGE LJ: AVERAGE A AND B COEFFICIENTS 566405 AND 559.433
+Info: ****************************
+Info: STRUCTURE SUMMARY:
+Info: 15937 ATOMS
+Info: 15898 BONDS
+Info: 765 ANGLES
+Info: 1270 DIHEDRALS
+Info: 0 IMPROPERS
+Info: 0 CROSSTERMS
+Info: 17758 EXCLUSIONS
+Info: 15707 RIGID BONDS
+Info: 32104 DEGREES OF FREEDOM
+Info: 5393 HYDROGEN GROUPS
+Info: 4 ATOMS IN LARGEST HYDROGEN GROUP
+Info: 5393 MIGRATION GROUPS
+Info: 4 ATOMS IN LARGEST MIGRATION GROUP
+Info: TOTAL MASS = 97047.3 amu
+Info: TOTAL CHARGE = -5.9735e-06 e
+Info: MASS DENSITY = 0.996791 g/cm^3
+Info: ATOM DENSITY = 0.0985753 atoms/A^3
+Info: *****************************
+Info: Reading from binary file 00_minimize/minimize.coor
+Info: 
+Info: Entering startup at 0.397909 s, 0 MB of memory in use
+Info: Startup phase 0 took 0.000250992 s, 0 MB of memory in use
+Info: ADDED 0 IMPLICIT EXCLUSIONS
+Info: Startup phase 1 took 0.00349697 s, 0 MB of memory in use
+Info: NONBONDED TABLE R-SQUARED SPACING: 0.0625
+Info: NONBONDED TABLE SIZE: 705 POINTS
+Info: INCONSISTENCY IN FAST TABLE ENERGY VS FORCE: 0.000290481 AT 0.251946
+Info: INCONSISTENCY IN SCOR TABLE ENERGY VS FORCE: 0.000238233 AT 8.9687
+Info: ABSOLUTE IMPRECISION IN VDWA TABLE ENERGY: 1.21169e-27 AT 8.99653
+Info: ABSOLUTE IMPRECISION IN VDWA TABLE FORCE: 2.57484e-27 AT 8.99653
+Info: INCONSISTENCY IN VDWA TABLE ENERGY VS FORCE: 0.0040507 AT 0.251946
+Info: INCONSISTENCY IN VDWB TABLE ENERGY VS FORCE: 0.00150189 AT 0.251946
+Info: Startup phase 2 took 0.00152024 s, 0 MB of memory in use
+Info: Startup phase 3 took 0.000195357 s, 0 MB of memory in use
+Info: Startup phase 4 took 0.000263707 s, 0 MB of memory in use
+Info: Startup phase 5 took 0.00022122 s, 0 MB of memory in use
+Info: PATCH GRID IS 3 (PERIODIC) BY 4 (PERIODIC) BY 4 (PERIODIC)
+Info: PATCH GRID IS 1-AWAY BY 1-AWAY BY 1-AWAY
+Info: REMOVING COM VELOCITY -0.0221407 0.0876091 0.0713603
+Info: LARGEST PATCH (19) HAS 363 ATOMS
+Info: TORUS A SIZE 1 USING 0
+Info: TORUS B SIZE 1 USING 0
+Info: TORUS C SIZE 1 USING 0
+Info: TORUS MINIMAL MESH SIZE IS 1 BY 1 BY 1
+Info: Placed 100% of base nodes on same physical node as patch
+Info: Startup phase 6 took 0.00316279 s, 0 MB of memory in use
+Info: Use 3D box decompostion in PME FFT.
+Info: PME using 1 x 1 x 1 pencil grid for FFT and reciprocal sum.
+Info: Startup phase 7 took 0.000614552 s, 0 MB of memory in use
+Info: Updated CUDA force table with 4096 elements.
+Info: Updated CUDA LJ table with 12 x 12 elements.
+Info: Startup phase 8 took 0.0042241 s, 0 MB of memory in use
+Info: Startup phase 9 took 0.000246551 s, 0 MB of memory in use
+Info: Startup phase 10 took 0.000270823 s, 0 MB of memory in use
+Info: Startup phase 11 took 0.00101672 s, 0 MB of memory in use
+LDB: Central LB being created...
+Info: Startup phase 12 took 0.00553805 s, 0 MB of memory in use
+Info: Startup phase 13 took 0.000285759 s, 0 MB of memory in use
+Info: Startup phase 14 took 0.000332004 s, 0 MB of memory in use
+Info: Startup phase 15 took 0.000207361 s, 0 MB of memory in use
+Info: CREATING 1072 COMPUTE OBJECTS
+Info: Found 391 unique exclusion lists needing 17336 bytes
+Info: useSync: 0 useProxySync: 0
+Info: Startup phase 16 took 0.0263403 s, 0 MB of memory in use
+Info: Startup phase 17 took 0.00065186 s, 0 MB of memory in use
+Info: Startup phase 18 took 0.000224412 s, 0 MB of memory in use
+Info: Finished startup at 0.446973 s, 0 MB of memory in use
+
+TCL: Running for 50000 steps
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:       0        13.9443        35.9184        99.8607         0.0000         -77478.1065     10906.8962         0.0000         0.0000      9950.5682         -56470.9189       311.9458    -66421.4871    -56468.9032       311.9458          -2573.8468     -2505.7294    161673.3528     -2573.8468     -2505.7294
+
+OPENING EXTENDED SYSTEM TRAJECTORY FILE
+LDB: ============= START OF LOAD BALANCING ============== 0.508862
+LDB: ============== END OF LOAD BALANCING =============== 0.509261
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 0.509718
+LDB: ============= START OF LOAD BALANCING ============== 0.602207
+LDB: Partitioning computes with target load 0.000000
+LDB: Increased migratable compute count from 0 to 0
+LDB: Largest unpartitionable compute is 0.000000
+LDB: ============== END OF LOAD BALANCING =============== 0.603482
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 0.604104
+Info: Initial time: 8 CPUs 0.00242134 s/step 0.0140124 days/ns 0 MB memory
+LDB: ============= START OF LOAD BALANCING ============== 0.62599
+LDB: ============== END OF LOAD BALANCING =============== 0.626338
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 0.626767
+LDB: ============= START OF LOAD BALANCING ============== 0.721643
+LDB: TIME 0.722102 LOAD: AVG 0.0241903 MAX 0.0461881  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 0.722404 LOAD: AVG 0.0241903 MAX 0.0461881  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 TorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 0.722686
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 0.723258
+Info: Initial time: 8 CPUs 0.00236468 s/step 0.0136845 days/ns 0 MB memory
+LDB: ============= START OF LOAD BALANCING ============== 0.844689
+LDB: TIME 0.845093 LOAD: AVG 0.0300918 MAX 0.0566498  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 0.845377 LOAD: AVG 0.0300918 MAX 0.0566498  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 0.845616 LOAD: AVG 0.0300918 MAX 0.0566498  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 0.846039
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 0.846732
+Info: Initial time: 8 CPUs 0.00239525 s/step 0.0138614 days/ns 0 MB memory
+LDB: ============= START OF LOAD BALANCING ============== 0.957906
+LDB: TIME 0.958357 LOAD: AVG 0.0301022 MAX 0.0599372  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 0.958658 LOAD: AVG 0.0301022 MAX 0.0599372  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 0.958889 LOAD: AVG 0.0301022 MAX 0.0599372  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 0.959121
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 0.959668
+Info: Benchmark time: 8 CPUs 0.0021855 s/step 0.0126476 days/ns 0 MB memory
+Info: Benchmark time: 8 CPUs 0.00206379 s/step 0.0119432 days/ns 0 MB memory
+Info: Benchmark time: 8 CPUs 0.00207018 s/step 0.0119802 days/ns 0 MB memory
+Info: Benchmark time: 8 CPUs 0.00215446 s/step 0.0124679 days/ns 0 MB memory
+Info: Benchmark time: 8 CPUs 0.00209953 s/step 0.0121501 days/ns 0 MB memory
+Info: Benchmark time: 8 CPUs 0.00202116 s/step 0.0116965 days/ns 0 MB memory
+ENERGY:     500        58.8463       164.1879       135.3432         0.0000         -66748.1173      9056.8393         0.0000         0.0000      7801.2556         -49531.6450       244.5658    -57332.9007    -49519.7903       203.2997           -446.5810      -363.4061    161673.3528      -649.2562      -649.1329
+
+ENERGY:    1000        90.8958       178.1983       138.5883         0.0000         -63852.0982      8259.0448         0.0000         0.0000      8689.6253         -46495.7457       272.4158    -55185.3710    -46477.9514       260.3953           -484.4461      -363.9661    161673.3528      -354.2848      -354.7812
+
+OPENING COORDINATE DCD FILE
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 1000
+The last position output (seq=1000) takes 0.022 seconds, 0.000 MB of memory in use
+ENERGY:    1500        56.8417       195.9982       150.6986         0.0000         -61889.7776      7606.7968         0.0000         0.0000      9227.6453         -44651.7971       289.2825    -53879.4424    -44632.6104       282.7338           -348.1517      -280.6657    161673.3528      -244.9204      -244.7212
+
+ENERGY:    2000        81.1169       200.2313       151.5407         0.0000         -61365.8735      7541.3353         0.0000         0.0000      9667.0419         -43724.6072       303.0574    -53391.6492    -43701.8778       296.6562           -346.9146      -258.6745    161673.3528       -60.7728       -61.0435
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 2000
+The last position output (seq=2000) takes 0.004 seconds, 0.000 MB of memory in use
+LDB: ============= START OF LOAD BALANCING ============== 5.01827
+LDB: ============== END OF LOAD BALANCING =============== 5.01867
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 5.01912
+LDB: ============= START OF LOAD BALANCING ============== 5.11985
+LDB: TIME 5.1203 LOAD: AVG 0.027 MAX 0.0492268  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 5.12068 LOAD: AVG 0.027 MAX 0.0492268  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 5.12091 LOAD: AVG 0.027 MAX 0.0492268  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 5.12121
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 5.12189
+ENERGY:    2500        79.1284       182.1262       145.0231         0.0000         -60851.4581      7465.3217         0.0000         0.0000      9714.1237         -43265.7349       304.5334    -52979.8586    -43240.2038       303.7219            -84.3966        18.6399    161673.3528         3.1988         2.9029
+
+ENERGY:    3000        66.9822       200.0297       146.7620         0.0000         -60504.1718      7386.7260         0.0000         0.0000      9741.1937         -42962.4781       305.3820    -52703.6719    -42940.8772       306.8895             36.4876       124.5664    161673.3528       -80.1634       -79.9835
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 3000
+The last position output (seq=3000) takes 0.004 seconds, 0.000 MB of memory in use
+ENERGY:    3500        62.7967       196.4125       165.5193         0.0000         -60445.5724      7199.3190         0.0000         0.0000      9865.4810         -42956.0439       309.2783    -52821.5249    -42935.1533       307.0020           -332.1044      -231.7673    161673.3528       -87.8621       -89.0170
+
+ENERGY:    4000        64.9037       188.4323       152.4018         0.0000         -60381.1789      7369.6616         0.0000         0.0000      9857.4635         -42748.3161       309.0270    -52605.7796    -42730.7861       308.3103            113.2040       210.8722    161673.3528        35.8806        34.6539
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 4000
+The last position output (seq=4000) takes 0.005 seconds, 0.000 MB of memory in use
+LDB: ============= START OF LOAD BALANCING ============== 9.23713
+LDB: ============== END OF LOAD BALANCING =============== 9.2375
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 9.23795
+LDB: ============= START OF LOAD BALANCING ============== 9.34609
+LDB: TIME 9.3467 LOAD: AVG 0.0304931 MAX 0.0542628  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 9.34698 LOAD: AVG 0.0304931 MAX 0.0542628  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 9.34717 LOAD: AVG 0.0304931 MAX 0.0542628  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 9.34738
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 9.34797
+ENERGY:    4500        69.0846       216.3724       147.7660         0.0000         -60625.6358      7576.6080         0.0000         0.0000      9684.1070         -42931.6977       303.5923    -52615.8047    -42914.6133       309.3130            248.5440       371.8746    161673.3528        86.8680        86.7403
+
+TIMING: 5000  CPU: 10.1559, 0.00201885/step  Wall: 10.6276, 0.00211273/step, 0.0264092 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 5000  averaging 81.7897 ns/day, 0.00211273 sec/step with standard deviation 0
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:    5000        67.8116       202.7955       148.1022         0.0000         -60475.4917      7308.9515         0.0000         0.0000      9977.3227         -42770.5083       312.7845    -52747.8309    -42752.3343       308.3354            -87.9420       -21.6679    161673.3528        28.0099        26.9502
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 5000
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 5000
+WRITING COORDINATES TO RESTART FILE AT STEP 5000
+FINISHED WRITING RESTART COORDINATES
+The last position output (seq=5000) takes 0.038 seconds, 0.000 MB of memory in use
+WRITING VELOCITIES TO RESTART FILE AT STEP 5000
+FINISHED WRITING RESTART VELOCITIES
+The last velocity output (seq=5000) takes 0.033 seconds, 0.000 MB of memory in use
+ENERGY:    5500        66.0807       210.4087       160.6028         0.0000         -60423.1514      7332.8314         0.0000         0.0000      9826.2524         -42826.9754       308.0485    -52653.2278    -42809.3260       309.2798            -39.1190        45.4192    161673.3528       -31.0235       -30.6643
+
+ENERGY:    6000        67.2975       210.8285       152.7505         0.0000         -60341.4164      7417.1924         0.0000         0.0000      9797.4815         -42695.8660       307.1466    -52493.3475    -42676.8968       310.0296            213.3807       288.1001    161673.3528         9.2630         9.3847
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 6000
+The last position output (seq=6000) takes 0.004 seconds, 0.000 MB of memory in use
+LDB: ============= START OF LOAD BALANCING ============== 13.5619
+LDB: ============== END OF LOAD BALANCING =============== 13.5623
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 13.5629
+LDB: ============= START OF LOAD BALANCING ============== 13.6667
+LDB: TIME 13.6671 LOAD: AVG 0.0282137 MAX 0.0519702  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 13.6674 LOAD: AVG 0.0282137 MAX 0.0519702  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 13.6676 LOAD: AVG 0.0282137 MAX 0.0519702  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 13.6679
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 13.6691
+ENERGY:    6500        64.9936       196.1155       144.1638         0.0000         -60281.2861      7256.3840         0.0000         0.0000      9917.7817         -42701.8474       310.9179    -52619.6292    -42678.7294       310.4604           -121.4069       -47.8363    161673.3528       -12.5577       -11.7105
+
+ENERGY:    7000        67.6166       185.2090       148.0409         0.0000         -60278.7040      7385.0691         0.0000         0.0000      9867.0527         -42625.7157       309.3276    -52492.7684    -42602.7327       309.8615            210.0520       300.3973    161673.3528        92.7656        91.8790
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 7000
+The last position output (seq=7000) takes 0.004 seconds, 0.000 MB of memory in use
+ENERGY:    7500        77.3211       205.9218       132.7932         0.0000         -60373.0843      7313.4454         0.0000         0.0000      9985.0372         -42658.5655       313.0264    -52643.6027    -42633.1552       311.4076           -125.1746       -19.5515    161673.3528       144.4414       144.2686
+
+ENERGY:    8000        81.9709       189.6796       157.4526         0.0000         -60388.5750      7404.5518         0.0000         0.0000      9970.6296         -42584.2905       312.5747    -52554.9201    -42563.5937       312.5255             47.7702       142.3078    161673.3528       117.8533       117.7769
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 8000
+The last position output (seq=8000) takes 0.004 seconds, 0.000 MB of memory in use
+LDB: ============= START OF LOAD BALANCING ============== 17.7256
+LDB: ============== END OF LOAD BALANCING =============== 17.726
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 17.7266
+LDB: ============= START OF LOAD BALANCING ============== 17.8345
+LDB: TIME 17.8349 LOAD: AVG 0.0306873 MAX 0.0565784  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 17.8352 LOAD: AVG 0.0306873 MAX 0.0565784  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 17.8355 LOAD: AVG 0.0306873 MAX 0.0565784  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 17.8358
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 17.8366
+ENERGY:    8500        76.4389       202.6881       151.1693         0.0000         -60176.2734      7248.9569         0.0000         0.0000      9876.1316         -42620.8886       309.6122    -52497.0202    -42596.2671       311.7473           -168.0954      -100.9635    161673.3528       123.1753       122.8943
+
+ENERGY:    9000        75.4076       193.1476       147.8463         0.0000         -60347.9179      7288.5518         0.0000         0.0000      9969.3949         -42673.5696       312.5360    -52642.9645    -42650.7491       309.1952            -63.8202        44.7290    161673.3528        28.2807        28.4479
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 9000
+The last position output (seq=9000) takes 0.004 seconds, 0.000 MB of memory in use
+ENERGY:    9500        73.6638       200.4577       155.8337         0.0000         -60404.7526      7416.1222         0.0000         0.0000      9937.1118         -42621.5635       311.5239    -52558.6753    -42605.1623       311.6502             43.6205       151.5377    161673.3528       155.3128       155.0553
+
+TIMING: 10000  CPU: 20.3357, 0.00203597/step  Wall: 21.2009, 0.00211466/step, 0.0234962 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 10000  averaging 81.7524 ns/day, 0.0021137 sec/step with standard deviation 1.36287e-06
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   10000        81.2604       217.1263       144.7041         0.0000         -60312.3832      7374.9812         0.0000         0.0000      9891.2929         -42603.0183       310.0875    -52494.3112    -42576.7607       310.9107             82.6717       156.9147    161673.3528        -4.7821        -4.6035
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 10000
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 10000
+WRITING COORDINATES TO RESTART FILE AT STEP 10000
+FINISHED WRITING RESTART COORDINATES
+The last position output (seq=10000) takes 0.041 seconds, 0.000 MB of memory in use
+WRITING VELOCITIES TO RESTART FILE AT STEP 10000
+FINISHED WRITING RESTART VELOCITIES
+The last velocity output (seq=10000) takes 0.036 seconds, 0.000 MB of memory in use
+LDB: ============= START OF LOAD BALANCING ============== 22.0669
+LDB: ============== END OF LOAD BALANCING =============== 22.0673
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 22.0678
+LDB: ============= START OF LOAD BALANCING ============== 22.171
+LDB: TIME 22.1714 LOAD: AVG 0.0274892 MAX 0.0477272  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 22.1717 LOAD: AVG 0.0274892 MAX 0.0477272  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 22.1719 LOAD: AVG 0.0274892 MAX 0.0477272  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 22.1724
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 22.173
+ENERGY:   10500        75.5804       194.9265       139.7283         0.0000         -60603.5379      7526.5470         0.0000         0.0000      9811.9172         -42854.8384       307.5991    -52666.7556    -42832.2096       309.5480            297.2974       376.4149    161673.3528       119.0064       119.8943
+
+ENERGY:   11000        72.7120       204.1816       154.8672         0.0000         -60475.4643      7378.0584         0.0000         0.0000      9765.9609         -42899.6843       306.1584    -52665.6452    -42876.2975       308.4871            -92.5662       -26.2243    161673.3528       -35.4766       -36.0312
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 11000
+ENERGY:   11500        69.3856       200.2724       151.2789         0.0000         -60435.3872      7308.4365         0.0000         0.0000      9752.3344         -42953.6793       305.7312    -52706.0137    -42925.1528       307.2396            -35.7966        23.7931    161673.3528        35.3158        35.8015
+
+ENERGY:   12000        71.1927       202.4132       149.6604         0.0000         -60516.8448      7444.2892         0.0000         0.0000      9894.3780         -42754.9114       310.1842    -52649.2893    -42732.2820       308.7441            145.7433       192.4908    161673.3528        37.4829        38.3693
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 12000
+LDB: ============= START OF LOAD BALANCING ============== 26.4099
+LDB: ============== END OF LOAD BALANCING =============== 26.4103
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 26.4108
+LDB: ============= START OF LOAD BALANCING ============== 26.5203
+LDB: TIME 26.5207 LOAD: AVG 0.0303861 MAX 0.0574444  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 26.521 LOAD: AVG 0.0303861 MAX 0.0574444  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 26.5213 LOAD: AVG 0.0303861 MAX 0.0574444  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 26.5218
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 26.5224
+ENERGY:   12500        62.0687       201.8579       150.6293         0.0000         -60450.2990      7406.6884         0.0000         0.0000      9874.7996         -42754.2550       309.5705    -52629.0546    -42733.5781       310.5668            142.7158       240.0057    161673.3528        75.4970        75.4661
+
+ENERGY:   13000        65.6367       178.3914       143.4330         0.0000         -60610.7414      7393.7214         0.0000         0.0000      9935.4382         -42894.1207       311.4715    -52829.5589    -42875.2807       308.9130             68.7629       146.9291    161673.3528        73.5918        73.0017
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 13000
+ENERGY:   13500        69.7089       202.2086       150.5745         0.0000         -60516.9881      7330.5630         0.0000         0.0000      9731.1968         -43032.7364       305.0686    -52763.9332    -43011.8064       306.6247            -60.0109        21.3481    161673.3528        88.0334        87.8035
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 14000
+ENERGY:   14000        72.9251       187.2076       152.7398         0.0000         -60606.7056      7448.0529         0.0000         0.0000      9867.0890         -42878.6913       309.3287    -52745.7803    -42860.4323       307.8167              5.9006        90.7494    161673.3528       119.8404       119.6422
+
+LDB: ============= START OF LOAD BALANCING ============== 30.6487
+LDB: ============== END OF LOAD BALANCING =============== 30.649
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 30.6496
+LDB: ============= START OF LOAD BALANCING ============== 30.7544
+LDB: TIME 30.7549 LOAD: AVG 0.0294229 MAX 0.0555423  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 30.7552 LOAD: AVG 0.0294229 MAX 0.0555423  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 30.7554 LOAD: AVG 0.0294229 MAX 0.0555423  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 30.7557
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 30.7563
+ENERGY:   14500        78.1658       194.1842       144.9972         0.0000         -60493.6664      7362.2900         0.0000         0.0000      9884.7699         -42829.2594       309.8830    -52714.0293    -42808.8920       308.0184           -101.5916       -45.9390    161673.3528        73.8315        73.9144
+
+TIMING: 15000  CPU: 30.6467, 0.0020622/step  Wall: 32.0411, 0.00216805/step, 0.0210782 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 15000  averaging 81.0577 ns/day, 0.00213181 sec/step with standard deviation 3.13922e-05
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   15000        75.3608       206.3937       149.1740         0.0000         -60595.2340      7519.4274         0.0000         0.0000      9924.8802         -42719.9978       311.1405    -52644.8780    -42695.7108       308.7340            194.1171       294.4120    161673.3528        52.0360        52.3127
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 15000
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 15000
+WRITING COORDINATES TO RESTART FILE AT STEP 15000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 15000
+FINISHED WRITING RESTART VELOCITIES
+The last velocity output (seq=15000) takes 0.040 seconds, 0.000 MB of memory in use
+ENERGY:   15500        63.1692       199.5737       148.5508         0.0000         -60371.0215      7358.9853         0.0000         0.0000      9822.5688         -42778.1737       307.9331    -52600.7425    -42752.5775       311.3063            161.9297       207.6382    161673.3528        39.8774        39.7830
+
+ENERGY:   16000        68.5656       192.5498       150.4947         0.0000         -60558.4471      7414.4910         0.0000         0.0000      9931.4078         -42800.9382       311.3451    -52732.3461    -42773.6699       309.4874            -92.2612        27.6589    161673.3528        26.8063        27.1321
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 16000
+LDB: ============= START OF LOAD BALANCING ============== 35.128
+LDB: ============== END OF LOAD BALANCING =============== 35.1284
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 35.1289
+LDB: ============= START OF LOAD BALANCING ============== 35.2319
+LDB: TIME 35.2323 LOAD: AVG 0.0281003 MAX 0.050471  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 35.2326 LOAD: AVG 0.0281003 MAX 0.050471  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 35.2329 LOAD: AVG 0.0281003 MAX 0.050471  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 35.2334
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 35.234
+ENERGY:   16500        71.8975       185.3610       152.8842         0.0000         -60436.8033      7266.5348         0.0000         0.0000      9974.5234         -42785.6023       312.6968    -52760.1257    -42760.9634       309.0682           -194.8938       -90.2255    161673.3528       -27.6203       -27.3962
+
+ENERGY:   17000        73.7114       203.7085       148.3474         0.0000         -60245.8374      7170.7847         0.0000         0.0000      9854.7925         -42794.4929       308.9433    -52649.2854    -42770.7483       309.8529           -220.5644      -139.2108    161673.3528       -41.1546       -40.8950
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 17000
+ENERGY:   17500        82.4989       194.3098       136.1121         0.0000         -60169.5832      7099.1202         0.0000         0.0000      9890.4428         -42767.0994       310.0609    -52657.5422    -42740.7339       310.4271           -402.9906      -318.2430    161673.3528        36.6167        35.9769
+
+ENERGY:   18000        76.1928       205.8365       137.7494         0.0000         -60139.1583      7215.4610         0.0000         0.0000      9864.8070         -42639.1116       309.2572    -52503.9186    -42620.1187       310.0168           -180.8730       -96.4866    161673.3528        98.4832        97.5952
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 18000
+LDB: ============= START OF LOAD BALANCING ============== 39.2854
+LDB: ============== END OF LOAD BALANCING =============== 39.2858
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 39.2863
+LDB: ============= START OF LOAD BALANCING ============== 39.3914
+LDB: TIME 39.3918 LOAD: AVG 0.0293109 MAX 0.0541895  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 39.3922 LOAD: AVG 0.0293109 MAX 0.0541895  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 39.3924 LOAD: AVG 0.0293109 MAX 0.0541895  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 39.3927
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 39.3933
+ENERGY:   18500        71.2146       199.3203       143.8755         0.0000         -60310.8547      7398.1171         0.0000         0.0000      9972.0842         -42526.2430       312.6203    -52498.3271    -42512.8102       311.3727             93.9644       201.3361    161673.3528       101.8693       102.4615
+
+ENERGY:   19000        65.5909       195.8482       149.1617         0.0000         -60311.3809      7275.1236         0.0000         0.0000     10048.2724         -42577.3843       315.0088    -52625.6567    -42550.8470       313.4943            114.0270       161.2977    161673.3528       245.4274       244.6655
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 19000
+ENERGY:   19500        76.6995       189.9454       144.1318         0.0000         -60352.1299      7393.7183         0.0000         0.0000      9912.1120         -42635.5228       310.7402    -52547.6349    -42604.9108       311.6314             28.3233       141.7852    161673.3528       171.7113       170.9741
+
+TIMING: 20000  CPU: 40.9982, 0.00207029/step  Wall: 42.9047, 0.00217272/step, 0.018106 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 20000  averaging 80.6707 ns/day, 0.00214204 sec/step with standard deviation 3.27923e-05
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   20000        78.0339       204.1390       150.2122         0.0000         -60278.6524      7341.1860         0.0000         0.0000      9924.6895         -42580.3918       311.1345    -52505.0813    -42555.0601       310.9495             38.8285       130.4689    161673.3528        96.1160        96.0151
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 20000
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 20000
+WRITING COORDINATES TO RESTART FILE AT STEP 20000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 20000
+FINISHED WRITING RESTART VELOCITIES
+The last velocity output (seq=20000) takes 0.043 seconds, 0.000 MB of memory in use
+LDB: ============= START OF LOAD BALANCING ============== 43.7949
+LDB: ============== END OF LOAD BALANCING =============== 43.7953
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 43.7959
+LDB: ============= START OF LOAD BALANCING ============== 43.9029
+LDB: TIME 43.9033 LOAD: AVG 0.0299762 MAX 0.0581939  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 43.9036 LOAD: AVG 0.0299762 MAX 0.0581939  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 43.9039 LOAD: AVG 0.0299762 MAX 0.0581939  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 43.9045
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 43.9052
+ENERGY:   20500        69.8399       200.8265       144.8247         0.0000         -60486.6677      7451.8008         0.0000         0.0000      9953.6880         -42665.6879       312.0436    -52619.3759    -42647.8743       310.6611             78.1241       167.4997    161673.3528        98.4263        98.4697
+
+ENERGY:   21000        62.7179       201.4891       148.2595         0.0000         -60212.2971      7240.1393         0.0000         0.0000      9832.3374         -42727.3539       308.2393    -52559.6913    -42704.5330       311.1489           -104.7023       -22.7455    161673.3528         5.4382         5.2305
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 21000
+ENERGY:   21500        66.8273       184.8328       149.2371         0.0000         -60694.9114      7590.3443         0.0000         0.0000      9874.2787         -42829.3911       309.5541    -52703.6699    -42807.3356       309.3347            284.5298       372.5482    161673.3528         6.5724         6.0644
+
+ENERGY:   22000        95.0308       192.5140       147.4943         0.0000         -60219.2584      7262.4212         0.0000         0.0000      9822.0906         -42699.7076       307.9181    -52521.7981    -42675.3958       309.2367           -215.1168      -111.1873    161673.3528        70.0094        69.0166
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 22000
+LDB: ============= START OF LOAD BALANCING ============== 47.9669
+LDB: ============== END OF LOAD BALANCING =============== 47.9673
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 47.9678
+LDB: ============= START OF LOAD BALANCING ============== 48.0716
+LDB: TIME 48.0721 LOAD: AVG 0.0292781 MAX 0.0551985  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 48.0724 LOAD: AVG 0.0292781 MAX 0.0551985  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 48.0727 LOAD: AVG 0.0292781 MAX 0.0551985  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 48.0733
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 48.074
+ENERGY:   22500        71.0056       217.9908       155.0189         0.0000         -60516.6683      7442.6171         0.0000         0.0000      9841.4363         -42788.5996       308.5245    -52630.0359    -42768.7466       309.2628            131.5159       221.1364    161673.3528        56.6192        56.2671
+
+ENERGY:   23000        68.8618       198.8256       146.5164         0.0000         -60502.6650      7504.6167         0.0000         0.0000      9854.8835         -42728.9611       308.9461    -52583.8446    -42714.0239       309.9361            162.4674       270.6864    161673.3528       126.8945       126.1776
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 23000
+ENERGY:   23500        81.2409       204.7727       146.0025         0.0000         -60161.6593      7250.9302         0.0000         0.0000      9997.2773         -42481.4358       313.4101    -52478.7131    -42458.0710       312.3046           -137.4566       -45.7335    161673.3528       182.2598       181.6286
+
+ENERGY:   24000        75.4681       186.9301       146.0441         0.0000         -60142.7568      7305.9392         0.0000         0.0000      9959.2991         -42469.0762       312.2195    -52428.3752    -42446.1129       311.4579             91.4810       187.6535    161673.3528        16.7226        17.0107
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 24000
+LDB: ============= START OF LOAD BALANCING ============== 52.2926
+LDB: ============== END OF LOAD BALANCING =============== 52.293
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 52.2937
+LDB: ============= START OF LOAD BALANCING ============== 52.4004
+LDB: TIME 52.4009 LOAD: AVG 0.0306343 MAX 0.0546108  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 52.4012 LOAD: AVG 0.0306343 MAX 0.0546108  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 52.4015 LOAD: AVG 0.0306343 MAX 0.0546108  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 52.4018
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 52.4026
+ENERGY:   24500        80.0251       214.4450       146.9706         0.0000         -60166.7902      7262.3645         0.0000         0.0000     10012.6668         -42450.3182       313.8925    -52462.9850    -42426.4328       313.6530            -98.1156         8.9484    161673.3528        87.6039        87.2669
+
+TIMING: 25000  CPU: 51.3758, 0.00207551/step  Wall: 53.6672, 0.0021525/step, 0.0149479 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 25000  averaging 80.5921 ns/day, 0.00214413 sec/step with standard deviation 2.87812e-05
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   25000        81.7834       204.1590       144.0804         0.0000         -60043.3912      7238.3200         0.0000         0.0000      9901.4081         -42473.6403       310.4046    -52375.0483    -42449.4879       312.3450           -114.8070       -24.7043    161673.3528        92.9380        92.5669
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 25000
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 25000
+WRITING COORDINATES TO RESTART FILE AT STEP 25000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 25000
+FINISHED WRITING RESTART VELOCITIES
+The last velocity output (seq=25000) takes 0.038 seconds, 0.000 MB of memory in use
+ENERGY:   25500        79.0158       194.3106       148.2835         0.0000         -60201.1859      7367.6607         0.0000         0.0000      9984.4822         -42427.4331       313.0090    -52411.9153    -42399.7254       313.3044            117.3122       198.5611    161673.3528        32.5995        33.0329
+
+ENERGY:   26000        69.5386       197.7739       152.0824         0.0000         -60032.9320      7279.6604         0.0000         0.0000      9895.3598         -42438.5168       310.2150    -52333.8767    -42415.9080       313.4276            111.4750       157.5681    161673.3528       247.5767       247.7668
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 26000
+LDB: ============= START OF LOAD BALANCING ============== 56.6071
+LDB: ============== END OF LOAD BALANCING =============== 56.6074
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 56.6081
+LDB: ============= START OF LOAD BALANCING ============== 56.7207
+LDB: TIME 56.7213 LOAD: AVG 0.0304501 MAX 0.0543489  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 56.7216 LOAD: AVG 0.0304501 MAX 0.0543489  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 56.7219 LOAD: AVG 0.0304501 MAX 0.0543489  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 56.7224
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 56.723
+ENERGY:   26500        86.2278       196.1756       146.9645         0.0000         -60224.0130      7425.4771         0.0000         0.0000      9994.4701         -42374.6978       313.3221    -52369.1679    -42356.6281       312.6990            166.0767       230.5756    161673.3528        50.4920        49.7316
+
+ENERGY:   27000        70.9802       194.6909       148.9242         0.0000         -60056.1819      7254.8874         0.0000         0.0000      9962.0989         -42424.6001       312.3073    -52386.6991    -42406.6590       313.7938             61.3744       141.2316    161673.3528       171.8902       172.0684
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 27000
+ENERGY:   27500        78.1800       215.7965       149.5112         0.0000         -60045.0871      7235.0303         0.0000         0.0000      9984.4193         -42382.1499       313.0070    -52366.5692    -42361.7835       313.1645            -81.1884        20.8073    161673.3528       184.6197       184.6912
+
+ENERGY:   28000        71.3998       206.4352       161.1915         0.0000         -60123.1920      7205.2388         0.0000         0.0000      9831.1111         -42647.8156       308.2009    -52478.9267    -42627.5698       310.8898           -153.5809       -59.0859    161673.3528         5.9744         5.8144
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 28000
+LDB: ============= START OF LOAD BALANCING ============== 60.9943
+LDB: ============== END OF LOAD BALANCING =============== 60.9947
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 60.9954
+LDB: ============= START OF LOAD BALANCING ============== 61.1016
+LDB: TIME 61.1021 LOAD: AVG 0.0304458 MAX 0.0550932  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 61.1024 LOAD: AVG 0.0304458 MAX 0.0550932  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 61.1027 LOAD: AVG 0.0304458 MAX 0.0550932  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 61.1031
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 61.1037
+ENERGY:   28500        84.4901       219.6327       151.3272         0.0000         -60353.5369      7401.0405         0.0000         0.0000      9760.2023         -42736.8442       305.9779    -52497.0465    -42719.3861       310.7962             77.5090       161.1640    161673.3528       108.8077       108.7018
+
+ENERGY:   29000        78.5657       214.9647       141.4908         0.0000         -60475.4376      7437.3435         0.0000         0.0000      9792.5573         -42810.5156       306.9922    -52603.0729    -42788.4841       309.8093            122.0521       204.2713    161673.3528        69.2485        69.1758
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 29000
+ENERGY:   29500        72.8008       202.7052       139.5445         0.0000         -60545.9064      7418.2702         0.0000         0.0000      9897.9235         -42814.6620       310.2954    -52712.5856    -42793.1079       310.3944              9.5631       112.6661    161673.3528       253.6617       253.9917
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 30000
+WRITING COORDINATES TO RESTART FILE AT STEP 30000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 30000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 30000  CPU: 61.7169, 0.00206822/step  Wall: 64.6319, 0.00219295/step, 0.012183 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 30000  averaging 80.2874 ns/day, 0.00215227 sec/step with standard deviation 3.25546e-05
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   30000        73.8498       185.6738       150.1903         0.0000         -60343.0478      7238.7938         0.0000         0.0000      9839.6434         -42854.8967       308.4683    -52694.5401    -42834.2811       308.5377           -204.8674       -83.6207    161673.3528        -4.5561        -3.8660
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 30000
+LDB: ============= START OF LOAD BALANCING ============== 65.4031
+LDB: ============== END OF LOAD BALANCING =============== 65.4035
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 65.4042
+LDB: ============= START OF LOAD BALANCING ============== 65.5177
+LDB: TIME 65.5182 LOAD: AVG 0.0310549 MAX 0.0574293  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 65.5185 LOAD: AVG 0.0310549 MAX 0.0574293  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 65.5188 LOAD: AVG 0.0310549 MAX 0.0574293  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 65.5193
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 65.52
+ENERGY:   30500        76.0647       211.4133       152.2658         0.0000         -60300.2938      7267.9813         0.0000         0.0000      9923.1165         -42669.4521       311.0852    -52592.5687    -42644.7298       308.8851           -146.2304       -63.3916    161673.3528       128.3682       127.9850
+
+ENERGY:   31000        75.7439       197.9320       142.0248         0.0000         -60383.3414      7397.3017         0.0000         0.0000      9802.1610         -42768.1781       307.2933    -52570.3391    -42746.1461       310.3335             32.4298       110.0310    161673.3528       144.6876       145.7267
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 31000
+ENERGY:   31500        61.0897       198.1500       143.6484         0.0000         -60510.9007      7395.3868         0.0000         0.0000      9941.7263         -42770.8995       311.6686    -52712.6259    -42750.5654       310.5966             78.4417       174.6146    161673.3528       134.2798       135.0477
+
+ENERGY:   32000        71.1178       196.2507       144.1577         0.0000         -60384.1598      7332.0541         0.0000         0.0000      9959.1560         -42681.4234       312.2150    -52640.5794    -42662.3261       310.5205           -126.9295       -48.1643    161673.3528        86.1731        85.9364
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 32000
+LDB: ============= START OF LOAD BALANCING ============== 69.6619
+LDB: ============== END OF LOAD BALANCING =============== 69.6623
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 69.6628
+LDB: ============= START OF LOAD BALANCING ============== 69.7656
+LDB: TIME 69.766 LOAD: AVG 0.027825 MAX 0.0539862  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 69.7662 LOAD: AVG 0.027825 MAX 0.0539862  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 69.7664 LOAD: AVG 0.027825 MAX 0.0539862  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 69.7666
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 69.7671
+ENERGY:   32500        67.8609       219.8316       147.4782         0.0000         -60387.1256      7202.6261         0.0000         0.0000     10004.2325         -42745.0963       313.6281    -52749.3287    -42719.8929       309.4836           -306.9869      -216.3905    161673.3528        64.7451        65.7299
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 33000
+ENERGY:   33000        71.0029       202.8734       142.1549         0.0000         -60608.8381      7494.7039         0.0000         0.0000      9857.7627         -42840.3402       309.0364    -52698.1029    -42819.2005       309.2947            148.7322       255.7318    161673.3528       -22.1794       -22.4599
+
+ENERGY:   33500        78.0150       200.3966       145.8630         0.0000         -60697.3761      7518.9659         0.0000         0.0000      9840.6552         -42913.4804       308.5001    -52754.1356    -42887.1208       307.6332            163.7449       254.6605    161673.3528       149.5007       149.4764
+
+ENERGY:   34000        68.3758       201.2508       153.0506         0.0000         -60174.9973      7265.3847         0.0000         0.0000      9812.0525         -42674.8829       307.6034    -52486.9354    -42656.3769       309.1657           -146.8029       -73.0268    161673.3528       -17.2103       -17.9286
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 34000
+LDB: ============= START OF LOAD BALANCING ============== 73.8927
+LDB: ============== END OF LOAD BALANCING =============== 73.8931
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 73.8944
+LDB: ============= START OF LOAD BALANCING ============== 74.0084
+LDB: TIME 74.0092 LOAD: AVG 0.0308352 MAX 0.0592141  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 74.0095 LOAD: AVG 0.0308352 MAX 0.0592141  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 74.0097 LOAD: AVG 0.0308352 MAX 0.0592141  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 74.01
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 74.0106
+ENERGY:   34500        82.7033       205.0870       152.7408         0.0000         -60354.4668      7447.9767         0.0000         0.0000      9954.3949         -42511.5641       312.0657    -52465.9589    -42488.2646       310.9451            298.5379       375.2861    161673.3528       116.6740       116.7323
+
+TIMING: 35000  CPU: 71.9319, 0.002043/step  Wall: 75.2915, 0.0021319/step, 0.00888293 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 35000  averaging 80.3961 ns/day, 0.00214936 sec/step with standard deviation 3.06987e-05
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   35000        80.3409       217.5872       145.1581         0.0000         -60337.0593      7382.1261         0.0000         0.0000      9871.8524         -42639.9946       309.4781    -52511.8471    -42613.0341       311.9810              5.6103        94.5297    161673.3528       121.4842       121.7514
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 35000
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 35000
+WRITING COORDINATES TO RESTART FILE AT STEP 35000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 35000
+FINISHED WRITING RESTART VELOCITIES
+ENERGY:   35500        84.8480       210.0891       155.4824         0.0000         -60230.1172      7330.5136         0.0000         0.0000      9799.6357         -42649.5485       307.2141    -52449.1841    -42629.6210       312.2036            -21.3206        38.5366    161673.3528       108.7357       109.1520
+
+ENERGY:   36000        65.1689       208.1736       158.1347         0.0000         -60319.3258      7353.3840         0.0000         0.0000      9930.4915         -42603.9731       311.3164    -52534.4646    -42579.4607       311.2545            -43.6341        66.7466    161673.3528        51.5757        51.8440
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 36000
+LDB: ============= START OF LOAD BALANCING ============== 78.2315
+LDB: ============== END OF LOAD BALANCING =============== 78.2319
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 78.2324
+LDB: ============= START OF LOAD BALANCING ============== 78.3338
+LDB: TIME 78.3344 LOAD: AVG 0.0277146 MAX 0.0496422  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 78.3346 LOAD: AVG 0.0277146 MAX 0.0496422  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 78.3349 LOAD: AVG 0.0277146 MAX 0.0496422  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 78.3353
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 78.3361
+ENERGY:   36500        82.2692       199.2256       154.3645         0.0000         -60385.0073      7401.8070         0.0000         0.0000     10010.1362         -42537.2049       313.8132    -52547.3411    -42513.4166       311.7281            137.7919       240.8142    161673.3528        41.1522        42.5970
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 37000
+ENERGY:   37000        69.0829       207.9900       146.1836         0.0000         -60296.8603      7390.9434         0.0000         0.0000      9952.0642         -42530.5961       311.9927    -52482.6603    -42510.7533       310.2185            209.4832       257.0036    161673.3528        34.0666        34.8987
+
+ENERGY:   37500        95.2804       197.2857       145.8224         0.0000         -60399.7593      7296.8692         0.0000         0.0000      9875.0761         -42789.4255       309.5791    -52664.5016    -42766.8766       310.1749           -187.6456       -82.5133    161673.3528       105.6353       104.9107
+
+ENERGY:   38000        68.3999       210.6632       145.3946         0.0000         -60460.1071      7545.9896         0.0000         0.0000      9892.2830         -42597.3769       310.1186    -52489.6599    -42574.5143       310.3334            212.1117       314.0126    161673.3528        49.0733        49.3048
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 38000
+LDB: ============= START OF LOAD BALANCING ============== 82.5189
+LDB: ============== END OF LOAD BALANCING =============== 82.5193
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 82.5198
+LDB: ============= START OF LOAD BALANCING ============== 82.6301
+LDB: TIME 82.6306 LOAD: AVG 0.030035 MAX 0.0549733  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 82.6309 LOAD: AVG 0.030035 MAX 0.0549733  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 82.6311 LOAD: AVG 0.030035 MAX 0.0549733  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 82.6315
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 82.6321
+ENERGY:   38500        66.2061       195.0145       154.1480         0.0000         -60524.7982      7429.9189         0.0000         0.0000      9855.5665         -42823.9441       308.9675    -52679.5106    -42802.2330       309.9352             74.5219       184.8693    161673.3528       132.3733       130.9372
+
+ENERGY:   39000        71.4894       190.7490       139.0954         0.0000         -60473.6488      7505.6765         0.0000         0.0000      9803.6713         -42762.9673       307.3406    -52566.6386    -42740.4551       309.2579            289.4081       359.9146    161673.3528       119.0697       118.5052
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 39000
+ENERGY:   39500        72.1210       179.3687       150.7775         0.0000         -60662.7113      7580.9114         0.0000         0.0000      9855.5255         -42824.0072       308.9662    -52679.5327    -42800.4733       308.7237            323.8772       408.0120    161673.3528       145.7026       144.7121
+
+TIMING: 40000  CPU: 82.2484, 0.00206329/step  Wall: 85.9479, 0.0021313/step, 0.00592027 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 40000  averaging 80.4806 ns/day, 0.0021471 sec/step with standard deviation 2.913e-05
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   40000        61.4483       183.8756       145.1250         0.0000         -60455.1887      7390.4849         0.0000         0.0000      9880.7049         -42793.5500       309.7556    -52674.2549    -42765.6776       310.0155            -12.0762        70.4863    161673.3528        96.3548        95.3556
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 40000
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 40000
+WRITING COORDINATES TO RESTART FILE AT STEP 40000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 40000
+FINISHED WRITING RESTART VELOCITIES
+LDB: ============= START OF LOAD BALANCING ============== 86.8142
+LDB: ============== END OF LOAD BALANCING =============== 86.8146
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 86.8152
+LDB: ============= START OF LOAD BALANCING ============== 86.9176
+LDB: TIME 86.918 LOAD: AVG 0.0292627 MAX 0.0570179  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 86.9183 LOAD: AVG 0.0292627 MAX 0.0570179  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 86.9186 LOAD: AVG 0.0292627 MAX 0.0570179  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: ============== END OF LOAD BALANCING =============== 86.9188
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 86.9195
+ENERGY:   40500        70.6450       204.9266       154.4426         0.0000         -60435.2171      7328.7184         0.0000         0.0000      9964.7904         -42711.6941       312.3916    -52676.4845    -42695.3538       310.0472            -19.4280        80.8982    161673.3528       160.6534       160.3085
+
+ENERGY:   41000        64.7532       184.0529       142.4075         0.0000         -60353.1078      7404.5236         0.0000         0.0000      9854.0414         -42703.3291       308.9197    -52557.3705    -42680.1742       309.9269            193.1464       217.8188    161673.3528       153.0195       153.9180
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 41000
+ENERGY:   41500        72.9395       194.0681       140.2240         0.0000         -60394.3291      7390.4321         0.0000         0.0000      9793.3917         -42803.2738       307.0184    -52596.6655    -42777.3035       310.2230             84.2725       200.9588    161673.3528       143.3992       144.3011
+
+ENERGY:   42000        76.4572       211.4000       149.7875         0.0000         -60722.7913      7523.5736         0.0000         0.0000      9802.0128         -42959.5602       307.2886    -52761.5731    -42939.3489       307.9719            134.4356       218.1677    161673.3528       124.4145       123.8784
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 42000
+LDB: ============= START OF LOAD BALANCING ============== 91.1276
+LDB: ============== END OF LOAD BALANCING =============== 91.1284
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 91.129
+LDB: ============= START OF LOAD BALANCING ============== 91.2412
+LDB: TIME 91.2417 LOAD: AVG 0.0312936 MAX 0.0585254  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 91.2421 LOAD: AVG 0.0312936 MAX 0.0585254  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 91.2423 LOAD: AVG 0.0312936 MAX 0.0585254  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 91.2428
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 91.2435
+ENERGY:   42500        68.1615       193.6538       162.4517         0.0000         -60311.5257      7261.8024         0.0000         0.0000      9827.1706         -42798.2857       308.0773    -52625.4564    -42775.1215       307.6356            -48.2144        16.4931    161673.3528        12.5957        12.7756
+
+ENERGY:   43000        78.5122       210.4990       149.4683         0.0000         -60402.7874      7333.1979         0.0000         0.0000      9796.1498         -42834.9602       307.1048    -52631.1099    -42814.9808       308.7787           -119.5297        -9.6620    161673.3528        52.7468        54.1495
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 43000
+ENERGY:   43500        69.4460       185.8522       156.7153         0.0000         -60411.2826      7418.1651         0.0000         0.0000      9945.9744         -42635.1296       311.8018    -52581.1040    -42611.6950       309.9510            115.7765       195.9105    161673.3528        73.7146        74.3526
+
+ENERGY:   44000        65.7969       204.3278       133.3340         0.0000         -60478.1983      7441.7347         0.0000         0.0000      9969.9030         -42663.1019       312.5519    -52633.0050    -42637.4574       310.8627            140.8391       227.5795    161673.3528       140.3280       140.3490
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 44000
+LDB: ============= START OF LOAD BALANCING ============== 95.3165
+LDB: ============== END OF LOAD BALANCING =============== 95.3169
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 95.3174
+LDB: ============= START OF LOAD BALANCING ============== 95.4208
+LDB: TIME 95.4212 LOAD: AVG 0.029237 MAX 0.0529684  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 95.4215 LOAD: AVG 0.029237 MAX 0.0529684  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 95.4217 LOAD: AVG 0.029237 MAX 0.0529684  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 95.4222
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 95.4229
+ENERGY:   44500        62.1700       201.8079       155.9341         0.0000         -60459.4784      7463.7803         0.0000         0.0000      9823.7680         -42752.0179       307.9707    -52575.7860    -42732.9797       310.4016            185.3119       265.1069    161673.3528       126.3685       127.1995
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 45000
+WRITING COORDINATES TO RESTART FILE AT STEP 45000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 45000
+FINISHED WRITING RESTART VELOCITIES
+TIMING: 45000  CPU: 92.4441, 0.00203915/step  Wall: 96.7807, 0.00216655/step, 0.00300909 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 45000  averaging 80.3997 ns/day, 0.00214926 sec/step with standard deviation 2.80089e-05
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   45000        74.8997       189.6043       147.7032         0.0000         -60337.1726      7307.2712         0.0000         0.0000      9904.0668         -42713.6275       310.4880    -52617.6943    -42693.4514       312.1255           -175.0944       -65.4828    161673.3528       191.0170       191.6423
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 45000
+ENERGY:   45500        70.1064       189.9766       140.1548         0.0000         -60233.9950      7259.7762         0.0000         0.0000      9838.0739         -42735.9071       308.4191    -52573.9810    -42720.8871       308.9668            -66.6906         4.2590    161673.3528       -13.8609       -13.1557
+
+ENERGY:   46000        71.7114       207.3351       151.6572         0.0000         -60292.1703      7385.1376         0.0000         0.0000      9938.9380         -42537.3911       311.5812    -52476.3291    -42514.8951       311.7636            156.7115       221.6411    161673.3528       151.1345       150.6466
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 46000
+LDB: ============= START OF LOAD BALANCING ============== 99.7137
+LDB: ============== END OF LOAD BALANCING =============== 99.7141
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 99.7146
+LDB: ============= START OF LOAD BALANCING ============== 99.8178
+LDB: TIME 99.8183 LOAD: AVG 0.0298234 MAX 0.0519003  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 99.8186 LOAD: AVG 0.0298234 MAX 0.0519003  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 99.8187 LOAD: AVG 0.0298234 MAX 0.0519003  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 99.8192
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 99.8198
+ENERGY:   46500        85.8244       211.7318       131.7708         0.0000         -60277.6024      7378.8609         0.0000         0.0000      9862.8948         -42606.5196       309.1973    -52469.4144    -42593.8390       312.3195            105.8138       194.3967    161673.3528       150.5779       150.4451
+
+ENERGY:   47000        84.6597       212.0035       148.4711         0.0000         -60381.1503      7380.1526         0.0000         0.0000      9914.4632         -42641.4001       310.8139    -52555.8633    -42612.6093       310.9940             39.1087       128.3551    161673.3528       130.3481       130.5357
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 47000
+ENERGY:   47500        80.3892       191.7893       142.7796         0.0000         -60348.6994      7272.5760         0.0000         0.0000      9839.5545         -42821.6107       308.4656    -52661.1652    -42798.0351       310.2197           -134.5536       -55.6991    161673.3528        65.9846        66.8191
+
+ENERGY:   48000        77.6676       207.5604       153.7703         0.0000         -60487.4679      7303.6760         0.0000         0.0000      9808.9245         -42935.8691       307.5053    -52744.7936    -42915.9974       307.9607           -227.5589      -125.5928    161673.3528        35.7357        36.8080
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 48000
+LDB: ============= START OF LOAD BALANCING ============== 103.824
+LDB: ============== END OF LOAD BALANCING =============== 103.825
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 103.825
+LDB: ============= START OF LOAD BALANCING ============== 103.927
+LDB: TIME 103.927 LOAD: AVG 0.028163 MAX 0.0510794  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 None MEM: 0 MB
+LDB: TIME 103.928 LOAD: AVG 0.028163 MAX 0.0510794  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: TIME 103.928 LOAD: AVG 0.028163 MAX 0.0510794  PROXIES: TOTAL 128 MAXPE 16 MAXPATCH 4 RefineTorusLB MEM: 0 MB
+LDB: Reverting to original mapping
+LDB: ============== END OF LOAD BALANCING =============== 103.928
+Info: useSync: 0 useProxySync: 0
+LDB: =============== DONE WITH MIGRATION ================ 103.929
+ENERGY:   48500        76.6161       209.0950       145.3939         0.0000         -60491.0048      7394.3267         0.0000         0.0000      9780.4020         -42885.1712       306.6111    -52665.5732    -42865.5798       308.0630              9.1872       111.8837    161673.3528        78.8205        78.2309
+
+ENERGY:   49000        78.2624       212.6282       140.1763         0.0000         -60624.6548      7482.1439         0.0000         0.0000      9911.5761         -42799.8679       310.7234    -52711.4440    -42778.8132       310.0961            122.9924       231.0070    161673.3528       112.5464       112.0537
+
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 49000
+ENERGY:   49500        74.7205       200.7357       157.0246         0.0000         -60436.1394      7432.0075         0.0000         0.0000      9744.5503         -42827.1008       305.4872    -52571.6511    -42799.2612       308.6587             87.0568       151.3757    161673.3528        73.3444        73.3572
+
+TIMING: 50000  CPU: 102.606, 0.00203227/step  Wall: 107.414, 0.00212659/step, 0 hours remaining, 0.000000 MB of memory in use.
+PERFORMANCE: 50000  averaging 80.4846 ns/day, 0.00214699 sec/step with standard deviation 2.7363e-05
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   50000        65.9218       208.7364       142.1041         0.0000         -60317.4193      7416.3781         0.0000         0.0000      9813.4975         -42670.7814       307.6487    -52484.2788    -42647.0148       308.5739            171.5644       230.4174    161673.3528       -42.4945       -42.5610
+
+WRITING EXTENDED SYSTEM TO RESTART FILE AT STEP 50000
+WRITING COORDINATES TO DCD FILE 01_relax_nvt_100ps/relax100ps.dcd AT STEP 50000
+WRITING COORDINATES TO RESTART FILE AT STEP 50000
+FINISHED WRITING RESTART COORDINATES
+WRITING VELOCITIES TO RESTART FILE AT STEP 50000
+FINISHED WRITING RESTART VELOCITIES
+WRITING EXTENDED SYSTEM TO OUTPUT FILE AT STEP 50000
+CLOSING EXTENDED SYSTEM TRAJECTORY FILE
+WRITING COORDINATES TO OUTPUT FILE AT STEP 50000
+CLOSING COORDINATE DCD FILE 01_relax_nvt_100ps/relax100ps.dcd
+WRITING VELOCITIES TO OUTPUT FILE AT STEP 50000
+====================================================
+
+WallClock: 108.032707  CPUTime: 102.756241  Memory: 0.000000 MB
+[Partition 0][Node 0] End of program

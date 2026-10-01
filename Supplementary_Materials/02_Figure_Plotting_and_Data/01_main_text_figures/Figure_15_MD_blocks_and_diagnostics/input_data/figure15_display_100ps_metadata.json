@@ -1,0 +1,36 @@
+{
+  "purpose": "temporal display",
+  "window_ps": 100.0,
+  "frames_per_window": 50,
+  "windows_per_replica": 100,
+  "replicas": 3,
+  "rows": 1800,
+  "frame_spacing_ps": 2.0,
+  "production_ns_per_replica": 10.0,
+  "maximum_1ns_reconstruction_error": 7.105427357601002e-15,
+  "source_sha256": {
+    "analysis/replica_01/polymer_rmsd.dat": "a5e9b54d1ab72f870fd6520a6dc28fea2384afad207540a3523032aa1548d398",
+    "analysis/replica_01/polymer_rg.dat": "548f78ef0c4c727bf863fa39e29bd94d50f42ab8ea91f3f882c14d93273074d4",
+    "analysis/replica_01/pfoa_head_anyN.dat": "273e9442562dbfdcc1f8c3a3f7d04c60603f8e3f8b9809c169ce20ecc6514449",
+    "analysis/replica_01/pfoa_tail_polymer_heavy_contacts_4A.dat": "df5f44389c06493db10a7ac5bb30d51447460b794acf8309c4817403867edc75",
+    "analysis/replica_01/pfoa_tail_waters_within_5A.dat": "877272e45d309c9deb09869ba9fcb64d6468ed7289da93ee8360ebfe8898238c",
+    "analysis/replica_02/polymer_rmsd.dat": "33f8c366da9041e8d2a3fb9aca300f2ede8e789821a9c7486a6073470037f05e",
+    "analysis/replica_02/polymer_rg.dat": "77160019d4cc3c90cc180ac408ced257b557d888badc2ce272a9271ce9055d45",
+    "analysis/replica_02/pfoa_head_anyN.dat": "73b60782bdc4026fc974a32a86f0a0899029ab54e0bc0cd47165a7aad8ef4e57",
+    "analysis/replica_02/pfoa_tail_polymer_heavy_contacts_4A.dat": "531f8669e2b83fc4cbb620f429e37b22ea5f845e52f135329e1c9ac195f703d4",
+    "analysis/replica_02/pfoa_tail_waters_within_5A.dat": "e222a91cc7e58775d37b26ebcaa584fb4e2df7eb5ac83d3e000e24fe639f288e",
+    "analysis/replica_03/polymer_rmsd.dat": "a119306dc3cf373980a0e502cac3f6ba9057d66b7e909078d816385702057b2b",
+    "analysis/replica_03/polymer_rg.dat": "be88376ab68cefdf6fd90845bd2649057155dfbf70d60bf67485f2620700b462",
+    "analysis/replica_03/pfoa_head_anyN.dat": "8166e80a6111ce87119d2a528570dda4ae9a8475d2c2d79ca9f38090be027277",
+    "analysis/replica_03/pfoa_tail_polymer_heavy_contacts_4A.dat": "2e71883b06fc096a6e8ca1969182e5547f29f1899de53c11c0b15c82f5966ab0",
+    "analysis/replica_03/pfoa_tail_waters_within_5A.dat": "4dc6b9672ee44af4304dc11d01583de579626f49b555a4b79d6f5e4735fab9fd"
+  },
+  "unchanged_statistical_sha256": {
+    "block_summary.csv": "ef6ed01f05efe4e9be4a01f8514cc8bda232433f036efcd896918b68f4096b3a",
+    "contact_occupancy_by_block.csv": "37342c49501eb6dd41203e2f5e914950e931a8fbcc58aba1412db3cabb79cbe4",
+    "per_replica_summary.csv": "44b0ab21b1486cdbdfc5d3afd4e92285282035cb14ff8651c7a092beace51696",
+    "convergence_diagnostics.csv": "6045297d6a32ce3db435322c0b9d8217077edfa56cd5ddb9aeb174232876c18c",
+    "stage11_summary.json": "faab36493ec41978f0703e4d3eddc5f4c355c4abc724349e45871b44960ce89e",
+    "stage11_summary.txt": "1a7f3ef943a257cb26149dd90cd6002a5cd6790e438ec0b35b7c83e666d1f35f"
+  }
+}

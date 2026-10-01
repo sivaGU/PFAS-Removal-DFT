@@ -1,0 +1,33 @@
+atoms: 15973
+residues: 5234
+partial_charge_sum: -0.00000596
+box: [55.366399 60.20653  61.625519 90.       90.       90.      ]
+box_volume_angstrom3: 205423.661276
+reference_box_volume_angstrom3: 205423.661276
+box_volume_matches_reference: True
+water_residues: 5183
+polymer_residues_PVB: 1
+polymer_atoms: 374
+polymer_elements: {'C': 144, 'H': 218, 'N': 12}
+polymer_n4_sites: 12
+neutralizing_chloride: 12
+added_nacl_pairs: 19
+sodium_residues_by_element: 19
+chloride_residues_by_element: 31
+expected_sodium: 19
+expected_chloride: 31
+target_added_nacl_molar: 0.15000000
+achieved_nominal_added_nacl_molar: 0.15358621
+charge_ok: True
+polymer_ok: True
+ions_ok: True
+salt_concentration_ok: True
+periodic_box_ok: True
+water_present_ok: True
+leap_unit_ok: True
+fatal_log_patterns: []
+residue_counts:
+  Cl-: 31
+  Na+: 19
+  PVB: 1
+  WAT: 5183

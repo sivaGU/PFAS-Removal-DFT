@@ -1,0 +1,139 @@
+{
+  "atoms": 157,
+  "charge_decimal_place_counts": {
+    "6": 157
+  },
+  "delta_from_target": "-0.004999",
+  "displayed_mol2_serialization_rounding_can_explain_delta": false,
+  "interpretation_limit": "This test addresses only rounding implied by the charge precision displayed in the final MOL2. It cannot exclude earlier rounding or other numerical changes before serialization.",
+  "largest_absolute_charges": [
+    {
+      "atom_id": 8,
+      "atom_name": "N1",
+      "atom_type": "n4",
+      "charge": "-0.604800"
+    },
+    {
+      "atom_id": 21,
+      "atom_name": "N2",
+      "atom_type": "n4",
+      "charge": "-0.604800"
+    },
+    {
+      "atom_id": 34,
+      "atom_name": "N3",
+      "atom_type": "n4",
+      "charge": "-0.604800"
+    },
+    {
+      "atom_id": 47,
+      "atom_name": "N4",
+      "atom_type": "n4",
+      "charge": "-0.604800"
+    },
+    {
+      "atom_id": 60,
+      "atom_name": "N5",
+      "atom_type": "n4",
+      "charge": "-0.604800"
+    },
+    {
+      "atom_id": 33,
+      "atom_name": "C31",
+      "atom_type": "c3",
+      "charge": "0.174100"
+    },
+    {
+      "atom_id": 7,
+      "atom_name": "C7",
+      "atom_type": "c3",
+      "charge": "0.172100"
+    },
+    {
+      "atom_id": 20,
+      "atom_name": "C19",
+      "atom_type": "c3",
+      "charge": "0.172100"
+    },
+    {
+      "atom_id": 46,
+      "atom_name": "C43",
+      "atom_type": "c3",
+      "charge": "0.172100"
+    },
+    {
+      "atom_id": 59,
+      "atom_name": "C55",
+      "atom_type": "c3",
+      "charge": "0.172100"
+    },
+    {
+      "atom_id": 32,
+      "atom_name": "C30",
+      "atom_type": "ca",
+      "charge": "-0.163300"
+    },
+    {
+      "atom_id": 19,
+      "atom_name": "C18",
+      "atom_type": "ca",
+      "charge": "-0.159300"
+    },
+    {
+      "atom_id": 45,
+      "atom_name": "C42",
+      "atom_type": "ca",
+      "charge": "-0.159300"
+    },
+    {
+      "atom_id": 58,
+      "atom_name": "C54",
+      "atom_type": "ca",
+      "charge": "-0.158300"
+    },
+    {
+      "atom_id": 6,
+      "atom_name": "C6",
+      "atom_type": "ca",
+      "charge": "-0.156300"
+    },
+    {
+      "atom_id": 106,
+      "atom_name": "H41",
+      "atom_type": "ha",
+      "charge": "0.151500"
+    },
+    {
+      "atom_id": 120,
+      "atom_name": "H55",
+      "atom_type": "ha",
+      "charge": "0.151500"
+    },
+    {
+      "atom_id": 124,
+      "atom_name": "H59",
+      "atom_type": "ha",
+      "charge": "0.150000"
+    },
+    {
+      "atom_id": 138,
+      "atom_name": "H73",
+      "atom_type": "ha",
+      "charge": "0.150000"
+    },
+    {
+      "atom_id": 88,
+      "atom_name": "H23",
+      "atom_type": "ha",
+      "charge": "0.148000"
+    }
+  ],
+  "maximum_atomic_charge": "0.174100",
+  "maximum_rounding_uncertainty_from_displayed_mol2_precision": "0.0000785",
+  "minimum_atomic_charge": "-0.604800",
+  "mol2": "rct5_antechamber_work/pVBTMA5_gaff2_am1bcc.mol2",
+  "serialized_charge_sum": "4.995001",
+  "target_charge": "5",
+  "within_0p001": false,
+  "within_0p01": true
+}

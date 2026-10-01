@@ -1,0 +1,5 @@
+parm build/pVBTMA12_PFOA_assoc.prmtop
+trajin 03_acceptance_npt_1ns/acceptance1ns.dcd shape
+autoimage anchor :PVB
+distance EndToEnd @1,2,3,4,5,6,7,8,9,10,11,12,13,14 @145,146,147,148,149,150,151,152,153,154,155,156 geom out analysis/end_to_end.dat
+run

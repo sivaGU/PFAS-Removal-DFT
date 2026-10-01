@@ -1,0 +1,15 @@
+start: Mon Sep 14 10:11:57 PM EDT 2026
+job: openbabel_geom
+host: node1838.oscar.ccv.brown.edu
+scratch: /sss/jobtmp/rzwa/openbabel_geom_20260914_221157
+TOPO_SMI override: <auto-detect>
+OpenBabel bin: /oscar/rt/9.6/25/spack/x86_64_v3/openbabel-3.1.1-agyrcjjydkhgct2f4huneznokq6ayxry/bin
+Topology input: pVBTMA12_atactic_seed20260914.smi
+1 molecule converted
+1 molecule converted
+1 molecule converted
+1 molecule converted
+1 molecule converted
+end: Mon Sep 14 10:12:16 PM EDT 2026
+Retrieving files...
+Cleaning up scratch directory: /sss/jobtmp/rzwa/openbabel_geom_20260914_221157

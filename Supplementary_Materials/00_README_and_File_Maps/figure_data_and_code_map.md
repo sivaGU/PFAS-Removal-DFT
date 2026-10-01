@@ -1,114 +1,30 @@
-# Figure Plotting and Data Map
+# Figure Data and Code Map
 
-Figure plotting/data folders live under
-`Supplementary_Materials/02_Figure_Plotting_and_Data`. Main figure PNG/PDF files
-are intentionally not included in this archive section.
+Plotting code, adjacent curated CSV/structure inputs, and PNG exports are
+under `Supplementary_Materials/02_Figure_Plotting_and_Data`. Main-text folders
+are under `01_main_text_figures`; Figure S1 is under
+`02_supplementary_figures`. Raw source families below are relative to
+`Supplementary_Materials/01_Calculations`. Consult each figure's script and
+the plotting-root README for exact adjacent filenames.
 
-## Figure_03_BTMA_exchange_energetics
+| Figure | Active plotting folder | Raw source family |
+|---|---|---|
+| 01 | `Figure_01_workflow_structure` | A reusable polymer structure asset is rendered here; the complete workflow is assembled externally in BioRender. |
+| 02 | No plotting folder | BioRender assembly using reused renders/screenshots; no separate calculation. |
+| 03 | `Figure_03_DFT_structure_atlas` | Minimal BTMA and extended DVB-BTMA optimized structures in `01_BTMA` and `02_Extended_Monomer`, with solvent identified in the panel labels. |
+| 04 | `Figure_04_BTMA_exchange_and_structures` | `01_BTMA` aqueous optimization/frequency outputs. |
+| 05 | `Figure_05_BTMA_thermochemical_decomposition` | `01_BTMA` aqueous frequency outputs; plotted values are in its adjacent CSV. |
+| 06 | `Figure_06_BTMA_species_and_components` | `01_BTMA` aqueous calculations and adjacent curated CSV. |
+| 07 | `Figure_07_BTMA_energy_decomposition_analysis` | `01_BTMA/03_EDA`. |
+| 08 | `Figure_08_NBO` | `03_NBO/DVB-BTMA+PFOA-/PFOA-Ch_wb97xd3_opt.out.gz`, with adjacent curated plotting CSV. |
+| 09 | `Figure_09_model_size_exchange` | `01_BTMA` and `02_Extended_Monomer/water`; source structures remain external to numerical CSVs. |
+| 10 | `Figure_10_PFOA_water_octanol_exchange` | `02_Extended_Monomer/water` and `02_Extended_Monomer/octanol_corrected` frequency outputs. |
+| 11 | `Figure_11_DVB_BTMA_energy_decomposition_analysis` | `02_Extended_Monomer/water/03_EDA`. |
+| 12 | `Figure_12_PFOA_water_octanol_EDA` | Aqueous and 1-octanol extended-monomer EDA records under `02_Extended_Monomer`. |
+| 13 | `Figure_13_PES` | `04_PES/R4N+PFOA-` input, complete compressed ORCA output and scan structures. |
+| 14 | `Figure_14_MD_model_and_workflow` | pVBTMA12/PFOA Stage 09 topology and a documented Stage 10 replica-01 frame. Its selection record is adjacent to the renderer. |
+| 15 | `Figure_15_MD_blocks_and_diagnostics` | `05_MD/03_Trajectory_Analysis` from three Stage 10 production replicas; plotting CSVs are adjacent. |
+| S1 | `Figure_S1_MD_raw_RMSD_and_proximity` | `05_MD/03_Trajectory_Analysis` per-frame traces for five continuous/count observables displayed as temporal means in Figure 15. |
 
-Script:
-- `plot_BTMA_data.py`
-
-Input data:
-- `input_data/btma_exchange_summary.csv`
-- manuscript structure panels in `input_structures/`
-
-The numerical CSV is curated from the BTMA optimization and frequency outputs
-archived under `01_Calculations/01_BTMA`.
-
-## Figure_04_BTMA_thermochemical_decomposition
-
-Script:
-- `plot_BTMA_G_vs_E.py`
-
-Input data:
-- `input_data/thermochemical_decomposition.csv`
-
-The curated values are derived from the BTMA frequency calculations archived
-under `01_Calculations/01_BTMA/02_Frequency`.
-
-## Figures_05_09_10_EDA
-
-Script:
-- `plot_eda_data.py`
-
-Input data:
-- `input_data/eda_component_summary.csv`
-
-This single script/data bundle supports the BTMA EDA, extended-monomer EDA, and
-solvent-dependent extended-monomer EDA figure families.
-
-## Figure_06_NBO
-
-Script:
-- `plot_nao_nbo_interaction.py`
-
-Input data:
-- `input_data/figure_06_nbo_data.csv`
-
-The curated CSV contains the NAO/NBO levels and selected donor-acceptor
-interaction read by the plotting script for the DVB-BTMA+PFOA- complex. The
-complete source output is archived at
-`01_Calculations/03_NBO/DVB-BTMA+PFOA-/PFOA-Ch_wb97xd3_opt.out.gz`.
-
-## Figures_07_08_extended_monomer_exchange
-
-Script:
-- `plot_ext_monomer_data.py`
-
-Input data:
-- `input_data/ext_monomer_exchange_summary.csv`
-- manuscript structure panels in `input_structures/`
-
-The numerical CSV is curated from calculations archived under
-`01_Calculations/01_BTMA` and `01_Calculations/02_Extended_Monomer`.
-
-## Figure_11_PES
-
-Script:
-- `plot_pes_analysis.py`
-
-Input data:
-- `input_data/R4N+PFOA-_0.15M.grid.csv`
-- `input_data/pes_mep_profile.csv`
-- molecular structures in `input_structures/`
-- curated structure panels in `structure_renders/`
-
-The PES grid, trajectory, and ORCA source files are archived under
-`01_Calculations/04_PES`.
-
-## Figure_12_MD_GBSA_exchange_cycle
-
-Script:
-- `plot_MD_exchange_cycle.py`
-
-Input data:
-- `input_data/exchange_cycle_proxy_summary.csv`
-- `input_data/exchange_cycle_proxy_per_frame.csv`
-
-The four endpoint MM/GBSA output tables used to curate these CSVs are archived
-under `01_Calculations/05_MD/03_MD_GBSA_Exchange_Cycle/04_gbsa`.
-
-## Figure_13_MD_structural_metrics
-
-Script:
-- `plot_MD_structural_metrics.py`
-
-Input data:
-- `input_data/pfoa_association_mechanism_metrics.csv`
-- `input_data/pfoa_tail_waters.csv`
-
-The trajectory-derived source tables and structural frames are archived under
-`01_Calculations/05_MD/03_MD_GBSA_Exchange_Cycle/05_metrics`.
-
-## Figure_14_MD_structural_rendering
-
-Script:
-- `figure14_plot.py`
-
-Input data:
-- `input_render/Figure_14_MD_structural_snapshots.png`
-
-The curated raster preserves the approved camera placement, transparency, and
-labels. Its source PDB files, Amber topologies, and MD endpoint structures are
-archived under `01_Calculations/05_MD`.
+The supplementary table workbook is
+`06_Table_Workbooks/Supplementary_Tables_S1-S11.xlsx`.

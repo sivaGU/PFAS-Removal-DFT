@@ -1,0 +1,97 @@
+-I: Adding /home/zwa/miniforge3/envs/AmberTools25/dat/leap/prep to search path.
+-I: Adding /home/zwa/miniforge3/envs/AmberTools25/dat/leap/lib to search path.
+-I: Adding /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm to search path.
+-I: Adding /home/zwa/miniforge3/envs/AmberTools25/dat/leap/cmd to search path.
+-f: Source build/build_stage09.generated.leap.
+
+Welcome to LEaP!
+(no leaprc in search path)
+Sourcing: ./build/build_stage09.generated.leap
+----- Source: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/cmd/leaprc.gaff2
+----- Source of /home/zwa/miniforge3/envs/AmberTools25/dat/leap/cmd/leaprc.gaff2 done
+Log file: ./leap.log
+Loading parameters: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm/gaff2.dat
+Reading title:
+AMBER General Force Field for organic molecules (Version 2.2.20, March 2021)
+----- Source: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/cmd/leaprc.water.tip3p
+----- Source of /home/zwa/miniforge3/envs/AmberTools25/dat/leap/cmd/leaprc.water.tip3p done
+Loading library: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/lib/atomic_ions.lib
+Loading library: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/lib/solvents.lib
+Loading parameters: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm/frcmod.tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+This is the additional/replacement parameter set for TIP3P water
+Loading parameters: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm/frcmod.ions1lm_126_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Li/Merz ion parameters of monovalent ions for TIP3P water model (12-6 normal usage set)
+Loading parameters: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm/frcmod.ionsjc_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Monovalent ion parameters for Ewald and TIP3P water from Joung & Cheatham JPCB (2008)
+Loading parameters: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm/frcmod.ions234lm_126_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Li/Merz ion parameters of divalent to tetravalent ions for TIP3P water model (12-6 normal usage set)
+Loading parameters: /home/zwa/miniforge3/envs/AmberTools25/dat/leap/parm/frcmod.ionsjc_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Monovalent ion parameters for Ewald and TIP3P water from Joung & Cheatham JPCB (2008)
+Loading parameters: ./inputs/polymer/pVBTMA12.frcmod
+Reading force field modification type file (frcmod)
+Reading title:
+Remark line goes here
+Loading parameters: ./inputs/pfoa/pfoa.frcmod
+Reading force field modification type file (frcmod)
+Reading title:
+Remark line goes here
+Loading Mol2 file: ./inputs/polymer/pVBTMA12_gaff2_rct.mol2
+Reading MOLECULE named PVB
+Loading Mol2 file: ./inputs/pfoa/pfoa_gaff2.mol2
+Reading MOLECULE named PFO
+Loading PDB file: ./build/stage09_start.pdb
+ (starting new molecule for chain 1)
+ (starting new molecule for chain 2)
+ (starting new molecule for chain 3)
+ (starting new molecule for chain 4)
+ (starting new molecule for chain 5)
+  total atoms in file: 15937
+Checking 'SYS'....
+
+/home/zwa/miniforge3/envs/AmberTools25/bin/teLeap: Warning!
+Close contact of 1.433 angstroms between nonbonded atoms H1 and H2
+-------  .R<WAT 1432>.A<H1 2> and .R<WAT 4116>.A<H2 3>
+Checking parameters for unit 'SYS'.
+Checking for bond parameters.
+Checking for angle parameters.
+check:  Warnings: 1
+Unit is OK.
+Total unperturbed charge:  -0.000006
+Total perturbed charge:    -0.000006
+Checking Unit.
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 73 improper torsions applied
+Building H-Bond parameters.
+Incorporating Non-Bonded adjustments.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	PFO	1
+	PVB	1
+	WAT	5163
+  )
+ (no restraints)
+Writing pdb file: build/pVBTMA12_PFOA_assoc.pdb
+   printing CRYST1 record to PDB file with box info
+	Quit
+
+Exiting LEaP: Errors = 0; Warnings = 1; Notes = 0.

@@ -1,0 +1,14 @@
+# Stage 07 pass 1: construct the exact 15 A TIP3P box before adding ions.
+# The resulting cell volume is used to calculate the number of added NaCl pairs.
+source leaprc.gaff2
+source leaprc.water.tip3p
+loadAmberParams frcmod.ionsjc_tip3p
+loadAmberParams ../05_forcefield_parameter_validation/pVBTMA12.frcmod
+PVB = loadMol2 ../04_charge_parameterization/pVBTMA12_gaff2_rct.mol2
+SYS = combine { PVB }
+solvateBox SYS TIP3PBOX 15.0
+check SYS
+charge SYS
+saveAmberParm SYS pVBTMA12_solvated_noions.prmtop pVBTMA12_solvated_noions.inpcrd
+savePdb SYS pVBTMA12_solvated_noions.pdb
+quit

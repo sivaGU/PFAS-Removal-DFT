@@ -1,0 +1,5 @@
+FINAL STATUS: PRODUCTION COMPLETE
+REPLICAS: 3
+PRODUCTION LENGTH PER REPLICA: 10 ns
+Stage 11 trajectory, PBC, cross-replica, and convergence analysis is required.
+Scientific interpretation remains prepared associated-state persistence/rearrangement only.

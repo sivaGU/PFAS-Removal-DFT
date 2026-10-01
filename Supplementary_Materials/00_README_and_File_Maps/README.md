@@ -16,9 +16,11 @@ contain the scripts and extracted data used for plotting.
 
 ## Top-level supplementary sections
 
-- `01_Calculations`: copied, pruned calculation run folders.
+- `01_Calculations`: calculation input and output folders.
 - `02_Figure_Plotting_and_Data`: plotting scripts and extracted data tables/transcripts.
 - `03_Calculation_Preparation_and_Workflow_Code`: non-plotting workflow and analysis code.
 - `04_Source_Structures_and_Model_Building`: source structures and model-building inputs.
 - `05_MD_Animations`: rendered MD trajectory animations and the VMD/FFmpeg rendering scripts.
-- `06_Table_Workbooks`: Excel workbook versions of the supplementary CSV tables.
+- `06_Table_Workbooks`: supplementary table workbook and companion index. The
+  workbook is
+  `Supplementary_Tables_S1-S11.xlsx`.

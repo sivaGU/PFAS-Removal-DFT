@@ -1,0 +1,9 @@
+{
+  "frequency_records": 35,
+  "cycles": 14,
+  "original_figure6_rounding_discrepancies": 10,
+  "solvent_DeltaE_shift_kcal_mol": 0.19895028937951054,
+  "solvent_DeltaG_shift_kcal_mol": 0.2563125197606639,
+  "r2SCAN_PFOA_original_extended_DeltaG": 0.4102907945058081,
+  "r2SCAN_PFOA_common_extended_DeltaG": 0.4102907945058081
+}

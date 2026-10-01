@@ -1,0 +1,120 @@
+===== Stage 10 started: 2026-09-20T17:16:43-04:00 =====
+Stage 10 static package validation: PASS
+run_stage10_production.sh: line 11: prefix: unbound variable
+===== Stage 10 finished: 2026-09-20T17:16:43-04:00; exit=1 =====
+===== Stage 10 started: 2026-09-20T17:31:31-04:00 =====
+Stage 10 static package validation: PASS
+RUN: replica_01/00_equil_npt_500ps.conf
+===== Stage 10 finished: 2026-09-20T17:31:32-04:00; exit=1 =====
+===== Stage 10 started: 2026-09-20T17:36:59-04:00 =====
+Stage 10 static package validation: PASS
+RUN: replica_01/00_equil_npt_500ps.conf
+{
+  "log": "replica_01/00_equil_npt_500ps/equil.log",
+  "max_energy_step": 250000,
+  "issues": []
+}
+RUN: replica_01/01_prod_1ns.conf
+{
+  "log": "replica_01/01_prod_1ns/prod_01.log",
+  "max_energy_step": 750000,
+  "issues": []
+}
+RUN: replica_01/02_prod_1ns.conf
+{
+  "log": "replica_01/02_prod_1ns/prod_02.log",
+  "max_energy_step": 1250000,
+  "issues": []
+}
+RUN: replica_01/03_prod_1ns.conf
+{
+  "log": "replica_01/03_prod_1ns/prod_03.log",
+  "max_energy_step": 1750000,
+  "issues": []
+}
+RUN: replica_01/04_prod_1ns.conf
+{
+  "log": "replica_01/04_prod_1ns/prod_04.log",
+  "max_energy_step": 2250000,
+  "issues": []
+}
+RUN: replica_01/05_prod_1ns.conf
+{
+  "log": "replica_01/05_prod_1ns/prod_05.log",
+  "max_energy_step": 2750000,
+  "issues": []
+}
+RUN: replica_02/00_equil_npt_500ps.conf
+{
+  "log": "replica_02/00_equil_npt_500ps/equil.log",
+  "max_energy_step": 250000,
+  "issues": []
+}
+RUN: replica_02/01_prod_1ns.conf
+{
+  "log": "replica_02/01_prod_1ns/prod_01.log",
+  "max_energy_step": 750000,
+  "issues": []
+}
+RUN: replica_02/02_prod_1ns.conf
+{
+  "log": "replica_02/02_prod_1ns/prod_02.log",
+  "max_energy_step": 1250000,
+  "issues": []
+}
+RUN: replica_02/03_prod_1ns.conf
+{
+  "log": "replica_02/03_prod_1ns/prod_03.log",
+  "max_energy_step": 1750000,
+  "issues": []
+}
+RUN: replica_02/04_prod_1ns.conf
+{
+  "log": "replica_02/04_prod_1ns/prod_04.log",
+  "max_energy_step": 2250000,
+  "issues": []
+}
+RUN: replica_02/05_prod_1ns.conf
+{
+  "log": "replica_02/05_prod_1ns/prod_05.log",
+  "max_energy_step": 2750000,
+  "issues": []
+}
+RUN: replica_03/00_equil_npt_500ps.conf
+{
+  "log": "replica_03/00_equil_npt_500ps/equil.log",
+  "max_energy_step": 250000,
+  "issues": []
+}
+RUN: replica_03/01_prod_1ns.conf
+{
+  "log": "replica_03/01_prod_1ns/prod_01.log",
+  "max_energy_step": 750000,
+  "issues": []
+}
+RUN: replica_03/02_prod_1ns.conf
+{
+  "log": "replica_03/02_prod_1ns/prod_02.log",
+  "max_energy_step": 1250000,
+  "issues": []
+}
+RUN: replica_03/03_prod_1ns.conf
+{
+  "log": "replica_03/03_prod_1ns/prod_03.log",
+  "max_energy_step": 1750000,
+  "issues": []
+}
+RUN: replica_03/04_prod_1ns.conf
+{
+  "log": "replica_03/04_prod_1ns/prod_04.log",
+  "max_energy_step": 2250000,
+  "issues": []
+}
+RUN: replica_03/05_prod_1ns.conf
+{
+  "log": "replica_03/05_prod_1ns/prod_05.log",
+  "max_energy_step": 2750000,
+  "issues": []
+}
+Stage 10 output validation: PASS (3 x 5 ns)
+===== Stage 10 finished: 2026-09-20T22:15:06-04:00; exit=0 =====

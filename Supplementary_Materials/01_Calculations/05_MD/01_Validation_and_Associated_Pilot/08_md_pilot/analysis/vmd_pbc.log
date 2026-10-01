@@ -1,0 +1,54 @@
+Info) VMD for LINUXAMD64, version 2.0.1a1 (April 21, 2026)
+Info) http://www.ks.uiuc.edu/Research/vmd/                         
+Info) Email questions and bug reports to vmd@ks.uiuc.edu           
+Info) Please include this reference in published work using VMD:   
+Info)    Humphrey, W., Dalke, A. and Schulten, K., `VMD - Visual   
+Info)    Molecular Dynamics', J. Molec. Graphics 1996, 14.1, 33-38.
+Info) -------------------------------------------------------------
+Info) Multithreading available, 16 CPUs.
+Info)   CPU features: SSE2 SSE4.1 AVX AVX2 FMA F16 HT 
+Info)   Detected VM or hypervisor execution environment
+Info) Free system memory: 15GB (96%)
+Info) Creating CUDA device pool and initializing hardware...
+Info) Detected 1 available CUDA accelerator::
+Info) [0] NVIDIA GeForce RTX 4050 Laptop GPU 20 SM_8.9 1.6 GHz, 6.0GB RAM SP64 KT AE1 ZC
+Info) Dynamically loaded 3 plugins in directory:
+Info) /home/zwa/vmd/lib/vmd/plugins/LINUXAMD64/molfile
+OptiXRenderer) ERROR: Failed to load OptiX shared library.
+OptiXRenderer)        NVIDIA driver may be too old.
+OptiXRenderer)        Check/update NVIDIA driver
+Info) Duplicate resname "4YS" for glycanReader.
+Info) Duplicate resname "YGA" for glycanReader.
+Info) The duplication indicates a conflict with residue names in the PDB, GLYCAM, or CHARMM databases. If you're not working with glycans that use these residue names, you can safely ignore this warning.
+../07_solvation_ion_validation/pVBTMA12_12Cl_015MNaCl_pilot.prmtop
+05_acceptance_npt_1ns/acceptance1ns.dcd
+analysis/vmd_box.dat
+500
+index 0 to 373
+Info) Using plugin parm7 for structure file ../07_solvation_ion_validation/pVBTMA12_12Cl_015MNaCl_pilot.prmtop
+Info) Analyzing structure ...
+Info)    Atoms: 15973
+Info)    Bonds: 15934
+Info)    Angles: 0  Dihedrals: 0  Impropers: 0  Cross-terms: 0
+Info)    Bondtypes: 0  Angletypes: 0  Dihedraltypes: 0  Impropertypes: 0
+Info)    Residues: 5234
+Info)    Waters: 5183
+Info)    Segments: 1
+Info)    Fragments: 5234   Protein: 0   Nucleic: 0
+Info) Residue name "PVB" not found in glycan file.
+Info)    Appeared 12 times.
+dcdplugin) detected standard 32-bit DCD file of native endianness
+dcdplugin) CHARMM format DCD file (also NAMD 2.1 and later)
+Info) Using plugin dcd for coordinates from file 05_acceptance_npt_1ns/acceptance1ns.dcd
+Info) Finished with coordinate file 05_acceptance_npt_1ns/acceptance1ns.dcd.
+500
+file21
+Info) 100.0% complete (frame 0)
+Info) 0.4% complete (frame 1)
+Info) 100.0% complete (frame 499)
+VMD_PBC_STATUS PASS
+VMD_FRAMES 500
+PBCTOOLS_VERSION 2.8
+VMD_BOX_FILE analysis/vmd_box.dat
+Info) VMD for LINUXAMD64, version 2.0.1a1 (April 21, 2026)
+Info) Exiting normally.

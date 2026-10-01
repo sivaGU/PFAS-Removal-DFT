@@ -1,43 +1,20 @@
 # Source Structures and Model-Building Map
 
-Source structures and model-building inputs live under
-`Supplementary_Materials/04_Source_Structures_and_Model_Building`.
+Paths are relative to `Supplementary_Materials/04_Source_Structures_and_Model_Building`.
 
-## 01_initial_small_molecule_structures
+| Folder | Purpose and origin |
+|---|---|
+| `01_initial_small_molecule_structures/pubchem`, `processed`, `complexes` | Source and prepared small-molecule and DFT structures. Matching geometries for individual calculations also accompany their inputs and outputs under `01_Calculations`. |
+| `02_pVBTMA12_current_model/01_model_definition` | Constitutional and stereo-explicit model definitions, graph builders, and stereochemical specification. `pVBTMA12_model_definition.mol` is the model graph. |
+| `02_pVBTMA12_current_model/02_accepted_UFF_structure` | UFF-minimized SDF and XYZ structure used for parameterization. |
+| `02_pVBTMA12_current_model/03_structure_validation` | Indexed structure/connectivity validation records and validator. |
+| `02_pVBTMA12_current_model/04_RCT_charge_models` | RCT 5-mer charge-source SDF/MOL2, atom maps, charge-transfer records, and full 12-mer `pVBTMA12_gaff2_rct.mol2`. |
+| `02_pVBTMA12_current_model/05_dry_and_solvated` | Stage 06 dry polymer PDB and Stage 07 chloride/NaCl solvated PDB. Matching LEaP inputs, logs and Amber topology/coordinates are under `01_Calculations/05_MD/01_Validation_and_Associated_Pilot`. |
+| `02_pVBTMA12_current_model/06_PFOA_associated` | Stage 09 associated-system starting PDB and final built PDB, plus PFOA GAFF2 MOL2 and frcmod. |
 
-Contents:
-- `pubchem/`: source SDF files for BTMA, cholestyramine, and PFAS species.
-- `processed/`: cleaned XYZ structures used as starting materials.
-- `complexes/`: initial PFAS-cholestyramine complex structures.
-- `PFOA-Cholestyramine_pes.xyz`: starting structure used for the PFOA PES setup.
-
-Purpose:
-Records small-molecule and fragment starting structures upstream of the DFT
-model calculations.
-
-## 02_48mer_resin_model_construction
-
-Contents:
-- `builder_code/cholestyramine_polymer5.py`
-- `structures/48mer_init.sdf`
-- `structures/48mer_init.pdb`
-- `structures/48mer_init.xyz`
-- `structures/48mer_initialopt.xyz`
-- `structures/cholestyramine_multichain_topology.smi`
-- `structures/cholestyramine_multichain_topology_gen3d_mmffmin.sdf`
-- `structures/cholestyramine_multichain_topology_gen3d_mmffmin.xyz`
-
-Purpose:
-Contains the latest resin-builder script and the resulting 48mer model
-structures. Earlier development versions of the resin builder were intentionally
-not included.
-
-## 03_MD_initial_inputs
-
-Contents:
-- `PFOA.pdb`
-- `chol48_with_counterions.pdb`
-
-Purpose:
-Initial PDB inputs used in the AMBER/MD model-building workflow.
+Figure 14's selected structure and provenance record are under
+`02_Figure_Plotting_and_Data/01_main_text_figures/Figure_14_MD_model_and_workflow/input_data/`.
+That frame is distinct from the Stage 09 start. Its paired topology and source
+DCD chunk are under `01_Calculations/05_MD`; see `frame_selection.md` for the
+exact replica, chunk, frame and checksums.
 

@@ -1,0 +1,91 @@
+{
+  "purpose": "stereo-explicit atactic-like finite pVBTMA12 topology; no 3D coordinates selected here",
+  "rdkit_version": "2023.09.3",
+  "selection_seed": 20260914,
+  "accepted_random_draw_number": 92,
+  "selection_criteria": {
+    "n_stereogenic_backbone_centers": 11,
+    "plus_count_allowed": [
+      5,
+      6
+    ],
+    "same_handed_diads_allowed_inclusive": [
+      4,
+      6
+    ],
+    "maximum_same_handed_run": 2,
+    "selection_uses_geometry_or_energy": false
+  },
+  "local_parity_sequence_repeat_1_to_11": [
+    "+",
+    "+",
+    "-",
+    "-",
+    "+",
+    "-",
+    "-",
+    "+",
+    "+",
+    "-",
+    "+"
+  ],
+  "plus_count": 6,
+  "minus_count": 5,
+  "same_handed_diads": 4,
+  "opposite_handed_diads": 6,
+  "maximum_run": 2,
+  "classification": "mixed/atactic-like finite realization",
+  "repeat_12": "terminal CH2(aryl); not stereogenic",
+  "canonical_constitutional_smiles": "CC(CC(CC(CC(CC(CC(CC(CC(CC(CC(CC(CCc1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1",
+  "canonical_isomeric_smiles": "C[C@@H](C[C@@H](C[C@H](C[C@H](C[C@@H](C[C@H](C[C@H](C[C@@H](C[C@@H](C[C@H](C[C@@H](CCc1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1)c1ccc(C[N+](C)(C)C)cc1",
+  "roundtrip_rdkit_chiral_centers": [
+    [
+      1,
+      "S"
+    ],
+    [
+      3,
+      "S"
+    ],
+    [
+      5,
+      "R"
+    ],
+    [
+      7,
+      "R"
+    ],
+    [
+      9,
+      "S"
+    ],
+    [
+      11,
+      "R"
+    ],
+    [
+      13,
+      "S"
+    ],
+    [
+      15,
+      "R"
+    ],
+    [
+      17,
+      "R"
+    ],
+    [
+      19,
+      "S"
+    ],
+    [
+      21,
+      "R"
+    ]
+  ],
+  "formula": "C144H218N12+12",
+  "formal_charge": 12,
+  "heavy_atoms": 156,
+  "quaternary_ammonium_sites": 12
+}

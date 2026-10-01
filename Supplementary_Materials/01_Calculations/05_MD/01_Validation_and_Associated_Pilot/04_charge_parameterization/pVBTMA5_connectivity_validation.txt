@@ -1,0 +1,53 @@
+{
+  "atoms": 157,
+  "bonds": 161,
+  "charge_check": {
+    "delta": -0.004999000000000642,
+    "expected_charge": 5.0,
+    "interpretation": "Reported separately from constitutional connectivity. A small raw AM1-BCC charge residual is permitted at this stage because the RCT workflow subsequently averages and residue-normalizes H/I/T charge libraries to their known +1 formal charges.",
+    "observed_charge": 4.995000999999999,
+    "within_1e-6": false
+  },
+  "composition": {
+    "C": 60,
+    "H": 92,
+    "N": 5
+  },
+  "connected_components": 1,
+  "connectivity_checks": {
+    "atom_count_match": true,
+    "bond_count_match": true,
+    "connected_component_count_match": true,
+    "degree4_nitrogen_count_match": true,
+    "heavy_bond_count_match": true,
+    "indexwise_bond_set_match": true,
+    "indexwise_element_sequence_match": true
+  },
+  "constitutional_connectivity_pass": true,
+  "degree4_nitrogens": 5,
+  "gaff2_atom_type_counts": {
+    "c3": 30,
+    "ca": 30,
+    "ha": 20,
+    "hc": 17,
+    "hx": 55,
+    "n4": 5
+  },
+  "heavy_atom_bonds": 69,
+  "mol2": "rct5_antechamber_work/pVBTMA5_gaff2_am1bcc.mol2",
+  "partial_charge_sum": 4.995000999999999,
+  "reference": {
+    "atoms": 157,
+    "bonds": 161,
+    "composition": {
+      "C": 60,
+      "H": 92,
+      "N": 5
+    },
+    "connected_components": 1,
+    "degree4_nitrogens": 5,
+    "heavy_atom_bonds": 69
+  },
+  "reference_sdf": "pVBTMA5_rct_model_uffmin.sdf",
+  "validation_scope": "Indexed element sequence and atom-pair constitutional connectivity only; bond orders and stereochemistry are not checked here."
+}

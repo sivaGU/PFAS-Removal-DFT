@@ -1,0 +1,16 @@
+Stage 09 prepared-PFOA acceptance summary
+technical status: PASS
+PFOA association is an observation, not a technical pass/fail gate.
+selected repeat: 9
+initial nearest carboxylate O-N: 4.430 A
+mean nearest PFOA head-to-any-ammonium distance: 5.081 A
+fraction <5 A: 0.528
+final nearest head-to-any-ammonium distance: 5.081 A
+final 200 ps fraction <5 A: 0.770
+final 100 ps fraction <5 A: 0.780
+mean PFOA-polymer heavy-atom minimum distance: 2.992 A
+minimum polymer-image distance: 24.067 A
+minimum PFOA-image distance: 42.199 A
+mean acceptance temperature: 310.354 K
+errors:
+  - none

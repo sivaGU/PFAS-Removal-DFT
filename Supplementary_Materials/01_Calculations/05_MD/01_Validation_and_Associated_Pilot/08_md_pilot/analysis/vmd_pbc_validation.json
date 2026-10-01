@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "vmd_frames": 500,
+  "dcd_freq_steps": 1000,
+  "xst_records_total": 101,
+  "xst_records_compared": 100,
+  "max_vmd_vs_xst_length_delta_A": 2.3189000017964645e-06,
+  "max_vmd_vs_xst_angle_delta_deg": 0.0,
+  "mean_vmd_lengths_A": [
+    51.22481462,
+    55.702888148,
+    57.015732294
+  ],
+  "mean_vmd_angles_deg": [
+    90.0,
+    90.0,
+    90.0
+  ],
+  "errors": []
+}

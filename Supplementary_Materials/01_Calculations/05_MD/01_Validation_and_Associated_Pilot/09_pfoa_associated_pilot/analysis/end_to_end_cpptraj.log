@@ -1,0 +1,73 @@
+
+CPPTRAJ: Trajectory Analysis. V6.29.13 (AmberTools)
+    ___  ___  ___  ___
+     | \/ | \/ | \/ | 
+    _|_/\_|_/\_|_/\_|_
+
+| Date/time: 09/19/26 23:46:31
+| Available memory: 15.687 GB
+
+INPUT: Reading input from 'stage09_end_to_end.generated.cpptraj'
+  [parm build/pVBTMA12_PFOA_assoc.prmtop]
+	Reading 'build/pVBTMA12_PFOA_assoc.prmtop' as Amber Topology
+	Radius Set: modified Bondi radii (mbondi)
+  [trajin 03_acceptance_npt_1ns/acceptance1ns.dcd shape]
+	Reading '03_acceptance_npt_1ns/acceptance1ns.dcd' as Charmm DCD
+  [autoimage anchor :PVB]
+    AUTOIMAGE: To box center based on center of mass, anchor mask is [:PVB]
+	Auto-imaging using molecule distances.
+  [distance EndToEnd @1,2,3,4,5,6,7,8,9,10,11,12,13,14 @145,146,147,148,149,150,151,152,153,154,155,156 geom out analysis/end_to_end.dat]
+    DISTANCE: @1,2,3,4,5,6,7,8,9,10,11,12,13,14 to @145,146,147,148,149,150,151,152,153,154,155,156, geometric center.
+  [run]
+---------- RUN BEGIN -------------------------------------------------
+
+PARAMETER FILES (1 total):
+ 0: pVBTMA12_PFOA_assoc.prmtop, 15937 atoms, 5214 res, box: Orthorhombic, 5214 mol, 5163 solvent
+
+INPUT TRAJECTORIES (1 total):
+ 0: 'acceptance1ns.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm pVBTMA12_PFOA_assoc.prmtop (Orthorhombic box) (reading 500 of 500)
+  Coordinate processing will occur on 500 frames.
+
+BEGIN TRAJECTORY PROCESSING:
+.....................................................
+ACTION SETUP FOR PARM 'pVBTMA12_PFOA_assoc.prmtop' (2 actions):
+  0: [autoimage anchor :PVB]
+	Anchoring on atoms selected by mask ':PVB'
+	Mask [:PVB] corresponds to 374 atoms.
+	Mask [:PVB] corresponds to molecule 1
+	1 molecules are fixed to anchor: 2
+	5212 molecules are mobile.
+  1: [distance EndToEnd @1,2,3,4,5,6,7,8,9,10,11,12,13,14 @145,146,147,148,149,150,151,152,153,154,155,156 geom out analysis/end_to_end.dat]
+	@1,2,3,4,5,6,7,8,9,10,11,12,13,14 (14 atoms) to @145,146,147,148,149,150,151,152,153,154,155,156 (12 atoms), imaged.
+----- acceptance1ns.dcd (1-500, 1) -----
+ 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% Complete.
+
+Read 500 frames and processed 500 frames.
+TIME: Avg. throughput= 861.0076 frames / second.
+
+ACTION OUTPUT:
+TIME: Analyses took 0.0000 seconds.
+
+DATASETS (1 total):
+	EndToEnd "EndToEnd" (double, distance), size is 500 (4.000 kB)
+    Total data set memory usage is at least 4.000 kB
+
+DATAFILES (1 total):
+  end_to_end.dat (Standard Data File):  EndToEnd
+
+RUN TIMING:
+TIME:		Init               : 0.0002 s (  0.03%)
+TIME:		Trajectory Process : 0.5807 s ( 95.80%)
+TIME:		Action Post        : 0.0000 s (  0.00%)
+TIME:		Analysis           : 0.0000 s (  0.00%)
+TIME:		Data File Write    : 0.0252 s (  4.15%)
+TIME:		Other              : 0.0001 s (  0.00%)
+TIME:	Run Total 0.6061 s
+---------- RUN END ---------------------------------------------------
+TIME: Total execution time: 0.7361 seconds.
+--------------------------------------------------------------------------------
+To cite CPPTRAJ use:
+Daniel R. Roe and Thomas E. Cheatham, III, "PTRAJ and CPPTRAJ: Software for
+  Processing and Analysis of Molecular Dynamics Trajectory Data". J. Chem.
+  Theory Comput., 2013, 9 (7), pp 3084-3095.
+

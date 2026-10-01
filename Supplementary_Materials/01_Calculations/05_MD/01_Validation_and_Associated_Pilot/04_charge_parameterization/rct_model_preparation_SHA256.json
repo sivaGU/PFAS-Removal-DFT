@@ -1,0 +1,9 @@
+{
+  "pVBTMA5_rct_model_uffmin.sdf": "2fd84fa4c00ac71956ae383590300049e6d285bbd0e618d5c2bed8626a068f54",
+  "pVBTMA5_rct_model.smi": "0bb81178161aa7513c989675fb87f28933792228b5bf0f0fa7a37d2926063e44",
+  "pVBTMA5_rct_atom_mapping.json": "e33f6112b3c0a80ab2d89f2d22e3292a88bdd46a9ab7acd90fcee9f615a0c4c9",
+  "pVBTMA12_rct_reference.sdf": "e457ea6da0030456a25dd95e578a719a22db30ace7acc44aafe53ecd4c490d15",
+  "pVBTMA12_rct_atom_mapping.json": "4e202394dca47bbd2782b928ca200f047be17d58470e7ae7beb6121fa5970015",
+  "pVBTMA12_accepted_to_rct_reorder.json": "275830390735e9fd5bdeba50de201e32efac0cb8b57afa9f81b0dbc05c797fd5",
+  "rct_model_preparation.json": "d9e995d29f3e52282100ef839ea41aad874dd172cd2cd0ef3b989893631ae35e"
+}

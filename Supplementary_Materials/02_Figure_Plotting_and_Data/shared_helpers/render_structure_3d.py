@@ -1,12 +1,5 @@
 #!/usr/bin/env python3
-"""
-Render simple 3D molecular structure figures from XYZ or PDB files.
-
-Examples
---------
-python3 tools/render_structure_3d.py molecule.xyz --out molecule.png
-python3 tools/render_structure_3d.py frame.pdb --hide-h --contact 12:48 --contact 15:101:#d62728:O...N
-"""
+"""Molecular structure rendering"""
 
 from __future__ import annotations
 
@@ -317,9 +310,10 @@ def draw_structure(
         ax.legend(handles=handles, loc="upper right", frameon=False, fontsize=8)
     fig.subplots_adjust(left=0, right=1, bottom=0, top=0.94 if title else 1)
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(out_path, dpi=dpi, transparent=True, bbox_inches="tight", pad_inches=0.02)
+    fig.savefig(out_path, format="png", dpi=dpi, transparent=True,
+                bbox_inches="tight", pad_inches=0.02)
     plt.close(fig)
-    if not no_crop and out_path.suffix.lower() == ".png":
+    if not no_crop:
         crop_transparent_png(out_path)
 
 
@@ -524,7 +518,7 @@ def draw_structure_pymol(
             f"PyMOL did not create expected output {out_path}\n"
             f"STDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}"
         )
-    if not no_crop and out_path.suffix.lower() == ".png":
+    if not no_crop:
         crop_transparent_png(out_path)
 
 
@@ -532,7 +526,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("structure", type=Path, help="Input .xyz or .pdb file")
     parser.add_argument("--backend", choices=["matplotlib", "pymol"], default="matplotlib", help="Rendering backend")
-    parser.add_argument("--out", type=Path, default=None, help="Output image path; default is input name + .png")
+    parser.add_argument("--out", type=Path, default=None, help="PNG image path; default is input name + .png")
     parser.add_argument("--frame", type=int, default=-1, help="XYZ frame index, 0-based; negative values count from end")
     parser.add_argument("--contact", action="append", type=parse_contact, default=[], help="Distance/contact line: i:j[:color[:label]]")
     parser.add_argument("--hide-h", action="store_true", help="Hide hydrogen atoms")
@@ -566,6 +560,8 @@ def main() -> None:
     args = parser.parse_args()
     structure_path = args.structure.resolve()
     out_path = (args.out or args.structure.with_suffix(".png")).resolve()
+    if out_path.suffix.lower() != ".png":
+        raise ValueError("Only PNG image output is supported")
     keep_script = args.keep_pymol_script.resolve() if args.keep_pymol_script else None
     structure = read_structure(structure_path, args.frame)
     if args.backend == "pymol":

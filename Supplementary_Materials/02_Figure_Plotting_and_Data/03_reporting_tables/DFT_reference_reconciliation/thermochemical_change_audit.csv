@@ -1,0 +1,57 @@
+panel,series,category,pfas,uploaded_value,source_correct_original_reference,final_common_reference,original_rounding_discrepancy
+exchange,r2SCAN-3c,DeltaE,FHEA,-1.07,-1.0733844858639712,-1.0733844858639712,False
+exchange,r2SCAN-3c,DeltaE,PFHxA,-2.69,-2.687975989159849,-2.687975989159849,False
+exchange,r2SCAN-3c,DeltaE,PFOA,-1.95,-1.9544867884277444,-1.0318409278657459,False
+exchange,r2SCAN-3c,DeltaE,PFOS,-1.04,-1.04078310854542,-1.04078310854542,False
+exchange,wB97X-D3,DeltaE,FHEA,0.18,0.17857897586430851,-3.1297438311337054,False
+exchange,wB97X-D3,DeltaE,PFHxA,-1.76,-1.7573050473106888,-2.0435866614425082,False
+exchange,wB97X-D3,DeltaE,PFOA,-1.05,-1.0482346184238442,0.8237123209124209,False
+exchange,wB97X-D3,DeltaE,PFOS,-0.06,-0.06280654348649041,-0.4590016591347714,False
+exchange,r2SCAN-3c,DeltaCorr,FHEA,7.07,7.0654222525016666,7.0654222525016666,False
+exchange,r2SCAN-3c,DeltaCorr,PFHxA,7.2,7.203483963279748,7.203483963279748,False
+exchange,r2SCAN-3c,DeltaCorr,PFOA,7.87,7.866667699404641,8.390198997923584,False
+exchange,r2SCAN-3c,DeltaCorr,PFOS,7.3,7.297171791190543,7.297171791190543,False
+exchange,wB97X-D3,DeltaCorr,FHEA,5.4,5.402138880413216,5.20081374961494,False
+exchange,wB97X-D3,DeltaCorr,PFHxA,6.3,6.300762293387628,6.576106417343188,False
+exchange,wB97X-D3,DeltaCorr,PFOA,6.78,6.777822822413816,7.250144601248551,False
+exchange,wB97X-D3,DeltaCorr,PFOS,6.09,6.091685391033552,6.187485446573142,False
+exchange,r2SCAN-3c,DeltaG,FHEA,5.99,5.992037766637695,5.992037766637695,False
+exchange,r2SCAN-3c,DeltaG,PFHxA,4.52,4.515507974119899,4.515507974119899,False
+exchange,r2SCAN-3c,DeltaG,PFOA,5.91,5.912180910976897,7.358358070057838,False
+exchange,r2SCAN-3c,DeltaG,PFOS,6.26,6.256388682645123,6.256388682645123,False
+exchange,wB97X-D3,DeltaG,FHEA,5.58,5.580717856277524,2.0710699184812347,False
+exchange,wB97X-D3,DeltaG,PFHxA,4.54,4.5434572460769385,4.53251975590068,False
+exchange,wB97X-D3,DeltaG,PFOA,5.73,5.729588203989971,8.07385692216097,False
+exchange,wB97X-D3,DeltaG,PFOS,6.03,6.028878847547062,5.72848378743837,False
+species,functional_difference,BTMA-PFAS complex,FHEA,2.83,2.8261422153652602,2.8261422153652602,False
+species,functional_difference,BTMA-PFAS complex,PFHxA,3.03,3.029389017388829,3.029389017388829,False
+species,functional_difference,BTMA-PFAS complex,PFOA,3.48,3.47119840210513,3.47119840210513,True
+species,functional_difference,BTMA-PFAS complex,PFOS,4.46,4.46110723225294,4.46110723225294,False
+species,functional_difference,BTMA-Cl complex,FHEA,-2.45,-2.452877447457996,-2.452877447457996,False
+species,functional_difference,BTMA-Cl complex,PFHxA,-2.45,-2.452877447457996,-2.452877447457996,False
+species,functional_difference,BTMA-Cl complex,PFOA,-2.45,-2.452877447457996,-2.452877447457996,False
+species,functional_difference,BTMA-Cl complex,PFOS,-2.45,-2.452877447457996,-2.452877447457996,False
+species,functional_difference,Free PFAS anion,FHEA,-2.03,-2.036546376053563,-2.237871506851839,True
+species,functional_difference,Free PFAS anion,PFHxA,-1.48,-1.4792314758808016,-1.2038873519252409,False
+species,functional_difference,Free PFAS anion,PFOA,-2.11,-2.107164067695808,-2.158373587380015,False
+species,functional_difference,Free PFAS anion,PFOS,-3.21,-3.2137144210097826,-3.117914365470193,False
+species,functional_difference,Free Cl-,FHEA,0.0,-1.763942151924766e-06,-1.763942151924766e-06,False
+species,functional_difference,Free Cl-,PFHxA,0.0,-1.763942151924766e-06,-1.763942151924766e-06,False
+species,functional_difference,Free Cl-,PFOA,0.0,-1.763942151924766e-06,-1.763942151924766e-06,False
+species,functional_difference,Free Cl-,PFOS,0.0,-1.763942151924766e-06,-1.763942151924766e-06,False
+component,functional_difference,ZPE,FHEA,-0.18,-0.17545792402516586,-0.09299690404682681,False
+component,functional_difference,ZPE,PFHxA,0.07,0.060504463483071175,0.14788515773756714,True
+component,functional_difference,ZPE,PFOA,-0.13,-0.13913140057530282,-0.15408495134072436,True
+component,functional_difference,ZPE,PFOS,-0.13,-0.14044289537593432,-0.0772087656809543,True
+component,functional_difference,Thermal correction,FHEA,0.17,0.16630835108936237,0.2421729800450454,False
+component,functional_difference,Thermal correction,PFHxA,0.08,0.08381734972364807,0.028463980978316816,False
+component,functional_difference,Thermal correction,PFOA,0.15,0.15440826834561205,0.15041256160846184,False
+component,functional_difference,Thermal correction,PFOS,0.13,0.13373804410443757,0.14966241862358587,False
+component,functional_difference,Entropy contribution,FHEA,-1.65,-1.6541275236534814,-2.0137783035818417,False
+component,functional_difference,Entropy contribution,PFHxA,-1.04,-1.0470372079374393,-0.8037204093939447,True
+component,functional_difference,Entropy contribution,PFOA,-1.1,-1.1041091945977435,-1.136382006845567,False
+component,functional_difference,Entropy contribution,PFOS,-1.19,-1.1987878240348673,-1.1821525478791228,True
+component_total,functional_difference,Total,FHEA,-1.65,-1.6632833720884506,-1.8646085028867265,True
+component_total,functional_difference,Total,PFHxA,-0.9,-0.9027216698921201,-0.62737754593656,False
+component_total,functional_difference,Total,PFOA,-1.08,-1.0888448769908257,-1.1400543966750325,True
+component_total,functional_difference,Total,PFOS,-1.2,-1.2054864001569907,-1.1096863446174012,True

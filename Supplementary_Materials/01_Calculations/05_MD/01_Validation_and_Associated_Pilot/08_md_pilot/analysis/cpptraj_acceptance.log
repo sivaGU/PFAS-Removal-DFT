@@ -1,0 +1,153 @@
+
+CPPTRAJ: Trajectory Analysis. V6.29.13 (AmberTools)
+    ___  ___  ___  ___
+     | \/ | \/ | \/ | 
+    _|_/\_|_/\_|_/\_|_
+
+| Date/time: 09/19/26 02:48:24
+| Available memory: 15.686 GB
+
+INPUT: Reading input from 'acceptance_analysis.generated.cpptraj'
+  [parm ../07_solvation_ion_validation/pVBTMA12_12Cl_015MNaCl_pilot.prmtop]
+	Reading '../07_solvation_ion_validation/pVBTMA12_12Cl_015MNaCl_pilot.prmtop' as Amber Topology
+	Radius Set: modified Bondi radii (mbondi)
+  [trajin 05_acceptance_npt_1ns/acceptance1ns.dcd shape]
+	Reading '05_acceptance_npt_1ns/acceptance1ns.dcd' as Charmm DCD
+  [autoimage]
+    AUTOIMAGE: To box center based on center of mass, anchor is first molecule.
+	Auto-imaging using molecule distances.
+  [radgyr :1 out analysis/polymer_rg.dat mass]
+    RADGYR: Calculating for atoms in mask :1 using mass weighting.
+  [distance EndToEnd @1,2,3,4,5,6,7,8,9,10,11,12,13,14 @145,146,147,148,149,150,151,152,153,154,155,156 geom out analysis/end_to_end.dat]
+    DISTANCE: @1,2,3,4,5,6,7,8,9,10,11,12,13,14 to @145,146,147,148,149,150,151,152,153,154,155,156, geometric center.
+  [mindist mask1 @1,2,3,4,5,6,7,8,9,10,11,12,13,14 mask2 @54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105 byatom name Term1Central out analysis/terminal1_central_mindist.dat]
+    MINMAXDIST: Calculating minimum distance for selected atoms.
+	Mask1: @1,2,3,4,5,6,7,8,9,10,11,12,13,14
+	Mask2: @54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105
+	Distances will use minimum image convention if box info present.
+	Data set name: Term1Central
+	Data file name: analysis/terminal1_central_mindist.dat
+  [mindist mask1 @145,146,147,148,149,150,151,152,153,154,155,156 mask2 @54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105 byatom name Term12Central out analysis/terminal12_central_mindist.dat]
+    MINMAXDIST: Calculating minimum distance for selected atoms.
+	Mask1: @145,146,147,148,149,150,151,152,153,154,155,156
+	Mask2: @54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105
+	Distances will use minimum image convention if box info present.
+	Data set name: Term12Central
+	Data file name: analysis/terminal12_central_mindist.dat
+  [minimage PolymerSelfImage :1&!@H= :1&!@H= out analysis/polymer_self_image.dat]
+    MINIMAGE: Looking for closest approach of atoms in :1&!@H*
+	to images of atoms in :1&!@H*
+  [avgbox AverageBox out analysis/average_box.dat]
+    AVGBOX: Calculating average box.
+	Average box set: AverageBox[avg]
+	Output to file: analysis/average_box.dat
+  [check :1]
+    CHECKSTRUCTURE: Checking atoms in mask ':1', warnings output to STDOUT.
+	Number of problems in each frame will be saved to set 'CHECK_00010'
+	Checking for bond lengths greater than eq. length + 1.15 Ang and
+	  less than eq. length - 0.50 Ang.
+	Checking for inter-atomic distances < 0.80 Ang.
+	Cutoff for building pair list is 4.000000 Ang.
+  [rms PolymerRMSD first :1&!@H= mass out analysis/polymer_rmsd.dat]
+    RMSD: (:1&!@H*), reference is first frame (:1&!@H*), mass-weighted.
+	Best-fit RMSD will be calculated, coords will be rotated and translated.
+  [run]
+---------- RUN BEGIN -------------------------------------------------
+
+PARAMETER FILES (1 total):
+ 0: pVBTMA12_12Cl_015MNaCl_pilot.prmtop, 15973 atoms, 5234 res, box: Orthorhombic, 5234 mol, 5183 solvent
+
+INPUT TRAJECTORIES (1 total):
+ 0: 'acceptance1ns.dcd' is a CHARMM DCD file (coords) Little Endian 32 bit, Parm pVBTMA12_12Cl_015MNaCl_pilot.prmtop (Orthorhombic box) (reading 500 of 500)
+  Coordinate processing will occur on 500 frames.
+
+BEGIN TRAJECTORY PROCESSING:
+.....................................................
+ACTION SETUP FOR PARM 'pVBTMA12_12Cl_015MNaCl_pilot.prmtop' (9 actions):
+  0: [autoimage]
+	Using first molecule as anchor.
+	5233 molecules are mobile.
+  1: [radgyr :1 out analysis/polymer_rg.dat mass]
+	:1 (374 atoms).
+  2: [distance EndToEnd @1,2,3,4,5,6,7,8,9,10,11,12,13,14 @145,146,147,148,149,150,151,152,153,154,155,156 geom out analysis/end_to_end.dat]
+	@1,2,3,4,5,6,7,8,9,10,11,12,13,14 (14 atoms) to @145,146,147,148,149,150,151,152,153,154,155,156 (12 atoms), imaged.
+  3: [mindist mask1 @1,2,3,4,5,6,7,8,9,10,11,12,13,14 mask2 @54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105 byatom name Term1Central out analysis/terminal1_central_mindist.dat]
+	Distance imaging on.
+	Mask [@1,2,3,4,5,6,7,8,9,10,11,12,13,14] corresponds to 14 atoms.
+	Mask [@54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105] corresponds to 52 atoms.
+  4: [mindist mask1 @145,146,147,148,149,150,151,152,153,154,155,156 mask2 @54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105 byatom name Term12Central out analysis/terminal12_central_mindist.dat]
+	Distance imaging on.
+	Mask [@145,146,147,148,149,150,151,152,153,154,155,156] corresponds to 12 atoms.
+	Mask [@54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105] corresponds to 52 atoms.
+  5: [minimage PolymerSelfImage :1&!@H= :1&!@H= out analysis/polymer_self_image.dat]
+	:1&!@H* (156 atoms) to :1&!@H* (156 atoms)
+  6: [avgbox AverageBox out analysis/average_box.dat]
+  7: [check :1]
+	Using pair list.
+	Total Grid memory: 87.865 MB
+TIME:	Pair List Setup: 0.0994 s
+	Grid dimensions: 37 40 41 (60680 total).
+	Excluding bond interactions.
+	Memory used by full exclusion list: 4.576 kB
+	Mask [:1] corresponds to 374 atoms.
+	Checking 385 bonds.
+	Imaging on.
+  8: [rms PolymerRMSD first :1&!@H= mass out analysis/polymer_rmsd.dat]
+	Target mask: [:1&!@H*](156)
+	Reference topology: pVBTMA12_12Cl_015MNaCl_pilot.prmtop
+	Reference mask: [:1&!@H*](156)
+----- acceptance1ns.dcd (1-500, 1) -----
+ 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100% Complete.
+
+Read 500 frames and processed 500 frames.
+TIME: Avg. throughput= 327.7012 frames / second.
+
+ACTION OUTPUT:
+    AVGBOX:
+    Average Unit Cell Vectors:
+        51.2248145273     0.0000000000     0.0000000000
+         0.0000000000    55.7028881828     0.0000000000
+         0.0000000000     0.0000000000    57.0157322481
+	Box: 'Orthorhombic' XYZ= {   51.225   55.703   57.016 } ABG= {  90.00  90.00  90.00 }
+TIME: Analyses took 0.0000 seconds.
+
+DATASETS (11 total):
+	RoG_00001 "RoG_00001" (double), size is 500 (4.000 kB)
+	RoG_00001[Max] "RoG_00001[Max]" (double), size is 500 (4.000 kB)
+	EndToEnd "EndToEnd" (double, distance), size is 500 (4.000 kB)
+	Term1Central "Term1Central" (float), size is 500 (2.000 kB)
+	Term12Central "Term12Central" (float), size is 500 (2.000 kB)
+	PolymerSelfImage "PolymerSelfImage" (double, distance), size is 500 (4.000 kB)
+	PolymerSelfImage[A1] "PolymerSelfImage[A1]" (integer, distance), size is 500 (2.000 kB)
+	PolymerSelfImage[A2] "PolymerSelfImage[A2]" (integer, distance), size is 500 (2.000 kB)
+	AverageBox[avg] "AverageBox[avg]" (3x3 matrices), size is 1 (0.072 kB)
+	CHECK_00010 "CHECK_00010" (integer), size is 500 (2.000 kB)
+	PolymerRMSD "PolymerRMSD" (double, rms), size is 500 (4.000 kB)
+    Total data set memory usage is at least 30.072 kB
+
+DATAFILES (8 total):
+  polymer_rg.dat (Standard Data File):  RoG_00001 RoG_00001[Max]
+  end_to_end.dat (Standard Data File):  EndToEnd
+  terminal1_central_mindist.dat (Standard Data File):  Term1Central
+  terminal12_central_mindist.dat (Standard Data File):  Term12Central
+  polymer_self_image.dat (Standard Data File):  PolymerSelfImage PolymerSelfImage[A1] PolymerSelfImage[A2]
+  average_box.dat (Standard Data File):  AverageBox[avg]
+  polymer_rmsd.dat (Standard Data File):  PolymerRMSD
+  STDOUT (Structure check)
+
+RUN TIMING:
+TIME:		Init               : 0.0001 s (  0.01%)
+TIME:		Trajectory Process : 1.5258 s ( 92.87%)
+TIME:		Action Post        : 0.0001 s (  0.00%)
+TIME:		Analysis           : 0.0000 s (  0.00%)
+TIME:		Data File Write    : 0.1140 s (  6.94%)
+TIME:		Other              : 0.0029 s (  0.00%)
+TIME:	Run Total 1.6428 s
+---------- RUN END ---------------------------------------------------
+TIME: Total execution time: 1.7688 seconds.
+--------------------------------------------------------------------------------
+To cite CPPTRAJ use:
+Daniel R. Roe and Thomas E. Cheatham, III, "PTRAJ and CPPTRAJ: Software for
+  Processing and Analysis of Molecular Dynamics Trajectory Data". J. Chem.
+  Theory Comput., 2013, 9 (7), pp 3084-3095.
+

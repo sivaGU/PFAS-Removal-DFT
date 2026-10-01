@@ -1,0 +1,10 @@
+## SLURM PROLOG ###############################################################
+##    Job ID : 6671670
+##  Job Name : orca_submit.sh
+##  Nodelist : node2335
+##      CPUs : 32
+##  Mem/Node : 96000 MB
+## Directory : /oscar/home/rzwa/work/orca/run/00_09-GOATsens/01_Optimization/r2scan-3c/3_X-_r2/PFOA_altB_r2
+##   Job Started : Thu Sep 24 02:41:07 PM EDT 2026
+###############################################################################
+Staging files from /oscar/home/rzwa/work/orca/run/00_09-GOATsens/01_Optimization/r2scan-3c/3_X-_r2/PFOA_altB_r2 to /sss/jobtmp/rzwa/PFOA_altB_r2_20260924_144109...

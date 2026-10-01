@@ -1,0 +1,94 @@
+{
+  "technical_status": "PASS",
+  "scientific_interpretation": "prepared preassociated-state persistence only; no spontaneous binding/displacement claim",
+  "selected_repeat": 9,
+  "selected_N_atom_index_1based": 112,
+  "initial_nearest_O_N_A": 4.429568984285031,
+  "polymer_RMSD_A": {
+    "n": 500,
+    "mean": 2.4855970000000003,
+    "sd": 0.4109720813522495,
+    "min": 0.0,
+    "max": 3.3306
+  },
+  "polymer_Rg_A": {
+    "n": 500,
+    "mean": 9.5445168,
+    "sd": 0.2223310698884886,
+    "min": 8.808,
+    "max": 10.1145
+  },
+  "PFOA_head_selectedN_A": {
+    "n": 500,
+    "mean": 7.429588,
+    "sd": 2.477428371165552,
+    "min": 3.577,
+    "max": 14.049
+  },
+  "PFOA_head_any_ammonium_A": {
+    "n": 500,
+    "mean": 5.0806700000000005,
+    "sd": 0.8518188006260486,
+    "min": 3.484,
+    "max": 7.638
+  },
+  "PFOA_polymer_heavy_mindist_A": {
+    "n": 500,
+    "mean": 2.9920619999999998,
+    "sd": 0.13427472642310614,
+    "min": 2.643,
+    "max": 3.53
+  },
+  "fraction_head_anyN_below_5A": 0.528,
+  "final_head_anyN_A": 5.081,
+  "head_anyN_final_200ps": {
+    "distance_A": {
+      "n": 100,
+      "mean": 4.72026,
+      "sd": 0.4844961634523023,
+      "min": 4.031,
+      "max": 6.807
+    },
+    "fraction_below_5A": 0.77
+  },
+  "head_anyN_final_100ps": {
+    "distance_A": {
+      "n": 50,
+      "mean": 4.70894,
+      "sd": 0.5426068340889193,
+      "min": 4.077,
+      "max": 6.807
+    },
+    "fraction_below_5A": 0.78
+  },
+  "polymer_self_image_A": {
+    "n": 500,
+    "mean": 30.369705399999997,
+    "sd": 2.308130305825657,
+    "min": 24.0675,
+    "max": 34.4073
+  },
+  "PFOA_self_image_A": {
+    "n": 500,
+    "mean": 45.620845200000005,
+    "sd": 1.246736270907749,
+    "min": 42.1988,
+    "max": 47.9551
+  },
+  "namd_temperature_K": {
+    "n": 1001,
+    "mean": 310.35365114885116,
+    "sd": 2.3947062364562077,
+    "min": 301.2446,
+    "max": 317.221
+  },
+  "namd_volume_A3": {
+    "n": 1001,
+    "mean": 162441.86677832168,
+    "sd": 641.1869651151618,
+    "min": 160582.4711,
+    "max": 165256.6117
+  },
+  "association_is_acceptance_gate": false,
+  "errors": []
+}

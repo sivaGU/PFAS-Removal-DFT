@@ -1,0 +1,44 @@
+{
+  "direct_whole12_charge_sum": 11.994,
+  "direct_whole12_mol2": "whole12_direct_am1bcc_reference/pVBTMA12_gaff2_am1bcc.mol2",
+  "metrics": {
+    "all": {
+      "mae_e": 0.0033736096256684516,
+      "max_abs_e": 0.022813,
+      "mean_signed_e": 1.6026737967915995e-05,
+      "n": 374,
+      "rmse_e": 0.004725303378767378
+    },
+    "head": {
+      "mae_e": 0.005589750000000002,
+      "max_abs_e": 0.018812999999999996,
+      "mean_signed_e": -0.00012531249999999847,
+      "n": 32,
+      "rmse_e": 0.00729523515727903
+    },
+    "internal": {
+      "mae_e": 0.002945483870967745,
+      "max_abs_e": 0.018602,
+      "mean_signed_e": 0.00014845806451613088,
+      "n": 310,
+      "rmse_e": 0.00403714866482961
+    },
+    "quaternary_ammonium_N": {
+      "mae_e": 0.00099466666666669,
+      "max_abs_e": 0.0028129999999999544,
+      "mean_signed_e": -0.00099466666666669,
+      "n": 12,
+      "rmse_e": 0.0011741503310905338
+    },
+    "tail": {
+      "mae_e": 0.005304937500000001,
+      "max_abs_e": 0.022813,
+      "mean_signed_e": -0.0011255625000000011,
+      "n": 32,
+      "rmse_e": 0.007060552669586143
+    }
+  },
+  "purpose": "Diagnostic validation of the RCT charge-transfer approximation against a direct whole-pVBTMA12 AM1-BCC calculation; the direct reference is not used to derive RCT charges and is not an independent gold standard for AM1-BCC accuracy.",
+  "rct_charge_sum": 11.999994000000001,
+  "rct_mol2": "pVBTMA12_gaff2_rct.mol2"
+}

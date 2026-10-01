@@ -1,0 +1,573 @@
+{
+  "libraries": {
+    "head": {
+      "atoms_per_repeat": 32,
+      "kind": "head",
+      "normalized_library_charge_sum": 1.0000000000000002,
+      "raw_library_charge_sum": 0.994003,
+      "raw_source_repeat_charge_sums": {
+        "1": 0.994003
+      },
+      "roles": {
+        "H@u01_C": {
+          "count_per_repeat": 3,
+          "n_source_atom_samples": 3,
+          "normalized_charge": 0.04555440625,
+          "raw_max": 0.045367,
+          "raw_mean_charge": 0.045367,
+          "raw_min": 0.045367,
+          "raw_population_sd": 0.0
+        },
+        "H@u02_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": 0.051887406250000004,
+          "raw_max": 0.0517,
+          "raw_mean_charge": 0.0517,
+          "raw_min": 0.0517,
+          "raw_population_sd": 0.0
+        },
+        "H@u04_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": 0.14668740624999999,
+          "raw_max": 0.1465,
+          "raw_mean_charge": 0.1465,
+          "raw_min": 0.1465,
+          "raw_population_sd": 0.0
+        },
+        "H@u05_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": 0.14668740624999999,
+          "raw_max": 0.1465,
+          "raw_mean_charge": 0.1465,
+          "raw_min": 0.1465,
+          "raw_population_sd": 0.0
+        },
+        "H@u07_C": {
+          "count_per_repeat": 2,
+          "n_source_atom_samples": 2,
+          "normalized_charge": 0.10588740625000001,
+          "raw_max": 0.1057,
+          "raw_mean_charge": 0.1057,
+          "raw_min": 0.1057,
+          "raw_population_sd": 0.0
+        },
+        "H@u12_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": 0.14668740624999999,
+          "raw_max": 0.1465,
+          "raw_mean_charge": 0.1465,
+          "raw_min": 0.1465,
+          "raw_population_sd": 0.0
+        },
+        "H@u13_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": 0.14668740624999999,
+          "raw_max": 0.1465,
+          "raw_mean_charge": 0.1465,
+          "raw_min": 0.1465,
+          "raw_population_sd": 0.0
+        },
+        "NMe_C": {
+          "count_per_repeat": 3,
+          "n_source_atom_samples": 3,
+          "normalized_charge": 0.08762040625,
+          "raw_max": 0.087433,
+          "raw_mean_charge": 0.087433,
+          "raw_min": 0.087433,
+          "raw_population_sd": 0.0
+        },
+        "NMe_H": {
+          "count_per_repeat": 9,
+          "n_source_atom_samples": 9,
+          "normalized_charge": 0.10455440625000001,
+          "raw_max": 0.104367,
+          "raw_mean_charge": 0.104367,
+          "raw_min": 0.104367,
+          "raw_population_sd": 0.0
+        },
+        "Nq": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.60461259375,
+          "raw_max": -0.6048,
+          "raw_mean_charge": -0.6048,
+          "raw_min": -0.6048,
+          "raw_population_sd": 0.0
+        },
+        "u01_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.09491259375,
+          "raw_max": -0.0951,
+          "raw_mean_charge": -0.0951,
+          "raw_min": -0.0951,
+          "raw_population_sd": 0.0
+        },
+        "u02_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.021212593749999998,
+          "raw_max": -0.0214,
+          "raw_mean_charge": -0.0214,
+          "raw_min": -0.0214,
+          "raw_population_sd": 0.0
+        },
+        "u03_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.049112593749999996,
+          "raw_max": -0.0493,
+          "raw_mean_charge": -0.0493,
+          "raw_min": -0.0493,
+          "raw_population_sd": 0.0
+        },
+        "u04_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.12331259375,
+          "raw_max": -0.1235,
+          "raw_mean_charge": -0.1235,
+          "raw_min": -0.1235,
+          "raw_population_sd": 0.0
+        },
+        "u05_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.09531259375000001,
+          "raw_max": -0.0955,
+          "raw_mean_charge": -0.0955,
+          "raw_min": -0.0955,
+          "raw_population_sd": 0.0
+        },
+        "u06_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.15611259375,
+          "raw_max": -0.1563,
+          "raw_mean_charge": -0.1563,
+          "raw_min": -0.1563,
+          "raw_population_sd": 0.0
+        },
+        "u07_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": 0.17228740625,
+          "raw_max": 0.1721,
+          "raw_mean_charge": 0.1721,
+          "raw_min": 0.1721,
+          "raw_population_sd": 0.0
+        },
+        "u12_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.09531259375000001,
+          "raw_max": -0.0955,
+          "raw_mean_charge": -0.0955,
+          "raw_min": -0.0955,
+          "raw_population_sd": 0.0
+        },
+        "u13_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.12331259375,
+          "raw_max": -0.1235,
+          "raw_mean_charge": -0.1235,
+          "raw_min": -0.1235,
+          "raw_population_sd": 0.0
+        }
+      },
+      "source_repeats_1based": [
+        1
+      ],
+      "target_formal_charge": 1.0,
+      "uniform_per_atom_normalization": 0.00018740625000000094
+    },
+    "internal": {
+      "atoms_per_repeat": 31,
+      "kind": "internal",
+      "normalized_library_charge_sum": 1.0000000000000004,
+      "raw_library_charge_sum": 0.991665,
+      "raw_source_repeat_charge_sums": {
+        "2": 0.9889969999999999,
+        "3": 0.9910009999999999,
+        "4": 0.9949969999999999
+      },
+      "roles": {
+        "H@u01_C": {
+          "count_per_repeat": 2,
+          "n_source_atom_samples": 6,
+          "normalized_charge": 0.05396887096774193,
+          "raw_max": 0.0557,
+          "raw_mean_charge": 0.0537,
+          "raw_min": 0.0527,
+          "raw_population_sd": 0.0014142135623730963
+        },
+        "H@u02_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 3,
+          "normalized_charge": 0.06396887096774193,
+          "raw_max": 0.0667,
+          "raw_mean_charge": 0.06369999999999999,
+          "raw_min": 0.0617,
+          "raw_population_sd": 0.0021602468994692844
+        },
+        "H@u04_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 3,
+          "normalized_charge": 0.1501022043010753,
+          "raw_max": 0.1515,
+          "raw_mean_charge": 0.14983333333333335,
+          "raw_min": 0.148,
+          "raw_population_sd": 0.001433720877840439
+        },
+        "H@u05_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 3,
+          "normalized_charge": 0.14676887096774194,
+          "raw_max": 0.147,
+          "raw_mean_charge": 0.1465,
+          "raw_min": 0.1455,
+          "raw_population_sd": 0.0007071067811865482
+        },
+        "H@u07_C": {
+          "count_per_repeat": 2,
+          "n_source_atom_samples": 6,
+          "normalized_charge": 0.10580220430107526,
+          "raw_max": 0.1067,
+          "raw_mean_charge": 0.10553333333333333,
+          "raw_min": 0.1037,
+          "raw_population_sd": 0.0013123346456686362
+        },
+        "H@u12_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 3,
+          "normalized_charge": 0.14676887096774194,
+          "raw_max": 0.147,
+          "raw_mean_charge": 0.1465,
+          "raw_min": 0.1455,
+          "raw_population_sd": 0.0007071067811865482
+        },
+        "H@u13_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 3,
+          "normalized_charge": 0.1501022043010753,
+          "raw_max": 0.1515,
+          "raw_mean_charge": 0.14983333333333335,
+          "raw_min": 0.148,
+          "raw_population_sd": 0.001433720877840439
+        },
+        "NMe_C": {
+          "count_per_repeat": 3,
+          "n_source_atom_samples": 9,
+          "normalized_charge": 0.08792453763440859,
+          "raw_max": 0.087767,
+          "raw_mean_charge": 0.08765566666666666,
+          "raw_min": 0.087433,
+          "raw_population_sd": 0.00015744910994420504
+        },
+        "NMe_H": {
+          "count_per_repeat": 9,
+          "n_source_atom_samples": 27,
+          "normalized_charge": 0.10452420430107527,
+          "raw_max": 0.104478,
+          "raw_mean_charge": 0.10425533333333334,
+          "raw_min": 0.104144,
+          "raw_population_sd": 0.00015744910994420504
+        },
+        "Nq": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 3,
+          "normalized_charge": -0.604531129032258,
+          "raw_max": -0.6048,
+          "raw_mean_charge": -0.6048,
+          "raw_min": -0.6048,
+          "raw_population_sd": 0.0
+        },
+        "u01_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 3,
+          "normalized_charge": -0.07213112903225807,
+          "raw_max": -0.0714,
+          "raw_mean_charge": -0.0724,
+          "raw_min": -0.0744,
+          "raw_population_sd": 0.0014142135623730898
+        },
+        "u02_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 3,
+          "normalized_charge": -0.025464462365591394,
+          "raw_max": -0.0224,
+          "raw_mean_charge": -0.02573333333333333,
+          "raw_min": -0.0294,
+          "raw_population_sd": 0.002867441755680875
+        },
+        "u03_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 3,
+          "normalized_charge": -0.03969779569892474,
+          "raw_max": -0.0343,
+          "raw_mean_charge": -0.03996666666666667,
+          "raw_min": -0.0483,
+          "raw_population_sd": 0.006018490028422598
+        },
+        "u04_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 3,
+          "normalized_charge": -0.13023112903225806,
+          "raw_max": -0.1265,
+          "raw_mean_charge": -0.1305,
+          "raw_min": -0.133,
+          "raw_population_sd": 0.002857738033247044
+        },
+        "u05_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 3,
+          "normalized_charge": -0.09606446236559141,
+          "raw_max": -0.095,
+          "raw_mean_charge": -0.09633333333333334,
+          "raw_min": -0.0975,
+          "raw_population_sd": 0.0010274023338281636
+        },
+        "u06_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 3,
+          "normalized_charge": -0.16036446236559138,
+          "raw_max": -0.1593,
+          "raw_mean_charge": -0.16063333333333332,
+          "raw_min": -0.1633,
+          "raw_population_sd": 0.0018856180831641285
+        },
+        "u07_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 3,
+          "normalized_charge": 0.1730355376344086,
+          "raw_max": 0.1741,
+          "raw_mean_charge": 0.17276666666666665,
+          "raw_min": 0.1721,
+          "raw_population_sd": 0.0009428090415820643
+        },
+        "u12_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 3,
+          "normalized_charge": -0.09606446236559141,
+          "raw_max": -0.095,
+          "raw_mean_charge": -0.09633333333333334,
+          "raw_min": -0.0975,
+          "raw_population_sd": 0.0010274023338281636
+        },
+        "u13_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 3,
+          "normalized_charge": -0.13023112903225806,
+          "raw_max": -0.1265,
+          "raw_mean_charge": -0.1305,
+          "raw_min": -0.133,
+          "raw_population_sd": 0.002857738033247044
+        }
+      },
+      "source_repeats_1based": [
+        2,
+        3,
+        4
+      ],
+      "target_formal_charge": 1.0,
+      "uniform_per_atom_normalization": 0.00026887096774193487
+    },
+    "tail": {
+      "atoms_per_repeat": 32,
+      "kind": "tail",
+      "normalized_library_charge_sum": 1.0,
+      "raw_library_charge_sum": 1.026003,
+      "raw_source_repeat_charge_sums": {
+        "5": 1.026003
+      },
+      "roles": {
+        "H@u01_C": {
+          "count_per_repeat": 2,
+          "n_source_atom_samples": 2,
+          "normalized_charge": 0.05338740625,
+          "raw_max": 0.0542,
+          "raw_mean_charge": 0.0542,
+          "raw_min": 0.0542,
+          "raw_population_sd": 0.0
+        },
+        "H@u02_C": {
+          "count_per_repeat": 2,
+          "n_source_atom_samples": 2,
+          "normalized_charge": 0.05988740625,
+          "raw_max": 0.0607,
+          "raw_mean_charge": 0.0607,
+          "raw_min": 0.0607,
+          "raw_population_sd": 0.0
+        },
+        "H@u04_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": 0.14568740624999998,
+          "raw_max": 0.1465,
+          "raw_mean_charge": 0.1465,
+          "raw_min": 0.1465,
+          "raw_population_sd": 0.0
+        },
+        "H@u05_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": 0.14418740624999998,
+          "raw_max": 0.145,
+          "raw_mean_charge": 0.145,
+          "raw_min": 0.145,
+          "raw_population_sd": 0.0
+        },
+        "H@u07_C": {
+          "count_per_repeat": 2,
+          "n_source_atom_samples": 2,
+          "normalized_charge": 0.10488740625000001,
+          "raw_max": 0.1057,
+          "raw_mean_charge": 0.1057,
+          "raw_min": 0.1057,
+          "raw_population_sd": 0.0
+        },
+        "H@u12_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": 0.14418740624999998,
+          "raw_max": 0.145,
+          "raw_mean_charge": 0.145,
+          "raw_min": 0.145,
+          "raw_population_sd": 0.0
+        },
+        "H@u13_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": 0.14568740624999998,
+          "raw_max": 0.1465,
+          "raw_mean_charge": 0.1465,
+          "raw_min": 0.1465,
+          "raw_population_sd": 0.0
+        },
+        "NMe_C": {
+          "count_per_repeat": 3,
+          "n_source_atom_samples": 3,
+          "normalized_charge": 0.08662040625,
+          "raw_max": 0.087433,
+          "raw_mean_charge": 0.087433,
+          "raw_min": 0.087433,
+          "raw_population_sd": 0.0
+        },
+        "NMe_H": {
+          "count_per_repeat": 9,
+          "n_source_atom_samples": 9,
+          "normalized_charge": 0.10344340625000001,
+          "raw_max": 0.104256,
+          "raw_mean_charge": 0.104256,
+          "raw_min": 0.104256,
+          "raw_population_sd": 0.0
+        },
+        "Nq": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.60561259375,
+          "raw_max": -0.6048,
+          "raw_mean_charge": -0.6048,
+          "raw_min": -0.6048,
+          "raw_population_sd": 0.0
+        },
+        "u01_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.07621259375,
+          "raw_max": -0.0754,
+          "raw_mean_charge": -0.0754,
+          "raw_min": -0.0754,
+          "raw_population_sd": 0.0
+        },
+        "u02_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.04791259375,
+          "raw_max": -0.0471,
+          "raw_mean_charge": -0.0471,
+          "raw_min": -0.0471,
+          "raw_population_sd": 0.0
+        },
+        "u03_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.04211259375,
+          "raw_max": -0.0413,
+          "raw_mean_charge": -0.0413,
+          "raw_min": -0.0413,
+          "raw_population_sd": 0.0
+        },
+        "u04_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.12781259375,
+          "raw_max": -0.127,
+          "raw_mean_charge": -0.127,
+          "raw_min": -0.127,
+          "raw_population_sd": 0.0
+        },
+        "u05_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.09581259375000001,
+          "raw_max": -0.095,
+          "raw_mean_charge": -0.095,
+          "raw_min": -0.095,
+          "raw_population_sd": 0.0
+        },
+        "u06_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.15911259375,
+          "raw_max": -0.1583,
+          "raw_mean_charge": -0.1583,
+          "raw_min": -0.1583,
+          "raw_population_sd": 0.0
+        },
+        "u07_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": 0.17128740625,
+          "raw_max": 0.1721,
+          "raw_mean_charge": 0.1721,
+          "raw_min": 0.1721,
+          "raw_population_sd": 0.0
+        },
+        "u12_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.09581259375000001,
+          "raw_max": -0.095,
+          "raw_mean_charge": -0.095,
+          "raw_min": -0.095,
+          "raw_population_sd": 0.0
+        },
+        "u13_C": {
+          "count_per_repeat": 1,
+          "n_source_atom_samples": 1,
+          "normalized_charge": -0.12781259375,
+          "raw_max": -0.127,
+          "raw_mean_charge": -0.127,
+          "raw_min": -0.127,
+          "raw_population_sd": 0.0
+        }
+      },
+      "source_repeats_1based": [
+        5
+      ],
+      "target_formal_charge": 1.0,
+      "uniform_per_atom_normalization": -0.00081259375
+    }
+  },
+  "method": "RCT-style pVBTMA5 H-I-I-I-T library derivation with residue-wise +1 normalization",
+  "source_reduced_mol2": "rct5_antechamber_work/pVBTMA5_gaff2_am1bcc.mol2",
+  "source_reduced_serialized_charge_sum": 4.995000999999999,
+  "target_charge_per_repeat": 1.0
+}

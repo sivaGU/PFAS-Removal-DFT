@@ -1,0 +1,128 @@
+{
+  "rdkit_version": "2023.09.3",
+  "repeat_smiles": "[*:1]CC(c1ccc(C[N+](C)(C)C)cc1)[*:2]",
+  "accepted_pvbtma12_local_parity": [
+    "+",
+    "+",
+    "-",
+    "-",
+    "+",
+    "-",
+    "-",
+    "+",
+    "+",
+    "-",
+    "+"
+  ],
+  "pVBTMA5_local_parity": [
+    "+",
+    "+",
+    "-",
+    "-"
+  ],
+  "pVBTMA5_conformer_generation": {
+    "method": "RDKit ETKDGv3 followed by UFF minimization; starting geometry only for subsequent SQM",
+    "random_seed": 20260916,
+    "n_conformers_requested": 12,
+    "uff_max_iterations": 1000,
+    "selected_conformer_id": 1,
+    "selected_uff_energy": 160.14329249126635,
+    "n_uff_converged": 12,
+    "conformers": [
+      {
+        "conformer_id": 0,
+        "uff_status": 0,
+        "uff_energy": 174.29611309905064
+      },
+      {
+        "conformer_id": 1,
+        "uff_status": 0,
+        "uff_energy": 160.14329249126635
+      },
+      {
+        "conformer_id": 2,
+        "uff_status": 0,
+        "uff_energy": 177.38381981028704
+      },
+      {
+        "conformer_id": 3,
+        "uff_status": 0,
+        "uff_energy": 167.04050809900113
+      },
+      {
+        "conformer_id": 4,
+        "uff_status": 0,
+        "uff_energy": 170.6243327988284
+      },
+      {
+        "conformer_id": 5,
+        "uff_status": 0,
+        "uff_energy": 175.32664605125873
+      },
+      {
+        "conformer_id": 6,
+        "uff_status": 0,
+        "uff_energy": 176.1805749185904
+      },
+      {
+        "conformer_id": 7,
+        "uff_status": 0,
+        "uff_energy": 177.3052805031031
+      },
+      {
+        "conformer_id": 8,
+        "uff_status": 0,
+        "uff_energy": 167.71549450776314
+      },
+      {
+        "conformer_id": 9,
+        "uff_status": 0,
+        "uff_energy": 167.57018796626366
+      },
+      {
+        "conformer_id": 10,
+        "uff_status": 0,
+        "uff_energy": 170.90294266172134
+      },
+      {
+        "conformer_id": 11,
+        "uff_status": 0,
+        "uff_energy": 169.7491774767102
+      }
+    ]
+  },
+  "pVBTMA5_validation": {
+    "formula": "C60H92N5+5",
+    "expected_formula": "C60H92N5+5",
+    "formula_pass": true,
+    "atoms_with_hydrogen": 157,
+    "heavy_atoms": 65,
+    "formal_charge": 5,
+    "quaternary_ammonium_sites": 5,
+    "connected_components": 1,
+    "expected_checks_pass": true,
+    "assigned_stereocenters": 4
+  },
+  "pVBTMA12_validation": {
+    "formula": "C144H218N12+12",
+    "expected_formula": "C144H218N12+12",
+    "formula_pass": true,
+    "atoms_with_hydrogen": 374,
+    "heavy_atoms": 156,
+    "formal_charge": 12,
+    "quaternary_ammonium_sites": 12,
+    "connected_components": 1,
+    "expected_checks_pass": true,
+    "exact_stereoisomer_match_to_stage01": true
+  },
+  "pVBTMA12_coordinates": "accepted Stage-02 UFF-minimized coordinates reordered onto deterministic builder atom order",
+  "outputs": [
+    "pVBTMA5_rct_model_uffmin.sdf",
+    "pVBTMA5_rct_model.smi",
+    "pVBTMA5_rct_atom_mapping.json",
+    "pVBTMA12_rct_reference.sdf",
+    "pVBTMA12_rct_atom_mapping.json",
+    "pVBTMA12_accepted_to_rct_reorder.json"
+  ],
+  "all_checks_pass": true
+}

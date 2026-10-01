@@ -1,0 +1,68 @@
+===== Stage 09 tmux worker started: 2026-09-19T22:51:19-04:00 =====
+host=tamburello
+pid=7775
+pwd=/mnt/d/work/rz_orca_pfasremoval/00-1-MD_redo/02_pVBTMA12_validation/09_pfoa_associated_pilot
+NAMD_BIN=/home/zwa/namd/NAMD_Git-2025-12-04_Linux-x86_64-multicore-CUDA/namd3
+NAMD_ARGS=+p8 +setcpuaffinity +devices 0
+Stage 09 static configuration validation: PASS
+NAMD_BIN=/home/zwa/namd/NAMD_Git-2025-12-04_Linux-x86_64-multicore-CUDA/namd3
+NAMD_ARGS=+p8 +setcpuaffinity +devices 0
+===== START 00_minimize.conf 2026-09-19T22:51:19-04:00 =====
+{
+  "log": "00_minimize/minimize.log",
+  "normal_completion_marker": true,
+  "max_energy_step": 10000,
+  "issues": []
+}
+===== END 00_minimize.conf 2026-09-19T22:51:52-04:00 =====
+===== START 01_relax_nvt_100ps.conf 2026-09-19T22:51:52-04:00 =====
+{
+  "log": "01_relax_nvt_100ps/relax100ps.log",
+  "normal_completion_marker": true,
+  "max_energy_step": 50000,
+  "issues": []
+}
+===== END 01_relax_nvt_100ps.conf 2026-09-19T22:53:40-04:00 =====
+===== START 02_equil_npt_500ps.conf 2026-09-19T22:53:40-04:00 =====
+{
+  "log": "02_equil_npt_500ps/equil500ps.log",
+  "normal_completion_marker": true,
+  "max_energy_step": 250000,
+  "issues": []
+}
+===== END 02_equil_npt_500ps.conf 2026-09-19T23:02:57-04:00 =====
+===== START 03_acceptance_npt_1ns.conf 2026-09-19T23:02:57-04:00 =====
+{
+  "log": "03_acceptance_npt_1ns/acceptance1ns.log",
+  "normal_completion_marker": true,
+  "max_energy_step": 500000,
+  "issues": []
+}
+===== END 03_acceptance_npt_1ns.conf 2026-09-19T23:20:22-04:00 =====
+{
+  "log": "00_minimize/minimize.log",
+  "normal_completion_marker": true,
+  "max_energy_step": 10000,
+  "issues": []
+}
+{
+  "log": "01_relax_nvt_100ps/relax100ps.log",
+  "normal_completion_marker": true,
+  "max_energy_step": 50000,
+  "issues": []
+}
+{
+  "log": "02_equil_npt_500ps/equil500ps.log",
+  "normal_completion_marker": true,
+  "max_energy_step": 250000,
+  "issues": []
+}
+{
+  "log": "03_acceptance_npt_1ns/acceptance1ns.log",
+  "normal_completion_marker": true,
+  "max_energy_step": 500000,
+  "issues": []
+}
+selected_N_atom_index_1based=112
+Expected 500 VMD frames, found 0
+===== Stage 09 tmux worker finished: 2026-09-19T23:20:29-04:00; exit=1 =====
