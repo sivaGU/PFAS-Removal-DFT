@@ -1,0 +1,38 @@
+{
+  "title": "Supplementary Materials from: Anion Exchange Mechanism of PFAS with Cholestyramine: Implications for PFAS Removal from the Human Body",
+  "upload_type": "dataset",
+  "description": "This record contains the supplementary calculation records, molecular structures, molecular dynamics trajectories, analysis and plotting materials, tables, figures, workflow code, and Streamlit interface source associated with the study \"Anion Exchange Mechanism of PFAS with Cholestyramine: Implications for PFAS Removal from the Human Body.\" The deposited materials support the reported density functional theory, energy-decomposition, potential-energy-surface, and molecular dynamics analyses.",
+  "creators": [
+    {
+      "name": "Dakshanamurthy, Sivanesan",
+      "orcid": "0000-0003-3681-4121",
+      "affiliation": "Georgetown University Medical Center; Innscite AI LLC"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Zwa, Ronan",
+      "type": "DataCollector",
+      "affiliation": "Brown University"
+    },
+    {
+      "name": "Mada, Sahith",
+      "type": "DataCollector",
+      "affiliation": "University of Maryland, College Park"
+    }
+  ],
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "version": "1.0.0",
+  "language": "eng",
+  "keywords": [
+    "PFAS",
+    "PFOS",
+    "PFOA",
+    "cholestyramine",
+    "anion exchange",
+    "density functional theory",
+    "molecular dynamics",
+    "energy decomposition analysis"
+  ]
+}

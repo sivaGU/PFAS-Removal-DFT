@@ -1,7 +1,7 @@
 # Figure Plotting and Data
 
 This directory contains plotting scripts, adjacent numerical and structural
-inputs, molecular rendering scripts, reporting tables, shared helpers, and PNG
+inputs, molecular rendering scripts, source tables, shared helpers, and PNG
 exports for main Figures 1 and 3–15 and supplementary Figure S1. Figure 2 is
 assembled externally and has no plotting script here. Scripts write PNG files
 to `figure_exports/`.
