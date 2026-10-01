@@ -42,12 +42,11 @@ def main(archive):
             final = extract(output,'FINAL SINGLE POINT ENERGY')
             if abs((final-sum(finals))*FACTOR-bond) > .01:
                 raise ValueError(f"Fragment reference does not reconstruct Bond Energy: {file}")
-            cds = extract(output,'SMD CDS (Gcds)')*FACTOR
             subtotal = sum(terms.values())
             row = {'PFAS':pfas,'series':series,'Bond Energy':bond,
                    **terms,'Sum of listed terms':subtotal,
                    'Source ORCA output':file}
-            rows.append((row,cds))
+            rows.append(row)
     fields=['PFAS','series','Bond Energy',*TERMS,'Sum of listed terms','Source ORCA output']
     figroot=ROOT/'01_main_text_figures'
     for folder, selected in (('Figure_07_BTMA_energy_decomposition_analysis',{'BTMA_r2SCAN-3c','BTMA_wB97X-D3'}),
@@ -57,23 +56,8 @@ def main(archive):
             w=csv.DictWriter(fh,fieldnames=fields);w.writeheader()
             for pfas in ('FHEA','PFHxA','PFOA','PFOS'):
                 for series in sorted(selected):
-                    w.writerow(next(r for r,cds in rows if r['PFAS']==pfas and r['series']==series))
+                    w.writerow(next(r for r in rows if r['PFAS']==pfas and r['series']==series))
         print(path)
-    report=ROOT/'eda_source_audit.csv'
-    with report.open('w',newline='') as fh:
-        auditfields=['PFAS','series','Bond Energy','Sum of listed terms',
-                     'Bond minus listed','Complex SMD CDS','Residual minus complex CDS',
-                     'Source ORCA output']
-        w=csv.DictWriter(fh,fieldnames=auditfields);w.writeheader()
-        for row,cds in rows:
-            difference=row['Bond Energy']-row['Sum of listed terms']
-            w.writerow({'PFAS':row['PFAS'],'series':row['series'],
-                        'Bond Energy':row['Bond Energy'],
-                        'Sum of listed terms':row['Sum of listed terms'],
-                        'Bond minus listed':difference,'Complex SMD CDS':cds,
-                        'Residual minus complex CDS':difference-cds,
-                        'Source ORCA output':row['Source ORCA output']})
-    print(report)
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)

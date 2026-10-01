@@ -68,7 +68,7 @@ Figure 15 reads `figure15_display_250ps.csv`, which contains 250 ps
 nonoverlapping display windows for six observables and three replicas. Figure
 S1 displays the corresponding per-frame series for oligomer RMSD, radius of
 gyration, head-to-nearest-N distance, tail-oligomer contacts, and tail
-hydration. EDA reporting tables are generated from the records under
-`03_reporting_tables/EDA` by `shared_helpers/build_eda_reporting_tables.py`.
+hydration. Figures 7, 11, and 12 read their respective adjacent
+`input_data/eda_components.csv` files.
 
 All figure scripts produce PNG output only.

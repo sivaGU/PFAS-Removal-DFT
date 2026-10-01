@@ -11,14 +11,14 @@ the plotting-root README for exact adjacent filenames.
 |---|---|---|
 | 01 | `Figure_01_workflow_structure` | A reusable polymer structure asset is rendered here; the complete workflow is assembled externally in BioRender. |
 | 02 | No plotting folder | BioRender assembly using reused renders/screenshots; no separate calculation. |
-| 03 | `Figure_03_DFT_structure_atlas` | Minimal BTMA and extended DVB-BTMA optimized structures in `01_BTMA` and `02_Extended_Monomer`, with solvent identified in the panel labels. |
-| 04 | `Figure_04_BTMA_exchange_and_structures` | `01_BTMA` aqueous optimization/frequency outputs. |
+| 03 | `Figure_03_DFT_structure_atlas` | Minimal BTMA and extended DVB-BTMA optimized structures in `01_BTMA` and `02_Extended_Monomer`; all curated atlas geometries are adjacent under `input_structures`. |
+| 04 | `Figure_04_BTMA_exchange_and_structures` | `01_BTMA` aqueous frequency outputs. |
 | 05 | `Figure_05_BTMA_thermochemical_decomposition` | `01_BTMA` aqueous frequency outputs; plotted values are in its adjacent CSV. |
-| 06 | `Figure_06_BTMA_species_and_components` | `01_BTMA` aqueous calculations and adjacent curated CSV. |
+| 06 | `Figure_06_BTMA_species_and_components` | `01_BTMA` aqueous calculations; this figure reuses Figure 5's `input_data/thermochemical_decomposition.csv`. |
 | 07 | `Figure_07_BTMA_energy_decomposition_analysis` | `01_BTMA/03_EDA`. |
 | 08 | `Figure_08_NBO` | `03_NBO/DVB-BTMA+PFOA-/PFOA-Ch_wb97xd3_opt.out.gz`, with adjacent curated plotting CSV. |
-| 09 | `Figure_09_model_size_exchange` | `01_BTMA` and `02_Extended_Monomer/water`; source structures remain external to numerical CSVs. |
-| 10 | `Figure_10_PFOA_water_octanol_exchange` | `02_Extended_Monomer/water` and `02_Extended_Monomer/octanol_corrected` frequency outputs. |
+| 09 | `Figure_09_model_size_exchange` | `01_BTMA` and `02_Extended_Monomer/water` frequency outputs; the plotted values and exact calculation-record paths are adjacent in `input_data/exchange.csv`. |
+| 10 | `Figure_10_PFOA_water_octanol_exchange` | `02_Extended_Monomer/water` and `02_Extended_Monomer/octanol_corrected` frequency outputs. Its displayed geometries are maintained with Figure 3. |
 | 11 | `Figure_11_DVB_BTMA_energy_decomposition_analysis` | `02_Extended_Monomer/water/03_EDA`. |
 | 12 | `Figure_12_PFOA_water_octanol_EDA` | Aqueous and 1-octanol extended-monomer EDA records under `02_Extended_Monomer`. |
 | 13 | `Figure_13_PES` | `04_PES/R4N+PFOA-` input, complete compressed ORCA output and scan structures. |

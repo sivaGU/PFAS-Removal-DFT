@@ -18,8 +18,8 @@ Existing PES and MD numerical records are preserved. Figure S1 belongs to the co
 
 ## Sources
 
-- 02_Figure_Plotting_and_Data/03_reporting_tables/DFT_reference_reconciliation/common_reference_cycles.csv
-- 02_Figure_Plotting_and_Data/03_reporting_tables/EDA/current_eda_full_precision.csv
+- `01_Calculations/01_BTMA/02_Frequency` and `01_Calculations/02_Extended_Monomer/water/02_Frequency` for Tables S1 and S2
+- `01_Calculations/01_BTMA/03_EDA`, `01_Calculations/02_Extended_Monomer/water/03_EDA`, and `01_Calculations/02_Extended_Monomer/octanol_corrected/03_EDA` for Table S3
 - Supplementary_Materials_toxics-4550545_reconciled.docx, Tables S5b and S11b
 - Original workbook source paths and full-precision MD/PES records are preserved.
 

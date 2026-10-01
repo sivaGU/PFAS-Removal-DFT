@@ -1,9 +1,0 @@
-method,pfas,geometry,render,nearest_O_H_A,second_O_H_A,nearest_O_atom_index,nearest_H_atom_index,second_O_atom_index,second_H_atom_index
-r2SCAN-3c,6:2 FTCA,r2SCAN-3c_6-2_FTCA.xyz,r2SCAN-3c_6-2_FTCA.png,2.828,2.833,41,18,41,22
-r2SCAN-3c,PFHxA,r2SCAN-3c_PFHxA.xyz,r2SCAN-3c_PFHxA.png,2.537,2.849,40,18,39,22
-r2SCAN-3c,PFOA,r2SCAN-3c_PFOA.xyz,r2SCAN-3c_PFOA.png,2.77,3.026,44,18,43,22
-r2SCAN-3c,PFOS,r2SCAN-3c_PFOS.xyz,r2SCAN-3c_PFOS.png,2.836,2.858,47,14,47,19
-wB97X-D3,6:2 FTCA,wB97X-D3_6-2_FTCA.xyz,wB97X-D3_6-2_FTCA.png,2.828,2.832,41,18,42,22
-wB97X-D3,PFHxA,wB97X-D3_PFHxA.xyz,wB97X-D3_PFHxA.png,2.48,2.862,40,18,40,22
-wB97X-D3,PFOA,wB97X-D3_PFOA.xyz,wB97X-D3_PFOA.png,2.761,3.035,44,18,43,22
-wB97X-D3,PFOS,wB97X-D3_PFOS.xyz,wB97X-D3_PFOS.png,2.825,2.891,47,14,47,19

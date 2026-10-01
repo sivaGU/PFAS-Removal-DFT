@@ -73,7 +73,7 @@ def main():
                 pymol_projection='orthoscopic',no_crop=False,keep_script=None)
             print('PyMOL:',name,flush=True)
     with (HERE/'verified_contact_distances.csv').open('w',newline='') as f:
-        writer=csv.DictWriter(f,fieldnames=rows[0].keys())
+        writer=csv.DictWriter(f,fieldnames=rows[0].keys(),lineterminator='\n')
         writer.writeheader();writer.writerows(rows)
     print('Verified contact pairs for',len(rows),'optimized XYZ structures')
 
