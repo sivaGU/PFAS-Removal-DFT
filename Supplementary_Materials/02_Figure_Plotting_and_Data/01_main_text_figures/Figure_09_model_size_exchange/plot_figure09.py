@@ -25,8 +25,8 @@ def main(dpi=EXPORT_DPI):
             ax.plot([i,i],[a,b],color='#888888',lw=.9,zorder=1)
             ax.scatter([i,i],[a,b],c=[ORANGE,GREEN],s=37,zorder=3)
             shift = 5 if i == 0 else -5 if i == 3 else 0
-            ax.annotate(f'{a:+.2f}',(i,a),xytext=(shift,9),textcoords='offset points',ha='center',fontsize=VALUE_SIZE_PT,fontweight='bold',color=ORANGE,bbox=VALUE_BOX,zorder=5)
-            ax.annotate(f'{b:+.2f}',(i,b),xytext=(shift,-14),textcoords='offset points',ha='center',fontsize=VALUE_SIZE_PT,fontweight='bold',color=GREEN,bbox=VALUE_BOX,zorder=5)
+            ax.annotate(f'{a:+.2f}'.replace('-', '−'),(i,a),xytext=(shift,9),textcoords='offset points',ha='center',fontsize=VALUE_SIZE_PT,fontweight='bold',color=ORANGE,bbox=VALUE_BOX,zorder=5)
+            ax.annotate(f'{b:+.2f}'.replace('-', '−'),(i,b),xytext=(shift,-14),textcoords='offset points',ha='center',fontsize=VALUE_SIZE_PT,fontweight='bold',color=GREEN,bbox=VALUE_BOX,zorder=5)
         ax.set_xlim(-.35, 3.35)
         ax.set_ylim(*lims);energy_grid(ax)
         ax.set_ylabel('Energy (kcal/mol)',labelpad=8);ax.set_title(label,pad=8)

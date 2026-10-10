@@ -174,14 +174,14 @@ def make_figure(output_dir):
     )
     label(
         ax, arrow_x + 0.15, (lp["energy_ev"] + sigma_star["energy_ev"]) / 2,
-        f"{interaction['label']}\nE$^{{(2)}}$ = {interaction['e2_kcal_mol']:.2f} kcal/mol",
+        f"{interaction['label']}\n$\\mathit{{E}}^{{(2)}}$ = {interaction['e2_kcal_mol']:.2f} kcal/mol",
         ha="left", size=8.8,
     )
 
     draw_level(ax, x_dvb, h["energy_ev"], level_width, "black")
     orbital_energy_label(
         ax, x_dvb, h["energy_ev"] + 1.75,
-        f"{h['label']}\n{h['energy_ev']:+.2f} eV", size=9,
+        f"{h['label']}\n{format(h['energy_ev'], '+.2f').replace('-', '−')} eV", size=9,
     )
 
     nao_color = "black"
@@ -190,20 +190,20 @@ def make_figure(output_dir):
         draw_level(ax, level_x, level["energy_ev"], p_width, nao_color, linewidth=2.4)
         orbital_energy_label(
             ax, level_x, level["energy_ev"] + 1.68,
-            f"{format_p_label(level['label'])}\n{level['energy_ev']:+.2f} eV",
+            f"{format_p_label(level['label'])}\n{format(level['energy_ev'], '+.2f').replace('-', '−')} eV",
             size=8.5,
         )
 
     draw_level(ax, x_complex, lp["energy_ev"], level_width, "#0072b2")
     orbital_energy_label(
         ax, x_complex - 0.15, lp["energy_ev"] + 2.55,
-        f"{lp['label']}\n{lp['energy_ev']:+.2f} eV", size=9,
+        f"{lp['label']}\n{format(lp['energy_ev'], '+.2f').replace('-', '−')} eV", size=9,
     )
 
     draw_level(ax, x_complex, sigma_star["energy_ev"], level_width, "#c62828")
     orbital_energy_label(
         ax, x_complex - 0.15, sigma_star["energy_ev"] + 1.95,
-        f"{sigma_star['label']}\n{sigma_star['energy_ev']:+.2f} eV", size=9,
+        f"{sigma_star['label']}\n{format(sigma_star['energy_ev'], '+.2f').replace('-', '−')} eV", size=9,
     )
 
     ax.set_xlim(0.0, 11.8)

@@ -29,7 +29,7 @@ def draw_panel(ax, data, category, letter, title, limits):
         for result, marker, color in ((first, "o", BLUE), (second, "s", ORANGE)):
             ax.scatter(i, result, marker=marker, color=color, s=28, zorder=3)
             is_upper = result >= (second if marker == "o" else first)
-            ax.annotate(f"{result:+.2f}" if category == "DeltaE" else f"{result:.2f}",
+            ax.annotate(f"{result:+.2f}".replace("-", "−") if category == "DeltaE" else f"{result:.2f}".replace("-", "−"),
                         (i, result), xytext=(0, 8 if is_upper else -9),
                         textcoords="offset points", ha="center",
                         va="bottom" if is_upper else "top", color=color,
@@ -41,6 +41,8 @@ def draw_panel(ax, data, category, letter, title, limits):
     ax.tick_params(axis="y", pad=5)
     ax.set_title(title, fontsize=10.5, pad=8)
     ax.set_ylabel("Energy (kcal/mol)", fontsize=9.5, labelpad=12)
+    if category == "DeltaG":
+        ax.set_yticks(np.arange(0, 10, 1))
     energy_grid(ax)
     ax.text(-.09, 1.14, letter, transform=ax.transAxes, fontsize=11.5,
             fontweight="bold", ha="right", va="top", clip_on=False)
@@ -53,7 +55,7 @@ def render(output=OUTPUT, dpi=EXPORT_DPI):
     fig, axes = plt.subplots(2, 1, figsize=(5.0, 7.67))
     fig.subplots_adjust(left=.19, right=.95, top=.8403, bottom=.09, hspace=.4575)
     draw_panel(axes[0], data, "DeltaE", "A", r"$\Delta E_{\mathrm{exchange}}$", (-4.4, 1.8))
-    draw_panel(axes[1], data, "DeltaG", "B", r"$\Delta G_{\mathrm{exchange}}$", (1.3, 9.7))
+    draw_panel(axes[1], data, "DeltaG", "B", r"$\Delta G_{\mathrm{exchange}}$", (0.0, 9.7))
     legend = [Line2D([], [], color=c, marker=m, linestyle="None", markersize=6)
               for c, m in ((BLUE, "o"), (ORANGE, "s"))]
     fig.legend(legend, (r"r$^2$SCAN-3c", r"$\omega$B97X-D3"),
@@ -71,6 +73,11 @@ def render(output=OUTPUT, dpi=EXPORT_DPI):
             raise ValueError(f"PFAS labels too close: {minimum:.1f} pt")
         headroom = (ax.bbox.y1-max(t.get_window_extent(renderer).y1
                     for t in ax.texts[:-1]))/px_per_pt
+        bottom_clearance = (min(t.get_window_extent(renderer).y0
+                            for t in ax.texts[:-1])-ax.bbox.y0)/px_per_pt
+        if bottom_clearance < 6:
+            raise ValueError(f"Panel {ax.texts[-1].get_text()} value label too close "
+                             f"to x-axis: {bottom_clearance:.1f} pt")
         ylabel = ax.yaxis.label.get_window_extent(renderer)
         tick_boxes = [t.label1.get_window_extent(renderer)
                       for t in ax.yaxis.get_major_ticks() if t.label1.get_text()]
@@ -79,7 +86,8 @@ def render(output=OUTPUT, dpi=EXPORT_DPI):
             raise ValueError(f"Panel {ax.texts[-1].get_text()} clearance: "
                              f"top {headroom:.1f} pt; y label {ylabel_gap:.1f} pt")
         print(f"Panel {ax.texts[-1].get_text()}: label gap {minimum:.1f} pt, "
-              f"top clearance {headroom:.1f} pt, y-label clearance {ylabel_gap:.1f} pt")
+              f"top clearance {headroom:.1f} pt, y-label clearance {ylabel_gap:.1f} pt, "
+              f"bottom value clearance {bottom_clearance:.1f} pt")
     if abs(axes[0].bbox.height-axes[1].bbox.height) > .01:
         raise ValueError("Panel boxes have unequal height")
     upper = max(axes[0].title.get_window_extent(renderer).y1,

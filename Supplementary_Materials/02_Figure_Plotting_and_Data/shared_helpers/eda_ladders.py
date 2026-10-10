@@ -108,7 +108,7 @@ def plot_eda(data_path: Path, pair: tuple[str, str], include_gcp: bool,
             first_higher = (float(data.loc[pfas, pair[0]]["Bond Energy"]) >=
                             float(data.loc[pfas, pair[1]]["Bond Energy"]))
             label_offset = (8 if rank == 0 else -8) * (1 if first_higher else -1)
-            ax.annotate(f"{bond:+.2f}", (n + 1.30, bond),
+            ax.annotate(f"{bond:+.2f}".replace("-", "−"), (n + 1.30, bond),
                         xycoords="data", xytext=(3, label_offset),
                         textcoords="offset points", ha="left", va="center",
                         fontsize=VALUE_SIZE_PT, fontweight="bold", color=color,

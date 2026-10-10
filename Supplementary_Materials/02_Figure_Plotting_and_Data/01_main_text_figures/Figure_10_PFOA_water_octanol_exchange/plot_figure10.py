@@ -19,7 +19,7 @@ def main(dpi=EXPORT_DPI):
         ax.plot([0,1],vals,color='#777777',lw=1)
         for i,(value,color) in enumerate(zip(vals,[GREEN,PURPLE])):
             ax.scatter(i,value,s=60,c=color,zorder=4)
-            ax.annotate(f'{value:+.2f}',(i,value),xytext=(0,10),textcoords='offset points',ha='center',color=color,fontweight='bold',fontsize=VALUE_SIZE_PT,bbox=VALUE_BOX,zorder=5)
+            ax.annotate(f'{value:+.2f}'.replace('-', '−'),(i,value),xytext=(0,10),textcoords='offset points',ha='center',color=color,fontweight='bold',fontsize=VALUE_SIZE_PT,bbox=VALUE_BOX,zorder=5)
         ax.set(ylim=ylim,xlim=(-.35,1.35));ax.set_xticks([0,1],['Water','1-octanol'])
         energy_grid(ax)
         ax.set_title(title,pad=8);ax.set_ylabel('Energy (kcal/mol)',labelpad=9)

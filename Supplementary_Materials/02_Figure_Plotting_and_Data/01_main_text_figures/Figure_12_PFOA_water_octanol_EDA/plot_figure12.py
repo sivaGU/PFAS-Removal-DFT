@@ -41,7 +41,7 @@ def main(dpi=EXPORT_DPI):
                 color=color, lw=1.6, ls=(0, (3, 2)))
         ax.scatter(7+shift, bond, c=color, marker=marker, zorder=4)
         label_y = -7.4 if solvent == 'water' else -20.0
-        labels[solvent] = ax.text(7.29, label_y, f'{bond:+.2f}', ha='left',
+        labels[solvent] = ax.text(7.29, label_y, f'{bond:+.2f}'.replace('-', '−'), ha='left',
             va='center', color=color, fontsize=VALUE_SIZE_PT,
             fontweight='bold', bbox=VALUE_BOX, zorder=6)
     assert float(rows['water']['Bond Energy']) > float(rows['1-octanol']['Bond Energy'])

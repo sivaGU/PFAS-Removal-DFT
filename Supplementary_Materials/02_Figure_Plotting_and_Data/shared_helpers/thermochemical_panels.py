@@ -57,7 +57,7 @@ def energy_panel(ax, data, category, title, letter, limits):
         for rank, color in enumerate(METHOD_COLORS):
             datum = pair[rank, i]
             upper = datum >= pair[1-rank, i]
-            ax.annotate(f"{datum:+.2f}", (i, datum),
+            ax.annotate(f"{datum:+.2f}".replace("-", "−"), (i, datum),
                         xytext=(0, 8 if upper else -9),
                         textcoords="offset points", ha="center",
                         va="bottom" if upper else "top", color=color,
@@ -87,7 +87,7 @@ def species_panel(ax, data):
     for row in range(4):
         for col in range(4):
             color = readable_text_color(img.cmap(img.norm(vals[row, col])))
-            ax.text(col, row, f"{vals[row, col]:+.2f}", color=color, ha="center",
+            ax.text(col, row, f"{vals[row, col]:+.2f}".replace("-", "−"), color=color, ha="center",
                     va="center", fontsize=VALUE_SIZE_PT, fontweight="bold")
     ax.set_xticks(np.arange(-.5, 4, 1), minor=True)
     ax.set_yticks(np.arange(-.5, 4, 1), minor=True)
@@ -110,7 +110,7 @@ def component_panel(ax, data):
     totals = np.array([value(data, "component_total", "Total", p) for p in PFAS])
     ax.scatter(totals, y, marker="D", s=25, color="black", zorder=4)
     for yi, total in zip(y, totals):
-        ax.annotate(f"{total:+.2f}", (total, yi), xytext=(-5, 11),
+        ax.annotate(f"{total:+.2f}".replace("-", "−"), (total, yi), xytext=(-5, 11),
                     textcoords="offset points", ha="right", va="bottom",
                     fontsize=VALUE_SIZE_PT, fontweight="bold", color="black",
                     bbox=VALUE_BOX, zorder=5)

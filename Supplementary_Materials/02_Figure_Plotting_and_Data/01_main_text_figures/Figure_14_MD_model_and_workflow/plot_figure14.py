@@ -12,7 +12,7 @@ ROOT = HERE.parents[1]
 VIEWS = (('A', r'PFOA$^{-}$–pVBTMA$_{12}^{12+}$ Simulation Box', 'figure14_full_box.png'),
          ('B', r'PFOA$^{-}$-Associated Site', 'figure14_hydrated_site.png'))
 ATOM_COLORS = (('C', '#4d4d4d'), ('N', '#354f9c'), ('F', '#47b8a6'),
-               (r'Na$^{+}$', '#d68f38'), (r'Cl$^{-}$', '#63a854'))
+               (r'Na$^{+}$', '#d68f38'), (r'Cl$^{-}$', '#63a854'), ('O', '#d62728'))
 
 def main():
     original_height = 4.2
