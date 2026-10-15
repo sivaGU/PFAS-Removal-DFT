@@ -110,13 +110,22 @@ def render_home() -> None:
     st.write(
         "Generate ORCA input files for PFAS/cholestyramine DFT workflows without editing input decks by hand."
     )
+    st.divider()
+    st.subheader("Citation")
     st.markdown(
-        r"""
-        Anion Exchange Mechanism of PFAS with Cholestyramine: Implications for PFAS Removal from the Human Body. Ronan Zwa, Sahith Mada, Sivanesan Dakshanamurthy\*. *Toxics* (Submitted).
-
-        For Contact: Dr. Sivanesan Dakshanamurthy, PhD,MBA.  
-        sivanesan@innsciteai.com; sd233@georgetown.edu
-        """
+        "Zwa, R.; Mada, S.; Dakshanamurthy, S. "
+        "Anion Exchange Mechanism of PFAS with Cholestyramine: Implications for PFAS Removal from the Human Body. "
+        "*Toxics* **2026**, *14*, 901. "
+        "[https://doi.org/10.3390/toxics14100901](https://doi.org/10.3390/toxics14100901)."
+    )
+    st.subheader("Contact Information")
+    st.markdown(
+        '<p style="margin: 0;">'
+        '<strong>For Contact:</strong> Dr. Sivanesan Dakshanamurthy, PhD, MBA. '
+        '<a href="mailto:sivanesan@innsciteai.com">sivanesan@innsciteai.com</a>; '
+        '<a href="mailto:sd233@georgetown.edu">sd233@georgetown.edu</a>'
+        '</p>',
+        unsafe_allow_html=True,
     )
     st.markdown(
         """
